@@ -290,3 +290,45 @@ Itu ketat untuk kendali nyata. Bila terlalu berisiko, celah boleh dilebarkan ke
 0,80 m (27,5 cm per sisi) — konsekuensinya rasio celah/agen naik dari 2,5 ke 3,2,
 **tidak lagi setara dengan simulator**, dan perbedaan itu wajib dinyatakan saat
 membandingkan hasil fisik dengan hasil simulasi.
+
+---
+
+## 11. Rancangan arena (final)
+
+![Sketsa arena uji](sketsa-arena.png)
+
+Dibuat oleh `sketsa_arena.py` — jalankan ulang bila geometri berubah.
+
+**Keputusan yang mengubah rancangan sebelumnya:**
+
+- **Kipas tidak dipakai.** Uji gangguan angin dibatasi ke simulasi. Diperiksa dan
+  **tidak menuntut revisi naskah**: Ruang Lingkup dan Hipotesa tidak pernah
+  menjanjikan uji angin fisik; angin hanya muncul sebagai elemen simulasi
+  (baris 508 naskah).
+- **Sofa dan banner disingkirkan** → lebar bersih penuh **2,70 m** tersedia.
+- **Celah dilebarkan** dari 0,62 m (skala ketat 0,625) menjadi **0,90 m**, dan
+  ditempatkan di tengah bentang pada **kolom yang mencuil** (60 × 79 cm).
+
+| Besaran | Nilai | Catatan |
+|---|---|---|
+| Skala formasi | **k = 0,9** | maksimum yang muat: 2k + 0,25 + 0,60 ≤ 2,70 ⟹ k ≤ 0,925 |
+| Bentang lateral formasi V | **2,05 m** | sisa 32,5 cm per sisi |
+| Celah | **0,90 m** | sisa **32,5 cm per sisi** saat mengekor — jauh lebih aman dari 18,5 cm |
+| Kedalaman dus | **1,01 m** | = 2,70 − 0,79 (kolom) − 0,90 (celah) |
+| Panjang kanal | 1,80 m | kolom 60 cm + perpanjangan dus 60 cm tiap sisi |
+| Rasio bentang/celah | **2,28** | simulator 2,40 — cukup dekat, pemicu ERC tetap sah |
+
+Kolom dipakai sebagai **satu sisi celah** karena permanen dan kaku: posisinya
+tidak bergeser antar sesi, sehingga geometri rintangan dapat direproduksi tanpa
+mengukur ulang. Dus hanya melengkapi sisi seberangnya.
+
+⚠️ **Perbedaan yang wajib dinyatakan saat membandingkan dengan simulasi:** panjang
+bagian sempit di simulator, bila diskalakan, seharusnya 4,5 m; arena nyata hanya
+1,80 m. Fase mengekor di dunia nyata karenanya jauh lebih singkat. Jalan keluar
+yang lebih bersih: **tambahkan skema baru di simulator yang meniru geometri arena
+ini**, sehingga simulasi dan perangkat keras benar-benar sebanding — bukan
+memaksakan arena meniru `scheme2`.
+
+⚠️ **Jumlah dus perlu dicek.** RAB merencanakan 10 dus. Dinding dus setinggi
+minimal ketinggian terbang (±1,2 m) sepanjang 1,80 m, ditambah perpanjangan di
+sisi kolom, kemungkinan melebihi 10 dus. Hitung ulang setelah ukuran dus diketahui.
