@@ -24,6 +24,8 @@ matplotlib.rcParams.update({
     "mathtext.rm": "Times New Roman",
     "mathtext.it": "Times New Roman:italic",
     "mathtext.bf": "Times New Roman:bold",
+    "mathtext.cal": "Times New Roman:italic",
+    "mathtext.sf": "Times New Roman",
     "font.size": 9,
     "axes.linewidth": 0.6,
     "lines.linewidth": 0.8,

@@ -570,9 +570,11 @@ Tata letak komponen utama serta dimensi luar wahana diperlihatkan pada Gambar~\r
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\textwidth]{figures/sketsa-wahana.png}
-    \caption{Dimensi dan tata letak komponen wahana uji. Tampak atas memperlihatkan empat saluran propeler, jalur datar selebar $4$ cm di sumbu tengah, serta penempatan dua sensor jarak diagonal. Tampak samping memperlihatkan tiang penyangga yang menaikkan penanda visual di atas mulut saluran.}
-    \label{fig:sketsa_wahana}
+    \subcaptionbox{Tampak atas wahana (cm)\label{fig:sketsa_wahana}}[0.49\textwidth]{\includegraphics{figures/wahana-atas.pdf}}
+    \hfill
+    \subcaptionbox{Geometri estimasi lebar ruang\label{fig:ultrasonic_placement}}[0.49\textwidth]{\includegraphics{figures/geometri-we.pdf}}
+    \caption{Wahana uji dan penempatan sensor jarak. (a) Empat saluran propeler menyisakan jalur datar selebar $4$~cm di sumbu tengah; penanda $12$~cm dipasang bertiang di atasnya. (b) Dua sensor diagonal bersudut $\theta$ terhadap arah maju menghasilkan jarak lateral $d_l$ dan $d_r$ untuk estimasi $w_e$.}
+    \label{fig:wahana_sensor}
 \end{figure}
 
 \subsection{Protokol Komunikasi}
@@ -685,6 +687,10 @@ di mana $v_{\text{suara}}$ adalah kecepatan rambat suara di udara (sekitar $343$
 
 Dalam arsitektur sistem ini, hasil pembacaan jarak dari sensor kiri ($d_l$\label{sym:dl}) dan sensor kanan ($d_r$\label{sym:dr}) diakuisisi secara periodik oleh \textit{companion computer} (ESP32). Data dari kedua sensor ini kemudian dikalkulasi untuk menghasilkan estimasi ketersediaan lebar lingkungan aktual ($w_e$\label{sym:we}) tegak lurus terhadap arah gerak wahana. Formulasi matematis untuk estimasi lebar lorong ini dinyatakan sebagai:
 \begin{equation}
+    d_l = d_{\mathrm{raw},l}\sin\theta, \qquad d_r = d_{\mathrm{raw},r}\sin\theta
+\end{equation}
+dengan $d_{\mathrm{raw}}$ jarak terukur sepanjang berkas sensor dan $\theta$ sudut berkas terhadap arah maju. Lebar ruang bebas adalah
+\begin{equation}
     w_e = d_l + d_r + w_{\text{body}}
 \end{equation}
 di mana $w_{\text{body}}$\label{sym:wbody} merepresentasikan lebar fisik badan quadcopter (jarak antar-sensor). 
@@ -692,98 +698,6 @@ di mana $w_{\text{body}}$\label{sym:wbody} merepresentasikan lebar fisik badan q
 Variabel $w_e$ ini berfungsi sebagai parameter utama yang diumpankan ke perencana tingkat tinggi. Jika total jarak bebas lateral menyempit dan nilai $w_e$ turun melewati ambang batas toleransi formasi ideal, sistem akan mengenali kondisi tersebut sebagai rintangan lorong sempit dan memicu transisi mode formasi menjadi formasi mengekor. Skema pengukuran dan penempatan sensor ini dapat dilihat pada Gambar~\ref{fig:ultrasonic_placement}.
 
 
-\begin{figure}[htbp]
-    \centering
-    \resizebox{0.85\textwidth}{!}{%
-    \begin{tikzpicture}[
-        font=\rmfamily,
-        >=Stealth,
-        wall/.style={draw, thick, fill=gray!20},
-        frame/.style={draw=blue!60!black, line width=3.5pt},
-        hub/.style={draw=blue!60!black, thick, fill=blue!8, rounded corners=3pt},
-        rotor/.style={draw=gray!80!black, thick, fill=gray!10, circle, minimum size=0.9cm, inner sep=0pt},
-        sensor/.style={draw, thick, fill=black, minimum width=0.16cm, minimum height=0.4cm},
-        beam/.style={fill=cyan!30, opacity=0.5},
-        measure/.style={<->, thick},
-        guide/.style={dotted, gray!70, thick},
-        label/.style={font=\small\rmfamily, align=center}
-    ]
-        % Dinding kiri dan kanan
-        \draw[wall] (-4.0,-2.5) rectangle (-3.75,4.0);
-        \draw[wall] (3.75,-2.5) rectangle (4.0,4.0);
-        \node[label, rotate=90] at (-4.45,0.5) {Dinding\\kiri};
-        \node[label, rotate=-90] at (4.45,0.5) {Dinding\\kanan};
-
-        % Lengan quadcopter (konfigurasi X)
-        \draw[frame] (-0.8,0.8) -- (0.8,-0.8);
-        \draw[frame] (-0.8,-0.8) -- (0.8,0.8);
-
-        % Kerucut pancaran ultrasonik diperlebar.
-        % Sensor kiri depan (pusat di -1.0, 1.0; arah 135 derajat)
-        \begin{scope}[shift={(-1.0,1.0)}, rotate=100]
-            \fill[beam] (0,0) -- (-40:3.8) arc (-40:40:3.8) -- cycle;
-        \end{scope}
-        % Sensor kanan depan (pusat di 1.0, 1.0; arah 45 derajat)
-        \begin{scope}[shift={(1.0,1.0)}, rotate=80]
-            \fill[beam] (0,0) -- (-40:3.8) arc (-40:40:3.8) -- cycle;
-        \end{scope}
-
-        % Rotor quadcopter
-        \node[rotor] at (-0.8,0.8) {}; \filldraw[gray!80!black] (-0.8,0.8) circle (0.05); % Kiri Depan
-        \node[rotor] at (0.8,0.8) {};  \filldraw[gray!80!black] (0.8,0.8) circle (0.05);  % Kanan Depan
-        \node[rotor] at (-0.8,-0.8) {}; \filldraw[gray!80!black] (-0.8,-0.8) circle (0.05); % Kiri Belakang
-        \node[rotor] at (0.8,-0.8) {};  \filldraw[gray!80!black] (0.8,-0.8) circle (0.05);  % Kanan Belakang
-
-        % Bodi pusat (FC / ESP32)
-        \draw[hub] (-0.52,-0.38) rectangle (0.52,0.38);
-        \node[label, font=\small\bfseries\rmfamily] at (0,0) {FC /\\ESP32};
-
-        % Panah penunjuk arah depan
-        \draw[->, ultra thick, red!70!black] (0, 0.45) -- (0, 1.8) node[above, font=\small\bfseries\rmfamily] {Depan (Arah Gerak)};
-
-        % Sensor ultrasonik kiri dan kanan depan diputar 45 derajat ke luar.
-        \node[sensor, rotate=-45] (SL) at (-1.0, 1.0) {};
-        \node[sensor, rotate=45] (SR) at (1.0, 1.0) {};
-        \node[label, font=\small\rmfamily] at (-1.75, 0.50) {Sensor\\kiri};
-        \node[label, font=\small\rmfamily] at (1.75, 0.50) {Sensor\\kanan};
-
-        % Garis ukur jarak proyeksi lateral
-        \draw[measure, dashed] (-3.75,1.0) -- (-1.0,1.0) node[midway, above, font=\small\rmfamily] {$d_l$};
-        \draw[measure, dashed] (1.0,1.0) -- (3.75,1.0) node[midway, above, font=\small\rmfamily] {$d_r$};
-
-        % Penanda jarak pembacaan mentah (miring 45 derajat)
-        \draw[<->, gray!90!black, dashed, line width=1pt] (-3.75, 3.75) -- (-1.1, 1.1) 
-            node[midway, sloped, above, font=\small\rmfamily] {$d_{\mathrm{raw\_l}}$};
-        \draw[<->, gray!90!black, dashed, line width=1pt] (3.75, 3.75) -- (1.1, 1.1) 
-            node[midway, sloped, above, font=\small\rmfamily] {$d_{\mathrm{raw\_r}}$};
-
-        % Sudut theta
-        \draw[thick] (-1.0, 1.6) arc (90:135:0.6);
-        \node[font=\small\rmfamily] at (-1.3, 1.75) {$\theta$};
-        \draw[thick] (1.0, 1.6) arc (90:45:0.6);
-        \node[font=\small\rmfamily] at (1.3, 1.75) {$\theta$};
-
-        % Garis ukur lebar bodi (jarak lateral antar pusat sensor)
-        \draw[measure] (-1.0,-1.6) -- (1.0,-1.6) node[midway, below, font=\small\rmfamily] {$w_{\mathrm{body}}$};
-
-        % Garis ukur lebar lingkungan total
-        \draw[measure, blue!70!black, line width=1.1pt] (-3.75,4.3) -- (3.75,4.3)
-            node[midway, above, label, font=\small\rmfamily, text=blue!70!black]
-            {$w_e = d_l + d_r + w_{\mathrm{body}}$};
-
-        % Garis bantu proyeksi pengukuran
-        \draw[guide] (-3.75,1.0) -- (-3.75,4.5);
-        \draw[guide] (3.75,1.0) -- (3.75,4.5);
-        \draw[guide] (-1.0,1.0) -- (-1.0,-1.8);
-        \draw[guide] (1.0,1.0) -- (1.0,-1.8);
-        \draw[guide] (-1.0,1.0) -- (-1.0,2.0); % Garis lurus ke atas untuk sudut theta kiri
-        \draw[guide] (1.0,1.0) -- (1.0,2.0);   % Garis lurus ke atas untuk sudut theta kanan
-
-    \end{tikzpicture}%
-    }
-    \caption{Skema estimasi ketersediaan lebar lingkungan ($w_e$) menggunakan sensor ultrasonik yang diorientasikan secara diagonal dengan sudut $\theta$. Jarak lateral ke dinding ($d_l$ dan $d_r$) diekstraksi melalui proyeksi trigonometri dari pembacaan jarak mentah ($d_{\mathrm{raw\_l}}$ dan $d_{\mathrm{raw\_r}}$).}
-    \label{fig:ultrasonic_placement}
-\end{figure}
 
 Setelah seluruh sistem persepsi---baik lokalisasi spasial menggunakan kamera atas maupun persepsi rintangan menggunakan ultrasonik---berhasil memetakan kondisi eksternal, kerangka kontrol membutuhkan estimasi \textit{state} internal wahana yang bersih dari derau agar dapat mengeksekusi manuver dengan stabil. Oleh karena itu, data posisi dari kamera atas diproses lebih lanjut pada modul estimator \textit{state}.
 
