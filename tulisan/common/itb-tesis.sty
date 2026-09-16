@@ -90,6 +90,19 @@
     {\thesection}
     {1em}
     {}
+% Subbab bertingkat: semuanya 12 pt agar tidak ada tingkat bawah yang lebih
+% besar dari tingkat di atasnya (bawaan kelas report memakai \large = 14,4 pt
+% untuk \subsection). Tingkat dibedakan oleh penomoran dan gaya huruf.
+\titleformat{\subsection}
+    {\normalfont\fontsize{12pt}{14pt}\selectfont\bfseries}
+    {\thesubsection}
+    {1em}
+    {}
+\titleformat{\subsubsection}
+    {\normalfont\fontsize{12pt}{14pt}\selectfont\bfseries\itshape}
+    {\thesubsubsection}
+    {1em}
+    {}
 
 % ============================================================
 % FORMAT DAFTAR ISI, DAFTAR GAMBAR, DAN DAFTAR TABEL
