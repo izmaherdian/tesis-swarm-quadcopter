@@ -1,0 +1,18 @@
+\babel@toc {indonesian}{}\relax 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Klasifikasi metode untuk kontrol formasi \cite {kurochkinMethodsFormationControl2021}}}{6}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Klasifikasi representasi formasi \cite {ohSurveyMultiagentFormation2015}}}{7}{figure.caption.7}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Quadcopter dengan kerangka SpeedyBee35 \cite {SpeedyBeeBee3535a}}}{9}{figure.caption.9}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Konfigurasi pemasangan motor quadcopter: kiri ``+'' dan kanan ``X'' \cite {quanDynamicModelingExperiment2020}}}{9}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Kerangka acuan inersia NED dan kerangka bodi FRD pada quadcopter \cite {quanDynamicModelingExperiment2020}}}{11}{figure.caption.11}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Struktur Fisik dan Tata Letak Komponen (a) Tampak Atas dan (b) Tampak Bawah \cite {argilianaPengembanganSistemKontrol2025}}}{15}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Integrasi Unit \textit {Electronic Speed Controller} (ESC) dan \textit {Flight Controller} (FC)}}{16}{figure.caption.16}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Skematik Elektrik dan Diagram Pengabelan Seluruh Komponen Wahana}}{17}{figure.caption.18}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Skema estimasi ketersediaan lebar lingkungan ($w_e$) menggunakan sensor ultrasonik yang diorientasikan secara diagonal dengan sudut $\mittheta $. Jarak lateral ke dinding ($d_l$ dan $d_r$) diekstraksi melalui proyeksi trigonometri dari pembacaan jarak mentah ($d_{\mathrm {raw\_l}}$ dan $d_{\mathrm {raw\_r}}$).}}{21}{figure.caption.21}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Arsitektur fusi sensor menggunakan \textit {Extended Kalman Filter} (EKF) untuk estimasi \textit {state} pada lingkungan \textit {indoor}.}}{23}{figure.caption.24}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Arsitektur detail dari pengontrol tingkat rendah, mengilustrasikan kalang kontrol kaskade dari \textit {setpoint} posisi hingga alokasi komando motor.}}{24}{figure.caption.25}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Arsitektur perencana tingkat tinggi untuk kontrol formasi adaptif dan terdesentralisasi}}{25}{figure.caption.26}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagram alir metodologi penelitian untuk implementasi kontrol formasi desentralisasi pada kawanan quadcopter.}}{27}{figure.caption.27}%
+\addvspace {10\p@ }
