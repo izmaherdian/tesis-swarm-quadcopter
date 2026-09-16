@@ -518,6 +518,73 @@ Berdasarkan Persamaan~\ref{eq:state_space_21}, sistem ini digunakan sebagai dasa
 
 Bab ini menguraikan rancangan sistem yang dibangun pada penelitian ini. Berbeda dengan Bab~II yang memaparkan teori dan karya terdahulu, bab ini memuat keputusan perancangan yang diambil sendiri: perangkat yang dipilih, parameter yang ditetapkan, geometri fisik yang dirancang, serta arena pengujian yang disiapkan. Uraian dimulai dari kondisi awal perangkat yang telah tersedia, dilanjutkan dengan rancangan tiap subsistem, dan ditutup dengan arsitektur sistem secara menyeluruh.
 
+\section{Kondisi Awal dan Komponen yang Tersedia}
+\label{sec:kondisi_awal}
+
+Penelitian ini tidak dimulai dari nol. Sebagian perangkat keras telah tersedia di laboratorium sebagai kelanjutan dari platform penelitian sebelumnya \cite{argilianaPengembanganSistemKontrol2025}, sehingga perancangan yang diuraikan pada bab ini dibatasi oleh apa yang sudah ada dan hanya melengkapi bagian yang belum tersedia. Pemetaan kondisi awal ini sekaligus menjadi dasar penyusunan rencana anggaran biaya bertahap pada Bab~IV.
+
+\subsection{Wahana dan Komponen Elektronik}
+
+Wahana yang digunakan adalah \textit{quadcopter} tipe \textit{cinewhoop} dengan propeler bersaluran (\textit{ducted}), berdimensi luar $25 \times 21$ cm dan tinggi $8$ cm termasuk baterai. Bentuk bersaluran ini dipilih pada penelitian sebelumnya karena menutupi propeler secara penuh, sehingga lebih aman untuk penerbangan di dalam ruangan yang berdekatan dengan dinding dan rintangan. Rincian komponen yang telah tersedia dirangkum pada Tabel~\ref{tab:komponen_tersedia}.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Komponen yang telah tersedia di laboratorium}
+    \label{tab:komponen_tersedia}
+    \begingroup
+    \small
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|c|>{\raggedright\arraybackslash}p{3.6cm}|X|>{\centering\arraybackslash}p{1.6cm}|}
+        \hline
+        \rowcolor{gray!20}
+        \thead{No} & \thead{Komponen} & \thead{Spesifikasi} & \thead{Jumlah} \\ \hline
+        1 & Rangka \textit{cinewhoop} SpeedyBee Bee35 & Propeler bersaluran, dimensi luar $25 \times 21 \times 8$ cm & 6 unit \\ \hline
+        2 & \textit{Flight controller} SpeedyBee F405 Mini & Mikrokontroler STM32F405 (\textit{flash} 1 MB), IMU ICM-42688P, barometer DSP-310 & 4 unit \\ \hline
+        3 & ESC SpeedyBee BLS 35A Mini & 4-in-1, firmware BLHeli\_S & 4 unit \\ \hline
+        4 & \textit{Companion computer} Seeed XIAO ESP32-S3 & Wi-Fi 2,4 GHz dan BLE terintegrasi, antarmuka USB-C & 1 unit \\ \hline
+        5 & Baterai LiPo & $4 \times 1200$ mAh, $2 \times 1500$ mAh, $1 \times 2200$ mAh, $2 \times 5000$ mAh & 9 unit \\ \hline
+        6 & Propeler dan saluran cadangan & Propeler tiga bilah, cincin saluran & beberapa \\ \hline
+        7 & Pencetak tiga dimensi beserta filamen & Untuk mencetak dudukan penanda visual dan sensor & 1 unit \\ \hline
+    \end{tabularx}
+    \endgroup
+\end{table}
+
+Dari enam rangka yang tersedia, dua unit telah terpasang lengkap beserta propeler dan siap diterbangkan, dua unit telah terpasang motor dan saluran namun belum berpropeler, sementara dua unit sisanya masih berupa rangka kosong tanpa komponen elektronik. Dengan demikian kebutuhan lima agen dapat dipenuhi dari stok yang ada, dengan satu unit tersisa sebagai cadangan apabila terjadi kerusakan saat uji terbang.
+
+Satu catatan penting menyangkut modul GNSS yang saat ini masih terpasang pada bagian atas wahana. Modul tersebut tidak digunakan karena seluruh pengujian berlangsung di dalam ruangan, dan pelepasannya justru menguntungkan: selain mengurangi bobot, pelepasan itu membebaskan area datar di tengah bodi yang dibutuhkan untuk pemasangan penanda visual, sebagaimana dibahas pada Subbab~\ref{sec:lokalisasi_rancangan}.
+
+\subsection{Kondisi Ruang Pengujian}
+\label{subsec:kondisi_ruang}
+
+Pengujian dilaksanakan di koridor Pusat Teknologi Instrumentasi dan Otomasi (PTIO) ITB. Ruang tersebut bukan laboratorium terbang khusus, melainkan koridor berbentuk huruf L yang juga digunakan sebagai area lalu lintas dan kegiatan pelatihan. Karakteristik ruang yang relevan terhadap perancangan dirangkum pada Tabel~\ref{tab:kondisi_ruang}.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Karakteristik ruang pengujian yang relevan terhadap perancangan}
+    \label{tab:kondisi_ruang}
+    \begingroup
+    \small
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{4.0cm}|>{\raggedright\arraybackslash}p{3.0cm}|X|}
+        \hline
+        \rowcolor{gray!20}
+        \thead{Karakteristik} & \thead{Nilai} & \thead{Konsekuensi terhadap perancangan} \\ \hline
+        Tinggi langit-langit & $300$ cm & Membatasi jarak pandang kamera atas terhadap wahana, sehingga liputan satu kamera terbatas \\ \hline
+        Lebar bersih lengan koridor & $270$ cm & Membatasi bentang formasi maksimum yang dapat diuji \\ \hline
+        Panjang lengan koridor & $720$--$960$ cm & Menentukan panjang lintasan uji yang tersedia \\ \hline
+        Jenis langit-langit & Gipsum pada rangka-T, ubin $60 \times 60$ cm & Dudukan kamera harus ringan dan mencantol pada rel rangka; posisi ubin yang terpakai pendingin, lampu, dan \textit{sprinkler} harus dihindari \\ \hline
+        Pencahayaan & Lampu TL, lampu tanam, dan kaca \textit{clerestory} & Suhu warna dan intensitas tidak seragam; pengaturan pencahayaan otomatis kamera harus dikunci manual \\ \hline
+        Lantai & Ubin besar berwarna gelap & Kontras baik terhadap penanda visual berwarna terang; nat ubin dapat dipakai menandai posisi rintangan secara berulang \\ \hline
+        Kolom di dalam area & $4$ buah, $45$--$60$ cm & Salah satu kolom dimanfaatkan sebagai sisi penyempitan pada arena uji \\ \hline
+        Status penggunaan & Dapat dipakai eksklusif dengan penjadwalan & Perabot dapat disingkirkan saat sesi pengujian sehingga lebar bersih penuh tersedia \\ \hline
+    \end{tabularx}
+    \endgroup
+\end{table}
+
+Seluruh ukuran pada Tabel~\ref{tab:kondisi_ruang} diperoleh melalui pengukuran langsung di lokasi dengan ketelitian sekitar $\pm 5$ cm. Pada kondisi sehari-hari, sebagian lebar koridor terpakai oleh deretan kursi panjang, papan informasi berdiri, dan perlengkapan laboratorium. Karena ruangan dapat dijadwalkan untuk penggunaan eksklusif, perabot tersebut disingkirkan selama sesi pengujian sehingga lebar bersih $270$ cm dapat dimanfaatkan sepenuhnya. Ketersediaan lebar penuh ini merupakan syarat yang mengikat: dengan perabot tetap di tempatnya, lebar bersih hanya sekitar $180$ cm dan bentang formasi yang dirancang tidak akan muat, sehingga peristiwa pemicu rekonfigurasi tidak akan terjadi secara sah.
+
 \section{Arsitektur Wahana}
 Wahana eksperimental yang digunakan dalam penelitian ini adalah quadcopter dengan konfigurasi tipe `X'. Pengembangan platform perangkat keras ini merupakan kelanjutan langsung dari arsitektur fisik platform pada penelitian sebelumnya \cite{argilianaPengembanganSistemKontrol2025}, yang kemudian ditingkatkan untuk mendukung komputasi desentralisasi penuh secara \textit{on-board}.
 
@@ -560,6 +627,17 @@ Pada lapis komputasi tingkat tinggi, \textit{companion computer} (ESP-32) dihubu
     \label{fig:wiring_diagram}
 \end{figure}
 
+\subsection{Dimensi dan Tata Letak Komponen}
+
+Dimensi luar wahana beserta tata letak komponen utamanya diperlihatkan pada Gambar~\ref{fig:sketsa_wahana}. Wahana berukuran $25 \times 21$ cm dengan tinggi $8$ cm termasuk baterai. Empat saluran propeler menempati hampir seluruh permukaan atas, menyisakan jalur datar selebar hanya $4$ cm di sepanjang sumbu tengah bodi. Keterbatasan ruang datar ini berdampak langsung pada perancangan sistem lokalisasi dan dibahas pada Subbab~\ref{sec:lokalisasi_rancangan}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/sketsa-wahana.png}
+    \caption{Dimensi dan tata letak komponen wahana uji. Tampak atas memperlihatkan empat saluran propeler, jalur datar selebar $4$ cm di sumbu tengah, serta penempatan dua sensor jarak diagonal. Tampak samping memperlihatkan tiang penyangga yang menaikkan penanda visual di atas mulut saluran.}
+    \label{fig:sketsa_wahana}
+\end{figure}
+
 \subsection{Protokol Komunikasi}
 Sistem komunikasi kawanan quadcopter dirancang dengan memisahkan secara jelas antara lapisan protokol data (\textit{software}) dan arsitektur jaringan fisik (\textit{hardware}). Baik komunikasi antar-wahana (Quadcopter-Quadcopter) maupun komunikasi stasiun darat (Quadcopter-GCS) secara seragam mengadopsi protokol pesan biner \textbf{MAVLink} (\textit{Micro Air Vehicle Link}) yang ditransmisikan di atas media jaringan \textbf{Wi-Fi lokal} berbasis soket UDP (\textit{User Datagram Protocol}) \cite{chenReviewUnmannedAerial2020, linLeaderFollowerUAV2026}. Perbedaan utama dari kedua jalur komunikasi ini terletak pada rute aliran dan topologi jaringannya.
 
@@ -570,6 +648,7 @@ Jalur komunikasi antar-wahana merupakan fondasi dari arsitektur kontrol terdesen
 Jalur komunikasi stasiun darat memfasilitasi pemantauan telemetri dan kontrol intervensi jarak jauh. Berbeda dengan jalur antar-wahana, arsitektur jaringan pada jalur ini bersifat terpusat (\textit{centralized}) dengan memanfaatkan sebuah \textit{router} nirkabel sebagai \textit{access point} utama di dalam area pengujian \textit{indoor}. Melalui medium ini, setiap ESP32 mengirimkan paket telemetri MAVLink berupa data kesehatan sistem (\textit{heartbeat}), estimasi orientasi sikap (\textit{attitude}), dan kapasitas baterai menuju \textit{Ground Control Station} (GCS). Sebaliknya, GCS menggunakan jalur Wi-Fi terpusat ini untuk mengirimkan komando tingkat tinggi seperti perintah \textit{arm/disarm}, perpindahan mode terbang, atau komando pendaratan darurat secara \textit{real-time}.
 
 \section{Perancangan Sistem Lokalisasi \textit{Indoor}}
+\label{sec:lokalisasi_rancangan}
 
 Mengingat pengujian navigasi kawanan \textit{quadcopter} dilakukan di lingkungan dalam ruangan (\textit{indoor}), sistem tidak dapat mengandalkan \textit{Global Positioning System} (GPS) untuk mendapatkan informasi posisi spasial absolut.
 Sebagai solusinya, arsitektur perangkat keras ini memanfaatkan sistem lokalisasi eksternal berbasis penglihatan komputer (\textit{computer vision}) menggunakan kamera atas (\textit{fixed overhead/ceiling camera}) yang dipadukan dengan penanda visual (\textit{visual fiducial marker}) pada wahana.
@@ -615,6 +694,56 @@ Keluaran dari algoritma ini berupa estimasi koordinat spasial absolut $(x, y, z)
 Data posisi dan orientasi terhitung dari komputer darat dikemas ke dalam format pesan biner MAVLink dan disiarkan melalui jaringan nirkabel (soket UDP/Wi-Fi) menuju \textit{companion computer} (ESP32) di masing-masing \textit{quadcopter}.
 Meskipun sistem lokalisasi berbasis kamera atas memberikan referensi posisi absolut yang sangat akurat dan bebas dari \textit{drift}, keluaran datanya memiliki laju pembaruan (\textit{update rate}) yang dibatasi oleh laju bingkai kamera (misalnya 60 FPS) serta memiliki jeda waktu pemrosesan citra (\textit{latency processing}).
 Oleh karena itu, data posisi spasial dari kamera atas ini tidak langsung diumpankan ke kalang pengontrol tingkat rendah, melainkan difusikan terlebih dahulu dengan data sensor internal berkecepatan tinggi (\textit{Inertial Measurement Unit}/IMU) melalui modul \textit{Extended Kalman Filter} (EKF\label{abbr:ekf}) untuk menghasilkan estimasi \textit{state} yang mulus dan stabil.
+
+\subsection{Penentuan Jumlah Kamera dan Ukuran Penanda}
+\label{subsec:liputan_kamera}
+
+Jumlah kamera dan ukuran penanda tidak ditetapkan secara asumtif, melainkan diturunkan dari dimensi ruang pengujian pada Tabel~\ref{tab:kondisi_ruang}. Dengan langit-langit setinggi $h_p = 300$ cm, tinggi wahana $8$ cm, dan ketinggian terbang $h_t$, jarak pandang kamera terhadap penanda adalah
+
+\begin{equation}
+    d = h_p - (h_t + 0{,}08)
+\end{equation}
+
+sehingga untuk $h_t$ antara $1{,}0$ dan $1{,}5$ m diperoleh $d$ antara $1{,}42$ dan $1{,}92$ m. Jarak pandang yang pendek inilah yang membatasi liputan tiap kamera.
+
+Liputan kamera pada bidang terbang ditentukan oleh sudut pandang dan jarak. Liputan melintang koridor, $w_\perp$, harus sekurang-kurangnya selebar koridor $W = 270$ cm:
+
+\begin{equation}
+    w_\perp = 2\,d \tan\!\left(\frac{\theta_v}{2}\right) \geq W
+\end{equation}
+
+dengan $\theta_v$ sudut pandang vertikal sensor. Karena sensor kamera berformat $16{:}9$, liputan memanjang koridor terikat pada liputan melintangnya:
+
+\begin{equation}
+    w_\parallel = \frac{16}{9}\, w_\perp
+    \label{eq:liputan_memanjang}
+\end{equation}
+
+Persamaan~\ref{eq:liputan_memanjang} menghasilkan kesimpulan yang menentukan: begitu syarat $w_\perp = 270$ cm dipenuhi, liputan memanjang \textbf{terkunci} pada $w_\parallel = 480$ cm, berapa pun ketinggian terbang yang dipilih. Ketinggian terbang hanya menggeser sudut pandang yang dibutuhkan, bukan luas liputan, sebagaimana dirangkum pada Tabel~\ref{tab:liputan_kamera}.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Sudut pandang yang dibutuhkan pada berbagai ketinggian terbang}
+    \label{tab:liputan_kamera}
+    \begingroup
+    \small
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+        \hline
+        \rowcolor{gray!20}
+        \thead{Ketinggian terbang} & \thead{Jarak pandang $d$} & \thead{Sudut pandang horizontal} & \thead{Liputan} \\ \hline
+        $1{,}0$ m & $1{,}92$ m & $103^\circ$ & $4{,}80 \times 2{,}70$ m \\ \hline
+        $1{,}2$ m & $1{,}72$ m & $109^\circ$ & $4{,}80 \times 2{,}70$ m \\ \hline
+        $1{,}5$ m & $1{,}42$ m & $119^\circ$ & $4{,}80 \times 2{,}70$ m \\ \hline
+    \end{tabularx}
+    \endgroup
+\end{table}
+
+Karena lintasan uji yang direncanakan lebih panjang dari $4{,}80$ m, satu kamera tidak mencukupi. Dua kamera dengan liputan saling bertumpang tindih menghasilkan cakupan $9{,}60$ m, yang dimanfaatkan sebagai lintasan sepanjang $7{,}20$ m dengan daerah tumpang tindih $2{,}40$ m. Daerah tumpang tindih ini diperlukan untuk menyatukan kedua kamera ke dalam satu kerangka acuan global dan untuk menangani perpindahan wahana antar-liputan.
+
+Ukuran penanda visual mengikuti dari liputan tersebut. Pada liputan memanjang $4{,}80$ m dengan sensor beresolusi $3840$ piksel, setiap piksel mewakili $1{,}25$ mm di bidang terbang. Deteksi penanda yang andal pada wahana bergerak membutuhkan sekitar $80$ piksel pada sisi penanda, sehingga ukuran sisi minimumnya adalah $80 \times 1{,}25 \text{ mm} = 10$ cm.
+
+Di sinilah keterbatasan ruang datar pada Gambar~\ref{fig:sketsa_wahana} menjadi mengikat: penanda $10$ cm tidak muat pada jalur datar selebar $4$ cm di sumbu tengah bodi. Menempelkan penanda langsung di atas saluran propeler bukan pilihan, karena propeler bersaluran mengisap udara dari atas dan penutupan mulut saluran akan menggerus daya angkat secara langsung. Rancangan yang dipilih adalah menaikkan penanda dengan tiang penyangga setinggi sekitar $7$ cm di atas bodi, sehingga penanda tetap berukuran memadai sementara aliran udara masuk ke saluran tidak terhalang. Dudukan tiang tersebut dicetak menggunakan pencetak tiga dimensi yang tersedia di laboratorium.
 
 \section{Perancangan Sistem Persepsi Rintangan}
 
@@ -731,6 +860,20 @@ Variabel $w_e$ ini berfungsi sebagai parameter utama yang diumpankan ke perencan
 
 Setelah seluruh sistem persepsi---baik lokalisasi spasial menggunakan kamera atas maupun persepsi rintangan menggunakan ultrasonik---berhasil memetakan kondisi eksternal, kerangka kontrol membutuhkan estimasi \textit{state} internal wahana yang bersih dari derau agar dapat mengeksekusi manuver dengan stabil. Oleh karena itu, data posisi dari kamera atas diproses lebih lanjut pada modul estimator \textit{state}.
 
+\subsection{Pemilihan Sensor Jarak}
+\label{subsec:pemilihan_sensor}
+
+Rancangan di atas mengandalkan pembacaan jarak lateral yang tetap andal ketika berkas sensor mengenai permukaan secara miring. Pada sudut datang $45^\circ$ terhadap permukaan halus seperti dinding berplester atau kolom beton, sensor ultrasonik rawan kehilangan gema karena pantulan bersifat spekular dan energi pantul terlempar menjauh dari penerima. Permukaan kardus yang dipakai sebagai rintangan buatan memantul secara baur sehingga lebih ramah, tetapi dinding dan kolom tidak.
+
+Risiko ini menyentuh inti mekanisme ERC: kegagalan pembacaan pada sudut miring berarti estimasi $w_e$ menjadi tidak sahih, dan peristiwa pemicu dapat terlewat atau terpicu palsu. Oleh sebab itu jenis sensor tidak ditetapkan di muka, melainkan diputuskan melalui uji banding pada tahap awal pelaksanaan. Dua kandidat diuji berdampingan:
+
+\begin{enumerate}
+    \item \textbf{Sensor ultrasonik} (HC-SR04). Berbiaya rendah, jangkauan memadai, dan tidak terpengaruh kondisi pencahayaan, namun memiliki berkas lebar dan rentan terhadap pantulan spekular pada sudut datang miring.
+    \item \textbf{Sensor jarak laser \textit{time-of-flight}} (VL53L1X). Berkas jauh lebih sempit, lebih toleran terhadap sudut datang miring, dan berkomunikasi melalui antarmuka I\textsuperscript{2}C sehingga hemat pena masukan-keluaran pada \textit{companion computer} yang terbatas. Kelemahannya, jangkauan efektifnya menurun pada pencahayaan terang, sedangkan ruang pengujian menerima cahaya alami melalui kaca \textit{clerestory}.
+\end{enumerate}
+
+Kriteria pemilihan ditetapkan sebelum pengujian dijalankan, yaitu: tingkat keberhasilan pembacaan pada sudut $45^\circ$ dan $90^\circ$ terhadap dinding berplester, kolom beton, dan permukaan kardus; sebaran galat pembacaan terhadap jarak acuan; serta laju pembaruan yang dapat dicapai untuk dua sensor sekaligus. Sensor yang memenuhi kriteria dengan margin terbesar dipakai untuk kelima wahana. Apabila kedua kandidat gagal pada sudut $45^\circ$, sudut pemasangan diperkecil dan konsekuensinya terhadap jangkauan deteksi ke depan dievaluasi ulang.
+
 \section{Estimator dan Pengontrol}
 
 Bagian ini menguraikan rancangan kalang estimasi dan kendali yang dijalankan di atas wahana, mulai dari fusi sensor hingga alokasi perintah motor.
@@ -816,8 +959,65 @@ Arsitektur perencana tingkat tinggi ini sudah dimodifikasi dari algoritma yang d
 
 Dengan struktur pada Gambar~\ref{fig:high_level_planner}, proses pengambilan keputusan dilakukan pada level perencanaan, sedangkan stabilisasi gerak tetap ditangani oleh pengontrol tingkat rendah. Pemisahan ini membuat sistem lebih modular: perencana tingkat tinggi fokus pada koordinasi kawanan, sementara pengontrol tingkat rendah memastikan setiap quadcopter mampu mengikuti referensi yang diberikan secara stabil.
 
+\section{Rancangan Arena Uji}
+\label{sec:arena}
+
+Arena dirancang agar peristiwa pemicu rekonfigurasi benar-benar muncul karena penyempitan ruang yang dirancang, bukan karena keterbatasan arena itu sendiri. Rancangannya diturunkan dengan menskalakan geometri yang telah divalidasi pada simulasi \cite{herdianDecentralizedFormationControl2026} ke dimensi wahana dan ruang yang tersedia.
+
+Pada simulasi, agen dimodelkan berdiameter $0{,}40$ m dengan topologi formasi V berbentang lateral $2{,}40$ m, melintasi lorong sempit selebar $1{,}00$ m. Dua perbandingan menentukan perilaku sistem: bentang formasi terhadap lebar celah, dan lebar celah terhadap diameter agen. Perbandingan pertama menentukan apakah peristiwa pemicu muncul sama sekali, sedangkan perbandingan kedua menentukan seberapa ketat manuver mengekor harus dilakukan. Penskalaan mempertahankan perbandingan tersebut, bukan nilai mutlaknya.
+
+Dengan lebar bersih koridor $270$ cm dan syarat ruang bebas sekurang-kurangnya $30$ cm pada tiap sisi, bentang formasi maksimum yang dapat diuji adalah $205$ cm, yang tercapai pada faktor skala $0{,}9$. Lebar celah mengikuti pada $90$ cm. Perbandingan hasil penskalaan terhadap nilai pada simulasi dirangkum pada Tabel~\ref{tab:penskalaan_arena}.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Penskalaan geometri skenario dari simulasi ke arena fisik}
+    \label{tab:penskalaan_arena}
+    \begingroup
+    \small
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|X|>{\centering\arraybackslash}p{2.6cm}|>{\centering\arraybackslash}p{2.6cm}|}
+        \hline
+        \rowcolor{gray!20}
+        \thead{Besaran} & \thead{Simulasi} & \thead{Arena fisik} \\ \hline
+        Diameter agen & $0{,}40$ m & $0{,}25$ m \\ \hline
+        Bentang lateral formasi & $2{,}40$ m & $2{,}05$ m \\ \hline
+        Lebar celah & $1{,}00$ m & $0{,}90$ m \\ \hline
+        Panjang bagian sempit & $5{,}00$ m & $1{,}80$ m \\ \hline
+        Rasio bentang formasi terhadap celah & $2{,}40$ & $2{,}28$ \\ \hline
+        Rasio celah terhadap diameter agen & $2{,}50$ & $3{,}60$ \\ \hline
+    \end{tabularx}
+    \endgroup
+\end{table}
+
+Dua perbedaan pada Tabel~\ref{tab:penskalaan_arena} perlu dinyatakan terbuka karena akan memengaruhi penafsiran hasil. Pertama, perbandingan celah terhadap diameter agen pada arena fisik lebih besar daripada pada simulasi, karena wahana nyata secara relatif lebih ramping dibanding agen tersimulasi. Artinya lintasan fisik justru lebih longgar daripada lintasan tersimulasi, sehingga keberhasilan di arena fisik tidak serta-merta membuktikan keberhasilan pada rasio yang lebih ketat. Kedua, bagian sempit arena hanya sepanjang $1{,}80$ m, jauh lebih pendek daripada hasil penskalaan langsung, sehingga fase mengekor berlangsung lebih singkat. Penyelarasan atas perbedaan kedua ini dilakukan dengan menambahkan skema baru pada simulator yang meniru geometri arena fisik, bukan dengan memaksa arena meniru skema simulasi.
+
+Tata letak arena selengkapnya diperlihatkan pada Gambar~\ref{fig:sketsa_arena}. Salah satu kolom bangunan yang menjorok ke dalam koridor dimanfaatkan sebagai salah satu sisi penyempitan. Pemanfaatan kolom ini disengaja: posisinya permanen dan kaku sehingga geometri rintangan dapat direproduksi antar sesi pengujian tanpa pengukuran ulang. Sisi seberangnya dilengkapi susunan dus kardus yang menjorok sedalam $1{,}01$ m sehingga menyisakan celah $90$ cm.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/sketsa-arena.png}
+    \caption{Rancangan arena uji pada koridor PTIO ITB. Formasi V terbentuk pada daerah ancang-ancang, bertransisi menjadi formasi mengekor saat melintasi celah selebar $90$ cm, lalu mengembang kembali pada daerah keluar. Liputan dua kamera atas saling bertumpang tindih sepanjang $2{,}40$ m.}
+    \label{fig:sketsa_arena}
+\end{figure}
+
+Pada konfigurasi ini, wahana menyisakan ruang bebas $32{,}5$ cm pada tiap sisi baik saat mempertahankan formasi V di koridor terbuka maupun saat mengekor melewati celah. Margin yang seragam tersebut dipilih agar tuntutan ketelitian kendali pada kedua fase manuver setara, sehingga kegagalan pada salah satu fase dapat ditafsirkan sebagai persoalan algoritma dan bukan sekadar akibat arena yang terlalu sempit pada fase tersebut.
+
+\section{Arsitektur Sistem Menyeluruh}
+\label{sec:arsitektur_sistem}
+
+Keseluruhan subsistem yang telah diuraikan disatukan ke dalam arsitektur pada Gambar~\ref{fig:arsitektur_sistem}. Aliran data bermula dari dua kamera atas yang mengamati penanda visual pada tiap wahana. Stasiun pemroses citra di darat menjalankan deteksi penanda dan penyelesaian \textit{Perspective-n-Point} untuk menghasilkan pose tiga dimensi kelima agen, lalu menyiarkannya melalui jaringan Wi-Fi lokal berbasis soket UDP. Pada tiap wahana, \textit{companion computer} menerima pose tersebut, memadukannya dengan pembacaan sensor jarak, menjalankan algoritma IAPF dan ERC, lalu meneruskan \textit{setpoint} posisi ke \textit{flight controller} melalui antarmuka serial berformat MAVLink. \textit{Flight controller} menutup kalang kendali hingga alokasi perintah motor.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/arsitektur-sistem.png}
+    \caption{Arsitektur sistem menyeluruh, memperlihatkan aliran data dari kamera atas hingga perintah motor serta jalur siaran antar-wahana.}
+    \label{fig:arsitektur_sistem}
+\end{figure}
+
+Satu prinsip perancangan dipertahankan secara tegas di seluruh arsitektur: \textbf{kamera atas berperan sebagai sistem lokalisasi, sedangkan sensor jarak pada wahana berperan sebagai sistem persepsi}. Pemisahan ini bukan sekadar pembagian teknis. Karena kamera atas mengetahui posisi absolut seluruh agen dan rintangan bersifat statis pada posisi yang diketahui, estimasi lebar ruang $w_e$ secara teknis dapat saja dihitung terpusat di stasiun darat lalu disiarkan ke tiap agen. Namun apabila itu dilakukan, agen tidak lagi mempersepsi lingkungannya sendiri melainkan sekadar membaca peta yang dikirim dari pusat, dan sifat terdesentralisasi yang menjadi landasan ERC menjadi gugur. Dengan mempertahankan pemisahan tersebut, tiap agen tetap memutuskan rekonfigurasi berdasarkan pengukuran yang dilakukannya sendiri.
+
 % ==========================================
-% BAB III METODOLOGI DAN RENCANA PELAKSANAAN
+% BAB IV METODOLOGI DAN RENCANA PELAKSANAAN
 % ==========================================
 \chapter{METODOLOGI DAN RENCANA PELAKSANAAN}
 
