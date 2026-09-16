@@ -845,7 +845,7 @@ Vektor masukan $\mathbf{u}_{k-1}$ berasal dari pembacaan sensor internal IMU baw
 \end{equation}
 Variabel $\mathbf{w}_{k-1}$ dan $\mathbf{v}_k$ masing-masing merepresentasikan derau proses dan derau pengukuran, yang dimodelkan sebagai derau Gaussian putih berdistribusi normal dengan matriks kovariansi $\mathbf{Q}_k$ dan $\mathbf{R}_k$.
 
-Karena fungsi kinematika translasi dan rotasi bersifat non-linear, EKF melakukan linearisasi lokal pada setiap langkah waktu menggunakan matriks Jacobian:
+Karena fungsi kinematika translasi dan rotasi bersifat non-linear, EKF melakukan linearisasi lokal pada setiap langkah waktu menggunakan matriks Jacobian \cite{gelbAppliedOptimalEstimation1974}:
 \begin{equation}
     \mathbf{F}_{k-1} = \left. \frac{\partial f}{\partial \mathbf{x}} \right|_{\hat{\mathbf{x}}_{k-1|k-1}, \mathbf{u}_{k-1}}, \quad \mathbf{H}_k = \left. \frac{\partial h}{\partial \mathbf{x}} \right|_{\hat{\mathbf{x}}_{k|k-1}}
 \end{equation}
