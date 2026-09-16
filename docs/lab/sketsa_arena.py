@@ -92,19 +92,23 @@ for yy in (cy-0.9-D_DRONE/2, cy+0.9+D_DRONE/2):
     ax.plot([cx-1.32, cx-1.12], [yy,yy], color="#0B7285", lw=1.6)
 ax.text(cx-1.42, cy, "2,05 m", rotation=90, ha="center", va="center",
         fontsize=9.5, fontweight="bold", color="#0B7285")
-ax.text(cx, -0.42, "FORMASI V  (skala 0,9)\nbentang lateral 2,05 m", ha="center",
+ax.text(cx, -0.42, "FORMASI V  (skala 0,9)\nbentang lateral 2,05 m\nagen 1 memimpin", ha="center",
         va="center", fontsize=9.5, fontweight="bold", color="#0B7285",
         bbox=dict(fc="w", ec="#0B7285", lw=1.2, boxstyle="round,pad=0.25"))
 
 # ── Tailgating di dalam kanal ──────────────────────────────────────
 ygap = BOX_D + CELAH/2
+# Arah gerak ke KANAN, jadi agen 1 (pemimpin) paling kanan dan agen 5 paling kiri.
 for i in range(5):
     x = CH_X0 + 0.18 + i*0.38
+    nomor = 5 - i
     ax.add_patch(Circle((x, ygap), D_DRONE/2, fc="#EF476F", ec="k", lw=1.3, zorder=8))
-    ax.text(x, ygap, str(i+1), ha="center", va="center", fontsize=7.5,
+    ax.text(x, ygap, str(nomor), ha="center", va="center", fontsize=7.5,
             color="w", fontweight="bold", zorder=9)
-ax.text(CH_X0+CH_L/2, ygap-0.42, "TAILGATING", ha="center", fontsize=9.5,
-        fontweight="bold", color="#EF476F")
+ax.annotate("", (CH_X0+CH_L-0.42, ygap+0.36), (CH_X0+0.06, ygap+0.36),
+            arrowprops=dict(arrowstyle="-|>", color="#EF476F", lw=2, mutation_scale=15))
+ax.text(CH_X0+CH_L/2-0.20, ygap+0.20, "TAILGATING — agen 1 memimpin", ha="center",
+        va="center", fontsize=7.5, fontweight="bold", color="#C1121F", zorder=9)
 
 for x0,x1,lbl in ((0.15, CH_X0-0.15, "ANCANG-ANCANG  →"),
                   (CH_X0+CH_L+0.15, L-0.15, "KELUAR & MENGEMBANG  →")):
@@ -116,7 +120,11 @@ ax.set_aspect("equal"); ax.axis("off")
 ax.set_title("Sketsa Arena Uji — Koridor PTIO ITB   (gambar berskala, satuan meter)",
              fontsize=13.5, fontweight="bold", pad=12)
 plt.tight_layout()
-plt.savefig("docs/lab/sketsa-arena.png", dpi=135, bbox_inches="tight", facecolor="w")
+import shutil, os
+OUT = "tulisan/proposal/figures/sketsa-arena.png"
+os.makedirs(os.path.dirname(OUT), exist_ok=True)
+plt.savefig(OUT, dpi=135, bbox_inches="tight", facecolor="w")
+shutil.copyfile(OUT, "docs/lab/sketsa-arena.png")
 print(f"celah        = {CELAH:.2f} m")
 print(f"dus menonjol = {BOX_D:.2f} m")
 print(f"bentang V    = {2*k+D_DRONE:.2f} m, sisa {(W-(2*k+D_DRONE))/2*100:.1f} cm per sisi")
