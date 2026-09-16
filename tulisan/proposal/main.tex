@@ -625,62 +625,51 @@ di mana $s$ adalah faktor skala kedalaman, $\mathbf{R} \in \mathbb{R}^{3 \times 
 \end{equation}
 dengan $(f_x, f_y)$ merepresentasikan panjang fokus dalam satuan piksel dan $(c_x, c_y)$ adalah titik pusat optik kamera.
 
-Menggunakan dimensi fisik penanda yang telah diketahui (misalnya $10 \times 10\text{ cm}$) dan empat titik sudut penanda yang terdeteksi pada citra, sistem menyelesaikan Persamaan~\ref{eq:pinhole_pnp} menggunakan algoritma numerik \textit{SolvePnP} berbasis optimasi Levenberg\allowbreak--Marquardt.
+Menggunakan dimensi fisik penanda yang telah diketahui ($12 \times 12$~cm, Subbab~\ref{subsec:liputan_kamera}) dan empat titik sudut penanda yang terdeteksi pada citra, sistem menyelesaikan Persamaan~\ref{eq:pinhole_pnp} menggunakan algoritma numerik \textit{SolvePnP} berbasis optimasi Levenberg\allowbreak--Marquardt.
 Keluaran dari algoritma ini berupa estimasi koordinat spasial absolut $(x, y, z)$ dan sudut \textit{yaw} ($\psi$) secara \textit{real-time} untuk setiap wahana.
 
 Data posisi dan orientasi terhitung dari komputer darat dikemas ke dalam format pesan biner MAVLink dan disiarkan melalui jaringan nirkabel (soket UDP/Wi-Fi) menuju \textit{companion computer} (ESP32) di masing-masing \textit{quadcopter}.
-Meskipun sistem lokalisasi berbasis kamera atas memberikan referensi posisi absolut yang sangat akurat dan bebas dari \textit{drift}, keluaran datanya memiliki laju pembaruan yang dibatasi oleh laju bingkai kamera (60 FPS) serta memiliki latensi pemrosesan citra.
+Meskipun sistem lokalisasi berbasis kamera atas memberikan referensi posisi absolut yang sangat akurat dan bebas dari \textit{drift}, keluaran datanya memiliki laju pembaruan yang dibatasi oleh laju bingkai kamera ($50$ bingkai per detik) serta memiliki latensi pemrosesan citra.
 Oleh karena itu, data posisi spasial dari kamera atas ini tidak langsung diumpankan ke kalang pengontrol tingkat rendah, melainkan difusikan terlebih dahulu dengan data sensor internal IMU (\textit{Inertial Measurement Unit}) berkecepatan tinggi melalui modul \textit{Extended Kalman Filter} (EKF\label{abbr:ekf}) untuk menghasilkan estimasi \textit{state} yang mulus dan stabil.
 
 \subsection{Penentuan Jumlah Kamera dan Ukuran Penanda}
 \label{subsec:liputan_kamera}
 
-Jumlah kamera dan ukuran penanda tidak ditetapkan secara asumtif, melainkan diturunkan dari dimensi ruang pengujian pada Tabel~\ref{tab:kondisi_ruang}. Dengan langit-langit setinggi $h_p = 300$ cm, tinggi wahana $8$ cm, dan ketinggian terbang $h_t$, jarak pandang kamera terhadap penanda adalah
-
+Kamera yang dipilih adalah kamera USB \textit{global shutter} beresolusi $2592 \times 1944$ piksel (format $4{:}3$) dengan lensa $120^\circ$. Rana global dipilih karena rana bergulir memelintir citra penanda saat wahana bergerak. Liputan dan ukuran penanda diturunkan dari dimensi ruang pada Tabel~\ref{tab:kondisi_ruang}. Dengan langit-langit setinggi $h_p = 3{,}00$~m, tinggi wahana $0{,}08$~m, dan ketinggian terbang $h_t = 1{,}2$~m, jarak kamera ke penanda adalah
 \begin{equation}
-    d = h_p - (h_t + 0{,}08)
+    d = h_p - (h_t + 0{,}08) = 1{,}72\ \text{m}
 \end{equation}
-
-sehingga untuk $h_t$ antara $1{,}0$ dan $1{,}5$ m diperoleh $d$ antara $1{,}42$ dan $1{,}92$ m. Jarak pandang yang pendek inilah yang membatasi liputan tiap kamera.
-
-Liputan kamera pada bidang terbang ditentukan oleh sudut pandang dan jarak. Liputan melintang koridor, $w_\perp$, harus sekurang-kurangnya selebar koridor $W = 270$ cm:
-
+Untuk sudut pandang horizontal $\theta_h$ dan vertikal $\theta_v$, liputan satu kamera pada bidang terbang adalah
 \begin{equation}
-    w_\perp = 2\,d \tan\!\left(\frac{\theta_v}{2}\right) \geq W
+    w_\parallel = 2d\tan\frac{\theta_h}{2}, \qquad w_\perp = 2d\tan\frac{\theta_v}{2}
 \end{equation}
-
-dengan $\theta_v$ sudut pandang vertikal sensor. Karena sensor kamera berformat $16{:}9$, liputan memanjang koridor terikat pada liputan melintangnya:
-
-\begin{equation}
-    w_\parallel = \frac{16}{9}\, w_\perp
-    \label{eq:liputan_memanjang}
-\end{equation}
-
-Persamaan~\ref{eq:liputan_memanjang} menghasilkan kesimpulan yang menentukan: begitu syarat $w_\perp = 270$ cm dipenuhi, liputan memanjang \textbf{terkunci} pada $w_\parallel = 480$ cm, berapa pun ketinggian terbang yang dipilih. Ketinggian terbang hanya menggeser sudut pandang yang dibutuhkan, bukan luas liputan, sebagaimana dirangkum pada Tabel~\ref{tab:liputan_kamera}.
+dengan $w_\parallel$ searah koridor dan $w_\perp$ melintang koridor. Lembar data kamera belum menyatakan apakah $120^\circ$ merupakan sudut horizontal atau diagonal, sehingga keduanya dihitung (Tabel~\ref{tab:liputan_kamera}).
 
 \begin{table}[htbp]
     \centering
-    \caption{Sudut pandang yang dibutuhkan pada berbagai ketinggian terbang}
+    \caption{Liputan satu kamera dan ukuran penanda pada ketinggian terbang $1{,}2$~m}
     \label{tab:liputan_kamera}
     \begingroup
     \small
-    \renewcommand{\arraystretch}{1.3}
-    \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+    \renewcommand{\arraystretch}{1.25}
+    \begin{tabularx}{\textwidth}{|X|>{\centering\arraybackslash}p{3.0cm}|>{\centering\arraybackslash}p{3.0cm}|}
         \hline
         \rowcolor{gray!20}
-        \thead{Ketinggian\\Terbang} & \thead{Jarak\\Pandang $d$} & \thead{Sudut Pandang\\Horizontal} & \thead{Luas\\Liputan} \\ \hline
-        $1{,}0$ m & $1{,}92$ m & $103^\circ$ & $4{,}80 \times 2{,}70$ m \\ \hline
-        $1{,}2$ m & $1{,}72$ m & $109^\circ$ & $4{,}80 \times 2{,}70$ m \\ \hline
-        $1{,}5$ m & $1{,}42$ m & $119^\circ$ & $4{,}80 \times 2{,}70$ m \\ \hline
+        \thead{Besaran} & \thead{$120^\circ$ horizontal} & \thead{$120^\circ$ diagonal} \\ \hline
+        Liputan $w_\parallel \times w_\perp$ & $5{,}96 \times 4{,}47$ m & $4{,}77 \times 3{,}57$ m \\ \hline
+        Resolusi pada bidang terbang & $2{,}30$ mm/piksel & $1{,}84$ mm/piksel \\ \hline
+        Penanda $10$ cm & $44$ piksel & $54$ piksel \\ \hline
+        Penanda $12$ cm & $52$ piksel & $65$ piksel \\ \hline
+        Tumpang tindih dua kamera pada segmen $7{,}20$ m & $4{,}72$ m & $2{,}33$ m \\ \hline
     \end{tabularx}
     \endgroup
 \end{table}
 
-Karena lintasan uji yang direncanakan lebih panjang dari $4{,}80$ m, satu kamera tidak mencukupi. Dua kamera dengan liputan saling bertumpang tindih menghasilkan cakupan $9{,}60$ m, yang dimanfaatkan sebagai lintasan sepanjang $7{,}20$ m dengan daerah tumpang tindih $2{,}40$ m. Daerah tumpang tindih ini diperlukan untuk menyatukan kedua kamera ke dalam satu kerangka acuan global dan untuk menangani perpindahan wahana antar-liputan.
+Pada kedua tafsiran, liputan melintang melebihi lebar koridor $2{,}70$~m, dan satu kamera tidak mencukupi segmen uji sepanjang $7{,}20$~m. Dua kamera menutup segmen tersebut dengan tumpang tindih sekurang-kurangnya $2{,}33$~m, yang dipakai untuk menyatukan keduanya ke satu kerangka acuan global.
 
-Ukuran penanda visual mengikuti dari liputan tersebut. Pada liputan memanjang $4{,}80$ m dengan sensor beresolusi $3840$ piksel, setiap piksel mewakili $1{,}25$ mm di bidang terbang. Deteksi penanda yang andal pada wahana bergerak membutuhkan sekitar $80$ piksel pada sisi penanda, sehingga ukuran sisi minimumnya adalah $80 \times 1{,}25 \text{ mm} = 10$ cm.
+Ukuran penanda ditetapkan dari syarat deteksi. Penanda dianggap terdeteksi andal bila sisinya mencakup sekurang-kurangnya $48$ piksel. Penanda $10$~cm tidak memenuhi syarat ini pada tafsiran horizontal ($44$ piksel), sedangkan penanda $12$~cm memenuhi pada kedua tafsiran. Karena itu ukuran penanda ditetapkan $12$~cm; bila lembar data menyatakan sudut diagonal, penanda $10$~cm sudah memadai. Marginnya tetap tipis terhadap $80$ piksel yang nyaman untuk wahana bergerak, sehingga keandalan deteksi saat terbang dijadikan gerbang kelayakan Fase~2.
 
-Di sinilah keterbatasan ruang datar pada Gambar~\ref{fig:sketsa_wahana} menjadi mengikat: penanda $10$ cm tidak muat pada jalur datar selebar $4$ cm di sumbu tengah bodi. Menempelkan penanda langsung di atas saluran propeler bukan pilihan, karena propeler bersaluran mengisap udara dari atas dan penutupan mulut saluran akan menggerus daya angkat secara langsung. Rancangan yang dipilih adalah menaikkan penanda dengan tiang penyangga setinggi sekitar $7$ cm di atas bodi, sehingga penanda tetap berukuran memadai sementara aliran udara masuk ke saluran tidak terhalang. Dudukan tiang tersebut dicetak menggunakan pencetak tiga dimensi yang tersedia di laboratorium.
+Penanda $12$~cm tidak muat pada jalur datar selebar $4$~cm di sumbu tengah bodi (Gambar~\ref{fig:sketsa_wahana}), dan menempelkannya langsung di atas saluran propeler akan menutup aliran udara masuk dan menggerus daya angkat. Penanda karenanya dipasang pada pelat yang dinaikkan tiang penyangga setinggi $7$~cm di atas bodi, dengan dudukan dicetak menggunakan pencetak tiga dimensi yang tersedia.
 
 \section{Perancangan Sistem Persepsi Rintangan}
 
