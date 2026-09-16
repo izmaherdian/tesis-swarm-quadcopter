@@ -44,3 +44,10 @@ Thumbs.db
 *.swp
 .vscode/
 .idea/
+
+# ── Simulator eksternal ────────────────────────────────────────────────
+# MultiAgentSim di-clone ke sini, TIDAK dijadikan submodule: repo itu 481 MB
+# (Documentation/ memuat PPTX 80 MB + PDF 17 MB), sehingga submodule akan
+# memaksa setiap clone repo tesis ikut mengunduh semuanya.
+# Versi yang dipakai dikunci di src/MultiAgentSim.version (ikut di-commit).
+src/MultiAgentSim/
