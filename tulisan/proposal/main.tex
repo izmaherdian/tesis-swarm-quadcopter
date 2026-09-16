@@ -904,7 +904,9 @@ Aliran sinyal kendali tingkat rendah beroperasi melalui tahapan berikut:
 Sementara pengontrol tingkat rendah memastikan stabilitas pergerakan dasar masing-masing agen secara individu, perencana tingkat tinggi bertanggung jawab atas perilaku kolektif yang cerdas dari seluruh kawanan. Desain detail dari perencana ini, yang merupakan inti dari strategi kontrol formasi adaptif yang diusulkan, disajikan pada sub-bab berikutnya.
 
 \subsection{Perencana Tingkat Tinggi dan Formulasi ERC}
-Perencana tingkat tinggi dijalankan secara independen pada unit \textit{companion computer} (ESP32-S3) di masing-masing agen untuk menghasilkan referensi gerak terdesentralisasi berdasarkan tujuan misi, interaksi formasi, dan persepsi lingkungan lokal. Diagram arsitektur perencana tingkat tinggi yang diadopsi dari penelitian terdahulu oleh penulis \cite{herdianDecentralizedFormationControl2026} ditunjukkan pada Gambar~\ref{fig:high_level_planner}.
+\label{subsec:erc}
+
+Perencana tingkat tinggi dijalankan terpisah pada \textit{companion computer} tiap agen. Keluarannya berupa kecepatan acuan yang diintegrasikan menjadi \textit{setpoint} posisi bagi pengendali tingkat rendah (Gambar~\ref{fig:high_level_planner}). Formulasi berikut mengikuti rancangan penelitian sebelumnya \cite{herdianDecentralizedFormationControl2026, PerancanganSistemKendali}, yang mengembangkan ERC dari Bui \textit{et al.} \cite{buiEventbasedReconfigurationControl2025}, dan sesuai dengan implementasi simulator yang digunakan.
 
 \begin{figure}[htbp]
     \centering
@@ -913,71 +915,91 @@ Perencana tingkat tinggi dijalankan secara independen pada unit \textit{companio
     \label{fig:high_level_planner}
 \end{figure}
 
-Sistem koordinasi kawanan ini dibangun atas integrasi algoritma \textit{Improved Artificial Potential Field} (IAPF) untuk navigasi dan penghindaran tabrakan, serta strategi \textit{Event-Based Reconfiguration Control} (ERC) untuk adaptasi geometri formasi.
+\subsubsection{Mode Misi}
 
-\subsubsection{1. Formulasi Gaya Virtual IAPF 2D}
-Pada bidang gerak horizontal (sumbu $x$ dan $y$), posisi dan kecepatan agen ke-$i$ dinyatakan sebagai $\mathbf{p}_i = [x_i, y_i]^T$ dan $\mathbf{v}_i = [\dot{x}_i, \dot{y}_i]^T$. Resultan gaya kontrol virtual $\mathbf{F}_i$ yang bekerja pada agen ke-$i$ merupakan superposisi dari gaya penarik tujuan, gaya penolak rintangan lingkungan, gaya pencegah tabrakan antar-agen, dan gaya penahan formasi:
+Setiap agen berada pada salah satu dari tiga mode. Pada mode lepas landas, hanya perilaku lepas landas dan penghindaran tabrakan antaragen yang aktif; seluruh agen beralih bersamaan ke mode misi setelah $|z_i - z_{\mathrm{target}}| \le 0{,}1$~m untuk semua $i$. Pada mode misi, kecepatan acuan agen ke-$i$ adalah
 \begin{equation}
-    \mathbf{F}_i = \mathbf{F}_{i,\mathrm{att}} + \mathbf{F}_{i,\mathrm{rep\_obs}} + \mathbf{F}_{i,\mathrm{rep\_agent}} + \mathbf{F}_{i,\mathrm{form}}
-    \label{eq:total_iapf_force}
+    \mathbf{v}_i = \mathbf{v}_i^{\mathrm{mig}} + \mathbf{v}_i^{\mathrm{obs}} + \mathbf{v}_i^{\mathrm{col}} + \sigma_i\,\mathbf{v}_i^{\mathrm{form}} + (1-\sigma_i)\,\mathbf{v}_i^{\mathrm{tail}}
+    \label{eq:erc_kecepatan}
+\end{equation}
+dengan $\sigma_i = 1$ pada mode formasi dan $\sigma_i = 0$ pada mode mengekor.
+
+\subsubsection{Perilaku Penyusun}
+
+Perilaku migrasi mengarahkan kawanan ke tujuan $\mathbf{p}_g$ dari pusat kawanan $\bar{\mathbf{p}}$ dengan laju acuan $V_{\mathrm{ref}}$:
+\begin{equation}
+    \mathbf{v}_i^{\mathrm{mig}} = V_{\mathrm{ref}}\,\frac{\mathbf{p}_g - \bar{\mathbf{p}}}{\lVert \mathbf{p}_g - \bar{\mathbf{p}} \rVert}
 \end{equation}
 
-Gaya penarik tujuan $\mathbf{F}_{i,\mathrm{att}}$ mengarahkan wahana menuju titik target misi $\mathbf{p}_{\mathrm{goal}}$:
+Perilaku formasi menjaga posisi relatif terhadap topologi nominal $\boldsymbol{\delta}^*$ yang dirotasi searah lintasan, diskalakan oleh faktor $\kappa$:
 \begin{equation}
-    \mathbf{F}_{i,\mathrm{att}} = -k_{\mathrm{att}} (\mathbf{p}_i - \mathbf{p}_{\mathrm{goal}})
+    \mathbf{v}_i^{\mathrm{form}} = W_{\mathrm{form}} \sum_{j \neq i} \left[ (\mathbf{p}_j - \mathbf{p}_i) - \kappa\,(\boldsymbol{\delta}_j^* - \boldsymbol{\delta}_i^*) \right]
+    \label{eq:erc_formasi}
 \end{equation}
-di mana $k_{\mathrm{att}}$ adalah konstanta penguatan atraktif.
 
-Gaya tolak rintangan $\mathbf{F}_{i,\mathrm{rep\_obs}}$ dihasilkan berdasarkan pembacaan jarak lateral minimum dari sensor onboard ($d_{\mathrm{obs}} = \min(d_l, d_r)$):
+Penghindaran rintangan dan tabrakan antaragen berbentuk medan potensial tolak yang aktif di dalam radius waspada $R_a$, dengan $d$ jarak ke titik rintangan terdekat atau ke agen lain dan $\hat{\mathbf{n}}$ vektor satuan yang menjauhinya:
+\begin{align}
+    \mathbf{v}_i^{\mathrm{obs}} &= W_{\mathrm{obs}} \sum_{d_{io} < R_a} 0{,}5 \left( \frac{1}{d_{io}} - \frac{1}{R_a} \right) \frac{\hat{\mathbf{n}}_{io}}{d_{io}^2} \\
+    \mathbf{v}_i^{\mathrm{col}} &= W_{\mathrm{col}} \sum_{d_{ij} < R_a} 2 \left( \frac{1}{d_{ij}} - \frac{1}{R_a} \right) \frac{\hat{\mathbf{n}}_{ij}}{d_{ij}^2}
+\end{align}
+
+Pada mode mengekor, agen mengikuti pemimpin lokal $l$ pada jarak acuan $d_{\mathrm{ref}}$ searah kecepatan pemimpin $\hat{\mathbf{u}}_l$:
 \begin{equation}
-    \mathbf{F}_{i,\mathrm{rep\_obs}} = 
+    \mathbf{v}_i^{\mathrm{tail}} = W_{\mathrm{tail}} \left[ (\mathbf{p}_l - \mathbf{p}_i - d_{\mathrm{ref}}\,\hat{\mathbf{u}}_l) + \mathbf{v}_l \right]
+\end{equation}
+
+\subsubsection{Pemicu Berbasis Kejadian}
+
+Lebar ruang bebas $w_e$ diperoleh dari titik rintangan terdekat di sisi kiri $\mathbf{o}_l$ dan kanan $\mathbf{o}_r$ yang berada di depan agen, diproyeksikan ke sumbu tegak lurus arah gerak $\mathbf{u}_{\mathrm{ref}}^{\perp}$:
+\begin{equation}
+    w_e = \left| \left\langle \mathbf{o}_r - \mathbf{o}_l,\; \mathbf{u}_{\mathrm{ref}}^{\perp} \right\rangle \right|
+\end{equation}
+Nilai $w_e$ menentukan mode dan faktor skala formasi:
+\begin{equation}
+    (\sigma_i, \kappa) =
     \begin{cases}
-        k_{\mathrm{obs}} \left( \frac{1}{d_{\mathrm{obs}}} - \frac{1}{\rho_0} \right) \frac{1}{d_{\mathrm{obs}}^2} \hat{\mathbf{n}}_{\mathrm{obs}}, & \text{jika } d_{\mathrm{obs}} \le \rho_0 \\
-        \mathbf{0}, & \text{jika } d_{\mathrm{obs}} > \rho_0
+        (0,\ \text{--}), & w_e \le \alpha R \\[2pt]
+        \left(1,\ \min\left\{1,\ \dfrac{w_e - 2R}{w_f}\right\}\right), & w_e > \alpha R
     \end{cases}
+    \label{eq:erc_pemicu}
 \end{equation}
-di mana $\rho_0$ adalah radius pengaruh rintangan, $k_{\mathrm{obs}}$ adalah penguatan repulsif, dan $\hat{\mathbf{n}}_{\mathrm{obs}}$ adalah vektor satuan normal yang menjauhi permukaan dinding atau rintangan.
+dengan $R$ jari-jari agen, $\alpha$ faktor ambang, dan $w_f$ bentang lateral nominal formasi. Bila tidak ada rintangan di kedua sisi, $\sigma_i = 1$ dan $\kappa = 1$. Dengan demikian formasi menyusut proporsional saat lorong menyempit dan baru beralih mengekor ketika $w_e$ melewati ambang $\alpha R$. Tidak ada pita histeresis pada perpindahan mode.
 
-Gaya keselamatan antar-agen $\mathbf{F}_{i,\mathrm{rep\_agent}}$ mencegah tabrakan sesama quadcopter di dalam kawanan:
+Saat beralih ke mode mengekor, setiap agen memilih pemimpinnya secara terdesentralisasi, yaitu agen terdekat yang berada di depannya sepanjang arah menuju tujuan $\hat{\mathbf{g}}$:
 \begin{equation}
-    \mathbf{F}_{i,\mathrm{rep\_agent}} = \sum_{j \neq i, \|\mathbf{p}_i - \mathbf{p}_j\| \le R_{\mathrm{safe}}} k_{\mathrm{agent}} \left( \frac{1}{\|\mathbf{p}_i - \mathbf{p}_j\|} - \frac{1}{R_{\mathrm{safe}}} \right) \frac{\mathbf{p}_i - \mathbf{p}_j}{\|\mathbf{p}_i - \mathbf{p}_j\|^3}
+    l_i = \arg\min_{j\,:\,p_{ij} > 0} p_{ij}, \qquad p_{ij} = \langle \mathbf{p}_j - \mathbf{p}_i,\ \hat{\mathbf{g}} \rangle
 \end{equation}
-dengan $R_{\mathrm{safe}}$ merepresentasikan jarak aman minimum antar-wahana ($0{,}40$ m).
+Agen tanpa agen lain di depannya menjadi pemimpin barisan.
 
-Gaya formasi $\mathbf{F}_{i,\mathrm{form}}$ mempertahankan posisi relatif agen terhadap titik acuan formasi:
-\begin{equation}
-    \mathbf{F}_{i,\mathrm{form}} = -k_{\mathrm{form}} \left( \mathbf{p}_i - (\mathbf{p}_{\mathrm{leader}} + \boldsymbol{\delta}_{i,\mathrm{mode}}) \right)
-\end{equation}
-di mana $\boldsymbol{\delta}_{i,\mathrm{mode}}$ adalah vektor \textit{offset} posisi formasi relatif agen ke-$i$ yang nilainya ditentukan secara dinamis oleh mode formasi aktif pada algoritma ERC.
+Pada versi simulator yang digunakan (\texttt{0d7ed5a}), nilai $\kappa$ pada Persamaan~\ref{eq:erc_pemicu} telah dihitung dan dicatat, tetapi belum diterapkan pada perilaku formasi Persamaan~\ref{eq:erc_formasi}. Penerapannya beserta pengulangan skenario lorong sempit dijadwalkan pada Fase~1.
 
-\subsubsection{2. Mekanisme Pemicu Berbasis Kejadian}
-Pada skema kontrol formasi konvensional, setiap agen menyiarkan data telemetri secara periodik pada frekuensi tetap, yang membebani lebar pita jaringan nirkabel. Pada strategi ERC, rekonfigurasi formasi hanya dieksekusi saat parameter persepsi ruang melewati ambang batas toleransi desain.
+\subsubsection{Parameter}
 
-Berdasarkan pembacaan jarak lateral kiri ($d_l$) dan kanan ($d_r$), estimasi ketersediaan lebar lorong aktual dihitung melalui:
-\begin{equation}
-    w_e(t) = d_l(t) + d_r(t) + w_{\mathrm{body}}
-\end{equation}
-Kondisi pemicu kejadian rekonfigurasi $\gamma_{\mathrm{event}}(t) \in \{0, 1\}$ didefinisikan menggunakan fungsi ambang batas dengan pita histeresis $\delta_{\mathrm{hyst}}$:
-\begin{equation}
-    \gamma_{\mathrm{event}}(t) = 
-    \begin{cases}
-        1, & \text{jika } w_e(t) \le W_{\mathrm{th}} - \delta_{\mathrm{hyst}} \quad (\text{mode transisi/mengekor}), \\
-        0, & \text{jika } w_e(t) \ge W_{\mathrm{th}} + \delta_{\mathrm{hyst}} \quad (\text{mode nominal V}),
-    \end{cases}
-    \label{eq:erc_trigger}
-\end{equation}
-di mana $W_{\mathrm{th}} = 2{,}05$ m merepresentasikan batas lebar minimum yang dibutuhkan untuk mempertahankan formasi V secara aman di dalam koridor, sedangkan $\delta_{\mathrm{hyst}} = 0{,}10$ m adalah pita histeresis yang dirancang khusus guna mencegah terjadinya \textit{chattering} (osilasi bolak-balik pergantian status) akibat fluktuasi derau pembacaan sensor jarak. Ketika kondisi pemicu $\gamma_{\mathrm{event}} = 1$ terpenuhi, agen yang mendeteksi perubahan tersebut menyiarkan paket pemicu singkat melalui jaringan nirkabel UDP, sehingga seluruh agen menyelaraskan mode formasi secara serempak tanpa memerlukan aliran data periodik kontinu.
+Nilai parameter pada Tabel~\ref{tab:parameter_erc} merupakan nilai simulasi dan akan disetel ulang untuk wahana fisik. Untuk wahana berjari-jari efektif $R = 0{,}125$~m, ambang mengekor menjadi $\alpha R = 1{,}0$~m, sehingga celah arena selebar $0{,}90$~m memicu mode mengekor sedangkan koridor terbuka selebar $2{,}70$~m mempertahankan formasi. Berbeda dengan simulasi yang menghitung $w_e$ dari peta rintangan, pada wahana fisik $w_e$ diestimasi dari pembacaan sensor jarak lateral (Gambar~\ref{fig:ultrasonic_placement}).
 
-\subsubsection{3. Mesin Status Formasi dan Protokol Urutan}
-Adaptasi geometri kawanan dikelola melalui mesin status terdesentralisasi yang terdiri atas empat status utama:
-\begin{enumerate}
-    \item \textbf{Status Formasi V Nominal:} Kawanan terbang mempertahankan formasi V dengan bentang lateral penuh di area koridor terbuka ($w_e > W_{\mathrm{th}}$). Vektor \textit{offset} $\boldsymbol{\delta}_{i,\mathrm{V}}$ menjaga susunan simetris lima agen.
-    \item \textbf{Status Transisi:} Terpicu saat $\gamma_{\mathrm{event}} = 1$. Setiap agen menghitung lintasan interpolasi mulus dari posisi formasi V menuju garis sumbu tengah celah sempit guna mencegah manuver tajam yang dapat memicu saturasi motor.
-    \item \textbf{Status Formasi Mengekor:} Seluruh agen berbaris membentuk konfigurasi satu kolom lurus ($y_i = y_{\mathrm{center}}$) di sepanjang lorong sempit $90$ cm. Jarak longitudinal antar-agen dijaga konstan sebesar $\Delta x_{\mathrm{tail}} = 0{,}40$ m.
-    \item \textbf{Status Pemulihan:} Terpicu saat kawanan telah keluar dari celah sempit dan pembacaan sensor mendeteksi ruang bebas kembali melebar ($w_e \ge W_{\mathrm{th}} + \delta_{\mathrm{hyst}}$). Kawanan secara terkoordinasi mengembang kembali ke konfigurasi formasi V nominal.
-\end{enumerate}
-
-Untuk menentukan urutan barisan mengekor secara terdesentralisasi tanpa koordinator pusat, sistem menerapkan aturan berbasis proyeksi posisi aktual: agen dengan posisi longitudinal terdepan ke arah target ($x_i$ terbesar) secara otomatis menempati slot barisan terdepan, disusul oleh agen-agen berikutnya sesuai urutan proyeksi jaraknya. Skema ini meminimalkan pergeseran lateral antar-agen dan mengeliminasi risiko persilangan lintasan saat proses transisi berlangsung. Keluaran referensi posisi spasial hasil kalkulasi perencana tingkat tinggi ini selanjutnya dikirimkan secara periodik ke kalang pengontrol tingkat rendah melalui antarmuka serial UART berbasis pesan MAVLink.
+\begin{table}[htbp]
+    \centering
+    \caption{Parameter perencana tingkat tinggi pada simulasi}
+    \label{tab:parameter_erc}
+    \begingroup
+    \small
+    \renewcommand{\arraystretch}{1.25}
+    \begin{tabularx}{\textwidth}{|X|>{\centering\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{2.4cm}|}
+        \hline
+        \rowcolor{gray!20}
+        \thead{Parameter} & \thead{Simbol} & \thead{Nilai} \\ \hline
+        Jari-jari agen & $R$ & $0{,}2$ m \\ \hline
+        Faktor ambang mengekor & $\alpha$ & $8$ \\ \hline
+        Radius waspada & $R_a = 3R$ & $0{,}6$ m \\ \hline
+        Bentang lateral nominal formasi & $w_f$ & $2{,}0$ m \\ \hline
+        Laju acuan migrasi & $V_{\mathrm{ref}}$ & $0{,}5$ m/s \\ \hline
+        Jarak acuan mengekor & $d_{\mathrm{ref}}$ & $1{,}0$ m \\ \hline
+        Bobot formasi & $W_{\mathrm{form}}$ & $1{,}0$ \\ \hline
+        Bobot mengekor & $W_{\mathrm{tail}}$ & $1{,}2$ \\ \hline
+        Bobot rintangan dan tabrakan & $W_{\mathrm{obs}},\ W_{\mathrm{col}}$ & $8{,}0$ \\ \hline
+    \end{tabularx}
+    \endgroup
+\end{table}
 
 \section{Rancangan Arena Uji}
 \label{sec:arena}
