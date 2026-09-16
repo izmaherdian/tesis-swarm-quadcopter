@@ -225,3 +225,35 @@ penulis — bukan sesuatu yang pantas saya putuskan sendiri.
 
 ⚠️ **Kuartil JKSUES belum dicek** di Scimago. Perlu dikonfirmasi karena batas
 mutu yang ditetapkan adalah Q1/Q2.
+
+---
+
+## F. Entri tambahan untuk revisi besar proposal (2026-09-16)
+
+Verifikasi lewat **CrossRef API** dan laman resmi penulis — DBLP tetap memblokir
+akses otomatis (anti-bot "Anubis").
+
+| Referensi | Tahun | Venue | Kuartil | Dipakai untuk | Status |
+|---|---|---|---|---|---|
+| Olson — *AprilTag: A robust and flexible visual fiducial system* | 2011 | ICRA, hlm. 3400–3407 | konferensi papan atas | asal metode AprilTag | ✅ BibTeX resmi APRIL Robotics Lab |
+| Wang & Olson — *AprilTag 2* | 2016 | IROS | konferensi papan atas | asal metode | ✅ idem |
+| Krogius, Haggenmiller, Olson — *Flexible Layouts for Fiducial Tags* | 2019 | IROS | konferensi papan atas | asal metode (AprilTag 3) | ✅ idem |
+| Garrido-Jurado dkk. — *Automatic generation and detection of highly reliable fiducial markers under occlusion* | 2014 | Pattern Recognition 47(6):2280–2292 | Q1 | asal metode ArUco | ✅ CrossRef |
+| Bultmann, Memmesheimer, Behnke — *External Camera-based Mobile Robot Pose Estimation…* | 2023 | ICRA | konferensi papan atas | galat pose < 3 cm dan < 1°, tanpa *drift*, area ±240 m² | ✅ arXiv |
+| Zhang dkk. — *An integrated framework for enhancing small AprilTag pose accuracy under long-distance conditions* | 2026 | Pattern Recognition 179:113683 | Q1 | akurasi AprilTag menurun seiring jarak & mengecilnya penanda | ✅ CrossRef |
+| **Pedro & Marta — *On the Development of a Sense and Avoid System for Small Fixed-Wing UAV*** | **2025** | **Sensors 25(8):2460** | **Q1/Q2** | resolusi sudut ultrasonik yang buruk; laser beresolusi spasial lebih tinggi | ✅ CrossRef |
+| **Kabiri dkk. — *Graph-Based vs. Error State Kalman Filter-Based Fusion…*** | **2024** | **J. Intelligent & Robotic Systems 110(2):87** | **Q2** | penapis Kalman masih jadi acuan untuk pose MAV indoor | ✅ CrossRef |
+
+### Entri lama yang tipenya diperbaiki
+
+| Entri | Sebelum | Sesudah | Sumber verifikasi |
+|---|---|---|---|
+| Kane & Levinson, *Dynamics: Theory and Applications* (1985) | `@article` | `@book`, McGraw-Hill, ISBN 0-07-037846-0 | Open Library |
+| Welch & Bishop, *An Introduction to the Kalman Filter* | `@article` | `@techreport`, TR 95-041, Dept. of CS, UNC Chapel Hill | laman UNC & salinan resmi |
+| Gelb (ed.), *Applied Optimal Estimation* (1974) | `@inproceedings` | `@book`, The MIT Press, Cambridge MA | laman MIT Press |
+
+**Hasilnya: peringatan bibtex turun dari 3 menjadi 0.**
+
+⚠️ Masih terbuka: `hoDesignIndoorPositioning2023` tetap yatim (sisa era UWB).
+Keputusan dipakai-ulang atau dibuang ada pada penulis. Kuartil semua venue di
+atas masih perlu dikonfirmasi manual di scimagojr.com.
