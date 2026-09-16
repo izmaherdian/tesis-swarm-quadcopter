@@ -339,7 +339,7 @@ Terkait penghindaran rintangan, metode \textit{Artificial Potential Field} (APF)
 
 Pada penelitian pendahuluan terdahulu, penulis memadukan konsep ERC bersama IAPF untuk dinamika kawanan lima \textit{quadcopter} dalam simulasi komputasional 3D \cite{herdianDecentralizedFormationControl2026}. Hasil simulasi membuktikan keberhasilan rekonfigurasi adaptif terdesentralisasi saat melintasi celah sempit dengan efisiensi komunikasi tinggi. Kendati demikian, studi tersebut masih berbasis komputasi numerik murni sehingga belum memperhitungkan batasan platform fisik, seperti latensi jaringan Wi-Fi lokal, derau sensor lokalisasi kamera dan jarak, serta keterbatasan komputasi \textit{onboard}.
 
-Posisi penelitian tesis ini melangkah lebih jauh menjembatani celah realitas tersebut dengan merealisasikan algoritma ERC dan IAPF secara langsung pada platform perangkat keras fisik lima wahana di ruang sempit nyata. Perbandingan komparatif penelitian ini terhadap literatur kendali formasi berbasis kejadian dan ERC dirangkum pada Tabel~\ref{tab:studi-terkait-rujukan}.
+Implementasi fisik kontrol formasi terdesentralisasi telah didemonstrasikan oleh Quan \textit{et al.} \cite{quanDistributedSwarmTrajectory2022b, quanRobustEfficientTrajectory2023} melalui optimisasi lintasan terdistribusi untuk terbang formasi di lingkungan padat rintangan, yang menunjukkan bahwa sistem terdesentralisasi dapat bekerja andal di dunia nyata bila kendala perangkat keras ditangani sejak perancangan. Posisi penelitian tesis ini melangkah lebih jauh menjembatani celah realitas tersebut dengan merealisasikan algoritma ERC dan IAPF secara langsung pada platform perangkat keras fisik lima wahana di ruang sempit nyata. Perbandingan komparatif penelitian ini terhadap literatur kendali formasi berbasis kejadian dan ERC dirangkum pada Tabel~\ref{tab:studi-terkait-rujukan}.
 
 \begin{table}[htbp]
     \centering
@@ -1231,7 +1231,7 @@ Luaran utama yang ditargetkan dari penelitian ini meliputi: (1) arsitektur siste
 \addcontentsline{toc}{chapter}{DAFTAR PUSTAKA} % Memasukkan daftar pustaka ke dalam daftar isi.
 
 % Menentukan gaya tampilan daftar pustaka.
-\bibliographystyle{ieeetr}
+\bibliographystyle{IEEEtranN}
 
 % Memuat basis data pustaka dari berkas references.bib.
 \bibliography{../common/references}
