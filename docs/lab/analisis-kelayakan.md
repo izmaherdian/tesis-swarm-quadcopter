@@ -57,7 +57,7 @@ Ketinggian hanya menggeser lensa yang dibutuhkan:
 | Lengan **7,20 m** | 9,60 m | **2,40 m** | ✅ lega, aman untuk serah-terima antar kamera |
 | Lengan **9,60 m** | 9,60 m | **0 m** | ❌ tanpa tumpang tindih — tidak bisa dikalibrasi jadi satu kerangka |
 
-**Rekomendasi: bidik segmen 7,20 m.** Tumpang tindih 2,40 m cukup untuk
+**KEPUTUSAN: bidik segmen 7,20 m.** Tumpang tindih 2,40 m cukup untuk
 menyatukan kedua kamera ke satu kerangka acuan global dan untuk menangani
 perpindahan wahana antar-liputan. Kalau 9,60 m penuh yang diinginkan, butuh
 **3 kamera**, bukan 2.
@@ -151,6 +151,22 @@ kamera-lawan-UWB, melainkan keterbatasan flash papannya.
 | **B. Ganti FC ke F7/H7 (≥2 MB)** | Pakai papan yang fiturnya lengkap, mis. kelas H743 | Paling kecil risikonya, jalur paling standar untuk riset indoor non-GPS | 5 × papan baru |
 | **C. Kalang posisi di companion computer** | FC tetap Betaflight/INAV sebagai penstabil sikap; ESP32-S3 menjalankan kalang posisi & kecepatan, mengirim perintah sikap lewat MSP/CRSF | Paling dekat dengan arsitektur yang sudah digambarkan proposal, tapi EKF & kalang posisi harus ditulis sendiri di ESP32-S3 | Rp0 |
 
+### ✅ Keputusan: jalan A, lewat Custom Firmware Builder
+
+Dipilih **jalan A**, dan ternyata jauh lebih ringan dari dugaan awal: ArduPilot
+menyediakan **Custom Firmware Builder berbasis web** (<https://custom.ardupilot.org>)
+yang dibuat persis untuk papan 1 MB — *"this will give a path to enable a user to
+select which features will or will not be included, giving some flexibility to
+users of 1MB autopilots."*
+
+**Tidak perlu toolchain ARM maupun waf.** Cukup: pilih Copter → versi →
+`SpeedyBeeF405Mini`, centang `EK3_FEATURE_EXTERNAL_NAV`, matikan fitur tak
+terpakai agar muat, Generate, unduh `.apj`, flash lewat Mission Planner
+("Load custom firmware").
+
+Langkah rinci dan rencana cadangan ada di `docs/keputusan/KP02-firmware-fc.md`.
+Bila build tidak muat, jatuh ke **jalan C**, bukan jalan B.
+
 **Catatan untuk jalan C:** proposal sudah menggambarkan pembagian tugas
 *companion computer* = perencana tingkat tinggi, FC = penstabil tingkat rendah.
 Jalan C hanya menggeser batas itu satu lapis ke bawah. Tetapi XIAO ESP32-S3
@@ -158,12 +174,23 @@ sangat terbatas GPIO-nya, dan harus menanggung sekaligus: Wi-Fi/UDP, EKF, kalang
 posisi-kecepatan, 2 sensor ultrasonik, dan logika ERC. Beban ini perlu diukur,
 bukan diasumsikan.
 
-## 7. Yang masih harus dipastikan
+## 7. Yang masih terbuka
 
-1. **Firmware apa yang terpasang sekarang** di FC (Betaflight bawaan pabrik?) —
-   belum terjawab; yang disebut baru nama papannya.
-2. Pilihan jalan keluar A / B / C di atas.
-3. Spesifikasi **kipas industri** di koridor, bila itu sumber gangguan angin.
-4. Harga pasar kamera 4K untuk merevisi RAB.
-5. Lebar celah rintangan yang akan dibangun dari dus — perlu diselaraskan dengan
-   rasio lebar-celah terhadap lebar-wahana yang dipakai di simulator.
+| # | Hal | Status |
+|---|---|---|
+| 1 | **Firmware yang terpasang sekarang** di FC (Betaflight bawaan pabrik?) | belum terjawab — yang disebut baru nama papannya. Tidak menghalangi, karena akan di-flash ulang dengan build racikan |
+| 2 | **Harga pasar kamera 4K** untuk merevisi RAB (2 unit, bukan 1) | perlu survei harga sebelum Tabel RAB diperbarui — jangan menebak angka |
+| 3 | **Lebar celah rintangan** dari dus | harus diselaraskan dengan rasio lebar-celah : lebar-wahana yang dipakai simulator. Wahana nyata 25 cm; koridor sim 1,0 m |
+| 4 | **Sumber gangguan angin** | kipas industri di koridor akan **dipindahkan**, jadi bukan sumber angin. Uji ketahanan angin belum punya alat — perlu direncanakan terpisah atau klaimnya dibatasi ke simulasi saja |
+| 5 | **Dudukan kamera di plafon rangka-T** | perlu dipastikan boleh mencantol ke rel rangka; beban harus ringan |
+| 6 | **Video ruangan** | tidak terbaca (frame hitam, `ffmpeg` tidak terpasang). Kalau isinya penting, pasang `ffmpeg` atau kirim tangkapan layar |
+
+## 8. Keputusan yang sudah diambil
+
+| Keputusan | Berkas |
+|---|---|
+| Lokalisasi: kamera atas + AprilTag, UWB opsional bersyarat | `docs/keputusan/KP01-lokalisasi-apriltag.md` |
+| Firmware FC: ArduPilot racikan lewat Custom Firmware Builder | `docs/keputusan/KP02-firmware-fc.md` |
+| Area terbang: segmen lurus 7,20 m, 2 kamera, tumpang tindih 2,40 m | bagian 2 di atas |
+| Kamera: 4K, HFOV ±109°, ≥30 FPS, global shutter diutamakan, 2 unit | bagian 4 di atas |
+| Ruangan: bisa dipakai eksklusif dengan penjadwalan | bagian 1 di atas |
