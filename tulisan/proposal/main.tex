@@ -540,19 +540,22 @@ Wahana yang digunakan adalah \textit{quadcopter} tipe \textit{cinewhoop} dengan 
         \rowcolor{gray!20}
         \thead{No} & \thead{Komponen} & \thead{Spesifikasi} & \thead{Jumlah} \\ \hline
         1 & Rangka \textit{cinewhoop} SpeedyBee Bee35 & Propeler bersaluran, dimensi luar $25 \times 21 \times 8$ cm & 6 unit \\ \hline
-        2 & \textit{Flight controller} SpeedyBee F405 Mini & Mikrokontroler STM32F405 (\textit{flash} 1 MB), IMU ICM-42688P, barometer DSP-310 & 4 unit \\ \hline
-        3 & ESC SpeedyBee BLS 35A Mini & 4-in-1, firmware BLHeli\_S & 4 unit \\ \hline
-        4 & \textit{Companion computer} Seeed XIAO ESP32-S3 & Wi-Fi 2,4 GHz dan BLE terintegrasi, antarmuka USB-C & 1 unit \\ \hline
-        5 & Baterai LiPo & $4 \times 1200$ mAh, $2 \times 1500$ mAh, $1 \times 2200$ mAh, $2 \times 5000$ mAh & 9 unit \\ \hline
-        6 & Propeler dan saluran cadangan & Propeler tiga bilah, cincin saluran & beberapa \\ \hline
-        7 & Pencetak tiga dimensi beserta filamen & Untuk mencetak dudukan penanda visual dan sensor & 1 unit \\ \hline
+        2 & Motor BLDC & $2006$, $1950$ KV & 4 per wahana \\ \hline
+        3 & \textit{Flight controller} SpeedyBee F405 Mini & Mikrokontroler STM32F405 (\textit{flash} 1 MB), IMU ICM-42688P, barometer DSP-310 & 4 unit \\ \hline
+        4 & ESC SpeedyBee BLS 35A Mini & 4-in-1, firmware BLHeli\_S & 4 unit \\ \hline
+        5 & \textit{Companion computer} Seeed XIAO ESP32-S3 & Wi-Fi 2,4 GHz dan BLE terintegrasi, antarmuka USB-C & 1 unit \\ \hline
+        6 & Baterai LiPo & $4 \times 1200$ mAh, $2 \times 1500$ mAh, $1 \times 2200$ mAh, $2 \times 5000$ mAh & 9 unit \\ \hline
+        7 & Propeler dan saluran cadangan & Propeler tiga bilah, cincin saluran & beberapa \\ \hline
+        8 & Modul navigasi RUSHFPV GNSS 25+ & Mesin u-Blox M10, kompas HMC5883, antarmuka serial 115200 baud & terpasang \\ \hline
+        9 & Pencetak tiga dimensi beserta filamen & Untuk mencetak dudukan penanda visual dan sensor & 1 unit \\ \hline
+        10 & Pengisi daya baterai, komputer stasiun darat, dan penghala Wi-Fi khusus & Perangkat pendukung di sisi darat & tersedia \\ \hline
     \end{tabularx}
     \endgroup
 \end{table}
 
 Dari enam rangka yang tersedia, dua unit telah terpasang lengkap beserta propeler dan siap diterbangkan, dua unit telah terpasang motor dan saluran namun belum berpropeler, sementara dua unit sisanya masih berupa rangka kosong tanpa komponen elektronik. Dengan demikian kebutuhan lima agen dapat dipenuhi dari stok yang ada, dengan satu unit tersisa sebagai cadangan apabila terjadi kerusakan saat uji terbang.
 
-Satu catatan penting menyangkut modul GNSS yang saat ini masih terpasang pada bagian atas wahana. Modul tersebut tidak digunakan karena seluruh pengujian berlangsung di dalam ruangan, dan pelepasannya justru menguntungkan: selain mengurangi bobot, pelepasan itu membebaskan area datar di tengah bodi yang dibutuhkan untuk pemasangan penanda visual, sebagaimana dibahas pada Subbab~\ref{sec:lokalisasi_rancangan}.
+Modul navigasi RUSHFPV yang terpasang pada bagian atas wahana memuat penerima GNSS sekaligus magnetometer HMC5883. Penerima GNSS tidak dapat digunakan karena seluruh pengujian berlangsung di dalam ruangan. Magnetometer secara prinsip masih dapat menjadi acuan arah, namun pembacaannya di dalam gedung mudah terganggu struktur baja dan kabel daya, sehingga acuan \textit{yaw} diambil dari sistem kamera atas. Dengan demikian modul tersebut dilepas, dan pelepasannya justru menguntungkan: bobot berkurang, dan area datar di tengah bodi yang dibutuhkan untuk pemasangan penanda visual menjadi bebas, sebagaimana dibahas pada Subbab~\ref{sec:lokalisasi_rancangan}.
 
 \subsection{Kondisi Ruang Pengujian}
 \label{subsec:kondisi_ruang}
@@ -1075,7 +1078,7 @@ Rencana Anggaran Biaya (RAB\label{abbr:rab}) pada penelitian ini disusun secara 
 
 \subsubsection{Tahap 1: Bukti Jalur Kerja}
 
-Tahap pertama bertujuan membuktikan bahwa rantai perolehan posisi berjalan utuh, mulai dari deteksi penanda visual, penyelesaian pose, pengiriman melalui jaringan, hingga penerimaan oleh \textit{flight controller}. Tahap ini hanya membutuhkan satu kamera dan satu wahana. Pada tahap ini pula uji banding sensor jarak pada Subbab~\ref{subsec:pemilihan_sensor} dilaksanakan, sehingga kedua kandidat sensor diadakan dalam jumlah kecil. Rincian anggarannya diberikan pada Tabel~\ref{tab:rab_tahap1}.
+Tahap pertama bertujuan membuktikan bahwa rantai perolehan posisi berjalan utuh, mulai dari deteksi penanda visual, penyelesaian pose, pengiriman melalui jaringan, hingga penerimaan oleh \textit{flight controller}. Tahap ini hanya membutuhkan satu kamera dan satu wahana. Pada tahap ini pula uji banding sensor jarak pada Subbab~\ref{subsec:pemilihan_sensor} dilaksanakan, sehingga kedua kandidat sensor diadakan dalam jumlah kecil. Tautan kendali radio turut diadakan pada tahap ini meskipun kendali otonom belum diuji penuh, karena tautan tersebut merupakan satu-satunya jalur pengambilalihan manual yang tidak bergantung pada jaringan Wi-Fi. Tanpa tautan itu, kegagalan jaringan akan menghilangkan seluruh kemampuan menghentikan wahana. Rincian anggarannya diberikan pada Tabel~\ref{tab:rab_tahap1}.
 
 \begin{table}[htbp]
     \centering
@@ -1091,9 +1094,10 @@ Tahap pertama bertujuan membuktikan bahwa rantai perolehan posisi berjalan utuh,
         \thead{No} & \thead{Komponen} & \thead{Kuantitas} & \thead{Harga Satuan\\(Rp)} & \thead{Harga Total\\(Rp)} \\ \hline
         1 & Kamera atas 4K beserta lensa sudut lebar $\pm 109^\circ$ & 1 unit & \textit{survei} & \textit{survei} \\ \hline
         2 & Kabel USB ekstensi 10 m dan dudukan langit-langit & 1 set & 150.000 & 150.000 \\ \hline
-        3 & Sensor ultrasonik HC-SR04 (kandidat A) & 2 unit & 20.000 & 40.000 \\ \hline
-        4 & Sensor jarak laser VL53L1X (kandidat B) & 2 unit & \textit{survei} & \textit{survei} \\ \hline
-        5 & Penanda \textit{AprilTag}, akrilik, dan tiang cetak tiga dimensi & 1 set & 20.000 & 20.000 \\ \hline
+        3 & Pemancar dan penerima kendali radio & 1 set & \textit{survei} & \textit{survei} \\ \hline
+        4 & Sensor ultrasonik HC-SR04 (kandidat A) & 2 unit & 20.000 & 40.000 \\ \hline
+        5 & Sensor jarak laser VL53L1X (kandidat B) & 2 unit & \textit{survei} & \textit{survei} \\ \hline
+        6 & Penanda \textit{AprilTag}, akrilik, dan tiang cetak tiga dimensi & 1 set & 20.000 & 20.000 \\ \hline
         \multicolumn{4}{|r|}{\textbf{SUBTOTAL TAHAP 1}} & \textbf{210.000 + survei} \\ \hline
     \end{tabularx}
     \endgroup

@@ -1,106 +1,73 @@
-# Spesifikasi Perangkat Keras
+# Inventaris Perangkat Keras
 
-> Diisi tanggal: `<YYYY-MM-DD>` · Kolom yang belum diketahui tulis `?`.
-> Kalau ragu, foto saja label/stiker perangkatnya ke `foto/` — saya bisa baca.
+> Diperbarui 2026-09-16. Sumber: 17 foto di `foto/` (dibaca langsung) dan
+> konfirmasi lisan dari peneliti. Kolom bertanda **?** belum terdata.
 
-## 1. Kamera atas — **PRIORITAS 2**
+## 1. Wahana dan komponen terbang
 
-| Besaran | Nilai | Kenapa ditanya |
+| Komponen | Spesifikasi | Jumlah | Sumber |
+|---|---|---|---|
+| Rangka *cinewhoop* SpeedyBee Bee35 | Propeler bersaluran, $25 \times 21 \times 8$ cm | **6** — 2 siap terbang, 2 terpasang sebagian, 2 rangka kosong | foto 07, 08 |
+| Motor BLDC | **2006 – 1950 KV** | 4 per wahana terpasang | foto 15 |
+| ESC | SpeedyBee **BLS 35A Mini** 4-in-1, BLHeli\_S | 4 | konfirmasi peneliti |
+| *Flight controller* | SpeedyBee **F405 Mini** — STM32F405 (flash 1 MB), IMU ICM-42688P, barometer DSP-310 | 4 | foto 14 + dok. ArduPilot |
+| *Companion computer* | Seeed Studio **XIAO ESP32-S3** — Wi-Fi 2,4 GHz + BLE, USB-C | 1 (**?** apakah ada lagi) | foto 16 |
+| Modul navigasi | **RUSHFPV GNSS 25+** — mesin u-Blox M10 (GPS/GLONASS/BDS/Galileo), kompas **HMC5883**, 115200 baud, masukan 5 V, antena tipe T | **?** | foto 12 |
+| Dudukan modul navigasi | Cetakan 3D, terpasang di tengah-depan bodi | terpasang | foto 17 |
+| Baterai LiPo | $4 \times 1200$ mAh · $2 \times 1500$ mAh · $1 \times 2200$ mAh · $2 \times 5000$ mAh | **9** | foto 07, 08 |
+| Propeler cadangan | Tiga bilah | beberapa | foto 07, 08 |
+| Saluran (*duct*) cadangan | Cincin kuning | beberapa | foto 07, 08 |
+| Kartu program ESC | Turnigy AeroStar | 1 | foto 07, 08 |
+
+### ⚠️ Komponen belum teridentifikasi
+
+Foto 13 memperlihatkan papan mungil berbungkus *heatshrink* bening, dipasang di
+atas busa peredam, dengan **empat kabel** (merah, hitam, kuning, hijau). Peneliti
+menamainya "IMU", namun *flight controller* sudah memuat IMU ICM-42688P sehingga
+identitas papan ini belum pasti. Tulisan yang terbaca pada papannya:
+**`1281 2343 45909`** — pola tersebut lebih menyerupai kode lot atau tanggal
+produksi daripada nomor komponen, sehingga belum cukup untuk identifikasi.
+Resolusi foto (720 × 1280) tidak memadai untuk dibaca ulang.
+
+**Cara memastikan:** foto lebih dekat pada papannya, atau telusuri keempat kabel
+ke pena mana pada *flight controller* (UART menandakan penerima atau modul
+serial; I\textsuperscript{2}C menandakan sensor).
+
+## 2. Perangkat darat
+
+| Komponen | Status | Keterangan |
 |---|---|---|
-| Merek & model | `?` | |
-| Sudah ada di lab atau harus dibeli? | `?` | RAB Rp1.500.000 sudah dialokasikan |
-| Resolusi maksimum | `?` px | menentukan ukuran tag minimum |
-| **FPS pada resolusi penuh** | `?` | proposal mengasumsikan 60 FPS |
-| FPS pada resolusi diturunkan | `?` | sering jadi kompromi yang dipakai |
-| **Rolling atau global shutter?** | `?` | **paling kritis** — rolling shutter membuat pose melenceng saat wahana bergerak |
-| FOV horizontal / panjang fokus | `?`° atau `?` mm | menentukan luas liputan |
-| Lensa bisa diganti? | `?` | kalau liputan kurang, ini jalan keluarnya |
-| Antarmuka | USB2 / USB3 / CSI / IP | USB2 membatasi FPS pada resolusi tinggi |
-| Panjang kabel bawaan | `?` m | |
+| Pengisi daya baterai LiPo | ✅ tersedia | model **?** |
+| Komputer stasiun darat | ✅ tersedia | CPU, RAM, jumlah port USB3 **?** — menentukan apakah deteksi penanda dua kamera 4K dapat berjalan seketika |
+| Router Wi-Fi khusus | ✅ tersedia | model dan pita frekuensi **?** |
+| Pencetak tiga dimensi + filamen | ✅ tersedia | untuk dudukan penanda dan sensor |
 
-> Kalau spesifikasi tidak diketahui: **foto stiker/label di badan kamera dan
-> lensanya.** Dari situ biasanya bisa ditelusuri.
+## 3. Belum tersedia — masuk rencana pengadaan
 
-## 2. PC stasiun darat — **PRIORITAS 2**
-
-Harus sanggup mendeteksi 5 tag pada laju kamera secara *real-time*.
-
-| Besaran | Nilai |
-|---|---|
-| CPU | `?` |
-| RAM | `?` GB |
-| GPU (kalau ada) | `?` |
-| Sistem operasi | `?` |
-| Jumlah port USB3 | `?` |
-| Milik lab atau laptop pribadi? | `?` |
-
-## 3. Flight controller — **PRIORITAS 2**
-
-| Besaran | Nilai | Kenapa ditanya |
+| Komponen | Kebutuhan | Tahap RAB |
 |---|---|---|
-| Model | SpeedyBee F4 Mini (?) | |
-| **Firmware terpasang** | Betaflight / INAV / ArduPilot / PX4 / `?` | **kritis** — lihat catatan di bawah |
-| Versi firmware | `?` | |
-| Target build | `?` | |
-| Port UART yang masih bebas | `?` | untuk jalur ke companion computer |
-| Punya barometer? | `?` | cadangan sumbu z |
+| **Kendali radio (pemancar + penerima)** | Pengambilalihan manual dan penghentian darurat | **Tahap 1 — keselamatan** |
+| Kamera atas 4K + lensa sudut lebar | Lokalisasi | Tahap 1 (unit ke-1), Tahap 2 (unit ke-2) |
+| Sensor ultrasonik HC-SR04 | Kandidat A persepsi rintangan | Tahap 1 (2 unit), Tahap 2 (sisanya) |
+| Sensor jarak laser VL53L1X | Kandidat B persepsi rintangan | Tahap 1 (2 unit) |
+| Penanda AprilTag + akrilik + tiang | Lokalisasi | Tahap 1 (1 set), Tahap 2 (4 set) |
+| Dus kardus rintangan | Arena | Tahap 3 |
+| Perlengkapan keselamatan | Tas tahan api, jaring, kacamata | Tahap 3 |
 
-> ⚠️ **Ini penentu besar.** Menyuntikkan posisi eksternal (dari kamera atas)
-> ke FC butuh firmware yang mendukungnya: ArduPilot dan PX4 mendukung penuh,
-> INAV terbatas, **Betaflight praktis tidak**. Kalau ternyata Betaflight, ada
-> dua jalan: ganti firmware, atau pindahkan seluruh kalang posisi ke companion
-> computer dan kirim hanya perintah sikap ke FC. Keduanya mengubah rencana
-> kerja, jadi lebih cepat diketahui lebih baik.
+### 🔴 Catatan keselamatan
 
-## 4. Companion computer — **PRIORITAS 2**
+**Tautan kendali radio belum tersedia.** Tanpa itu, satu-satunya jalur
+penghentian darurat adalah MAVLink melalui Wi-Fi — dan apabila justru jaringan
+Wi-Fi yang bermasalah, tidak ada jalan keluar tersisa. Untuk uji terbang lima
+wahana di koridor yang juga dipakai orang lain, ini risiko yang tidak dapat
+diterima. Pengadaannya dinaikkan ke Tahap 1 dan prosedur keselamatan pada naskah
+harus menyebutkan mekanisme pengambilalihan manual secara eksplisit.
 
-| Besaran | Nilai |
-|---|---|
-| Model board | ESP32-S3 (varian?) |
-| RAM / PSRAM | `?` |
-| Sudah terpasang di wahana? | `?` |
-| Cara flash yang dipakai | Arduino / ESP-IDF / PlatformIO |
+## 4. Yang masih perlu didata
 
-## 5. Wahana quadcopter — **PRIORITAS 2**
-
-| Besaran | Nilai |
-|---|---|
-| **Jumlah unit sudah terakit & bisa terbang** | `?` dari 5 |
-| Jumlah unit masih berupa komponen | `?` |
-| Rangka | SpeedyBee 35 (?) |
-| Diagonal / *wheelbase* | `?` mm |
-| **Lebar total termasuk propeler** | `?` mm ← penting untuk margin koridor 1,0 m |
-| Ukuran propeler | `?` inci |
-| Bobot terbang | `?` g |
-| Baterai | `?` S, `?` mAh |
-| Perkiraan lama terbang | `?` menit |
-| Ada pelindung propeler (*prop guard*)? | `?` |
-| Ruang datar di atas bodi untuk tag | `?` × `?` mm |
-
-## 6. Sensor ultrasonik — **PRIORITAS 3**
-
-| Besaran | Nilai |
-|---|---|
-| Model | HC-SR04 (?) |
-| Jumlah tersedia | `?` (RAB merencanakan 10) |
-| Sudah terpasang di wahana? | `?` |
-| Jangkauan terukur efektif | `?` m |
-
-## 7. Modul UWB — **PRIORITAS 3**
-
-Hanya untuk mencatat status; UWB berstatus opsional (lihat
-`docs/keputusan/KP01-lokalisasi-apriltag.md`).
-
-| Besaran | Nilai |
-|---|---|
-| Sudah punya modul? | ya / tidak |
-| Model | DWM1000 / DW3000 / `?` |
-| Jumlah unit | `?` |
-| Pernah dicoba sebelumnya? | `?` |
-
-## 8. Perangkat lain yang tersedia di lab
-
-Kadang ada aset yang tidak terpikir tapi mengubah rencana — misalnya OptiTrack,
-LiDAR, atau kamera lain.
-
-> `<daftar di sini>`
+1. Spesifikasi komputer stasiun darat (CPU, RAM, port USB3).
+2. Model pengisi daya LiPo dan router Wi-Fi.
+3. Identitas papan pada foto 13.
+4. Jumlah unit XIAO ESP32-S3 dan modul RUSHFPV GNSS.
+5. Ukuran propeler (perkiraan 3,5 inci dari kelas rangka — belum dipastikan).
+6. Bobot terbang wahana lengkap dengan baterai.

@@ -1,132 +1,92 @@
-"""Sketsa skala arena uji di koridor PTIO ITB.
-
-Menghasilkan docs/lab/sketsa-arena.png. Semua satuan meter.
-Jalankan ulang bila geometri berubah: python3 docs/lab/sketsa_arena.py
-"""
-import matplotlib
-matplotlib.use("Agg")
+"""Denah arena uji pada koridor PTIO ITB. Satuan meter, gambar berskala."""
+import sys, os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle, FancyArrowPatch, Circle
+from matplotlib.patches import Rectangle, Circle, FancyArrowPatch
+from gaya_gambar import ukur, penunjuk, simpan, TEBAL, TIPIS, PUTUS, ABU, ABU_MUDA
 
-# ── Parameter arena ────────────────────────────────────────────────
-W       = 2.70   # lebar bersih koridor (setelah sofa & banner disingkirkan)
-L       = 7.20   # panjang terliput 2 kamera
-KOL_X, KOL_W, KOL_D = 3.30, 0.60, 0.79   # kolom "tembok mencuil"
-CH_L    = 1.80   # panjang kanal sempit
-CELAH   = 0.90   # lebar celah
-CH_X0   = (L - CH_L)/2
-BOX_D   = W - KOL_D - CELAH              # kedalaman dus di sisi seberang
-D_DRONE = 0.25
-k       = 0.90                            # faktor skala formasi
-TOPO    = [(1,0), (0,-0.5), (0,0.5), (-1,1), (-1,-1)]
+W, L          = 2.70, 7.20          # lebar koridor, panjang terliput
+KOL_X, KOL_W, KOL_D = 3.30, 0.60, 0.79
+CH_L, CELAH   = 1.80, 0.90
+CH_X0         = (L - CH_L) / 2
+BOX_D         = W - KOL_D - CELAH
+D             = 0.25                # diameter wahana
+k             = 0.90
+TOPO          = [(1,0), (0,-0.5), (0,0.5), (-1,1), (-1,-1)]
 
-fig, ax = plt.subplots(figsize=(15.5, 7.6))
+fig, ax = plt.subplots(figsize=(7.2, 4.4))
 
-# ── Liputan kamera ─────────────────────────────────────────────────
-ax.add_patch(Rectangle((0,0), 4.80, W, fc="#2E86AB", alpha=.10, ec="none"))
-ax.add_patch(Rectangle((2.40,0), 4.80, W, fc="#A23B72", alpha=.10, ec="none"))
-ax.add_patch(Rectangle((2.40,0), 2.40, W, fc="#6A4C93", alpha=.13, ec="none"))
-for x, lbl, c in ((2.40,"KAMERA 1","#2E86AB"), (4.80,"KAMERA 2","#A23B72")):
-    ax.plot([x,x], [W, W+0.55], color=c, lw=1.2, ls=":", zorder=3)
-    ax.plot(x, W+0.62, marker="v", ms=16, color=c, clip_on=False, zorder=10)
-    ax.text(x, W+0.85, f"{lbl}\nliputan 4,80 m", ha="center", va="bottom",
-            fontsize=10, fontweight="bold", color=c)
-ax.annotate("", (4.80, W+0.30), (2.40, W+0.30),
-            arrowprops=dict(arrowstyle="<->", color="#6A4C93", lw=1.6))
-ax.text(3.60, W+0.36, "tumpang tindih 2,40 m", ha="center", fontsize=9,
-        color="#6A4C93", style="italic", fontweight="bold")
-
-# ── Dinding koridor ────────────────────────────────────────────────
+# dinding koridor
 for y in (0, W):
-    ax.plot([0,L], [y,y], color="k", lw=4.5, solid_capstyle="butt", zorder=5)
+    ax.plot([0, L], [y, y], color="black", lw=TEBAL, solid_capstyle="butt", zorder=5)
 
-# ── Rintangan ──────────────────────────────────────────────────────
-ax.add_patch(Rectangle((KOL_X, W-KOL_D), KOL_W, KOL_D, fc="#4A4A4A", ec="k",
-                       lw=1.5, hatch="///", zorder=7))
-ax.text(KOL_X+KOL_W/2, W-KOL_D/2, "KOLOM", ha="center", va="center",
-        fontsize=8, color="w", fontweight="bold", zorder=8, rotation=90)
-ax.annotate("tembok mencuil\n60 × 79 cm", (KOL_X+KOL_W/2, W+0.02),
-            (KOL_X+KOL_W/2-0.9, W+1.25), fontsize=8.5, ha="center", color="#4A4A4A",
-            fontweight="bold", arrowprops=dict(arrowstyle="->", color="#4A4A4A", lw=1.3))
-
+# rintangan: kolom (arsiran rapat) dan dus (arsiran renggang)
+ax.add_patch(Rectangle((KOL_X, W-KOL_D), KOL_W, KOL_D, fc="white", ec="black",
+                       lw=TEBAL, hatch="/////", zorder=6))
 for x0, w in ((CH_X0, KOL_X-CH_X0), (KOL_X+KOL_W, CH_X0+CH_L-KOL_X-KOL_W)):
-    ax.add_patch(Rectangle((x0, W-KOL_D), w, KOL_D, fc="#C89F5D", ec="k",
-                           lw=1.3, alpha=.92, zorder=6))
-ax.add_patch(Rectangle((CH_X0, 0), CH_L, BOX_D, fc="#C89F5D", ec="k",
-                       lw=1.3, alpha=.92, zorder=6))
-ax.text(CH_X0+CH_L/2, BOX_D/2, "DUS RINTANGAN\n1,80 × 1,01 m", ha="center",
-        va="center", fontsize=9.5, fontweight="bold", zorder=7)
+    ax.add_patch(Rectangle((x0, W-KOL_D), w, KOL_D, fc="white", ec="black",
+                           lw=TEBAL, hatch="///", zorder=6))
+ax.add_patch(Rectangle((CH_X0, 0), CH_L, BOX_D, fc="white", ec="black",
+                       lw=TEBAL, hatch="///", zorder=6))
 
-# ── Celah ──────────────────────────────────────────────────────────
-ax.add_patch(Rectangle((CH_X0, BOX_D), CH_L, CELAH, fc="#F5D547", alpha=.38,
-                       ec="#D4A017", lw=2.2, ls="--", zorder=4))
+# sumbu lintasan
+ax.plot([0, L], [W/2, W/2], color=ABU, lw=TIPIS, ls=(0,(8,3,1,3)), zorder=2)
 
-def dim(x1,y1,x2,y2,txt,c="#C1121F",fs=10,rot=0):
-    ax.annotate("", (x2,y2), (x1,y1),
-                arrowprops=dict(arrowstyle="<->", color=c, lw=1.8))
-    ax.text((x1+x2)/2, (y1+y2)/2, txt, ha="center", va="center", fontsize=fs,
-            color=c, fontweight="bold", rotation=rot,
-            bbox=dict(fc="w", ec=c, lw=1.2, boxstyle="round,pad=0.25"))
+# liputan kamera — kurung tipis di atas denah
+for x0, x1, y in ((0, 4.80, W+0.44), (2.40, 7.20, W+0.82)):
+    ax.plot([x0, x0, x1, x1], [y-0.08, y, y, y-0.08], color="black", lw=TIPIS)
+ax.text(2.40, W+0.48, "liputan kamera 1", ha="center", va="bottom", fontsize=8)
+ax.text(4.80, W+0.86, "liputan kamera 2", ha="center", va="bottom", fontsize=8)
+ax.annotate("", (4.80, W+0.16), (2.40, W+0.16),
+            arrowprops=dict(arrowstyle="<|-|>", mutation_scale=7, lw=TIPIS, color=ABU))
+ax.text(3.60, W+0.18, "tumpang tindih 2,40", ha="center", va="bottom",
+        fontsize=7.5, color=ABU)
 
-dim(L+0.34, 0, L+0.34, W, "270 cm", rot=90)
-dim(0, -0.92, L, -0.92, "7,20 m   (liputan 2 kamera)")
-dim(CH_X0, -0.42, CH_X0+CH_L, -0.42, "kanal 1,80 m", c="#8B5E00", fs=9)
-# celah: panah di dalam kanal, label digeser ke kanan agar bebas
-ax.annotate("", (CH_X0+CH_L-0.22, BOX_D+CELAH), (CH_X0+CH_L-0.22, BOX_D),
-            arrowprops=dict(arrowstyle="<->", color="#C1121F", lw=2.2))
-ax.text(CH_X0+CH_L+0.52, BOX_D+CELAH/2, "CELAH\n90 cm", ha="center", va="center",
-        fontsize=11, color="#C1121F", fontweight="bold",
-        bbox=dict(fc="#FFF3B0", ec="#C1121F", lw=1.5, boxstyle="round,pad=0.3"))
-
-# ── Formasi V saat mendekat ────────────────────────────────────────
+# formasi V
 cx, cy = 1.15, W/2
-for i,(dx,dy) in enumerate(TOPO):
+for i, (dx, dy) in enumerate(TOPO):
     x, y = cx+dx*k, cy+dy*k
-    ax.add_patch(Circle((x,y), D_DRONE/2, fc="#1B9AAA", ec="k", lw=1.3, zorder=8))
-    ax.text(x, y, str(i+1), ha="center", va="center", fontsize=7.5,
-            color="w", fontweight="bold", zorder=9)
-# bentang LATERAL = melintang koridor (sumbu y)
-ax.annotate("", (cx-1.22, cy-0.9-D_DRONE/2), (cx-1.22, cy+0.9+D_DRONE/2),
-            arrowprops=dict(arrowstyle="<->", color="#0B7285", lw=1.8))
-for yy in (cy-0.9-D_DRONE/2, cy+0.9+D_DRONE/2):
-    ax.plot([cx-1.32, cx-1.12], [yy,yy], color="#0B7285", lw=1.6)
-ax.text(cx-1.42, cy, "2,05 m", rotation=90, ha="center", va="center",
-        fontsize=9.5, fontweight="bold", color="#0B7285")
-ax.text(cx, -0.42, "FORMASI V  (skala 0,9)\nbentang lateral 2,05 m\nagen 1 memimpin", ha="center",
-        va="center", fontsize=9.5, fontweight="bold", color="#0B7285",
-        bbox=dict(fc="w", ec="#0B7285", lw=1.2, boxstyle="round,pad=0.25"))
+    ax.add_patch(Circle((x, y), D/2, fc="white", ec="black", lw=0.9, zorder=8))
+    ax.text(x, y, str(i+1), ha="center", va="center", fontsize=6.5, zorder=9)
 
-# ── Tailgating di dalam kanal ──────────────────────────────────────
+# tailgating — agen 1 memimpin di sisi kanan sesuai arah gerak
 ygap = BOX_D + CELAH/2
-# Arah gerak ke KANAN, jadi agen 1 (pemimpin) paling kanan dan agen 5 paling kiri.
 for i in range(5):
     x = CH_X0 + 0.18 + i*0.38
-    nomor = 5 - i
-    ax.add_patch(Circle((x, ygap), D_DRONE/2, fc="#EF476F", ec="k", lw=1.3, zorder=8))
-    ax.text(x, ygap, str(nomor), ha="center", va="center", fontsize=7.5,
-            color="w", fontweight="bold", zorder=9)
-ax.annotate("", (CH_X0+CH_L-0.42, ygap+0.36), (CH_X0+0.06, ygap+0.36),
-            arrowprops=dict(arrowstyle="-|>", color="#EF476F", lw=2, mutation_scale=15))
-ax.text(CH_X0+CH_L/2-0.20, ygap+0.20, "TAILGATING — agen 1 memimpin", ha="center",
-        va="center", fontsize=7.5, fontweight="bold", color="#C1121F", zorder=9)
+    ax.add_patch(Circle((x, ygap), D/2, fc=ABU_MUDA, ec="black", lw=0.9, zorder=8))
+    ax.text(x, ygap, str(5-i), ha="center", va="center", fontsize=6.5, zorder=9)
 
-for x0,x1,lbl in ((0.15, CH_X0-0.15, "ANCANG-ANCANG  →"),
-                  (CH_X0+CH_L+0.15, L-0.15, "KELUAR & MENGEMBANG  →")):
-    ax.text((x0+x1)/2, W-0.16, lbl, ha="center", fontsize=8.5, color="#555",
-            style="italic")
+# arah gerak
+ax.add_patch(FancyArrowPatch((0.25, W-0.20), (1.25, W-0.20), arrowstyle="-|>",
+                             mutation_scale=9, lw=0.9, color="black"))
+ax.text(1.34, W-0.20, "arah gerak", fontsize=8, va="center")
 
-ax.set_xlim(-1.15, L+1.1); ax.set_ylim(-1.35, W+1.85)
+# balon penunjuk
+def balon(huruf, titik, dxy):
+    px, py = titik[0]+dxy[0], titik[1]+dxy[1]
+    ax.annotate("", titik, (px, py),
+                arrowprops=dict(arrowstyle="-", color="black", lw=TIPIS,
+                                shrinkA=0, shrinkB=7))
+    ax.add_patch(Circle((px, py), 0.135, fc="white", ec="black", lw=0.8, zorder=10))
+    ax.text(px, py, huruf, ha="center", va="center", fontsize=7.5,
+            fontweight="bold", zorder=11)
+
+balon("A", (KOL_X+KOL_W/2, W-KOL_D*0.80), (1.62, -0.30))
+balon("B", (CH_X0+CH_L*0.25, BOX_D*0.72), (-1.28, 0.22))
+balon("C", (cx-0.55, cy-k*0.55),          (-0.95, -0.50))
+balon("D", (CH_X0+CH_L-0.30, ygap+D/2),   (1.55,  0.62))
+
+ket = ("A  kolom bangunan, 0,60 × 0,79 m        "
+       "B  dus rintangan, 1,80 × 1,01 m\n"
+       "C  formasi V, bentang lateral 2,05 m     "
+       "D  formasi mengekor, agen 1 memimpin")
+ax.text(L/2, -1.28, ket, ha="center", va="top", fontsize=8, linespacing=1.7)
+
+# ukuran
+ukur(ax, (0, 0), (L, 0), "7,20", offset=-0.78)
+ukur(ax, (L, 0), (L, W), "2,70", offset=0.38)
+ukur(ax, (CH_X0, 0), (CH_X0+CH_L, 0), "1,80", offset=-0.34)
+ukur(ax, (CH_X0, BOX_D), (CH_X0, BOX_D+CELAH), "0,90", offset=-0.26)
+
+ax.set_xlim(-1.35, L+1.15); ax.set_ylim(-2.15, W+1.32)
 ax.set_aspect("equal"); ax.axis("off")
-ax.set_title("Sketsa Arena Uji — Koridor PTIO ITB   (gambar berskala, satuan meter)",
-             fontsize=13.5, fontweight="bold", pad=12)
-plt.tight_layout()
-import shutil, os
-OUT = "tulisan/proposal/figures/sketsa-arena.png"
-os.makedirs(os.path.dirname(OUT), exist_ok=True)
-plt.savefig(OUT, dpi=135, bbox_inches="tight", facecolor="w")
-shutil.copyfile(OUT, "docs/lab/sketsa-arena.png")
-print(f"celah        = {CELAH:.2f} m")
-print(f"dus menonjol = {BOX_D:.2f} m")
-print(f"bentang V    = {2*k+D_DRONE:.2f} m, sisa {(W-(2*k+D_DRONE))/2*100:.1f} cm per sisi")
-print(f"mengekor     : sisa {(CELAH-D_DRONE)/2*100:.1f} cm per sisi")
-print(f"rasio bentang/celah = {(2*k+D_DRONE)/CELAH:.2f}  (simulator 2,40)")
+simpan(fig, "sketsa-arena")

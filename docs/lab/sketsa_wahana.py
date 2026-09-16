@@ -1,126 +1,96 @@
-"""Sketsa skala wahana quadcopter (SpeedyBee Bee35 cinewhoop).
-
-Menghasilkan tulisan/proposal/figures/sketsa-wahana.png. Satuan sentimeter.
-Dimensi luar dari pengukuran lapangan (docs/lab/foto/06); tata letak komponen
-dari foto 09 (tampak atas), 10 (tampak bawah), dan 11 (tampak samping).
-"""
-import os, math
-import matplotlib; matplotlib.use("Agg")
+"""Wahana uji SpeedyBee Bee35. Tampak atas dan tampak samping, satuan cm."""
+import sys, os, math; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle, Circle, FancyArrowPatch, Wedge
+from matplotlib.patches import Rectangle, Circle, FancyArrowPatch
+from gaya_gambar import ukur, simpan, TEBAL, TIPIS, PUTUS, ABU, ABU_MUDA
 
-W, L, H = 25.0, 21.0, 8.0     # lebar, panjang, tinggi (dengan baterai)
-DUCT_OD = 10.5
-DX, DY  = (W-DUCT_OD)/2, (L-DUCT_OD)/2
-SPINE_W = 2*DX - DUCT_OD      # celah bebas antara pasangan duct kiri & kanan
-TAG     = 10.0
+W, L, H   = 25.0, 21.0, 8.0
+DUCT      = 10.5
+DX, DY    = (W-DUCT)/2, (L-DUCT)/2
+SPINE     = 2*DX - DUCT
+TAG       = 10.0
+RISER     = 7.0
 
-fig, (ax, bx) = plt.subplots(1, 2, figsize=(14.5, 7.4),
-                             gridspec_kw={"width_ratios": [1.25, 1]})
+fig, (ax, bx) = plt.subplots(1, 2, figsize=(7.4, 3.7),
+                             gridspec_kw={"width_ratios": [1.18, 1]})
 
-# ══════════ TAMPAK ATAS ══════════
-ax.add_patch(Rectangle((-W/2, -L/2), W, L, fc="none", ec="#999", lw=1.2, ls=(0,(5,4))))
+def balon(a, huruf, titik, dxy, r=0.95):
+    px, py = titik[0]+dxy[0], titik[1]+dxy[1]
+    a.annotate("", titik, (px, py), arrowprops=dict(arrowstyle="-", color="black",
+               lw=TIPIS, shrinkA=0, shrinkB=r*5.5))
+    a.add_patch(Circle((px, py), r, fc="white", ec="black", lw=0.8, zorder=10))
+    a.text(px, py, huruf, ha="center", va="center", fontsize=7.5,
+           fontweight="bold", zorder=11)
+
+# ───────── TAMPAK ATAS ─────────
+ax.add_patch(Rectangle((-W/2, -L/2), W, L, fc="none", ec=ABU, lw=TIPIS, ls=PUTUS))
 for sx in (-1, 1):
     for sy in (-1, 1):
-        cxd, cyd = sx*DX, sy*DY
-        ax.add_patch(Circle((cxd, cyd), DUCT_OD/2, fc="#F2D24B", ec="#8A7420", lw=1.6, zorder=2))
-        ax.add_patch(Circle((cxd, cyd), DUCT_OD/2-1.1, fc="#4A4A4A", ec="#333", lw=1, zorder=3))
-        ax.add_patch(Circle((cxd, cyd), 1.5, fc="#222", ec="k", lw=1, zorder=4))
-
-# spine tengah (satu-satunya area datar bebas duct)
-ax.add_patch(Rectangle((-SPINE_W/2, -L/2+1), SPINE_W, L-2, fc="#2B2B2B",
-                       ec="k", lw=1.2, zorder=5))
-ax.add_patch(Rectangle((-1.6, -1.6), 3.2, 3.2, fc="#1B9AAA", ec="k", lw=1, zorder=6))
-ax.text(0, 0, "FC\nESC", ha="center", va="center", fontsize=6, color="w",
-        fontweight="bold", zorder=7)
-ax.add_patch(Rectangle((-1.1, 3.4), 2.2, 1.8, fc="#EF476F", ec="k", lw=1, zorder=6))
-ax.text(0, 4.3, "ESP32", ha="center", va="center", fontsize=5.2, color="w",
-        fontweight="bold", zorder=7)
-ax.add_patch(Rectangle((-1.6, -6.2), 3.2, 3.0, fc="#7B68EE", ec="k", lw=1, zorder=6))
-ax.text(0, -4.7, "BAT", ha="center", va="center", fontsize=5.5, color="w",
-        fontweight="bold", zorder=7)
-
-# penanda AprilTag 10 cm -> menonjolkan tumpang tindih dengan duct
-ax.add_patch(Rectangle((-TAG/2, -TAG/2), TAG, TAG, fc="#C1121F", alpha=.20,
-                       ec="#C1121F", lw=2.4, ls=(0,(4,3)), zorder=8))
-ax.annotate(f"AprilTag {TAG:.0f} cm\n(menumpang di atas duct)",
-            (TAG/2, TAG/2), (W/2+3.2, L/2-1.5), fontsize=8.5, color="#C1121F",
-            fontweight="bold", ha="left", va="center", zorder=10,
-            arrowprops=dict(arrowstyle="->", color="#C1121F", lw=1.4))
-
-# sensor jarak 45 derajat di dua sudut depan
+        c = (sx*DX, sy*DY)
+        ax.add_patch(Circle(c, DUCT/2, fc="white", ec="black", lw=TEBAL, zorder=3))
+        ax.add_patch(Circle(c, DUCT/2-1.2, fc="white", ec="black", lw=TIPIS, zorder=3))
+        ax.add_patch(Circle(c, 1.4, fc=ABU_MUDA, ec="black", lw=TIPIS, zorder=4))
+ax.add_patch(Rectangle((-SPINE/2, -L/2+1), SPINE, L-2, fc="white", ec="black",
+                       lw=TEBAL, zorder=5))
+ax.add_patch(Rectangle((-1.5, -1.5), 3.0, 3.0, fc=ABU_MUDA, ec="black", lw=TIPIS, zorder=6))
+ax.add_patch(Rectangle((-1.0, 3.5), 2.0, 1.7, fc=ABU_MUDA, ec="black", lw=TIPIS, zorder=6))
+ax.add_patch(Rectangle((-1.5, -6.0), 3.0, 2.8, fc=ABU_MUDA, ec="black", lw=TIPIS, zorder=6))
+ax.add_patch(Rectangle((-TAG/2, -TAG/2), TAG, TAG, fc="none", ec="black",
+                       lw=1.1, ls=(0,(4,2.5)), zorder=8))
 for sx in (-1, 1):
-    px, py = sx*(W/2-2.0), L/2-2.0
-    ax.add_patch(Rectangle((px-0.9, py-0.7), 1.8, 1.4, fc="#06D6A0", ec="k",
-                           lw=1, zorder=9))
+    px, py = sx*(W/2-2.2), L/2-2.2
+    ax.add_patch(Rectangle((px-0.8, py-0.6), 1.6, 1.2, fc=ABU_MUDA, ec="black",
+                           lw=TIPIS, zorder=9))
     ang = math.radians(90 - sx*45)
-    ax.add_patch(Wedge((px, py), 7.5, math.degrees(ang)-13, math.degrees(ang)+13,
-                       fc="#06D6A0", alpha=.22, ec="none", zorder=1))
-    ax.annotate("", (px+7.5*math.cos(ang), py+7.5*math.sin(ang)), (px, py),
-                arrowprops=dict(arrowstyle="-|>", color="#06938C", lw=1.6))
-ax.text(0, L/2+5.2, "2× sensor jarak, diagonal $\\theta = 45°$", ha="center",
-        fontsize=8.5, color="#06938C", fontweight="bold")
+    ax.plot([px, px+7.0*math.cos(ang)], [py, py+7.0*math.sin(ang)],
+            color=ABU, lw=TIPIS, ls=(0,(4,2)), zorder=2)
+ax.add_patch(FancyArrowPatch((-W/2-7.6, -2.0), (-W/2-7.6, 2.0), arrowstyle="-|>",
+                             mutation_scale=9, lw=0.9, color="black"))
+ax.text(-W/2-8.2, 0, "arah maju", fontsize=8, rotation=90, va="center", ha="right")
 
-ax.annotate("", (0, L/2+2.2), (0, L/2+0.4),
-            arrowprops=dict(arrowstyle="-|>", color="k", lw=2.2, mutation_scale=18))
-ax.text(1.0, L/2+1.4, "arah maju", fontsize=8, va="center")
+ukur(ax, (-W/2, -L/2), (W/2, -L/2), "25,0", offset=-3.2, pad=0.7)
+ukur(ax, (W/2, -L/2), (W/2, L/2), "21,0", offset=3.2, pad=0.7)
+ukur(ax, (-SPINE/2, L/2-1), (SPINE/2, L/2-1), "4,0", offset=2.4, pad=0.5, fs=8)
 
-def d(x1,y1,x2,y2,t,rot=0,c="#C1121F"):
-    ax.annotate("", (x2,y2), (x1,y1), arrowprops=dict(arrowstyle="<->", color=c, lw=1.6))
-    ax.text((x1+x2)/2, (y1+y2)/2, t, ha="center", va="center", fontsize=9,
-            color=c, fontweight="bold", rotation=rot,
-            bbox=dict(fc="w", ec=c, lw=1, boxstyle="round,pad=0.2"))
-d(-W/2, -L/2-2.6, W/2, -L/2-2.6, "25 cm")
-d(W/2+2.6, -L/2, W/2+2.6, L/2, "21 cm", rot=90)
-ax.annotate("", (SPINE_W/2, -L/2-0.8), (-SPINE_W/2, -L/2-0.8),
-            arrowprops=dict(arrowstyle="<->", color="#8A0F16", lw=1.6))
-ax.annotate(f"celah datar bebas duct\nhanya {SPINE_W:.0f} cm — tag {TAG:.0f} cm\ntidak muat tanpa tiang",
-            (0, -L/2-0.8), (-W/2-4.5, -L/2-4.2), fontsize=8, color="#8A0F16",
-            fontweight="bold", ha="left", va="center",
-            arrowprops=dict(arrowstyle="->", color="#8A0F16", lw=1.4))
-
-ax.set_xlim(-W/2-10, W/2+13); ax.set_ylim(-L/2-7.5, L/2+7)
+# tampak atas: hanya geometri saluran, sensor, dan jejak penanda
+balon(ax, "A", (DX+DUCT/2*0.70, DY+DUCT/2*0.70), (4.6, 3.2))
+balon(ax, "E", (-(W/2-2.2), L/2-2.2), (-4.8, 3.0))
+balon(ax, "F", (-TAG/2, -TAG/2), (-5.2, -4.4))
+ax.set_xlim(-W/2-11, W/2+9); ax.set_ylim(-L/2-5.0, L/2+5.4)
 ax.set_aspect("equal"); ax.axis("off")
-ax.set_title("Tampak Atas", fontsize=12, fontweight="bold")
 
-# ══════════ TAMPAK SAMPING ══════════
-RISER = 7.0
-bx.add_patch(Rectangle((-W/2, 0), W, 2.6, fc="#CFCFCF", ec="k", lw=1.4))
-bx.text(0, 1.3, "rangka + duct", ha="center", va="center", fontsize=8)
-bx.add_patch(Rectangle((-4, 2.6), 8, 2.2, fc="#1B9AAA", ec="k", lw=1.2))
-bx.text(0, 3.7, "stack FC / ESC", ha="center", va="center", fontsize=7.5, color="w",
-        fontweight="bold")
-bx.add_patch(Rectangle((-5, 4.8), 10, 3.2, fc="#7B68EE", ec="k", lw=1.2))
-bx.text(0, 6.4, "baterai LiPo", ha="center", va="center", fontsize=7.5, color="w",
-        fontweight="bold")
+# ───────── TAMPAK SAMPING ─────────
+lapis = [(0.0, 2.6, "white", TEBAL),      # rangka + saluran
+         (2.6, 2.2, ABU_MUDA, TIPIS),     # stack FC/ESC
+         (4.8, 0.9, ABU_MUDA, TIPIS),     # companion computer
+         (5.7, 2.3, ABU_MUDA, TIPIS)]     # baterai
+lebar = [W, 8.0, 4.0, 10.0]
+for (y0, h, fc, lw), lb in zip(lapis, lebar):
+    bx.add_patch(Rectangle((-lb/2, y0), lb, h, fc=fc, ec="black", lw=lw))
 for sx in (-1, 1):
-    bx.plot([sx*3.5, sx*3.5], [H, H+RISER], color="#555", lw=3, solid_capstyle="round")
-bx.add_patch(Rectangle((-TAG/2, H+RISER), TAG, 0.5, fc="#C1121F", ec="k", lw=1.4))
-bx.text(0, H+RISER+1.6, f"pelat AprilTag {TAG:.0f} cm", ha="center", fontsize=9,
-        color="#C1121F", fontweight="bold")
-bx.annotate("", (-TAG/2-1.6, H), (-TAG/2-1.6, H+RISER),
-            arrowprops=dict(arrowstyle="<->", color="#555", lw=1.5))
-bx.text(-TAG/2-2.4, H+RISER/2, f"tiang\n±{RISER:.0f} cm", ha="right", va="center",
-        fontsize=7.5, color="#555")
-bx.annotate("", (W/2+1.8, 0), (W/2+1.8, H),
-            arrowprops=dict(arrowstyle="<->", color="#C1121F", lw=1.6))
-bx.text(W/2+2.6, H/2, "8 cm", fontsize=9, color="#C1121F", fontweight="bold",
-        rotation=90, va="center")
-bx.plot([-W/2-2, W/2+4], [0,0], color="#888", lw=1, ls=":")
-bx.text(0, -1.4, "Tiang menaikkan penanda di atas mulut duct\nagar aliran udara masuk tidak tertutup.",
-        ha="center", va="top", fontsize=8, color="#444", style="italic")
+    bx.plot([sx*3.5, sx*3.5], [H, H+RISER], color="black", lw=1.4)
+bx.add_patch(Rectangle((-TAG/2, H+RISER), TAG, 0.6, fc="white", ec="black", lw=TEBAL))
+bx.plot([-W/2-2, W/2+3], [0, 0], color=ABU, lw=TIPIS, ls=(0,(1,2)))
 
-bx.set_xlim(-W/2-6, W/2+6); bx.set_ylim(-5, H+RISER+4)
+ukur(bx, (W/2, 0), (W/2, H), "8,0", offset=3.0, pad=0.6)
+ukur(bx, (TAG/2, H), (TAG/2, H+RISER), "7,0", offset=2.2, pad=0.6)
+
+balon(bx, "B", (-4.0, 3.7), (-8.2, -1.8))
+balon(bx, "C", (-2.0, 5.25), (-10.2, 1.4))
+balon(bx, "D", (-5.0, 6.8), (-9.6, 4.6))
+balon(bx, "F", (TAG/2*0.55, H+RISER+0.6), (5.8, 2.2))
+balon(bx, "G", (-3.5, H+RISER*0.55), (-7.6, 1.2))
+bx.set_xlim(-W/2-13, W/2+9); bx.set_ylim(-3.6, H+RISER+5.4)
 bx.set_aspect("equal"); bx.axis("off")
-bx.set_title("Tampak Samping", fontsize=12, fontweight="bold")
 
-fig.suptitle("Wahana Uji — SpeedyBee Bee35 (cinewhoop ber-duct), gambar berskala, satuan cm",
-             fontsize=13, fontweight="bold", y=0.985)
-plt.tight_layout(rect=[0,0.02,1,0.955])
-OUT = "tulisan/proposal/figures/sketsa-wahana.png"
-os.makedirs(os.path.dirname(OUT), exist_ok=True)
-plt.savefig(OUT, dpi=135, bbox_inches="tight", facecolor="w")
-print(f"lebar x panjang x tinggi : {W} x {L} x {H} cm")
-print(f"diameter duct            : {DUCT_OD} cm, pusat di (±{DX:.2f}, ±{DY:.2f})")
-print(f"celah bebas antar-duct   : {SPINE_W:.1f} cm  <-- area datar satu-satunya")
-print(f"tag dibutuhkan           : {TAG:.0f} cm  -> {TAG/SPINE_W:.1f}x lebih lebar dari celah")
+ax.text(0, -L/2-4.4, "(a) tampak atas", ha="center", va="top", fontsize=8.5)
+bx.text(0, -3.4, "(b) tampak samping", ha="center", va="top", fontsize=8.5)
+
+ket = ("A  saluran propeler (4×)     B  stack flight controller dan ESC     "
+       "C  companion computer XIAO ESP32-S3     D  baterai LiPo\n"
+       "E  sensor jarak (2×, diagonal 45°)     F  penanda AprilTag 10 × 10 cm     "
+       "G  tiang penyangga penanda")
+fig.text(0.5, 0.005, ket, ha="center", va="bottom", fontsize=7.8, linespacing=1.8)
+plt.tight_layout(rect=[0, 0.13, 1, 1])
+simpan(fig, "sketsa-wahana")
+print(f"jalur datar bebas saluran = {SPINE:.1f} cm, penanda dibutuhkan {TAG:.0f} cm")
