@@ -35,10 +35,10 @@ def penunjuk(xy, teks, xyt, ha):
     ax.annotate(teks, xy, xyt, fontsize=FS_KECIL, ha=ha, va="center",
                 arrowprops=dict(arrowstyle="-", lw=TIPIS, shrinkA=1, shrinkB=0))
 penunjuk((-DX - D/2*0.72, -DY - D/2*0.72), "saluran\npropeler", (-W/2 - 3.2, -L/2 + 1.0), "right")
-penunjuk((TAG/2, -TAG/2 + 1.2), "penanda\n12 cm\n(bertiang)", (W/2 + 4.2, -3.2), "left")
+penunjuk((TAG/2, -TAG/2 + 1.2), "penanda\n12 cm\n(bertiang)", (W/2 + 5.6, -5.6), "left")
 penunjuk((-(W/2 - 2.0) - 0.8, L/2 - 2.0), "sensor\njarak", (-W/2 - 3.2, L/2 + 1.6), "right")
 
-ax.set_xlim(-W/2 - 8.5, W/2 + 9.5); ax.set_ylim(-L/2 - 5.2, L/2 + 5.5)
+ax.set_xlim(-W/2 - 8.5, W/2 + 12.0); ax.set_ylim(-L/2 - 5.2, L/2 + 5.5)
 ax.set_aspect("equal"); ax.axis("off")
 simpan(fig, "wahana-atas")
 

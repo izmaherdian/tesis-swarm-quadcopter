@@ -93,8 +93,15 @@ def ukur(ax, p1, p2, teks, offset, fs=FS_KECIL, bantu=True, celah=0.0):
         tx, ty, va, ha = xd, (y1 + y2) / 2, "bottom", "center"
     ax.add_patch(FancyArrowPatch(a, b, arrowstyle="<|-|>", mutation_scale=6,
                  lw=TIPIS, color="black", shrinkA=0, shrinkB=0, zorder=6))
-    ax.text(tx, ty, teks, ha=ha, va=va, rotation=rot, fontsize=fs, zorder=7,
-            bbox=dict(fc="white", ec="none", pad=0.8))
+    # teks di samping garis ukur, tidak menimpa anak panah
+    if rot == 0:
+        ax.annotate(teks, (tx, ty), xytext=(0, 1.2), textcoords="offset points",
+                    ha="center", va="bottom", fontsize=fs, zorder=7)
+    else:
+        sisi = -1.2 if offset < 0 else 1.2
+        ax.annotate(teks, (tx, ty), xytext=(sisi, 0), textcoords="offset points",
+                    ha="right" if offset < 0 else "left", va="center", rotation=90,
+                    fontsize=fs, zorder=7)
 
 
 def simpan(fig, nama):
