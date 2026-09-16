@@ -3,9 +3,10 @@
 > Dibuat 2026-09-16 dari 17 foto + denah tulisan tangan di `foto/`.
 > Semua ukuran ruangan bergalat ±5 cm (dinyatakan sendiri pada denah).
 >
-> **Video `video/00-video-ruangan.mp4` tidak dapat dibaca** — seluruh 1081 frame
-> ter-*decode* hitam (`min=0 max=0`); `ffmpeg` tidak terpasang di mesin ini.
-> Analisis di bawah **tidak memakai video sama sekali**.
+> **Diperbarui 2026-09-16 (putaran kedua):** video `video/00-video-ruangan.mp4`
+> kini sudah terbaca setelah `ffmpeg` dipasang. Laporan sebelumnya keliru —
+> berkasnya tidak rusak, **dekoder OpenCV yang gagal**. Temuan dari video ada di
+> bagian 9, dan sebagiannya mengubah kesimpulan di bagian 1.
 
 ## 1. Ruangan
 
@@ -194,3 +195,98 @@ bukan diasumsikan.
 | Area terbang: segmen lurus 7,20 m, 2 kamera, tumpang tindih 2,40 m | bagian 2 di atas |
 | Kamera: 4K, HFOV ±109°, ≥30 FPS, global shutter diutamakan, 2 unit | bagian 4 di atas |
 | Ruangan: bisa dipakai eksklusif dengan penjadwalan | bagian 1 di atas |
+
+---
+
+## 9. Temuan dari video (putaran kedua)
+
+Rekaman 53,6 detik, 420×743, menyusuri area. Menunjukkan hal yang tidak terlihat
+pada foto diam.
+
+### 9.1 Ruangannya penuh perabot
+
+| Perabot | Letak | Dampak |
+|---|---|---|
+| **Deretan sofa panjang** (4–5 unit, berbantal guling) | menempel satu dinding sepanjang lorong | **memakan ±80–90 cm lebar lorong** |
+| 3–4 **roll-up banner** | berjajar di dinding & kolom | penghalang tegak, mudah roboh kena *downwash* |
+| Bangku kerja oranye + peralatan | area terbuka | |
+| Sekat rotan, kursi, jam dinding, dispenser | tersebar | |
+| **Kipas industri besar** beroda | menempel dinding | akan dipindahkan |
+| **Kipas berdiri biru** | dekat banner | **kandidat sumber angin** — belum dikonfirmasi |
+| Pintu kayu berengsel | membuka **ke dalam** area | penghalang bergerak + soal keselamatan |
+| Orang | terlihat duduk di area | perlu penjadwalan |
+
+### 9.2 Plafon: rangka-T ubin 60 × 60 cm
+
+Terlihat jelas pola ubin gantung berukuran standar. Ini **menguntungkan**:
+rangkanya jadi kisi ukur bawaan sekaligus pola pemasangan yang teratur untuk
+menempatkan dua kamera pada jarak yang diketahui.
+
+Tapi banyak posisi ubin sudah terpakai: **AC kaset**, *downlight* bulat, sprinkler,
+dan *troffer* TL. Kedua titik kamera harus direncanakan menghindari semua itu.
+
+### 9.3 Pencahayaan campur aduk
+
+Terlihat **tiga jenis sumber sekaligus**: *troffer* TL berona kehijauan,
+*downlight* hangat, dan **kaca *clerestory*** di atas dinding sekat yang
+meneruskan cahaya dari ruang sebelah. Ujung lorong bahkan berona **merah muda**
+— sumber cahaya lain lagi.
+
+⇒ **Auto-exposure dan auto-white-balance wajib dikunci manual** saat merekam data.
+Kalau dibiarkan otomatis, kecerahan berubah saat wahana berpindah antar zona
+cahaya dan deteksi tag ikut terganggu.
+
+### 9.4 Lantai berubin besar
+
+Nat ubin membentuk kisi teratur — berguna untuk **menandai posisi dus rintangan
+secara berulang** antar sesi, tanpa perlu mengukur ulang tiap kali.
+
+## 10. Penskalaan skenario: simulator → arena nyata
+
+Dibaca langsung dari kode simulator (`Agent/MultiAgentConfig.py`,
+`Environment/Obstacles.py`):
+
+| Besaran | Simulator | Keterangan |
+|---|---|---|
+| Diameter agen | 0,40 m | `ROBOT_RADIUS = 0.2` |
+| Topologi V 5 agen | lateral ±1,0 m, memanjang ±1,0 m | `TOPOLOGY`, `FORMATION_TYPE = 1` |
+| Bentang formasi | **2,40 × 2,40 m** | termasuk diameter agen |
+| Celah sempit (scheme2) | **1,00 m** | dinding y=3,0 dan y=4,0 pada x=10–15 |
+| Panjang bagian sempit | 5,00 m | |
+| Panjang koridor | 20,0 m | |
+
+Wahana nyata berdiameter **0,25 m**, jadi faktor skala **k = 0,625**.
+
+### Skenario nyata yang menjaga rasio simulator
+
+| Besaran | Nilai terskala |
+|---|---|
+| Bentang formasi | **1,50 × 1,50 m** |
+| **Celah sempit** | **0,62 m** |
+| Panjang bagian sempit | 3,12 m |
+| Lebar bersih dibutuhkan | **2,10 m** (bentang + 30 cm tiap sisi) |
+| Panjang dibutuhkan | **7,12 m** (sempit 3,12 + ancang 2,0 + keluar 2,0) |
+
+### Kecocokan dengan lab
+
+| Syarat | Tersedia | Putusan |
+|---|---|---|
+| Panjang 7,12 m | 7,20 m (liputan 2 kamera) | ✅ **cukup, sisa 8 cm** |
+| Lebar 2,10 m — lorong kosong | 2,70 m | ✅ cukup |
+| Lebar 2,10 m — **sofa tetap di tempat** | ±1,80 m | ❌ **kurang 30 cm** |
+
+## 🔴 Konsekuensi: sofa harus dipindahkan
+
+Ini syarat yang mengikat, bukan preferensi. Dengan deretan sofa di tempatnya,
+lebar bersih tinggal ±1,80 m sementara skenario menuntut 2,10 m. Formasi V
+terskala tidak akan muat, sehingga **pemicu ERC tidak akan pernah terjadi secara
+sah** — wahana sudah terpaksa berbanjar sejak awal, bukan karena mendeteksi celah.
+
+Karena ruangan **bisa dipakai eksklusif dengan penjadwalan**, memindahkan sofa
+saat sesi uji seharusnya bisa diatur. Perlu dipastikan ke pengelola.
+
+Catatan: celah 0,62 m menyisakan hanya **18,5 cm per sisi** saat wahana mengekor.
+Itu ketat untuk kendali nyata. Bila terlalu berisiko, celah boleh dilebarkan ke
+0,80 m (27,5 cm per sisi) — konsekuensinya rasio celah/agen naik dari 2,5 ke 3,2,
+**tidak lagi setara dengan simulator**, dan perbedaan itu wajib dinyatakan saat
+membandingkan hasil fisik dengan hasil simulasi.
