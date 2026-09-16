@@ -719,6 +719,13 @@ Kriteria pemilihan ditetapkan sebelum pengujian dijalankan, yaitu: tingkat keber
 
 Bagian ini menguraikan rancangan kalang estimasi dan kendali yang dijalankan di atas wahana, mulai dari fusi sensor hingga alokasi perintah motor.
 
+\subsection{Firmware \textit{Flight Controller}}
+\label{subsec:firmware_fc}
+
+Pose dari kamera atas hanya berguna bila \textit{flight controller} dapat menerimanya sebagai sumber navigasi eksternal. ArduPilot mendukung masukan ini melalui EKF3, tetapi fitur navigasi non-GPS memerlukan papan dengan memori \textit{flash} lebih dari 1~MB \cite{ardupilotNonGPSPositionEstimation}. SpeedyBee F405 Mini hanya memiliki 1~MB, dan build stabil resminya menonaktifkan fitur navigasi eksternal EKF3, odometri visual, serta masukan \textit{beacon} \cite{ardupilotFeaturesSpeedyBeeF405Mini}. Dengan firmware bawaan, pose kamera tidak dapat diterima.
+
+Penelitian ini karenanya memakai firmware ArduPilot racikan yang dibangun melalui ArduPilot Custom Firmware Builder \cite{ardupilotCustomFirmwareBuilder}: fitur navigasi eksternal EKF3 diaktifkan dan fitur yang tidak dipakai dinonaktifkan agar muat dalam 1~MB. Keberhasilan build ini menjadi bagian gerbang kelayakan Fase~2. Bila tidak muat, kalang posisi dan kecepatan dipindahkan ke \textit{companion computer}, dan \textit{flight controller} hanya menjalankan kalang sikap. Daftar fitur yang diaktifkan dan dinonaktifkan dicatat sebagai lampiran agar firmware dapat dibangun ulang.
+
 \subsection{Estimator \textit{State} dengan \textit{Extended Kalman Filter} (EKF)}
 
 Keberhasilan manuver yang dihasilkan oleh perencana tingkat tinggi dan keandalan stabilisasi oleh pengontrol tingkat rendah sangat bergantung pada akurasi informasi \textit{state} aktual dari wahana. Mengingat dinamika quadcopter bersifat non-linear dan sensor pengukuran selalu mengandung derau, sistem ini dilengkapi dengan algoritma \textit{Extended Kalman Filter} (EKF) sebagai estimator \textit{state} utama \cite{KalmanFilterGeneralizations2006}. 
@@ -730,7 +737,7 @@ Secara matematis, sistem estimasi \textit{state} quadcopter dirumuskan dalam mod
     \mathbf{x}_k &= f(\mathbf{x}_{k-1}, \mathbf{u}_{k-1}) + \mathbf{w}_{k-1} \label{eq:ekf_system} \\
     \mathbf{z}_k &= h(\mathbf{x}_k) + \mathbf{v}_k \label{eq:ekf_measurement}
 \end{align}
-Pada implementasi fisik wahana ini, vektor \textit{state} $\mathbf{x}_k \in \mathbb{R}^{10}$ didefinisikan secara spesifik mencakup posisi 3D pada kerangka inersia global, kecepatan linear, dan \textit{quaternion} orientasi bodi:
+Formulasi berikut adalah model konseptual; implementasinya memakai EKF3 bawaan ArduPilot pada firmware racikan (Subbab~\ref{subsec:firmware_fc}), yang \textit{state}-nya lebih lengkap. Pada model konseptual ini, vektor \textit{state} $\mathbf{x}_k \in \mathbb{R}^{10}$ mencakup posisi 3D pada kerangka inersia global, kecepatan linear, dan \textit{quaternion} orientasi bodi:
 \begin{equation}
     \mathbf{x} = 
     \begin{bmatrix}
@@ -738,7 +745,7 @@ Pada implementasi fisik wahana ini, vektor \textit{state} $\mathbf{x}_k \in \mat
     \end{bmatrix}^T
     \label{eq:state_vector_ekf}
 \end{equation}
-Vektor masukan $\mathbf{u}_{k-1}$ berasal dari pembacaan sensor internal IMU bawaan \textit{flight controller} (ICM-42688P) pada laju pembaruan tinggi ($100$--$200$ Hz), yang terdiri atas akselerasi linear bodi $\mathbf{a}_B = [a_x, a_y, a_z]^T$ dan laju rotasi bodi $\boldsymbol{\omega}_B = [p, q, r]^T$. Sementara itu, vektor pengukuran $\mathbf{z}_k \in \mathbb{R}^4$ diperoleh secara asinkron dari sistem kamera atas berbasis penanda visual AprilTag pada frekuensi $60$ Hz melalui paket MAVLink:
+Vektor masukan $\mathbf{u}_{k-1}$ berasal dari pembacaan sensor internal IMU bawaan \textit{flight controller} (ICM-42688P) pada laju yang jauh lebih tinggi daripada laju kamera, yang terdiri atas akselerasi linear bodi $\mathbf{a}_B = [a_x, a_y, a_z]^T$ dan laju rotasi bodi $\boldsymbol{\omega}_B = [p, q, r]^T$. Sementara itu, vektor pengukuran $\mathbf{z}_k \in \mathbb{R}^4$ diperoleh secara asinkron dari sistem kamera atas berbasis penanda visual AprilTag pada frekuensi $60$ Hz melalui paket MAVLink:
 \begin{equation}
     \mathbf{z}_k = 
     \begin{bmatrix}
@@ -756,7 +763,7 @@ Karena fungsi kinematika translasi dan rotasi bersifat non-linear, EKF melakukan
 Proses estimasi EKF berjalan dalam arsitektur \textit{multi-rate} melalui dua tahapan utama:
 
 \subsubsection{1. Tahap Prediksi}
-Dijalankan pada frekuensi tinggi ($100$--$200$ Hz) mengikuti laju cuplik IMU. Model kinematika memproyeksikan posisi, kecepatan, dan orientasi maju:
+Dijalankan setiap cuplikan IMU. Model kinematika memproyeksikan posisi, kecepatan, dan orientasi maju:
 \begin{align}
     \hat{\mathbf{x}}_{k|k-1} &= f(\hat{\mathbf{x}}_{k-1|k-1}, \mathbf{u}_{k-1}) \\
     \mathbf{P}_{k|k-1} &= \mathbf{F}_{k-1} \mathbf{P}_{k-1|k-1} \mathbf{F}_{k-1}^T + \mathbf{Q}_{k-1}
@@ -764,7 +771,7 @@ Dijalankan pada frekuensi tinggi ($100$--$200$ Hz) mengikuti laju cuplik IMU. Mo
 di mana $\hat{\mathbf{x}}_{k|k-1}$ adalah estimasi \textit{state} apriori dan $\mathbf{P}_{k|k-1}$ adalah matriks kovariansi galat apriori.
 
 \subsubsection{2. Tahap Pembaruan Ukuran}
-Setiap kali paket data pose absolut dari stasiun kamera atas tiba ($60$ Hz), koreksi pengukuran dieksekusi untuk mereduksi akumulasi \textit{drift} dari integrasi IMU:
+Setiap kali pose absolut dari kamera atas tiba (hingga $50$ kali per detik), koreksi pengukuran dieksekusi untuk mereduksi akumulasi \textit{drift} dari integrasi IMU:
 \begin{align}
     \tilde{\mathbf{y}}_k &= \mathbf{z}_k - h(\hat{\mathbf{x}}_{k|k-1}) \\
     \mathbf{S}_k &= \mathbf{H}_k \mathbf{P}_{k|k-1} \mathbf{H}_k^T + \mathbf{R}_k \\
@@ -778,8 +785,8 @@ Keluaran akhir $\hat{\mathbf{x}}_{k|k}$ menghasilkan estimasi pose 3D dan kecepa
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.92\textwidth]{figures/ekf_diagram.png}
-    \caption{Arsitektur fusi sensor menggunakan \textit{Extended Kalman Filter} (EKF) untuk estimasi \textit{state} pose dan kecepatan tiga dimensi.}
+    \includegraphics{figures/ekf.pdf}
+    \caption{Fusi sensor dengan EKF. Prediksi dijalankan setiap cuplikan IMU; pembaruan dijalankan setiap pose kamera tiba. Estimasi $\hat{\mathbf{x}}_{k|k}$ diumpankan ke pengendali tingkat rendah dan perencana tingkat tinggi.}
     \label{fig:ekf_diagram}
 \end{figure}
 
@@ -794,7 +801,7 @@ Aliran sinyal kendali tingkat rendah beroperasi melalui tahapan berikut:
     \item \textbf{Konversi Akselerasi ke Sikap dan Gaya Dorong}: Komponen akselerasi vertikal dipadukan dengan kompensasi gravitasi untuk menghasilkan total gaya dorong skalar $T = m(g + a_z)$, yang diteruskan langsung ke blok alokasi motor (\textit{mixer}). Sementara itu, komponen akselerasi horizontal ($a_x, a_y$) dipadukan dengan sudut target \textit{yaw} $\psi_{\mathrm{ref}}$ untuk menghitung orientasi sikap target dalam representasi \textit{quaternion} target $\mathbf{q}_{\mathrm{des}} = [\phi_{\mathrm{des}}, \theta_{\mathrm{des}}, \psi_{\mathrm{des}}]^T$.
     \item \textbf{Kalang Rotasi Dalam (Sikap Sudut dan Laju Sudut)}: Galat orientasi antara $\mathbf{q}_{\mathrm{des}}$ dan orientasi terestimasi $\hat{\mathbf{q}}$ diproses oleh Pengendali P Sikap (\textit{Angle P}) untuk menghasilkan laju sudut target $\boldsymbol{\omega}_{\mathrm{des}} = [p_{\mathrm{des}}, q_{\mathrm{des}}, r_{\mathrm{des}}]^T$. Selanjutnya, Pengendali PID Laju Sudut (\textit{Rate PID}) membandingkan nilai tersebut terhadap laju sudut aktual $\hat{\boldsymbol{\omega}}$ terukur serta menambahkan laju \textit{yaw} umpan-maju $\dot{\psi}_{\mathrm{ref}}$ untuk menghasilkan torsi kendali akhir $\boldsymbol{\tau} = [\tau_\phi, \tau_\theta, \tau_\psi]^T$.
     \item \textbf{Alokasi Kendali (\textit{Mixer}) dan Sinyal Digital DShot}: Blok alokasi motor memetakan gaya dorong skalar $T$ dan vektor torsi $\boldsymbol{\tau}$ ke konfigurasi geometri quadcopter X, menghasilkan nilai komando empat motor. Unit DMA pada mikrokontroler STM32F405 membangkitkan paket pulsa digital DShot300/600 beresolusi tinggi menuju ESC 4-in-1 SpeedyBee BLS 35A untuk menggerakkan empat motor BLDC 2006 1950KV.
-    \item \textbf{Fusi Sensor dan Penutupan Kalang (ArduPilot EKF3)}: Modul EKF3 pada STM32F405 memadukan data inersia frekuensi tinggi ($1$--$8$ kHz) dari IMU onboard ICM-42688P dengan data paket pose kamera absolut (\textit{External Navigation}/ExtNav) yang dikirim dari ESP32-S3 melalui MAVLink, menghasilkan estimasi pose ($\hat{\mathbf{p}}, \hat{\mathbf{q}}$), kecepatan ($\hat{\mathbf{v}}$), dan laju sudut ($\hat{\boldsymbol{\omega}}$) yang menutup kalang kendali secara terpadu.
+    \item \textbf{Fusi Sensor dan Penutupan Kalang (ArduPilot EKF3)}: Modul EKF3 pada STM32F405 memadukan data inersia dari IMU onboard ICM-42688P dengan data paket pose kamera absolut (\textit{External Navigation}/ExtNav) yang dikirim dari ESP32-S3 melalui MAVLink, menghasilkan estimasi pose ($\hat{\mathbf{p}}, \hat{\mathbf{q}}$), kecepatan ($\hat{\mathbf{v}}$), dan laju sudut ($\hat{\boldsymbol{\omega}}$) yang menutup kalang kendali secara terpadu.
 \end{enumerate}
 
 \begin{figure}[htbp]
