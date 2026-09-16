@@ -1,0 +1,119 @@
+% ============================================================
+% itb-tesis.sty — Gaya dokumen tesis Magister ITB
+% Program Studi Instrumentasi dan Kontrol, FTI ITB
+%
+% Dipakai bersama oleh proposal/ dan laporan-akhir/ agar format
+% (font, margin, penomoran, daftar isi) tidak pernah menyimpang
+% antar dokumen.
+%
+% WAJIB dikompilasi dengan XeLaTeX (fontspec + unicode-math).
+% ============================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{itb-tesis}[2026/09/16 Gaya tesis Magister ITB]
+
+
+% ============================================================
+% PENGATURAN BAHASA DAN FONT
+% ============================================================
+\usepackage[indonesian]{babel}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\usepackage{unicode-math}
+\setmathfont{TeX Gyre Termes Math}
+\setmathfont[version=bold,FakeBold=2]{TeX Gyre Termes Math}
+
+% ============================================================
+% TATA LETAK DAN FORMAT DOKUMEN
+% ============================================================
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    left=4cm,
+    right=3cm,
+    top=3cm,
+    bottom=3cm
+}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{tocloft}
+
+% ============================================================
+% GAMBAR, TABEL, PERSAMAAN, DAN DIAGRAM
+% ============================================================
+\usepackage{graphicx}
+% figures/ = gambar milik dokumen ini; ../common/figures/ = gambar bersama (logo ITB)
+\graphicspath{{figures/}{../common/figures/}}
+\usepackage[table]{xcolor}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{caption}
+\captionsetup{
+    labelfont=bf,
+    textfont=normalfont,
+    labelsep=space
+}
+\renewcommand{\theadfont}{\bfseries}
+\renewcommand{\theadalign}{cc}
+\usepackage{amsmath}
+\setcounter{MaxMatrixCols}{13}
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows.meta}
+
+% ============================================================
+% SITASI, DAFTAR PUSTAKA, DAN TAUTAN
+% ============================================================
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks,linktoc=all]{hyperref}
+
+% ============================================================
+% FORMAT JUDUL DAN PENOMORAN
+% ============================================================
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+\numberwithin{equation}{chapter}
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+\titleformat{\chapter}[display]
+    {\normalfont\fontsize{14pt}{16pt}\selectfont\bfseries\centering}
+    {\MakeUppercase{\chaptertitlename}\ \thechapter}
+    {10pt}
+    {\fontsize{14pt}{16pt}\selectfont}
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
+\titleformat{\section}
+    {\normalfont\fontsize{12pt}{14pt}\selectfont\bfseries}
+    {\thesection}
+    {1em}
+    {}
+
+% ============================================================
+% FORMAT DAFTAR ISI, DAFTAR GAMBAR, DAN DAFTAR TABEL
+% ============================================================
+\AtBeginDocument{%
+  \renewcommand{\contentsname}{DAFTAR ISI}%
+  \renewcommand{\listfigurename}{DAFTAR GAMBAR}%
+  \renewcommand{\listtablename}{DAFTAR TABEL}%
+}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftchapdotsep}{\cftdotsep}
+\renewcommand{\cftdotsep}{1}
+\setlength{\cftbeforechapskip}{2pt}
+\setlength{\cftbeforetoctitleskip}{-20pt}
+\setlength{\cftbeforeloftitleskip}{-20pt}
+\setlength{\cftbeforelottitleskip}{-20pt}
+\setlength{\cftaftertoctitleskip}{20pt}
+\setlength{\cftafterloftitleskip}{20pt}
+\setlength{\cftafterlottitleskip}{20pt}
+\renewcommand{\cfttoctitlefont}{\hfill\fontsize{14pt}{16pt}\selectfont\bfseries}
+\renewcommand{\cftaftertoctitle}{\hfill\mbox{}\par}
+\renewcommand{\cftloftitlefont}{\hfill\fontsize{14pt}{16pt}\selectfont\bfseries}
+\renewcommand{\cftafterloftitle}{\hfill\mbox{}\par}
+\renewcommand{\cftlottitlefont}{\hfill\fontsize{14pt}{16pt}\selectfont\bfseries}
+\renewcommand{\cftafterlottitle}{\hfill\mbox{}\par}
+
+
+\endinput

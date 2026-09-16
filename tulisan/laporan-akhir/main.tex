@@ -1,0 +1,156 @@
+% !TeX program = xelatex
+% Laporan Akhir Tesis — kompilasi: latexmk -xelatex -bibtex main.tex  (atau: make laporan)
+\documentclass[12pt,a4paper]{report}
+
+% Format ITB dipakai bersama dengan proposal — jangan menambah pengaturan
+% font/margin/penomoran di sini, ubah di ../common/itb-tesis.sty saja.
+\usepackage{../common/itb-tesis}
+
+\begin{document}
+
+\onehalfspacing
+
+% ==========================================
+% SAMPUL
+% ==========================================
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+
+    {\fontsize{14pt}{16pt}\selectfont\bfseries
+    IMPLEMENTASI FISIK DAN EVALUASI \textit{EVENT-BASED RECONFIGURATION CONTROL} PADA SISTEM FORMASI ADAPTIF TERDESENTRALISASI KAWANAN \textit{QUADCOPTER} DI RUANG SEMPIT\par}
+
+    \vspace{2.0cm}
+    {\large \bfseries TESIS\par}
+    \vspace{1.5cm}
+
+    \includegraphics[width=3cm]{logo_itb.png}\par
+
+    \vspace{1.5cm}
+    Oleh\par
+    \vspace{0.5cm}
+    {\large \bfseries Izma Alhazmi Herdian}\par
+    {\large \bfseries 23825301}\par
+
+    \vfill
+
+    {\large \bfseries
+    MAGISTER INSTRUMENTASI DAN KONTROL\par
+    FAKULTAS TEKNOLOGI INDUSTRI\par
+    INSTITUT TEKNOLOGI BANDUNG\par
+    2027\par}
+\end{titlepage}
+
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+% ==========================================
+% HALAMAN DEPAN
+% ==========================================
+\chapter*{ABSTRAK}
+\addcontentsline{toc}{chapter}{ABSTRAK}
+% TODO: Salin kerangka dari proposal, lalu tulis ulang dengan HASIL, bukan rencana.
+% Abstrak laporan akhir wajib memuat angka: berapa penurunan RMSE formasi,
+% berapa tingkat keberhasilan lolos lorong, pada kondisi angin berapa.
+[Ditulis paling akhir, setelah BAB IV selesai.]
+
+\chapter*{ABSTRACT}
+\addcontentsline{toc}{chapter}{ABSTRACT}
+[Terjemahan ABSTRAK.]
+
+\chapter*{HALAMAN PENGESAHAN}
+\addcontentsline{toc}{chapter}{HALAMAN PENGESAHAN}
+% TODO: Salin dari tulisan/proposal/main.tex, ganti "Proposal Tesis" -> "Tesis".
+
+\chapter*{KATA PENGANTAR}
+\addcontentsline{toc}{chapter}{KATA PENGANTAR}
+
+\chapter*{DAFTAR SINGKATAN DAN LAMBANG}
+\addcontentsline{toc}{chapter}{DAFTAR SINGKATAN DAN LAMBANG}
+% TODO: Salin tabel dari proposal dan tambahkan singkatan baru yang muncul di BAB IV.
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% ==========================================
+% BAB I PENDAHULUAN
+% ==========================================
+\chapter{PENDAHULUAN}
+% Sumber: tulisan/proposal/main.tex BAB I. Ubah kalimat rencana ("akan diuji")
+% menjadi kalimat lampau ("telah diuji").
+\section{Latar Belakang}
+\section{Rumusan Masalah}
+\section{Ruang Lingkup}
+\section{Tujuan dan Sasaran}
+\section{Hipotesa}
+\section{Sistematika Penulisan}
+
+% ==========================================
+% BAB II TINJAUAN PUSTAKA
+% ==========================================
+\chapter{TINJAUAN PUSTAKA}
+% Sumber: tulisan/proposal/main.tex BAB II, ditambah pustaka baru yang ditemukan
+% selama pengerjaan. Jalankan /phd-skills:gaps sebelum menganggap bab ini selesai.
+\section{Studi Terkait}
+\section{Quadcopter}
+\section{Sistem Lokalisasi \textit{Indoor} Berbasis Kamera Atas (\textit{Ceiling Camera})}
+\section{Sistem Deteksi Rintangan Berbasis Sensor Ultrasonik}
+\section{Estimator \textit{State} dengan \textit{Extended Kalman Filter} (EKF)}
+\section{Pengontrol Tingkat Rendah (\textit{Low-Level Controller})}
+\section{Perencana Tingkat Tinggi (\textit{High-Level Planner})}
+
+% ==========================================
+% BAB III METODOLOGI PENELITIAN
+% ==========================================
+\chapter{METODOLOGI PENELITIAN}
+% Bab ini harus cukup rinci sehingga orang lain dapat mengulang eksperimenmu.
+% Setiap angka parameter di sini wajib punya sumber di experiments/<id>/config.yaml.
+\section{Rancangan Penelitian}
+\section{Perangkat Keras dan Perangkat Lunak}
+\section{Skenario Pengujian}
+\section{Metrik Evaluasi}
+% RMSE galat formasi, waktu konvergensi, tingkat keberhasilan lolos lorong,
+% jarak minimum antaragen, beban komputasi dan komunikasi.
+\section{Prosedur Pengambilan Data}
+
+% ==========================================
+% BAB IV HASIL DAN PEMBAHASAN
+% ==========================================
+\chapter{HASIL DAN PEMBAHASAN}
+% Setiap tabel/gambar di bab ini berasal dari results/<tanggal>-<nama-eksperimen>/.
+% Cantumkan ID eksperimen pada caption agar angkanya dapat dilacak balik.
+\section{Verifikasi Model Dinamika dan Pengontrol Tingkat Rendah}
+\section{Kinerja Kontrol Formasi pada Ruang Terbuka}
+\section{Kinerja Rekonfigurasi Formasi pada Lorong Sempit}
+\section{Pengaruh Gangguan Angin terhadap Ketahanan Formasi}
+\section{Perbandingan dengan Metode Pembanding (\textit{Baseline})}
+\section{Keterbatasan Penelitian}
+
+% ==========================================
+% BAB V KESIMPULAN DAN SARAN
+% ==========================================
+\chapter{KESIMPULAN DAN SARAN}
+\section{Kesimpulan}
+% Setiap butir kesimpulan harus menjawab satu rumusan masalah di BAB I
+% dan didukung angka dari BAB IV. Tidak boleh ada klaim tanpa angka.
+\section{Saran}
+
+% ==========================================
+% DAFTAR PUSTAKA
+% ==========================================
+\clearpage
+\addcontentsline{toc}{chapter}{DAFTAR PUSTAKA}
+\bibliographystyle{ieeetr}
+\renewcommand{\bibname}{DAFTAR PUSTAKA}
+\bibliography{../common/references}
+
+\appendix
+\chapter{LAMPIRAN}
+% Kode kunci, tabel parameter lengkap, dan data mentah pendukung.
+
+\end{document}

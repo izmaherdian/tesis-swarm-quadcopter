@@ -1,106 +1,10 @@
 % !TeX program = xelatex
+% Proposal Tesis — kompilasi: latexmk -xelatex -bibtex main.tex  (atau: make)
 \documentclass[12pt,a4paper]{report}
 
-% ============================================================
-% PENGATURAN BAHASA DAN FONT
-% ============================================================
-\usepackage[indonesian]{babel}
-\usepackage{fontspec}
-\setmainfont{Times New Roman}
-\usepackage{unicode-math}
-\setmathfont{TeX Gyre Termes Math}
-\setmathfont[version=bold,FakeBold=2]{TeX Gyre Termes Math}
-
-% ============================================================
-% TATA LETAK DAN FORMAT DOKUMEN
-% ============================================================
-\usepackage{geometry}
-\geometry{
-    a4paper,
-    left=4cm,
-    right=3cm,
-    top=3cm,
-    bottom=3cm
-}
-\usepackage{setspace}
-\usepackage{titlesec}
-\usepackage{tocloft}
-
-% ============================================================
-% GAMBAR, TABEL, PERSAMAAN, DAN DIAGRAM
-% ============================================================
-\usepackage{graphicx}
-\usepackage[table]{xcolor}
-\usepackage{array}
-\usepackage{tabularx}
-\usepackage{multirow}
-\usepackage{makecell}
-\usepackage{caption}
-\captionsetup{
-    labelfont=bf,
-    textfont=normalfont,
-    labelsep=space
-}
-\renewcommand{\theadfont}{\bfseries}
-\renewcommand{\theadalign}{cc}
-\usepackage{amsmath}
-\setcounter{MaxMatrixCols}{13}
-\usepackage{tikz}
-\usetikzlibrary{calc,arrows.meta}
-
-% ============================================================
-% SITASI, DAFTAR PUSTAKA, DAN TAUTAN
-% ============================================================
-\usepackage[numbers,sort&compress]{natbib}
-\usepackage[hidelinks,linktoc=all]{hyperref}
-
-% ============================================================
-% FORMAT JUDUL DAN PENOMORAN
-% ============================================================
-\renewcommand{\thechapter}{\Roman{chapter}}
-\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
-\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
-\renewcommand{\thesubsubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
-\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
-\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
-\numberwithin{equation}{chapter}
-\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
-\titleformat{\chapter}[display]
-    {\normalfont\fontsize{14pt}{16pt}\selectfont\bfseries\centering}
-    {\MakeUppercase{\chaptertitlename}\ \thechapter}
-    {10pt}
-    {\fontsize{14pt}{16pt}\selectfont}
-\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
-\titleformat{\section}
-    {\normalfont\fontsize{12pt}{14pt}\selectfont\bfseries}
-    {\thesection}
-    {1em}
-    {}
-
-% ============================================================
-% FORMAT DAFTAR ISI, DAFTAR GAMBAR, DAN DAFTAR TABEL
-% ============================================================
-\AtBeginDocument{%
-  \renewcommand{\contentsname}{DAFTAR ISI}%
-  \renewcommand{\listfigurename}{DAFTAR GAMBAR}%
-  \renewcommand{\listtablename}{DAFTAR TABEL}%
-}
-\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
-\renewcommand{\cftchapdotsep}{\cftdotsep}
-\renewcommand{\cftdotsep}{1}
-\setlength{\cftbeforechapskip}{2pt}
-\setlength{\cftbeforetoctitleskip}{-20pt}
-\setlength{\cftbeforeloftitleskip}{-20pt}
-\setlength{\cftbeforelottitleskip}{-20pt}
-\setlength{\cftaftertoctitleskip}{20pt}
-\setlength{\cftafterloftitleskip}{20pt}
-\setlength{\cftafterlottitleskip}{20pt}
-\renewcommand{\cfttoctitlefont}{\hfill\fontsize{14pt}{16pt}\selectfont\bfseries}
-\renewcommand{\cftaftertoctitle}{\hfill\mbox{}\par}
-\renewcommand{\cftloftitlefont}{\hfill\fontsize{14pt}{16pt}\selectfont\bfseries}
-\renewcommand{\cftafterloftitle}{\hfill\mbox{}\par}
-\renewcommand{\cftlottitlefont}{\hfill\fontsize{14pt}{16pt}\selectfont\bfseries}
-\renewcommand{\cftafterlottitle}{\hfill\mbox{}\par}
+% Format ITB (font, margin, penomoran, daftar isi) ada di ../common/itb-tesis.sty
+% agar proposal dan laporan akhir memakai gaya yang persis sama.
+\usepackage{../common/itb-tesis}
 
 \begin{document}
 
@@ -121,7 +25,7 @@
     {\large \bfseries PROPOSAL TESIS\par}
     \vspace{1.5cm}
     
-    \includegraphics[width=3cm]{figures/logo_itb.png}\par
+    \includegraphics[width=3cm]{logo_itb.png}\par
     
     \vspace{1.5cm}
     Oleh\par
@@ -163,7 +67,7 @@
 \vspace{0.8cm}
 
 \noindent
-Navigasi kawanan \textit{quadcopter} di ruang sempit membutuhkan sistem kontrol formasi yang adaptif. Penelitian ini mengimplementasikan dan mengevaluasi sistem kontrol desentralisasi formasi adaptif menggunakan \textit{Event-Based Reconfiguration Control} (ERC\label{abbr:erc}) pada perangkat keras fisik. Setiap agen mempertahankan formasi secara mandiri dan melakukan rekonfigurasi otonom saat menghadapi penyempitan ruang. Melalui mekanisme berbasis kejadian, manuver adaptasi hanya terpicu saat parameter persepsi lingkungan melewati ambang batas, sehingga efisiensi komputasi dan \textit{bandwidth} komunikasi jaringan meningkat secara signifikan.
+Navigasi kawanan \textit{quadcopter} di ruang sempit membutuhkan sistem kontrol formasi yang adaptif. Penelitian ini mengimplementasikan dan mengevaluasi sistem kontrol desentralisasi formasi adaptif menggunakan \textit{Event-Based Reconfiguration Control} (ERC) pada perangkat keras fisik. Setiap agen mempertahankan formasi secara mandiri dan melakukan rekonfigurasi otonom saat menghadapi penyempitan ruang. Melalui mekanisme berbasis kejadian, manuver adaptasi hanya terpicu saat parameter persepsi lingkungan melewati ambang batas, sehingga efisiensi komputasi dan \textit{bandwidth} komunikasi jaringan meningkat secara signifikan.
 
 \noindent
 Evaluasi eksperimental berfokus pada kestabilan formasi, akurasi pelacakan lintasan, dan ketahanan (\textit{robustness}) sistem terhadap kendala fisik dunia nyata, khususnya latensi komunikasi nirkabel dan derau (\textit{noise}) sensor lokalisasi \textit{indoor}. Hasil penelitian ini diharapkan dapat memvalidasi keandalan algoritma ERC secara empiris, menghasilkan rancangan sistem kontrol multi-agen yang terukur, tangguh, dan jauh lebih fleksibel dibandingkan metode formasi statis konvensional.
@@ -323,7 +227,6 @@ Daftar singkatan dan lambang yang digunakan dalam proposal ini disusun secara al
     RMSE & \textit{Root Mean Square Error} & \pageref{abbr:rmse} \\ \hline
     UAV & \textit{Unmanned Aerial Vehicle} & \pageref{abbr:uav} \\ \hline
     UDP & \textit{User Datagram Protocol} & \pageref{abbr:udp} \\ \hline
-    UWB & \textit{Ultra-Wideband} & \pageref{abbr:uwb} \\ \hline
 \end{tabularx}
 
 \clearpage
@@ -364,7 +267,7 @@ Seiring berkembangnya teknologi robotika dan sistem terdistribusi, muncul pendek
 
 Dalam sistem \textit{multi-quadcopter}, terdapat tantangan-tantangan seperti bagaimana tiap quadcopter dapat menentukan posisi tujuan, menghindari rintangan fisik, serta menghindari tabrakan antar-quadcopter, sembari tetap mencapai target akhir. Selain itu, sistem juga perlu menjaga formasi tertentu, yaitu susunan posisi antar-quadcopter yang bersifat relatif satu sama lain. Formasi ini penting untuk menjaga efisiensi ruang gerak dan komunikasi, serta memastikan area pencarian atau pengawasan tetap tercakup secara optimal. Bentuk formasi dapat berupa barisan, segitiga, kisi, atau bentuk lain, dan harus dapat berubah secara dinamis ketika menghadapi ruang sempit atau gangguan eksternal seperti angin. Oleh karena itu, sistem kontrol harus cukup adaptif untuk menjaga formasi sekaligus menjamin keselamatan dan kelancaran misi.
 
-Penelitian sebelumnya telah banyak mengeksplorasi berbagai metode untuk mengatasi tantangan ini. Pendekatan seperti \textit{leader-follower} \cite{abroComprehensiveReviewNextGen2025}, \textit{virtual structure} \cite{renFormationFeedbackControl2004, liuDecentralizationVirtualLinkage2018}, dan \textit{behavior-based} telah dikembangkan untuk menjaga konfigurasi kolektif \cite{balchBehaviorbasedFormationControl1998}. Secara khusus, metode \textit{Artificial Potential Field} (APF) digunakan untuk penghindaran rintangan, yang kemudian disempurnakan menjadi \textit{Improved Artificial Potential Field} (IAPF) untuk mengatasi masalah minimum lokal \cite{wangUAVFormationObstacle2021, buiEventbasedReconfigurationControl2025}. Lebih lanjut, \textit{Event-Based Reconfiguration Control} (ERC) diperkenalkan untuk memungkinkan formasi berubah secara dinamis saat melewati ruang sempit \cite{buiEventbasedReconfigurationControl2025}. Membangun di atas fondasi tersebut, penelitian ini mengadopsi kombinasi pendekatan-pendekatan tersebut, namun dengan menambahkan tingkat kompleksitas baru, yakni simulasi gangguan angin untuk menguji ketahanan sistem secara lebih komprehensif.
+Penelitian sebelumnya telah banyak mengeksplorasi berbagai metode untuk mengatasi tantangan ini. Pendekatan seperti \textit{leader-follower} \cite{abroComprehensiveReviewNextGen2025}, \textit{virtual structure} \cite{renFormationFeedbackControl2004, liuDecentralizationVirtualLinkage2018}, dan \textit{behavior-based} telah dikembangkan untuk menjaga konfigurasi kolektif \cite{balchBehaviorbasedFormationControl1998}. Secara khusus, metode \textit{Artificial Potential Field} (APF) digunakan untuk penghindaran rintangan, yang kemudian disempurnakan menjadi \textit{Improved Artificial Potential Field} (IAPF) untuk mengatasi masalah minimum lokal \cite{wangUAVFormationObstacle2021, buiEventbasedReconfigurationControl2025}. Lebih lanjut, \textit{Event-Based Reconfiguration Control} (ERC\label{abbr:erc}) diperkenalkan untuk memungkinkan formasi berubah secara dinamis saat melewati ruang sempit \cite{buiEventbasedReconfigurationControl2025}. Membangun di atas fondasi tersebut, penelitian ini mengadopsi kombinasi pendekatan-pendekatan tersebut, namun dengan menambahkan tingkat kompleksitas baru, yakni simulasi gangguan angin untuk menguji ketahanan sistem secara lebih komprehensif.
 
 Meskipun berbagai algoritma desentralisasi tersebut telah menunjukkan kinerja yang sangat baik dalam lingkungan simulasi komputasional, implementasinya pada perangkat keras (\textit{hardware}) fisik menghadirkan tantangan tersendiri. Di dunia nyata, keandalan sistem \textit{multi-quadcopter} dibatasi oleh ketidakidealan fisik seperti latensi komunikasi jaringan nirkabel \cite{chenReviewUnmannedAerial2020}, keterbatasan lebar pita (\textit{bandwidth}) \cite{baktayanComputationalOffloadingUAV2024}, derau (\textit{noise}) pada sistem estimasi keadaan/sensor lokalisasi \cite{georgiadisReviewLocalizationSensing2025, liuSurveySensorsBased2025}, serta kapasitas komputasi tertanam (\textit{on-board processing}) pada masing-masing agen \cite{ahmedSurveyUAVComputing2022}. Beberapa penelitian terkait implementasi perangkat keras kawanan quadcopter umumnya masih mengandalkan arsitektur komputasi terpusat atau menyederhanakan algoritma navigasinya untuk menghindari beban komputasi \cite{alqudsiUAVSwarmsResearch2025}. Realisasi fisik dari algoritma desentralisasi yang kompleks, khususnya sistem kontrol adaptif seperti ERC yang sangat sensitif terhadap keandalan pertukaran data \textit{real-time}, masih menjadi area penelitian yang krusial untuk divalidasi secara empiris.
 
@@ -616,7 +519,7 @@ Berikut adalah penjelasan rincian komponen perangkat keras yang diintegrasikan p
 Sebagai acuan dasar geometri dan dimensi mekanis, wahana ini menggunakan basis \textit{frame} quadcopter SpeedyBee 35. Desain kerangka yang kompak ini dipilih agar ideal untuk pergerakan navigasi di dalam ruangan (\textit{indoor}) namun tetap kuat menopang komponen avionik tambahan. Wujud platform acuan ini ditunjukkan pada Gambar~\ref{fig:quadcopter-speedybee35}.
 
 \subsubsection{2. Struktur Fisik dan Komponen (Tampak Atas-Bawah)}
-Untuk menyiasati keterbatasan ruang pada \textit{frame}, komponen elektronik dibagi menjadi dua area penempatan utama, yaitu pada sisi atas dan sisi bawah kerangka. Komponen tingkat tinggi seperti \textit{companion computer} dan modul komunikasi nirkabel diletakkan pada bagian atas wahana untuk mengoptimalkan ruang kerja sensor serta memudahkan akses antarmuka data. Sementara itu, komponen sistem propulsi dan kontrol dasar seperti \textit{flight controller}\label{abbr:fc} serta \textit{Electronic Speed Controller} (ESC) ditempatkan di bagian bawah atau inti kerangka. Susunan vertikal (\textit{stacking}) yang memisahkan komponen manajemen data dan manajemen daya ini diatur sedemikian rupa guna menjaga keseimbangan pusat massa (\textit{center of mass}) wahana tetap berada di tengah, seperti diperlihatkan pada Gambar~\ref{fig:struktur_fisik}.
+Untuk menyiasati keterbatasan ruang pada \textit{frame}, komponen elektronik dibagi menjadi dua area penempatan utama, yaitu pada sisi atas dan sisi bawah kerangka. Komponen tingkat tinggi seperti \textit{companion computer} dan modul komunikasi nirkabel diletakkan pada bagian atas wahana untuk mengoptimalkan ruang kerja sensor serta memudahkan akses antarmuka data. Sementara itu, komponen sistem propulsi dan kontrol dasar seperti \textit{flight controller}\label{abbr:fc} serta \textit{Electronic Speed Controller} (ESC\label{abbr:esc}) ditempatkan di bagian bawah atau inti kerangka. Susunan vertikal (\textit{stacking}) yang memisahkan komponen manajemen data dan manajemen daya ini diatur sedemikian rupa guna menjaga keseimbangan pusat massa (\textit{center of mass}) wahana tetap berada di tengah, seperti diperlihatkan pada Gambar~\ref{fig:struktur_fisik}.
 
 \begin{figure}[h]
     \centering
@@ -656,38 +559,52 @@ Jalur komunikasi antar-wahana merupakan fondasi dari arsitektur kontrol terdesen
 \subsubsection{2. Komunikasi Stasiun Darat (Quadcopter-GCS)}
 Jalur komunikasi stasiun darat memfasilitasi pemantauan telemetri dan kontrol intervensi jarak jauh. Berbeda dengan jalur antar-wahana, arsitektur jaringan pada jalur ini bersifat terpusat (\textit{centralized}) dengan memanfaatkan sebuah \textit{router} nirkabel sebagai \textit{access point} utama di dalam area pengujian \textit{indoor}. Melalui medium ini, setiap ESP32 mengirimkan paket telemetri MAVLink berupa data kesehatan sistem (\textit{heartbeat}), estimasi orientasi sikap (\textit{attitude}), dan kapasitas baterai menuju \textit{Ground Control Station} (GCS). Sebaliknya, GCS menggunakan jalur Wi-Fi terpusat ini untuk mengirimkan komando tingkat tinggi seperti perintah \textit{arm/disarm}, perpindahan mode terbang, atau komando pendaratan darurat secara \textit{real-time}.
 
-\section{Sistem Lokalisasi \textit{Indoor} Berbasis \textit{Ultra-Wideband} (UWB)}
+\section{Sistem Lokalisasi \textit{Indoor} Berbasis Kamera Atas (\textit{Ceiling Camera})}
 
-Mengingat pengujian navigasi kawanan quadcopter dilakukan di lingkungan dalam ruangan (\textit{indoor}), sistem tidak dapat mengandalkan \textit{Global Positioning System} (GPS) untuk mendapatkan informasi posisi spasial absolut \cite{hoDesignIndoorPositioning2023}. Sebagai gantinya, arsitektur perangkat keras ini memanfaatkan teknologi \textit{Ultra-Wideband} (UWB) sebagai sistem lokalisasi utama. Pada implementasi ini, perangkat keras yang digunakan merujuk pada modul \textit{transceiver} UWB Decawave seri DW1000 (atau variannya seperti DWM1000). Teknologi UWB cip ini dipilih karena memiliki keunggulan berupa ketahanan yang tinggi terhadap interferensi pantulan sinyal (\textit{multipath fading}), konsumsi daya yang efisien, serta mampu memberikan tingkat presisi pelacakan posisi dalam skala sentimeter.
+Mengingat pengujian navigasi kawanan \textit{quadcopter} dilakukan di lingkungan dalam ruangan (\textit{indoor}), sistem tidak dapat mengandalkan \textit{Global Positioning System} (GPS) untuk mendapatkan informasi posisi spasial absolut.
+Sebagai solusinya, arsitektur perangkat keras ini memanfaatkan sistem lokalisasi eksternal berbasis penglihatan komputer (\textit{computer vision}) menggunakan kamera atas (\textit{fixed overhead/ceiling camera}) yang dipadukan dengan penanda visual (\textit{visual fiducial marker}) pada wahana.
+Metode ini dipilih karena mampu memberikan tingkat presisi pelacakan posisi absolut dalam skala sentimeter ($\pm 1\text{--}3\text{ cm}$), bebas dari akumulasi penyimpangan posisi (\textit{drift}) seiring waktu, serta tidak terpengaruh oleh interferensi gelombang nirkabel (\textit{multipath fading}) yang kerap terjadi pada sensor berbasis sinyal radio di ruangan tertutup.
 
-Bentuk fisik dari modul UWB yang diintegrasikan pada sistem wahana dapat dilihat pada Gambar~\ref{fig:uwb_module}.
+Sistem lokalisasi kamera atas yang diimplementasikan terdiri dari tiga komponen utama:
+\begin{enumerate}
+    \item \textbf{Kamera Sudut Lebar (\textit{Wide-Angle Overhead Camera}).} Satu unit kamera dipasang pada posisi statis di langit-langit area pengujian dengan orientasi menghadap tegak lurus ke bawah (\textit{nadir}). Kamera ini berfungsi sebagai penentu kerangka acuan inersia global (\textit{global reference frame}) yang mencakup seluruh area navigasi kawanan wahana.
+    \item \textbf{Penanda Visual (\textit{AprilTag / ArUco Marker})} Dipasang secara datar pada bagian atas bodi masing-masing \textit{quadcopter}. Setiap wahana menggunakan pola matriks biner dengan identitas (ID) unik (misalnya ID 0 hingga 4 untuk lima wahana), sehingga sistem persepsi dapat membedakan dan melacak setiap agen secara simultan.
+    \item \textbf{Stasiun Pemroses Citra (\textit{Vision Processing Base Station}).} Komputer di darat yang menerima aliran bingkai citra (\textit{video stream}) dari kamera untuk mengeksekusi algoritma ekstraksi posisi 3D dan orientasi wahana secara \textit{real-time}.
+\end{enumerate}
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.5\textwidth]{figures/uwb_module.jpg}
-    \caption{Modul \textit{Ultra-Wideband} (UWB) yang digunakan sebagai sistem lokalisasi \textit{indoor} \cite{hoDesignIndoorPositioning2023}}
-    \label{fig:uwb_module}
-\end{figure}
-
-Sistem lokalisasi UWB yang diimplementasikan terdiri dari dua komponen utama:
-\begin{itemize}
-    \item \textbf{\textit{Anchor} (Jangkar):} Merupakan sekumpulan modul UWB statis yang dipasang pada posisi tetap dengan koordinat yang telah diketahui secara pasti di sudut-sudut area pengujian. \textit{Anchor} ini berfungsi sebagai patokan kerangka referensi global (\textit{global reference frame}).
-    \item \textbf{\textit{Tag} (Label):} Merupakan modul UWB dinamis yang terpasang pada masing-masing quadcopter (terhubung dengan mikrokontroler ESP32). \textit{Tag} ini bergerak mengikuti wahana dan secara aktif berkomunikasi dengan \textit{anchor} di sekitarnya.
-\end{itemize}
-
-Proses penentuan jarak absolut antara \textit{tag} dan \textit{anchor} dilakukan menggunakan metode \textit{Two-Way Ranging} (TWR). Metode ini menghitung waktu tempuh sinyal (\textit{Time of Flight} / ToF) saat pesan dikirim dari \textit{tag} ke \textit{anchor} dan kembali lagi ke \textit{tag}. Jarak absolut ($d_i$) antara \textit{tag} dan \textit{anchor} ke-$i$ dirumuskan sebagai berikut:
+Proses penentuan posisi spasial 3D dan orientasi sikap wahana didasarkan pada model kamera jarum pentul (\textit{pinhole camera model}) dan penyelesaian masalah \textit{Perspective-n-Point} (PnP).
+Dengan mengasumsikan matriks kalibrasi intrinsik kamera $\mathbf{K}$ telah diketahui melalui proses kalibrasi awal, hubungan antara koordinat piksel $(u, v)$ pada bidang citra dan koordinat spasial absolut $(x_w, y_w, z_w)$ pada kerangka acuan dunia dinyatakan sebagai:
 \begin{equation}
-    d_i = c \cdot t_{\text{ToF}, i} = c \cdot \left( \frac{t_{\text{round}} - t_{\text{reply}}}{2} \right)
+    s 
+    \begin{bmatrix}
+        u \\ v \\ 1
+    \end{bmatrix}
+    = \mathbf{K} 
+    \begin{bmatrix}
+        \mathbf{R} & \mathbf{T}
+    \end{bmatrix}
+    \begin{bmatrix}
+        x_w \\ y_w \\ z_w \\ 1
+    \end{bmatrix}
+    \label{eq:pinhole_pnp}
 \end{equation}
-di mana $c$ adalah kecepatan rambat cahaya di udara ($\approx 3 \times 10^8$ m/s), $t_{\text{round}}$ adalah total waktu siklus pengiriman dan penerimaan pesan balik, sedangkan $t_{\text{reply}}$ adalah jeda waktu pemrosesan internal pada modul \textit{anchor} sebelum mengirimkan balasan.
-
-Setelah mendapatkan jarak ($d_i$) ke setidaknya empat \textit{anchor} berbeda (untuk lokalisasi 3D), posisi \textit{tag} wahana $(x, y, z)$ dikalkulasi secara \textit{real-time} menggunakan algoritma trilaterasi spasial. Persamaan geometris yang membentuk sistem ini adalah sekumpulan persamaan bola:
+di mana $s$ adalah faktor skala kedalaman, $\mathbf{R} \in \mathbb{R}^{3 \times 3}$ adalah matriks rotasi 3D yang menggambarkan orientasi sikap wahana (khususnya sudut \textit{yaw} $\psi$), $\mathbf{T} = [x, y, z]^T$ adalah vektor translasi posisi 3D absolut \textit{quadcopter} terhadap pusat optik kamera, dan $\mathbf{K}$ adalah matriks intrinsik kamera yang didefinisikan sebagai:
 \begin{equation}
-    (x - x_i)^2 + (y - y_i)^2 + (z - z_i)^2 = d_i^2, \quad \text{untuk } i = 1, 2, \dots, N
+    \mathbf{K} = 
+    \begin{bmatrix}
+        f_x & 0 & c_x \\
+        0 & f_y & c_y \\
+        0 & 0 & 1
+    \end{bmatrix}
 \end{equation}
-di mana $(x_i, y_i, z_i)$ adalah koordinat tetap dari \textit{anchor} ke-$i$, dan $N \ge 4$ adalah jumlah \textit{anchor} yang terdeteksi. Sistem persamaan non-linear ini kemudian diselesaikan menggunakan metode aproksimasi numerik (seperti \textit{Least Squares}) untuk menghasilkan estimasi posisi 3D kasar dari wahana.
+dengan $(f_x, f_y)$ merepresentasikan panjang fokus (\textit{focal length}) dalam satuan piksel dan $(c_x, c_y)$ adalah titik pusat optik (\textit{principal point}).
 
-Meskipun UWB mampu memberikan referensi posisi absolut yang sangat baik di lingkungan bebas GPS, keluaran datanya masih mengandung derau pengukuran (\textit{measurement noise}) dan memiliki laju pembaruan (\textit{update rate}) yang relatif lebih lambat dibandingkan dengan dinamika quadcopter. Oleh karena itu, data posisi spasial dari sistem UWB ini tidak dapat langsung diumpankan ke kalang pengontrol tingkat rendah. Data tersebut harus difusikan terlebih dahulu dengan data sensor internal berkecepatan tinggi melalui modul \textit{Extended Kalman Filter} (EKF\label{abbr:ekf}).
+Menggunakan dimensi fisik \textit{marker} yang telah diketahui (misalnya $10 \times 10\text{ cm}$) dan empat titik sudut \textit{marker} yang terdeteksi pada citra, sistem menyelesaikan Persamaan~\ref{eq:pinhole_pnp} menggunakan algoritma numerik \textit{SolvePnP} berbasis optimasi Levenberg--Marquardt.
+Keluaran dari algoritma ini berupa estimasi koordinat spasial absolut $(x, y, z)$ dan sudut \textit{yaw} ($\psi$) secara \textit{real-time} untuk setiap wahana.
+
+Data posisi dan orientasi terhitung dari komputer darat dikemas ke dalam format pesan biner MAVLink dan disiarkan melalui jaringan nirkabel (soket UDP/Wi-Fi) menuju \textit{companion computer} (ESP32) di masing-masing \textit{quadcopter}.
+Meskipun sistem lokalisasi berbasis kamera atas memberikan referensi posisi absolut yang sangat akurat dan bebas dari \textit{drift}, keluaran datanya memiliki laju pembaruan (\textit{update rate}) yang dibatasi oleh laju bingkai kamera (misalnya 60 FPS) serta memiliki jeda waktu pemrosesan citra (\textit{latency processing}).
+Oleh karena itu, data posisi spasial dari kamera atas ini tidak langsung diumpankan ke kalang pengontrol tingkat rendah, melainkan difusikan terlebih dahulu dengan data sensor internal berkecepatan tinggi (\textit{Inertial Measurement Unit}/IMU) melalui modul \textit{Extended Kalman Filter} (EKF\label{abbr:ekf}) untuk menghasilkan estimasi \textit{state} yang mulus dan stabil.
 
 \section{Sistem Deteksi Rintangan Berbasis Sensor Ultrasonik}
 
@@ -728,8 +645,8 @@ Variabel $w_e$ ini berfungsi sebagai parameter utama yang diumpankan ke perencan
         % Dinding kiri dan kanan
         \draw[wall] (-4.0,-2.5) rectangle (-3.75,4.0);
         \draw[wall] (3.75,-2.5) rectangle (4.0,4.0);
-        \node[label, rotate=90] at (-4.35,0.5) {Dinding\\kiri};
-        \node[label, rotate=-90] at (4.35,0.5) {Dinding\\kanan};
+        \node[label, rotate=90] at (-4.45,0.5) {Dinding\\kiri};
+        \node[label, rotate=-90] at (4.45,0.5) {Dinding\\kanan};
 
         % Lengan quadcopter (konfigurasi X)
         \draw[frame] (-0.8,0.8) -- (0.8,-0.8);
@@ -756,13 +673,13 @@ Variabel $w_e$ ini berfungsi sebagai parameter utama yang diumpankan ke perencan
         \node[label, font=\scriptsize\bfseries] at (0,0) {FC /\\ESP32};
 
         % Panah penunjuk arah depan
-        \draw[->, ultra thick, red!70!black] (0, 0.45) -- (0, 1.4) node[above, font=\small\bfseries] {Depan (Arah Gerak)};
+        \draw[->, ultra thick, red!70!black] (0, 0.45) -- (0, 1.8) node[above, font=\small\bfseries] {Depan (Arah Gerak)};
 
         % Sensor ultrasonik kiri dan kanan depan diputar 45 derajat ke luar.
         \node[sensor, rotate=-45] (SL) at (-1.0, 1.0) {};
         \node[sensor, rotate=45] (SR) at (1.0, 1.0) {};
-        \node[label, font=\scriptsize] at (-1.5, 0.6) {Sensor\\kiri};
-        \node[label, font=\scriptsize] at (1.5, 0.6) {Sensor\\kanan};
+        \node[label, font=\scriptsize] at (-1.7, 0.6) {Sensor\\kiri};
+        \node[label, font=\scriptsize] at (1.7, 0.6) {Sensor\\kanan};
 
         % Garis ukur jarak proyeksi lateral
         \draw[measure, dashed] (-3.75,1.0) -- (-1.0,1.0) node[midway, below] {$d_l$};
@@ -802,20 +719,20 @@ Variabel $w_e$ ini berfungsi sebagai parameter utama yang diumpankan ke perencan
     \label{fig:ultrasonic_placement}
 \end{figure}
 
-Setelah seluruh sistem persepsi---baik lokalisasi spasial menggunakan UWB maupun persepsi rintangan menggunakan ultrasonik---berhasil memetakan kondisi eksternal, kerangka kontrol membutuhkan estimasi \textit{state} internal wahana yang bersih dari derau agar dapat mengeksekusi manuver dengan stabil. Oleh karena itu, data posisi dari UWB diproses lebih lanjut pada modul estimator \textit{state}.
+Setelah seluruh sistem persepsi---baik lokalisasi spasial menggunakan kamera atas maupun persepsi rintangan menggunakan ultrasonik---berhasil memetakan kondisi eksternal, kerangka kontrol membutuhkan estimasi \textit{state} internal wahana yang bersih dari derau agar dapat mengeksekusi manuver dengan stabil. Oleh karena itu, data posisi dari kamera atas diproses lebih lanjut pada modul estimator \textit{state}.
 
 \section{Estimator \textit{State} dengan \textit{Extended Kalman Filter} (EKF)}
 
 Keberhasilan manuver yang dihasilkan oleh perencana tingkat tinggi dan keandalan stabilisasi oleh pengontrol tingkat rendah sangat bergantung pada akurasi informasi \textit{state} aktual dari wahana. Mengingat dinamika quadcopter bersifat non-linear dan sensor pengukuran selalu memiliki derau (\textit{noise}), sistem ini dilengkapi dengan algoritma \textit{Extended Kalman Filter} (EKF) sebagai estimator \textit{state} utama \cite{KalmanFilterGeneralizations2006}. 
 
-EKF berfungsi melakukan fusi data (\textit{sensor fusion}) secara \textit{real-time}. Algoritma ini menggabungkan data dari sensor internal bawaan seperti \textit{Inertial Measurement Unit} (IMU) yang memiliki laju pembaruan (\textit{update rate}) tinggi namun rentan terhadap \textit{drift} seiring waktu, dengan data dari sistem lokalisasi \textit{indoor} eksternal (seperti UWB) yang memberikan referensi posisi absolut. 
+EKF berfungsi melakukan fusi data (\textit{sensor fusion}) secara \textit{real-time}. Algoritma ini menggabungkan data dari sensor internal bawaan seperti \textit{Inertial Measurement Unit} (IMU) yang memiliki laju pembaruan (\textit{update rate}) tinggi namun rentan terhadap \textit{drift} seiring waktu, dengan data dari sistem lokalisasi \textit{indoor} eksternal (kamera atas berbasis penanda visual) yang memberikan referensi posisi absolut. 
 
 Secara matematis, sistem non-linear dari quadcopter dapat direpresentasikan dalam model ruang-keadaan (\textit{state-space}) diskrit sebagai berikut \cite{welchIntroductionKalmanFilter2006}:
 \begin{align}
     \mathbf{x}_k &= f(\mathbf{x}_{k-1}, \mathbf{u}_{k-1}) + \mathbf{w}_{k-1} \label{eq:ekf_system} \\
     \mathbf{z}_k &= h(\mathbf{x}_k) + \mathbf{v}_k \label{eq:ekf_measurement}
 \end{align}
-di mana $\mathbf{x}_k \in \mathbb{R}^n$ adalah vektor \textit{state} sistem pada langkah waktu $k$ (mencakup posisi 3D, kecepatan linear, dan \textit{quaternion} orientasi), $\mathbf{u}_{k-1} \in \mathbb{R}^m$ adalah vektor masukan kontrol, dan $\mathbf{z}_k \in \mathbb{R}^p$ adalah vektor pengukuran aktual dari sensor (seperti koordinat posisi spasial dari UWB). Variabel $\mathbf{w}_{k-1}$ dan $\mathbf{v}_k$ masing-masing merepresentasikan derau proses (\textit{process noise}) dan derau pengukuran (\textit{measurement noise}), yang diasumsikan sebagai derau Gaussian putih saling bebas dengan matriks kovariansi $\mathbf{Q}_k$ dan $\mathbf{R}_k$.
+di mana $\mathbf{x}_k \in \mathbb{R}^n$ adalah vektor \textit{state} sistem pada langkah waktu $k$ (mencakup posisi 3D, kecepatan linear, dan \textit{quaternion} orientasi), $\mathbf{u}_{k-1} \in \mathbb{R}^m$ adalah vektor masukan kontrol, dan $\mathbf{z}_k \in \mathbb{R}^p$ adalah vektor pengukuran aktual dari sensor (seperti koordinat posisi spasial dari kamera atas). Variabel $\mathbf{w}_{k-1}$ dan $\mathbf{v}_k$ masing-masing merepresentasikan derau proses (\textit{process noise}) dan derau pengukuran (\textit{measurement noise}), yang diasumsikan sebagai derau Gaussian putih saling bebas dengan matriks kovariansi $\mathbf{Q}_k$ dan $\mathbf{R}_k$.
 
 Karena fungsi transisi sistem $f(\cdot)$ dan model pengukuran $h(\cdot)$ bersifat non-linear, EKF melakukan linearisasi lokal pada setiap langkah waktu menggunakan matriks Jacobian yang didefinisikan sebagai \cite{gelbAppliedOptimalEstimation1974}:
 \begin{equation}
@@ -833,7 +750,7 @@ Pada tahap ini, proyeksi \textit{state} dan kovariansi galat dihitung maju dari 
 di mana $\hat{\mathbf{x}}_{k|k-1}$ adalah estimasi \textit{state} apriori, dan $\mathbf{P}_{k|k-1}$ adalah matriks kovariansi galat apriori yang mengindikasikan tingkat ketidakpastian dari hasil prediksi.
 
 \subsubsection{2. Tahap Pembaruan (\textit{Measurement Update / Update Step})}
-Ketika data posisi absolut dari modul lokalisasi UWB diterima, komponen prediksi apriori dikoreksi menggunakan mekanisme umpan balik pengukuran guna menghasilkan estimasi aposteriori yang optimal:
+Ketika data posisi absolut dari sistem lokalisasi kamera atas diterima, komponen prediksi apriori dikoreksi menggunakan mekanisme umpan balik pengukuran guna menghasilkan estimasi aposteriori yang optimal:
 \begin{align}
     \tilde{\mathbf{y}}_k &= \mathbf{z}_k - h(\hat{\mathbf{x}}_{k|k-1}) \\
     \mathbf{S}_k &= \mathbf{H}_k \mathbf{P}_{k|k-1} \mathbf{H}_k^T + \mathbf{R}_k \\
@@ -841,7 +758,7 @@ Ketika data posisi absolut dari modul lokalisasi UWB diterima, komponen prediksi
     \hat{\mathbf{x}}_{k|k} &= \hat{\mathbf{x}}_{k|k-1} + \mathbf{K}_k \tilde{\mathbf{y}}_k \\
     \mathbf{P}_{k|k} &= (\mathbf{I} - \mathbf{K}_k \mathbf{H}_k) \mathbf{P}_{k|k-1}
 \end{align}
-di mana $\tilde{\mathbf{y}}_k$ adalah nilai inovasi atau galat pengukuran, $\mathbf{S}_k$ adalah kovariansi inovasi, dan $\mathbf{K}_k$ adalah matriks Penguatan Kalman (\textit{Kalman Gain}). Nilai $\mathbf{K}_k$ secara dinamis membobot apakah sistem akan lebih mempercayai hasil prediksi model matematika bodi atau hasil pengukuran aktual dari sensor UWB.
+di mana $\tilde{\mathbf{y}}_k$ adalah nilai inovasi atau galat pengukuran, $\mathbf{S}_k$ adalah kovariansi inovasi, dan $\mathbf{K}_k$ adalah matriks Penguatan Kalman (\textit{Kalman Gain}). Nilai $\mathbf{K}_k$ secara dinamis membobot apakah sistem akan lebih mempercayai hasil prediksi model matematika bodi atau hasil pengukuran aktual dari sistem kamera atas.
 
 Keluaran akhir dari blok $\hat{\mathbf{x}}_{k|k}$ berupa estimasi \textit{quaternion} orientasi yang presisi, posisi spasial 3D, dan kecepatan linear yang telah dibersihkan dari derau frekuensi tinggi. Vektor \textit{state} bersih ini kemudian diumpankan kembali (\textit{feedback}) ke pengontrol tingkat rendah untuk menutup kalang stabilisasi, serta disiarkan melalui jaringan komunikasi nirkabel (protokol MAVLink) sebagai basis data navigasi bagi perencana tingkat tinggi dan agen quadcopter lainnya di dalam kawanan.
 
@@ -908,7 +825,7 @@ Fase kedua merupakan tahap perakitan dan konfigurasi sistem secara menyeluruh, y
 \begin{itemize}
     \item \textbf{Setup Komunikasi Eksternal:} Membangun jaringan komunikasi terdesentralisasi antar-wahana menggunakan modul Wi-Fi/ESP-NOW dengan protokol UDP.
     \item \textbf{Setup Komunikasi Internal:} Mengkonfigurasi antarmuka serial (UART) untuk menjembatani komunikasi data berformat MAVLink antara \textit{Companion Computer} dan \textit{Flight Controller}.
-    \item \textbf{Setup Lokalisasi:} Mengintegrasikan sistem penentuan posisi \textit{indoor} (seperti UWB atau OptiTrack) dan mengimplementasikan \textit{Extended Kalman Filter} (EKF) untuk fusi data sensor.
+    \item \textbf{Setup Lokalisasi:} Mengintegrasikan sistem penentuan posisi \textit{indoor} berbasis kamera atas (\textit{AprilTag}) dan mengimplementasikan \textit{Extended Kalman Filter} (EKF) untuk fusi data sensor.
     \item \textbf{Penanaman Logika:} Menginisialisasi dan menanamkan (\textit{embedding}) program algoritma ERC dan IAPF\label{abbr:iapf} ke dalam unit \textit{Companion Computer} masing-masing agen.
 \end{itemize}
 
@@ -932,15 +849,17 @@ Pelaksanaan penelitian ini direncanakan secara sistematis mencakup tahap peranca
 Seluruh rangkaian penelitian akan dilaksanakan di Pusat Teknologi Instrumentasi dan Otomasi (PTIO\label{abbr:ptio}), Gedung Pusat Antar Universitas (PAU) Lantai 8, Institut Teknologi Bandung. Kegiatan yang dilakukan di lokasi ini mencakup perakitan wahana (\textit{hardware assembly}), pemrograman \textit{companion computer}, pengujian \textit{Hardware-In-The-Loop} (HITL), serta eksperimen uji terbang kawanan quadcopter di lingkungan dalam ruangan (\textit{indoor}).
 
 \subsection{Alat dan Bahan}
-Pelaksanaan penelitian ini membutuhkan beberapa komponen pendukung untuk merealisasikan sistem navigasi kawanan quadcopter, terutama pada aspek persepsi rintangan, lokalisasi, dokumentasi visual, dan keselamatan pengujian. Perangkat utama yang digunakan meliputi sensor ultrasonik sebagai pendeteksi jarak lateral, kamera sudut lebar untuk dokumentasi dan pengamatan visual, modul UWB sebagai perangkat lokalisasi, serta perlengkapan keselamatan untuk mendukung eksperimen di lingkungan \textit{indoor}.
+Pelaksanaan penelitian ini membutuhkan beberapa komponen pendukung untuk merealisasikan sistem navigasi kawanan quadcopter, terutama pada aspek persepsi rintangan, lokalisasi spasial, pemrosesan visi komputer, dan keselamatan pengujian.
+Perangkat utama yang digunakan meliputi sensor ultrasonik sebagai pendeteksi jarak lateral diagonal, kamera sudut lebar laju tinggi (60 FPS) yang dipasang di langit-langit beserta penanda visual (\textit{AprilTag}) sebagai sistem lokalisasi \textit{indoor}, serta perlengkapan keselamatan untuk mendukung eksperimen di lingkungan \textit{indoor}.
 
-Pemilihan sensor ultrasonik dilakukan karena kebutuhan penelitian berfokus pada deteksi jarak lateral terhadap rintangan sederhana, sehingga perangkat ini dinilai lebih ringkas dan ekonomis dibandingkan penggunaan kamera kedalaman (\textit{depth camera}). Selain itu, jumlah sensor ultrasonik disesuaikan dengan konfigurasi lima agen quadcopter, yaitu dua sensor pada setiap agen untuk memantau sisi kiri dan kanan wahana.
-
-Rincian alat, bahan, kuantitas, serta estimasi biaya pengadaan komponen utama penelitian dirangkum pada Tabel~\ref{tab:alat_bahan}.
+Pemilihan sensor ultrasonik dilakukan karena kebutuhan penelitian berfokus pada deteksi jarak lateral terhadap rintangan secara ekonomis dan ringkas.
+Jumlah sensor ultrasonik disesuaikan dengan konfigurasi lima agen quadcopter, yaitu dua sensor pada setiap agen (dipasang secara diagonal dengan sudut $\theta = 45^\circ$) untuk memantau sisi kiri dan kanan wahana.
+Selain itu, penanda visual \textit{AprilTag} dicetak pada stiker bercorak \textit{matte} dan ditempelkan pada alas akrilik tipis di atas bodi wahana guna memastikan estimasi pose 3D oleh kamera atas berjalan stabil.
+Rincian alat, bahan, kuantitas, serta estimasi biaya pengadaan komponen utama penelitian dirangkum dalam bentuk Rencana Anggaran Biaya (RAB\label{abbr:rab}) pada Tabel~\ref{tab:alat_bahan}.
 
 \begin{table}[htbp]
     \centering
-    \caption{Rencana Anggaran Biaya (RAB\label{abbr:rab}) Komponen Utama Wahana}
+    \caption{Rencana Anggaran Biaya (RAB) Komponen Utama Wahana}
     \label{tab:alat_bahan}
     \begingroup
     \small
@@ -951,19 +870,20 @@ Rincian alat, bahan, kuantitas, serta estimasi biaya pengadaan komponen utama pe
         \rowcolor{gray!20}
         \thead{No} & \thead{Komponen} & \thead{Kuantitas} & \thead{Harga Satuan\\(Rp)} & \thead{Harga Total\\(Rp)} \\ \hline
         1 & Sensor Ultrasonik (HC-SR04) & 10 & 20.000 & 200.000 \\ \hline
-        2 & Camera Wide Angle & 1 & 100.000 & 100.000 \\ \hline
-        3 & Modul UWB\label{abbr:uwb} (DWM1000) & 5 & 750.000 & 3.750.000 \\ \hline
-        4 & Dus sebagai rintangan & 10 & 30.000 & 300.000 \\ \hline
-        5 & Alat \textit{Safety} & 1 & 500.000 & 500.000 \\ \hline
-        \multicolumn{4}{|r|}{\textbf{TOTAL HARGA}} & \textbf{4.850.000} \\ \hline
+        2 & Kamera Atas 60 FPS (\textit{Ceiling Camera}) & 1 & 1.500.000 & 1.500.000 \\ \hline
+        3 & Penanda Visual \textit{AprilTag} + Akrilik 1mm & 5 Set & 20.000 & 100.000 \\ \hline
+        4 & Kabel USB Extension 10m + \textit{Ceiling Mount} & 1 Set & 150.000 & 150.000 \\ \hline
+        5 & Dus sebagai rintangan & 10 & 30.000 & 300.000 \\ \hline
+        6 & Alat \textit{Safety} & 1 & 500.000 & 500.000 \\ \hline
+        \multicolumn{4}{|r|}{\textbf{TOTAL HARGA}} & \textbf{2.750.000} \\ \hline
     \end{tabularx}
     \endgroup
 \end{table}
 
-\textit{Catatan:} Estimasi biaya pada Tabel~\ref{tab:alat_bahan} hanya mencakup komponen tambahan yang diperlukan untuk penelitian. Komponen utama wahana seperti rangka quadcopter, motor, ESC\label{abbr:esc}, baterai, \textit{flight controller}, dan \textit{companion computer} diasumsikan telah tersedia sebagai bagian dari fasilitas laboratorium atau perangkat penelitian yang telah ada. Modul UWB sebanyak 5 buah dialokasikan sebagai \textit{tag} dinamis pada masing-masing wahana, sedangkan \textit{anchor} statis diasumsikan telah tersedia pada infrastruktur laboratorium pengujian.
+\textit{Catatan:} Estimasi biaya pada Tabel~\ref{tab:alat_bahan} hanya mencakup komponen tambahan yang diperlukan untuk penelitian. Komponen utama wahana seperti rangka quadcopter SpeedyBee 35, motor BLDC, ESC 4-in-1, baterai, \textit{flight controller} SpeedyBee F4 Mini, dan \textit{companion computer} (ESP32S3) diasumsikan telah tersedia sebagai bagian dari fasilitas laboratorium PTIO ITB atau perangkat penelitian yang telah ada.
 
 \subsection{Biaya}
-Berdasarkan kebutuhan alat dan bahan yang telah diidentifikasi, total estimasi biaya pengadaan komponen utama penelitian adalah sebesar Rp4.850.000. Porsi biaya terbesar berasal dari pengadaan modul UWB, yaitu sekitar Rp3,75 juta. Modul tersebut dibutuhkan pada setiap agen quadcopter untuk mendukung proses lokalisasi. Komponen lain, seperti sensor ultrasonik, kamera sudut lebar, dus sebagai rintangan, dan perlengkapan keselamatan, digunakan untuk mendukung pengujian persepsi lingkungan serta menjaga keamanan selama eksperimen berlangsung.
+Berdasarkan kebutuhan alat dan bahan yang telah diidentifikasi pada Tabel~\ref{tab:alat_bahan}, total estimasi biaya pengadaan komponen tambahan penelitian adalah sebesar Rp2.750.000. Porsi biaya terbesar berasal dari pengadaan kamera atas 60 FPS beserta perlengkapan pemasangannya, yaitu sebesar Rp1.650.000 atau sekitar 60\% dari total anggaran. Perangkat tersebut dibutuhkan sebagai sumber acuan posisi absolut bagi seluruh agen quadcopter dalam kerangka acuan global. Komponen lain, seperti sensor ultrasonik, penanda visual \textit{AprilTag}, dus sebagai rintangan, dan perlengkapan keselamatan, digunakan untuk mendukung pengujian persepsi lingkungan serta menjaga keamanan selama eksperimen berlangsung.
 
 Estimasi biaya tersebut bersifat awal dan dapat berubah menyesuaikan ketersediaan komponen, harga pasar, serta kebutuhan teknis tambahan pada tahap implementasi. Namun demikian, daftar biaya ini memberikan gambaran kebutuhan minimum yang diperlukan agar sistem persepsi, lokalisasi, dan pengujian eksperimen kawanan quadcopter dapat dilaksanakan secara memadai.
 
@@ -991,7 +911,7 @@ Rincian estimasi jadwal pelaksanaan kegiatan secara spesifik dijabarkan dalam be
         2 & Desain Arsitektur: 5 Quadcopter (Flight Controller dan Companion Computer) & \cellcolor{gray!70} & & & & & & & & \\ \hline
         3 & Setup Komunikasi Internal: Antarmuka Serial \& Protokol MAVLink\label{abbr:mavlink} & & \cellcolor{gray!70} & \cellcolor{gray!70} & & & & & & \\ \hline
         4 & Setup Komunikasi Eksternal: Jaringan Desentralisasi UDP/Wi-Fi/ESP-NOW & & \cellcolor{gray!70} & \cellcolor{gray!70} & & & & & & \\ \hline
-        5 & Setup Lokalisasi: Integrasi OptiTrack/UWB \& Extended Kalman Filter (EKF) & & \cellcolor{gray!70} & \cellcolor{gray!70} & & & & & & \\ \hline
+        5 & Setup Lokalisasi: Integrasi Kamera Atas \& Extended Kalman Filter (EKF) & & \cellcolor{gray!70} & \cellcolor{gray!70} & & & & & & \\ \hline
         6 & Penanaman Logika: Algoritma Event-Based Reconfiguration Control (ERC) & & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & & & & & \\ \hline
         7 & Pelaksanaan Uji Hardware In the Loop: Algoritma Fisik pada Companion Computer dengan Simulasi Gerak & & & & \cellcolor{gray!70} & \cellcolor{gray!70} & & & & \\ \hline
         8 & Uji Terbang (Single): Validasi EKF, CC-FC Link, Tuning PID\label{abbr:pid}, dan Single-Agent ERC Logic pada masing-masing quadcopter & & & & \cellcolor{gray!70} & \cellcolor{gray!70} & & & & \\ \hline
@@ -1022,6 +942,6 @@ Proposal tesis ini disusun sebagai landasan komprehensif dalam pelaksanaan penel
 \bibliographystyle{ieeetr}
 
 % Memuat basis data pustaka dari berkas references.bib.
-\bibliography{references}
+\bibliography{../common/references}
 
 \end{document}

@@ -1,0 +1,46 @@
+# ── Artefak build LaTeX (selalu bisa dibuat ulang: `make`) ──────────────
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.out
+*.synctex.gz
+*.synctex(busy)
+*.toc
+*.xdv
+*.run.xml
+*.bcf
+*.nav
+*.snm
+*.vrb
+
+# PDF hasil kompilasi — sumbernya .tex, bukan PDF-nya.
+# Kirim PDF ke pembimbing lewat ekspor manual, bukan lewat git.
+tulisan/**/main.pdf
+
+# ── Python / simulasi ──────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# ── Hasil eksperimen berukuran besar ───────────────────────────────────
+# results/ berisi output run. Yang di-commit hanya ringkasan & metrik
+# (*.md, *.csv, *.json); data mentah & video diabaikan.
+results/**/*.mp4
+results/**/*.avi
+results/**/*.npz
+results/**/*.pkl
+results/**/raw/
+
+# ── Sampah OS & editor ─────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
