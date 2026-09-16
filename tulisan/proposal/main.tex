@@ -1063,43 +1063,101 @@ Pelaksanaan penelitian ini direncanakan secara sistematis mencakup tahap peranca
 Seluruh rangkaian penelitian akan dilaksanakan di Pusat Teknologi Instrumentasi dan Otomasi (PTIO\label{abbr:ptio}), Gedung Pusat Antar Universitas (PAU) Lantai 8, Institut Teknologi Bandung. Kegiatan yang dilakukan di lokasi ini mencakup perakitan wahana (\textit{hardware assembly}), pemrograman \textit{companion computer}, pengujian \textit{Hardware-In-The-Loop} (HITL), serta eksperimen uji terbang kawanan quadcopter di lingkungan dalam ruangan (\textit{indoor}).
 
 \subsection{Alat dan Bahan}
-Pelaksanaan penelitian ini membutuhkan beberapa komponen pendukung untuk merealisasikan sistem navigasi kawanan quadcopter, terutama pada aspek persepsi rintangan, lokalisasi spasial, pemrosesan visi komputer, dan keselamatan pengujian.
-Perangkat utama yang digunakan meliputi sensor ultrasonik sebagai pendeteksi jarak lateral diagonal, kamera sudut lebar laju tinggi (60 FPS) yang dipasang di langit-langit beserta penanda visual (\textit{AprilTag}) sebagai sistem lokalisasi \textit{indoor}, serta perlengkapan keselamatan untuk mendukung eksperimen di lingkungan \textit{indoor}.
 
-Pemilihan sensor ultrasonik dilakukan karena kebutuhan penelitian berfokus pada deteksi jarak lateral terhadap rintangan secara ekonomis dan ringkas.
-Jumlah sensor ultrasonik disesuaikan dengan konfigurasi lima agen quadcopter, yaitu dua sensor pada setiap agen (dipasang secara diagonal dengan sudut $\theta = 45^\circ$) untuk memantau sisi kiri dan kanan wahana.
-Selain itu, penanda visual \textit{AprilTag} dicetak pada stiker bercorak \textit{matte} dan ditempelkan pada alas akrilik tipis di atas bodi wahana guna memastikan estimasi pose 3D oleh kamera atas berjalan stabil.
-Rincian alat, bahan, kuantitas, serta estimasi biaya pengadaan komponen utama penelitian dirangkum dalam bentuk Rencana Anggaran Biaya (RAB\label{abbr:rab}) pada Tabel~\ref{tab:alat_bahan}.
+Sebagian besar wahana dan komponen elektronik telah tersedia di laboratorium sebagaimana dirinci pada Subbab~\ref{sec:kondisi_awal}. Kebutuhan pengadaan karenanya terbatas pada komponen yang belum dimiliki, yaitu sistem lokalisasi kamera atas, sensor persepsi rintangan, penanda visual, serta perlengkapan arena dan keselamatan.
+
+Perangkat utama yang perlu diadakan meliputi kamera sudut lebar beresolusi 4K yang dipasang di langit-langit beserta penanda visual pada tiap wahana sebagai sistem lokalisasi \textit{indoor}, sensor jarak untuk persepsi rintangan lateral, dus kardus sebagai rintangan buatan pembentuk celah sempit, serta perlengkapan keselamatan untuk mendukung eksperimen di dalam ruangan.
+
+\subsection{Rencana Anggaran Biaya Bertahap}
+\label{subsec:rab}
+
+Rencana Anggaran Biaya (RAB\label{abbr:rab}) pada penelitian ini disusun secara bertahap, bukan sekaligus di awal. Pembagiannya mengikuti pencapaian teknis: setiap tahap memiliki gerbang kelayakan yang harus dilewati sebelum pengadaan tahap berikutnya dilakukan. Penyusunan seperti ini dipilih karena beberapa keputusan perancangan masih memuat ketidakpastian yang hanya dapat dijawab melalui percobaan, yaitu apakah firmware racikan dapat dimuat pada memori \textit{flash} yang terbatas, dan sensor jarak mana yang andal pada sudut datang miring. Apabila salah satu gerbang tidak terlewati, rancangan dapat disesuaikan tanpa anggaran tahap berikutnya telanjur dikeluarkan.
+
+\subsubsection{Tahap 1: Bukti Jalur Kerja}
+
+Tahap pertama bertujuan membuktikan bahwa rantai perolehan posisi berjalan utuh, mulai dari deteksi penanda visual, penyelesaian pose, pengiriman melalui jaringan, hingga penerimaan oleh \textit{flight controller}. Tahap ini hanya membutuhkan satu kamera dan satu wahana. Pada tahap ini pula uji banding sensor jarak pada Subbab~\ref{subsec:pemilihan_sensor} dilaksanakan, sehingga kedua kandidat sensor diadakan dalam jumlah kecil. Rincian anggarannya diberikan pada Tabel~\ref{tab:rab_tahap1}.
 
 \begin{table}[htbp]
     \centering
-    \caption{Rencana Anggaran Biaya (RAB) Komponen Utama Wahana}
-    \label{tab:alat_bahan}
+    \caption{Rencana anggaran Tahap 1: bukti jalur kerja}
+    \label{tab:rab_tahap1}
     \begingroup
     \small
     \setlength{\tabcolsep}{3pt}
     \renewcommand{\arraystretch}{1.3}
-    \begin{tabularx}{\textwidth}{|c|X|>{\centering\arraybackslash}p{1.9cm}|>{\raggedleft\arraybackslash}p{2.4cm}|>{\raggedleft\arraybackslash}p{2.3cm}|}
+    \begin{tabularx}{\textwidth}{|c|X|>{\centering\arraybackslash}p{1.8cm}|>{\raggedleft\arraybackslash}p{2.3cm}|>{\raggedleft\arraybackslash}p{2.3cm}|}
         \hline
         \rowcolor{gray!20}
         \thead{No} & \thead{Komponen} & \thead{Kuantitas} & \thead{Harga Satuan\\(Rp)} & \thead{Harga Total\\(Rp)} \\ \hline
-        1 & Sensor Ultrasonik (HC-SR04) & 10 & 20.000 & 200.000 \\ \hline
-        2 & Kamera Atas 60 FPS (\textit{Ceiling Camera}) & 1 & 1.500.000 & 1.500.000 \\ \hline
-        3 & Penanda Visual \textit{AprilTag} + Akrilik 1mm & 5 Set & 20.000 & 100.000 \\ \hline
-        4 & Kabel USB Extension 10m + \textit{Ceiling Mount} & 1 Set & 150.000 & 150.000 \\ \hline
-        5 & Dus sebagai rintangan & 10 & 30.000 & 300.000 \\ \hline
-        6 & Alat \textit{Safety} & 1 & 500.000 & 500.000 \\ \hline
-        \multicolumn{4}{|r|}{\textbf{TOTAL HARGA}} & \textbf{2.750.000} \\ \hline
+        1 & Kamera atas 4K beserta lensa sudut lebar $\pm 109^\circ$ & 1 unit & \textit{survei} & \textit{survei} \\ \hline
+        2 & Kabel USB ekstensi 10 m dan dudukan langit-langit & 1 set & 150.000 & 150.000 \\ \hline
+        3 & Sensor ultrasonik HC-SR04 (kandidat A) & 2 unit & 20.000 & 40.000 \\ \hline
+        4 & Sensor jarak laser VL53L1X (kandidat B) & 2 unit & \textit{survei} & \textit{survei} \\ \hline
+        5 & Penanda \textit{AprilTag}, akrilik, dan tiang cetak tiga dimensi & 1 set & 20.000 & 20.000 \\ \hline
+        \multicolumn{4}{|r|}{\textbf{SUBTOTAL TAHAP 1}} & \textbf{210.000 + survei} \\ \hline
     \end{tabularx}
     \endgroup
 \end{table}
 
-\textit{Catatan:} Estimasi biaya pada Tabel~\ref{tab:alat_bahan} hanya mencakup komponen tambahan yang diperlukan untuk penelitian. Komponen utama wahana seperti rangka quadcopter SpeedyBee 35, motor BLDC, ESC 4-in-1, baterai, \textit{flight controller} SpeedyBee F4 Mini, dan \textit{companion computer} (ESP32S3) diasumsikan telah tersedia sebagai bagian dari fasilitas laboratorium PTIO ITB atau perangkat penelitian yang telah ada.
+\noindent\textbf{Gerbang kelayakan Tahap 1:} rantai perolehan posisi berjalan menerus; satu wahana mampu melayang stabil dengan acuan posisi dari kamera atas; dan jenis sensor jarak yang dipakai telah ditetapkan berdasarkan kriteria yang ditentukan di muka.
 
-\subsection{Biaya}
-Berdasarkan kebutuhan alat dan bahan yang telah diidentifikasi pada Tabel~\ref{tab:alat_bahan}, total estimasi biaya pengadaan komponen tambahan penelitian adalah sebesar Rp2.750.000. Porsi biaya terbesar berasal dari pengadaan kamera atas 60 FPS beserta perlengkapan pemasangannya, yaitu sebesar Rp1.650.000 atau sekitar 60\% dari total anggaran. Perangkat tersebut dibutuhkan sebagai sumber acuan posisi absolut bagi seluruh agen quadcopter dalam kerangka acuan global. Komponen lain, seperti sensor ultrasonik, penanda visual \textit{AprilTag}, dus sebagai rintangan, dan perlengkapan keselamatan, digunakan untuk mendukung pengujian persepsi lingkungan serta menjaga keamanan selama eksperimen berlangsung.
+\subsubsection{Tahap 2: Skala Kawanan}
 
-Estimasi biaya tersebut bersifat awal dan dapat berubah menyesuaikan ketersediaan komponen, harga pasar, serta kebutuhan teknis tambahan pada tahap implementasi. Namun demikian, daftar biaya ini memberikan gambaran kebutuhan minimum yang diperlukan agar sistem persepsi, lokalisasi, dan pengujian eksperimen kawanan quadcopter dapat dilaksanakan secara memadai.
+Tahap kedua memperluas sistem dari satu wahana menjadi lima agen dan dari satu kamera menjadi dua kamera dengan liputan bertumpang tindih. Jenis sensor jarak yang diadakan pada tahap ini adalah kandidat yang memenangkan uji banding Tahap 1, sehingga pengadaan sepuluh unit tidak dilakukan sebelum keandalannya terbukti. Rincian anggarannya diberikan pada Tabel~\ref{tab:rab_tahap2}.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Rencana anggaran Tahap 2: skala kawanan}
+    \label{tab:rab_tahap2}
+    \begingroup
+    \small
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|c|X|>{\centering\arraybackslash}p{1.8cm}|>{\raggedleft\arraybackslash}p{2.3cm}|>{\raggedleft\arraybackslash}p{2.3cm}|}
+        \hline
+        \rowcolor{gray!20}
+        \thead{No} & \thead{Komponen} & \thead{Kuantitas} & \thead{Harga Satuan\\(Rp)} & \thead{Harga Total\\(Rp)} \\ \hline
+        1 & Kamera atas 4K kedua beserta lensa dan dudukan & 1 unit & \textit{survei} & \textit{survei} \\ \hline
+        2 & Sensor jarak terpilih hasil Tahap 1 & 8 unit & \textit{survei} & \textit{survei} \\ \hline
+        3 & Penanda \textit{AprilTag}, akrilik, dan tiang cetak tiga dimensi & 4 set & 20.000 & 80.000 \\ \hline
+        \multicolumn{4}{|r|}{\textbf{SUBTOTAL TAHAP 2}} & \textbf{80.000 + survei} \\ \hline
+    \end{tabularx}
+    \endgroup
+\end{table}
+
+\noindent\textbf{Gerbang kelayakan Tahap 2:} kelima wahana mampu terbang mempertahankan formasi dengan lokalisasi dua kamera yang telah dikalibrasi ke dalam satu kerangka acuan global.
+
+\subsubsection{Tahap 3: Arena dan Keselamatan}
+
+Tahap ketiga menyiapkan arena pengujian beserta perlengkapan keselamatannya. Penempatannya di akhir bukan karena kurang penting, melainkan karena perlengkapan ini baru diperlukan saat pengujian rekonfigurasi formasi dijalankan secara penuh, sementara Tahap 1 dan Tahap 2 masih berlangsung di ruang terbuka tanpa rintangan. Rincian anggarannya diberikan pada Tabel~\ref{tab:rab_tahap3}.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Rencana anggaran Tahap 3: arena dan keselamatan}
+    \label{tab:rab_tahap3}
+    \begingroup
+    \small
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|c|X|>{\centering\arraybackslash}p{1.8cm}|>{\raggedleft\arraybackslash}p{2.3cm}|>{\raggedleft\arraybackslash}p{2.3cm}|}
+        \hline
+        \rowcolor{gray!20}
+        \thead{No} & \thead{Komponen} & \thead{Kuantitas} & \thead{Harga Satuan\\(Rp)} & \thead{Harga Total\\(Rp)} \\ \hline
+        1 & Dus kardus sebagai rintangan & 10 unit & 30.000 & 300.000 \\ \hline
+        2 & Perlengkapan keselamatan & 1 set & 500.000 & 500.000 \\ \hline
+        3 & Penanda posisi lantai dan perlengkapan penataan arena & 1 set & 50.000 & 50.000 \\ \hline
+        \multicolumn{4}{|r|}{\textbf{SUBTOTAL TAHAP 3}} & \textbf{850.000} \\ \hline
+    \end{tabularx}
+    \endgroup
+\end{table}
+
+\noindent\textbf{Gerbang kelayakan Tahap 3:} arena terpasang, geometri celah terverifikasi sesuai rancangan pada Subbab~\ref{sec:arena}, dan pengujian rekonfigurasi formasi secara penuh dapat dijalankan.
+
+\subsubsection{Rekapitulasi}
+
+Komponen yang harganya telah pasti berjumlah Rp1.140.000, terdiri atas Rp210.000 pada Tahap 1, Rp80.000 pada Tahap 2, dan Rp850.000 pada Tahap 3. Beberapa komponen masih menunggu survei harga pasar, yaitu kamera atas 4K beserta lensanya pada Tahap 1 dan Tahap 2 serta sensor jarak laser sebagai kandidat pembanding. Angka-angka tersebut sengaja tidak diperkirakan tanpa dasar dan akan dilengkapi setelah survei dilakukan.
+
+Estimasi biaya ini bersifat awal dan dapat berubah menyesuaikan ketersediaan komponen serta harga pasar. Namun demikian, penyusunan bertahap memberikan gambaran kebutuhan minimum yang harus dipenuhi pada setiap titik pencapaian, sekaligus membatasi risiko finansial apabila salah satu asumsi perancangan tidak terbukti di lapangan.
 
 \subsection{Jadwal Pelaksanaan}
 Penelitian ini direncanakan berlangsung selama sembilan bulan, dimulai pada bulan Agustus 2026 hingga April 2027. Rangkaian kegiatan ini mencakup seluruh tahap metodologi, mulai dari studi literatur dan perancangan awal, dilanjutkan dengan tahap perakitan dan konfigurasi sistem (Agustus--November 2026). Setelah perangkat keras dan lunak terintegrasi, fokus penelitian akan beralih pada pengujian \textit{Hardware-In-The-Loop} (HITL) dan uji terbang secara berkala dari akhir tahun hingga kuartal pertama tahun berikutnya. Alokasi waktu satu bulan penuh di akhir periode dikhususkan untuk ekstraksi data penerbangan, analisis metrik kinerja sistem, dan penyusunan dokumen laporan.
