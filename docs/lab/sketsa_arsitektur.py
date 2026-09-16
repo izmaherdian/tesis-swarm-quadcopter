@@ -4,74 +4,120 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, FancyArrowPatch
 from gaya_gambar import simpan, TEBAL, TIPIS, PUTUS, ABU
 
-fig, ax = plt.subplots(figsize=(7.2, 6.4))
+# Kanvas lega beresolusi proporsional
+fig, ax = plt.subplots(figsize=(9.4, 8.2))
 
-def kotak(x, y, w, h, teks, fs=7.9):
-    ax.add_patch(Rectangle((x, y), w, h, fc="white", ec="black", lw=1.0, zorder=3))
+def kotak(x, y, w, h, teks, fs=7.8, fc="white", ec="#1e293b", lw=1.0):
+    ax.add_patch(Rectangle((x, y), w, h, fc=fc, ec=ec, lw=lw, zorder=3,
+                           joinstyle="round"))
     ax.text(x+w/2, y+h/2, teks, ha="center", va="center", fontsize=fs,
-            zorder=4, linespacing=1.5)
+            color="#0f172a", zorder=4, linespacing=1.45)
     return dict(x=x, y=y, w=w, h=h, cx=x+w/2, cy=y+h/2,
                 atas=(x+w/2, y+h), bawah=(x+w/2, y),
                 kiri=(x, y+h/2), kanan=(x+w, y+h/2))
 
-def panah(p1, p2, teks="", fs=7.5, ls="-", dua=False, geser=0.0):
+def panah(p1, p2, teks="", fs=7.2, ls="-", dua=False, geser_x=0.0, geser_y=0.0,
+          warna="#0f172a", bbox_bg="white", ec_box="#cbd5e1"):
     ax.add_patch(FancyArrowPatch(p1, p2,
                  arrowstyle="<|-|>" if dua else "-|>", mutation_scale=9,
-                 lw=0.9, color="black", linestyle=ls, shrinkA=1, shrinkB=1, zorder=2))
+                 lw=0.95, color=warna, linestyle=ls, shrinkA=1, shrinkB=1, zorder=2))
     if teks:
-        ax.text((p1[0]+p2[0])/2 + geser, (p1[1]+p2[1])/2, teks, fontsize=fs,
-                ha="center", va="center", zorder=5,
-                bbox=dict(fc="white", ec="none", pad=1.2))
+        ax.text((p1[0]+p2[0])/2 + geser_x, (p1[1]+p2[1])/2 + geser_y, teks, fontsize=fs,
+                ha="center", va="center", zorder=5, color=warna,
+                bbox=dict(fc=bbox_bg, ec=ec_box, lw=0.6, pad=1.5,
+                          boxstyle="round,pad=0.25"))
 
-# ── zona darat ──
-ax.add_patch(Rectangle((0.15, 6.30), 11.7, 3.45, fc="none", ec=ABU,
-                       lw=TIPIS, ls=PUTUS, zorder=1))
-ax.text(0.30, 9.48, "di darat", fontsize=8.5, style="italic", color=ABU, va="top")
+# ─────────────────────────────────────────────────────────────
+# 1. ZONA DARAT (GROUND SYSTEM)
+# ─────────────────────────────────────────────────────────────
+ax.add_patch(Rectangle((0.30, 6.90), 12.80, 3.40, fc="#f8fafc", ec="#94a3b8",
+                       lw=1.0, ls=PUTUS, zorder=1))
+ax.text(0.55, 10.15, "SISTEM DI DARAT", fontsize=8.2, fontweight="bold",
+        color="#475569", va="top")
 
-k1  = kotak(0.85, 8.70, 2.7, 0.80, "kamera atas 1\n4K, HFOV ±109°")
-k2  = kotak(3.95, 8.70, 2.7, 0.80, "kamera atas 2\nliputan bertumpang tindih")
-gcs = kotak(8.55, 8.70, 3.0, 0.80, "stasiun kendali darat\ntelemetri dan darurat")
-viz = kotak(1.45, 7.05, 5.7, 0.95,
-            "stasiun pemroses citra\ndeteksi AprilTag → PnP → pose 3D lima agen")
-panah(k1["bawah"], (viz["cx"]-1.2, viz["y"]+viz["h"]))
-panah(k2["bawah"], (viz["cx"]+1.2, viz["y"]+viz["h"]))
+# Baris 1: Kamera & GCS
+k1  = kotak(0.60, 8.85, 3.10, 0.90, "Kamera Atas 1\n4K, HFOV ±109°\n(Pemantau Agen 1--3)")
+k2  = kotak(4.00, 8.85, 3.30, 0.90, "Kamera Atas 2\n4K, HFOV ±109°\n(Liputan Tumpang Tindih)")
+gcs = kotak(9.80, 8.85, 3.00, 0.90, "Stasiun Kendali Darat\nTelemetri & Komando\n(Protokol MAVLink)")
 
-net = kotak(3.55, 5.15, 4.9, 0.75, "jaringan Wi-Fi lokal — soket UDP")
-panah(viz["bawah"], (net["cx"]-0.8, net["y"]+net["h"]), "pose absolut", geser=-1.15)
-panah(gcs["bawah"], (net["cx"]+1.5, net["y"]+net["h"]), "MAVLink")
+# Baris 2: Pemroses Citra
+viz = kotak(1.60, 7.20, 6.20, 1.05,
+            "Stasiun Pemroses Citra (PC Ground)\nDeteksi AprilTag → Estimasi PnP → Pose 3D Kelima Agen")
 
-# ── zona wahana ──
-ax.add_patch(Rectangle((0.15, 0.55), 11.7, 4.05, fc="none", ec=ABU,
-                       lw=TIPIS, ls=PUTUS, zorder=1))
-ax.text(0.30, 4.45, "di atas wahana — identik pada kelima agen",
-        fontsize=8.5, style="italic", color=ABU, va="top")
+# Panah Kamera ke Pemroses Citra
+panah(k1["bawah"], (viz["cx"]-1.4, viz["atas"][1]))
+panah(k2["bawah"], (viz["cx"]+1.4, viz["atas"][1]))
 
-snr = kotak(0.70, 2.85, 2.5, 0.95, "2× sensor jarak\ndiagonal 45°\nestimasi $w_e$")
-esp = kotak(4.00, 2.75, 4.0, 1.10,
-            "companion computer\nXIAO ESP32-S3\nIAPF + ERC berbasis kejadian")
-fcb = kotak(3.80, 1.35, 4.4, 0.95,
-            "flight controller SpeedyBee F405 Mini\nArduPilot racikan (EKF3 + EXTNAV)", fs=7.6)
-esc = kotak(8.75, 1.35, 2.9, 0.95, "ESC 4-in-1\n4× motor BLDC")
+# ─────────────────────────────────────────────────────────────
+# 2. ZONA JARINGAN (NETWORK)
+# ─────────────────────────────────────────────────────────────
+net = kotak(3.60, 5.50, 6.20, 0.80,
+            "Jaringan Wi-Fi Lokal — Protokol Soket UDP",
+            fs=8.2, fc="#f0f9ff", ec="#0284c7", lw=1.2)
 
-panah(net["bawah"], esp["atas"], "", )
-ax.text(6.18, 4.72, "pose absolut lima agen", fontsize=7.5, ha="left",
-        va="center", zorder=5, bbox=dict(fc="white", ec="none", pad=1.2))
-panah(snr["kanan"], esp["kiri"], "jarak")
-panah((esp["cx"]-0.7, esp["y"]), (esp["cx"]-0.7, fcb["y"]+fcb["h"]),
-      "setpoint posisi\nUART · MAVLink", geser=-2.05)
-panah((esp["cx"]+0.9, fcb["y"]+fcb["h"]), (esp["cx"]+0.9, esp["y"]),
-      "state", ls=(0,(4,2.5)), geser=0.70)
-panah(fcb["kanan"], esc["kiri"], "")
-ax.text((fcb["x"]+fcb["w"]+esc["x"])/2, fcb["y"]+fcb["h"]+0.14, "DShot",
-        fontsize=7.5, ha="center", va="bottom", zorder=5)
-ax.add_patch(FancyArrowPatch((esp["x"]+esp["w"], esp["cy"]+0.30), (11.55, esp["cy"]+0.30),
-             arrowstyle="<|-|>", mutation_scale=9, lw=0.9, color="black",
+# Panah dari Darat ke Jaringan
+panah(viz["bawah"], (net["cx"]-1.2, net["atas"][1]), "Pose Absolut 5 Agen", geser_x=-0.2)
+panah(gcs["bawah"], (net["cx"]+2.0, net["atas"][1]), "MAVLink", geser_x=0.0)
+
+# ─────────────────────────────────────────────────────────────
+# 3. ZONA WAHANA (ONBOARD QUADCOPTER - IDENTIK PADA 5 AGEN)
+# ─────────────────────────────────────────────────────────────
+ax.add_patch(Rectangle((0.30, 0.55), 13.00, 4.45, fc="#f8fafc", ec="#94a3b8",
+                       lw=1.0, ls=PUTUS, zorder=1))
+ax.text(0.55, 4.82, "SUBSISTEM ONBOARD WAHANA\n(Identik pada tiap agen)",
+        fontsize=7.8, fontweight="bold", color="#475569", va="top", linespacing=1.2)
+
+# Lapisan Atas Wahana: Sensor Jarak & Companion Computer
+snr = kotak(0.55, 3.15, 3.20, 1.20,
+            "2× Sensor Jarak Lateral\nDiagonal 45° (Kiri & Kanan)\nEstimasi Lebar Lorong ($w_e$)")
+
+esp = kotak(4.30, 3.15, 5.20, 1.20,
+            "Companion Computer (XIAO ESP32-S3)\nPerencana Gerak IAPF Terdesentralisasi\n+ Logika Rekonfigurasi Formasi ERC",
+            fs=7.8, fc="#fffbeb", ec="#d97706", lw=1.1)
+
+# Lapisan Bawah Wahana: Flight Controller & Aktuator
+fcb = kotak(4.30, 1.05, 5.20, 1.25,
+            "Flight Controller SpeedyBee F405 Mini\nFirmware ArduPilot Copter\n(Kalang Kaskade PID + EKF3 Onboard EXTNAV)",
+            fs=7.8, fc="#eff6ff", ec="#2563eb", lw=1.1)
+
+esc = kotak(10.70, 1.05, 2.40, 1.25,
+            "ESC 4-in-1\nSpeedyBee BLS 35A\n+ 4× Motor BLDC 2006",
+            fs=7.6, fc="#f0fdf4", ec="#16a34a", lw=1.1)
+
+# ─────────────────────────────────────────────────────────────
+# KONEKSI & ALIRAN DATA PADA WAHANA
+# ─────────────────────────────────────────────────────────────
+# Jaringan -> ESP32-S3 (panah vertikal bersih di x=6.80)
+panah(net["bawah"], esp["atas"], "Pose Absolut 5 Agen (60 Hz)", geser_x=1.65)
+
+# Sensor Jarak -> ESP32-S3
+panah(snr["kanan"], esp["kiri"], "Jarak Lateral\n$d_l, d_r$", geser_y=0.0)
+
+# ESP32-S3 <-> FC SpeedyBee (Jarak vertikal 0.85 lega!)
+# Panah turun: Setpoint dari ESP32 ke FC
+panah((esp["cx"]-1.3, esp["bawah"][1]), (fcb["cx"]-1.3, fcb["atas"][1]),
+      "Setpoint Posisi & Yaw\n(UART MAVLink)", geser_x=-1.35)
+
+# Panah naik: Telemetri dari FC ke ESP32
+panah((fcb["cx"]+1.3, fcb["atas"][1]), (esp["cx"]+1.3, esp["bawah"][1]),
+      "Telemetri State\nAktual", ls=(0,(4,2.5)), geser_x=1.15)
+
+# FC -> ESC / Motor (Jarak antar kotak 1.20, DShot muat sempurna!)
+panah(fcb["kanan"], esc["kiri"], "DShot300\n(Digital DMA)", geser_y=0.22)
+
+# Siaran UDP Antar-Wahana (ke kanan dari ESP32)
+ax.add_patch(FancyArrowPatch((esp["kanan"][0], esp["cy"]), (13.15, esp["cy"]),
+             arrowstyle="<|-|>", mutation_scale=9, lw=1.0, color="#d97706",
              linestyle=(0,(4,2.5)), zorder=2))
-ax.text(9.85, esp["cy"]+0.46, "siaran UDP antar-wahana\nposisi dan kecepatan\nke/dari 4 agen lain",
-        fontsize=7.5, ha="center", va="bottom", linespacing=1.5)
+ax.text(11.35, esp["cy"]+0.18,
+        "Siaran UDP Antar-Wahana\nPose & Kecepatan Komutatif\n(ke/dari 4 agen lain)",
+        fontsize=7.3, ha="center", va="bottom", linespacing=1.35, color="#b45309",
+        bbox=dict(fc="#fffbeb", ec="#fcd34d", lw=0.6, pad=1.5, boxstyle="round,pad=0.2"))
 
-ax.text(6.0, 0.18, "kamera atas berperan sebagai lokalisasi; sensor pada wahana berperan sebagai persepsi",
-        ha="center", va="bottom", fontsize=8, style="italic")
+# Catatan kaki filosofis arsitektur
+ax.text(6.70, 0.18,
+        "* Kamera atas berperan sebagai sistem lokalisasi absolut; sensor pada wahana berperan sebagai sistem persepsi lokal.",
+        ha="center", va="bottom", fontsize=8.0, style="italic", color="#334155")
 
-ax.set_xlim(0, 12); ax.set_ylim(0, 9.9); ax.axis("off")
+ax.set_xlim(0, 13.4); ax.set_ylim(0, 10.5); ax.axis("off")
 simpan(fig, "arsitektur-sistem")
