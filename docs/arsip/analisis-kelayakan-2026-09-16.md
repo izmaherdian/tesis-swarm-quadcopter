@@ -1,3 +1,11 @@
+> ⚠️ **ARSIP — jangan dijadikan acuan.** Dipindah dari `docs/lab/analisis-kelayakan.md`
+> pada 2026-09-17. Isi yang masih berlaku sudah dipindah ke
+> [`03-lab/1-ruang-uji-dan-arena.md`](../03-lab/1-ruang-uji-dan-arena.md) (ruang, arena),
+> [`03-lab/2-inventaris.md`](../03-lab/2-inventaris.md) (perangkat keras), dan
+> [`02-keputusan/`](../02-keputusan/) (kamera KP03, firmware KP02). Bagian kamera 4K,
+> jumlah unit FC/ESC, dan anggaran di bawah **sudah usang**. Path berkas di dalamnya
+> sudah disesuaikan ke struktur baru.
+
 # Analisis Kelayakan Lab — Hasil Pembacaan Foto & Denah
 
 > Dibuat 2026-09-16 dari 17 foto + denah tulisan tangan di `foto/`.
@@ -175,7 +183,7 @@ users of 1MB autopilots."*
 terpakai agar muat, Generate, unduh `.apj`, flash lewat Mission Planner
 ("Load custom firmware").
 
-Langkah rinci dan rencana cadangan ada di `docs/keputusan/KP02-firmware-fc.md`.
+Langkah rinci dan rencana cadangan ada di `docs/02-keputusan/KP02-firmware-fc.md`.
 Bila build tidak muat, jatuh ke **jalan C**, bukan jalan B.
 
 **Catatan untuk jalan C:** proposal sudah menggambarkan pembagian tugas
@@ -200,8 +208,8 @@ bukan diasumsikan.
 
 | Keputusan | Berkas |
 |---|---|
-| Lokalisasi: kamera atas + AprilTag, UWB opsional bersyarat | `docs/keputusan/KP01-lokalisasi-apriltag.md` |
-| Firmware FC: ArduPilot racikan lewat Custom Firmware Builder | `docs/keputusan/KP02-firmware-fc.md` |
+| Lokalisasi: kamera atas + AprilTag, UWB opsional bersyarat | `docs/02-keputusan/KP01-lokalisasi-kamera-apriltag.md` |
+| Firmware FC: ArduPilot racikan lewat Custom Firmware Builder | `docs/02-keputusan/KP02-firmware-fc.md` |
 | Area terbang: segmen lurus 7,20 m, 2 kamera, tumpang tindih 2,40 m | bagian 2 di atas |
 | Kamera: 4K, HFOV ±109°, ≥30 FPS, global shutter diutamakan, 2 unit | bagian 4 di atas |
 | Ruangan: bisa dipakai eksklusif dengan penjadwalan | bagian 1 di atas |

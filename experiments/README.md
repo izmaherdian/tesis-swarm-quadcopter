@@ -1,13 +1,14 @@
 # experiments/
 
 Satu folder per eksperimen, dinamai dengan ID yang sama seperti dokumen
-desainnya di `docs/experiments/`.
+desainnya di `docs/05-eksperimen/` (alur lengkap: `docs/01-alur-kerja.md` bagian 3).
 
 ```
 experiments/
 └── E01-iapf-baseline/
     ├── config.yaml     seluruh parameter — TIDAK ADA angka ajaib di dalam kode
-    └── run.py          skrip yang membaca config.yaml lalu menjalankan simulasi
+    └── run.py          skrip yang membaca config.yaml lalu menjalankan simulasi atau
+                        mengolah log uji fisik
 ```
 
 Aturannya satu: `run.py` tidak boleh punya parameter yang tidak berasal dari

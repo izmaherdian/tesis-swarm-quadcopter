@@ -1,4 +1,4 @@
-# Daftar yang Perlu Dicari Penulis
+# Tugas Penulis — Yang Hanya Bisa Dicek Sendiri
 
 > Dibuat 2026-09-17. Hal-hal yang tidak bisa dipastikan dari lingkungan kerja Claude
 > (halaman Tokopedia dan SCImago terblokir, atau butuh pengecekan fisik di lab).
@@ -22,13 +22,14 @@
 ## B. Harga yang sudah diisi
 
 Sudah diperiksa langsung di halaman Tokopedia (2026-09-17), detail per listing di
-[`survei-harga.md`](survei-harga.md). Tersisa satu hal yang perlu kamu putuskan:
+[`4-survei-harga.md`](4-survei-harga.md). Tersisa satu hal yang perlu kamu putuskan:
 
 - [x] Pemancar RadioMaster Pocket — Rp2.339.000 (batas atas dari 7 listing).
-- [x] Penerima EP2 TCXO — Rp337.000 (batas atas dari 5 listing).
+- [x] Penerima EP2 TCXO — Rp337.000 (batas atas dari 5 listing). Tidak lagi masuk RAB (5 tersedia).
 - [x] XIAO ESP32-S3 — Rp282.500 (batas atas dari 4 listing).
 - [x] *Stack* F405 Mini + BLS 35A **V1** — Rp1.906.700 (batas atas dari 11 listing).
-  Angka lama Rp2.244.428 ternyata produk lain (*kit board metal*).
+  Angka lama Rp2.244.428 ternyata produk lain (*kit board metal*). Tidak lagi masuk RAB
+  (6 FC tersedia); yang dibeli hanya 1 ESC V2 Rp941.000.
   - [ ] Cek versi ESC pada wahana yang ada (opsional). Perbedaan V1/V2 ada di
     **ESC**-nya (BLS 35A Mini V2), bukan di *flight controller*; halaman resmi
     SpeedyBee untuk *stack* ini kini mencantumkan ESC V2, dan V2 kompatibel
@@ -41,35 +42,35 @@ Sudah diperiksa langsung di halaman Tokopedia (2026-09-17), detail per listing d
 
 Isi kolom "Hasil" langsung di sini atau kirim fotonya. Urutan = prioritas.
 
-> **2026-09-17:** inventaris dari penulis sudah dicatat di `spesifikasi-hw.md` dan
-> analisis baterai di `analisis-baterai.md`. Propeler = Gemfan D90S dan pengisi daya =
-> SkyRC T6X80 (dikonfirmasi). Yang masih terbuka: bobot terbang, firmware FC, dan
-> perangkat darat (C3–C4).
+> **2026-09-17:** inventaris dari penulis sudah dicatat di [`2-inventaris.md`](2-inventaris.md)
+> dan analisis baterai di [`3-baterai-dan-bobot.md`](3-baterai-dan-bobot.md). Yang masih
+> terbuka tinggal versi ESC, bobot terbang, *firmware* FC, dan perangkat darat (C1, C3, C4).
 
-### C1. Kelengkapan untuk lima wahana — **menentukan RAB**
+### C1. Kelengkapan untuk lima wahana
 
-| Data yang dicatat | Cara cek | Kenapa perlu | Hasil |
-|---|---|---|---|
-| Jumlah *flight controller* F405 Mini, ESC BLS 35A, dan XIAO ESP32-S3, dipisah **terpasang** vs **cadangan** | Hitung per rangka + isi kotak/lemari | RAB menganggap masing-masing 3 unit, sehingga membeli 2 set | |
-| **Jumlah motor 2006** yang ada (terpasang + cadangan) | Hitung per rangka | Tercatat 4 rangka sudah bermotor (16 motor). Wahana kelima dari rangka kosong butuh 4 motor lagi, **dan motor belum ada di RAB** | |
-| Propeler: **ukuran (inci), pitch, jumlah bilah**, dan jumlah cadangan | Tulisan di bilah propeler, mis. "3.5x2.8x3" | Menentukan gaya dorong, dan apakah perlu beli cadangan untuk 5 wahana | |
-| Penerima EP2 TCXO: sudah terpasang di wahana mana saja | Lihat kabel ke FC | RAB membeli 2 unit untuk wahana ke-4 dan ke-5 | |
-| Versi ESC (V1/V2) | Tulisan "V2" di papan ESC, kotak, atau nota | Lihat bagian B | |
+| Data yang dicatat | Hasil |
+|---|---|
+| Jumlah FC, ESC, XIAO ESP32-S3 (terpasang vs lepas) | ✅ FC 6, ESC 5 (+?; 1 V2 lepas diduga rusak), ESP32-S3 5 |
+| Jumlah motor 2006 | ✅ 20 (16 terpasang + 4 cadangan) |
+| Propeler | ✅ Gemfan D90S, 14 buah |
+| Penerima EP2 TCXO | ✅ 4 terpasang di rangka 1–4, + 1 penerima lepas berbasis ESP8285 |
+| Versi ESC (V1/V2) pada wahana terakit | ☐ opsional; cari tulisan "V2" di **sisi bawah** papan ESC, label kotak, atau nota (lihat bagian B) |
+| Apakah FC lepas kedua membawa ESC | ☐ |
 
 ### C2. Baterai dan daya
 
-| Data yang dicatat | Cara cek | Kenapa perlu | Hasil |
-|---|---|---|---|
-| Tiap baterai: **jumlah sel (S)**, kapasitas, rating C, jenis konektor (XT30/XT60) | Label baterai | Inventaris baru mencatat kapasitas (4×1200, 2×1500, 1×2200, 2×5000 mAh) tanpa jumlah sel; menentukan waktu terbang, bobot, dan apakah 5 wahana bisa memakai baterai seragam | |
-| Pengisi daya: merek/model, jumlah port, arus maksimum | Label pengisi daya | Berapa baterai bisa diisi per sesi uji | |
+| Data yang dicatat | Hasil |
+|---|---|
+| Tiap baterai (sel, kapasitas, C) | ✅ tercatat; hanya 2 × CNHL 6S 1200 mAh yang cocok ([KP05](../02-keputusan/KP05-baterai-dan-pengadaan.md)) |
+| Pengisi daya | ✅ SkyRC T6X80, 80 W ([foto 19](foto/19-pengisi-daya-skyrc.png)) |
 
 ### C3. Wahana
 
 | Data yang dicatat | Cara cek | Kenapa perlu | Hasil |
 |---|---|---|---|
-| **Bobot terbang** satu wahana lengkap | Sementara memakai **perkiraan ≈ 520 g** dari lembar data (batas bawah, rincian di `spesifikasi-hw.md` 1d); timbang ulang dengan timbangan dapur digital bila ada | Rasio gaya dorong terhadap bobot dan ruang sisa untuk penanda + sensor | perkiraan ✅, timbang ulang ☐ |
+| **Bobot terbang** satu wahana lengkap | Sementara memakai **perkiraan ≈ 520 g** dari lembar data (batas bawah, rincian di [`3-baterai-dan-bobot.md`](3-baterai-dan-bobot.md#bobot-terbang-satu-wahana)); timbang ulang dengan timbangan dapur digital bila ada | Rasio gaya dorong terhadap bobot dan ruang sisa untuk penanda + sensor | perkiraan ✅, timbang ulang ☐ |
 | *Firmware* yang sekarang terpasang di FC (Betaflight/INAV/ArduPilot + versi) | Colok USB, buka Betaflight Configurator atau Mission Planner | Titik awal sebelum dipasang *firmware* ArduPilot racikan | |
-| Jumlah modul RUSHFPV GNSS 25+ | Hitung | Hanya inventaris (modul dilepas) — prioritas rendah | |
+| Jumlah modul RUSHFPV GNSS 25+ | Hitung | Hanya inventaris (modul dilepas) — prioritas rendah | ✅ 2 RUSHFPV M10 lepas + 4 GPS di rangka 1–4 |
 
 ### C4. Perangkat darat
 
@@ -83,10 +84,14 @@ Isi kolom "Hasil" langsung di sini atau kirim fotonya. Urutan = prioritas.
 
 - [x] Denah lama tetap dipakai. Pengujian hanya di **bagian lurus** koridor (lebar
   270 cm, panjang 720–960 cm), bukan persimpangan T (konfirmasi penulis 2026-09-17).
+  Ringkasan ruang dan arena: [`1-ruang-uji-dan-arena.md`](1-ruang-uji-dan-arena.md).
+- [ ] Pastikan ke pengelola bahwa sofa dan banner boleh dipindah setiap sesi uji.
+- [ ] Saat memasang kamera: titik cantol rel plafon dekat 2,35 m dan 4,85 m yang bebas AC
+  kaset, lampu, dan *sprinkler*.
 
 ## E. Pustaka
 
-Rincian di [`../pustaka/kuartil-jurnal.md`](../pustaka/kuartil-jurnal.md).
+Rincian di [`../04-pustaka/kuartil-jurnal.md`](../04-pustaka/kuartil-jurnal.md).
 
 - [x] Kuartil dibaca langsung dari widget resmi SCImago (SJR 2025).
   Intelligent Service Robotics = **Q1** (sesuai penulis).

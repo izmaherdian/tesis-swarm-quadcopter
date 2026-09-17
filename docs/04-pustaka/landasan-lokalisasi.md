@@ -1,3 +1,10 @@
+> **Catatan 2026-09-17.** Dulu bernama `docs/pustaka/E01-landasan-lokalisasi.md`. Awalan
+> "E01" merujuk eksperimen sapuan sensitivitas lokalisasi yang **tidak masuk proposal yang
+> berlaku**, sehingga dilepas dari nama berkas. Status verifikasi di bawah adalah keadaan
+> 2026-09-16. Rujukan yang akhirnya dipakai naskah (mis. Bultmann dkk. 2023, tiga makalah
+> AprilTag) sudah ada di `tulisan/common/references.bib`, dan kuartil yang berlaku ada di
+> [`kuartil-jurnal.md`](kuartil-jurnal.md).
+
 # Landasan Pustaka — Lokalisasi Indoor & Sensitivitas Formasi
 
 > Dibuat: 2026-09-16 · Untuk: menambal sitasi Subbab 2.4 proposal + mengunci

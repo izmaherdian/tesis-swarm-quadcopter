@@ -1,11 +1,13 @@
 # KP02 — Firmware FC: ArduPilot racikan lewat Custom Firmware Builder
 
-**Tanggal:** 2026-09-16 · **Status:** diputuskan, belum dieksekusi
+**Tanggal:** 2026-09-16 · **Diperbarui:** 2026-09-17 · **Status:** diputuskan, dieksekusi di Fase 2
+**Terkait:** [KP01](KP01-lokalisasi-kamera-apriltag.md) · proposal Subbab "Firmware *Flight Controller*"
 
 ## Masalah
 
 Kamera atas hanya berguna bila *flight controller* mau menerima posisi dari luar.
-Papan yang tersedia adalah **SpeedyBee F405 Mini** (STM32F405, flash 1 MB).
+Papan yang tersedia adalah **SpeedyBee F405 Mini** (STM32F405, flash 1 MB), 6 unit di
+inventaris ([inventaris](../03-lab/2-inventaris.md)).
 
 Daftar fitur resmi build stabil ArduPilot untuk papan ini
 (`firmware.ardupilot.org/Copter/stable/SpeedyBeeF405Mini/features.txt`):
@@ -30,7 +32,7 @@ beacon. Ini keterbatasan flash papan, bukan soal pilihan sensor.
 | Jalan | Biaya | Risiko |
 |---|---|---|
 | **A. ArduPilot racikan** | Rp0 | belum pasti muat 1 MB |
-| B. Ganti FC ke kelas H7 (≥2 MB) | 5 × papan baru, melebihi RAB Rp2,75 jt | rendah |
+| B. Ganti FC ke kelas H7 (≥2 MB) | 5 papan baru, tidak ada di RAB; 6 F405 Mini yang ada jadi tidak terpakai | rendah |
 | C. Kalang posisi dipindah ke ESP32-S3 | Rp0 | EKF & kontrol posisi ditulis sendiri; beban XIAO ESP32-S3 berat |
 
 ## Keputusan
@@ -64,8 +66,9 @@ matikan lebih banyak fitur dan ulangi — ini iterasi murah, bukan kegagalan jal
 
 ## Kalau jalan A ternyata buntu
 
-Jatuh ke **jalan C** (kalang posisi di ESP32-S3), bukan jalan B — karena B
-menuntut belanja 5 papan yang melebihi seluruh RAB.
+Jatuh ke **jalan C** (kalang posisi di ESP32-S3), bukan jalan B, karena B menuntut
+belanja 5 papan yang tidak dianggarkan sementara 6 papan F405 Mini sudah tersedia.
+Harga papan H7 belum disurvei.
 
 ## Konsekuensi yang harus dicatat di naskah
 
@@ -76,4 +79,5 @@ menuntut belanja 5 papan yang melebihi seluruh RAB.
 
 ## Terkait
 
-[[KP01-lokalisasi-apriltag]] · `docs/lab/analisis-kelayakan.md` bagian 6
+[KP01](KP01-lokalisasi-kamera-apriltag.md) · [analisis kelayakan (arsip)](../arsip/analisis-kelayakan-2026-09-16.md) bagian 6
+· [tugas penulis C3](../03-lab/5-tugas-penulis.md) (cek firmware yang sekarang terpasang)

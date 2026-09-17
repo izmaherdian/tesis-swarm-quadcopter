@@ -4,27 +4,33 @@ Implementasi fisik dan evaluasi *Event-Based Reconfiguration Control* (ERC) pada
 sistem formasi terdesentralisasi 5 agen *quadcopter*.
 
 **Izma Alhazmi Herdian** (23825301) · Magister Instrumentasi dan Kontrol, FTI ITB
-· Agustus 2026 – April 2027
+· September 2026 – Mei 2027
 
 ---
 
 ## Mulai dari mana
 
+**Baca [`docs/00-mulai-di-sini.md`](docs/00-mulai-di-sini.md) lebih dulu.** Berkas itu
+berisi urutan baca seluruh dokumentasi dan status proyek terkini.
+
 | Kalau kamu mau… | Buka |
 |---|---|
-| Tahu alur kerja risetnya | [`docs/workflow.md`](docs/workflow.md) |
+| Tahu urutan baca dan status proyek | [`docs/00-mulai-di-sini.md`](docs/00-mulai-di-sini.md) |
+| Tahu fase penelitian dan alur kerja | [`docs/01-alur-kerja.md`](docs/01-alur-kerja.md) |
+| Tahu kenapa sesuatu dirancang begitu | [`docs/02-keputusan/`](docs/02-keputusan/) |
+| Data ruang uji, inventaris, harga | [`docs/03-lab/`](docs/03-lab/README.md) |
 | Menulis proposal | [`tulisan/proposal/main.tex`](tulisan/proposal/main.tex) |
-| Menulis laporan akhir | [`tulisan/laporan-akhir/main.tex`](tulisan/laporan-akhir/main.tex) |
-| Merancang eksperimen baru | [`docs/experiments/TEMPLATE-desain-eksperimen.md`](docs/experiments/TEMPLATE-desain-eksperimen.md) |
+| Merancang eksperimen baru | [`docs/05-eksperimen/TEMPLATE-desain-eksperimen.md`](docs/05-eksperimen/TEMPLATE-desain-eksperimen.md) |
 | Tahu konteks & aturan repo | [`CLAUDE.md`](CLAUDE.md) |
 
 ## Kompilasi naskah
 
 Butuh **XeLaTeX** (dokumen memakai `fontspec` + Times New Roman) beserta
-`latexmk` dan `bibtex`.
+`latexmk` dan `bibtex`. Skrip gambar butuh Python 3 + Matplotlib.
 
 ```bash
-make proposal      # → tulisan/proposal/main.pdf        (48 halaman)
+make gambar        # skrip tulisan/gambar/ → tulisan/proposal/figures/
+make proposal      # → tulisan/proposal/main.pdf        (58 halaman)
 make laporan       # → tulisan/laporan-akhir/main.pdf   (kerangka)
 make watch-p       # kompilasi ulang otomatis sambil menulis proposal
 make check         # gagal kalau masih ada rujukan/sitasi menggantung
@@ -35,16 +41,22 @@ make clean         # buang artefak build
 
 ```
 tulisan/
-├── proposal/          proposal tesis — selesai
+├── proposal/          proposal tesis (Bab I–V)
 ├── laporan-akhir/     kerangka laporan akhir
 ├── common/            itb-tesis.sty · references.bib · logo (dipakai bersama)
-└── diagrams/          sumber diagram *.drawio
+├── gambar/            skrip gambar; parameter.py = sumber angka geometri
+└── diagrams/          sumber diagram *.drawio (metodologi)
 docs/
-├── workflow.md        alur kerja riset dari pustaka sampai sidang
-└── experiments/       dokumen desain, satu per eksperimen
+├── 00-mulai-di-sini.md    urutan baca + status proyek
+├── 01-alur-kerja.md       lima fase, alur eksperimen, siklus sesi
+├── 02-keputusan/          KP01–KP05
+├── 03-lab/                ruang uji, inventaris, baterai, harga, tugas penulis, foto, video
+├── 04-pustaka/            kuartil jurnal, landasan lokalisasi
+├── 05-eksperimen/         templat + dokumen desain per eksperimen
+└── arsip/                 dokumen lama, bukan acuan
 experiments/           konfigurasi tiap eksperimen
 results/               keluaran run, satu folder per <tanggal>-<id>
-src/                   kode simulasi (MultiAgentSim)
+src/                   simulator MultiAgentSim (clone sebagian, versi terkunci)
 ```
 
 Format dokumen (font, margin, penomoran) terpusat di
@@ -54,10 +66,10 @@ keduanya tidak pernah menyimpang satu sama lain. Bibliografinya juga satu:
 
 ## Penandaan versi
 
-Tiap bab atau eksperimen yang selesai divalidasi ditandai:
+Tiap bab atau eksperimen yang selesai divalidasi ditandai, misalnya:
 
 ```bash
-git tag -a v0.2-sim-iapf -m "IAPF tervalidasi pada skenario koridor"
+git tag -a v0.5-proposal -m "Proposal setelah tinjauan pembimbing"
 ```
 
 supaya setiap angka di naskah bisa dilacak ke keadaan kode saat itu.

@@ -2,7 +2,9 @@
 
 > Diperbarui 2026-09-17. Dipakai oleh tabel anggaran BAB IV proposal (Tabel 4.1
 > Fase 2, Tabel 4.2 Fase 4, Tabel 4.3 Rekapitulasi). Total RAB **Rp22.639.974**.
-> FC/ESC dan ESP32-S3 dianggap 3 unit tersedia (asumsi penulis).
+> Jumlah yang dibeli mengikuti [inventaris](2-inventaris.md) 2026-09-17 (asumsi lama "3 unit
+> FC/ESC/ESP32-S3" sudah tidak berlaku). Aturan pengadaan diringkas di
+> [KP05](../02-keputusan/KP05-baterai-dan-pengadaan.md).
 
 ## Aturan
 
@@ -54,6 +56,8 @@ Rp29.551.000 yang jelas tidak wajar.
 
 ### Penerima ExpressLRS EP2 TCXO — dipakai **Rp337.000**
 
+> **Tidak masuk RAB** sejak inventaris 2026-09-17 (5 penerima tersedia). Disimpan sebagai acuan harga.
+
 | Harga (Rp) | Listing | Catatan |
 |---:|---|---|
 | **337.000** | [Abadi store07, Tangerang](https://www.tokopedia.com/sabinar/terbaru-happymodel-2-4g-expresslrs-elrs-ep2-tcxo-long-range-rc-receiver-terlaris-1731126126732018778) | batas atas |
@@ -66,6 +70,9 @@ Dikecualikan: listing gabungan EP1/EP2/EP1 Dual (Rp500.000–690.000, harga kart
 bisa untuk varian EP1 Dual) dan paket 1/2/3 buah (Rp2.235.150).
 
 ### *Stack* SpeedyBee F405 Mini + ESC BLS 35A (V1) — dipakai **Rp1.906.700**
+
+> **Tidak masuk RAB** sejak inventaris 2026-09-17 (6 FC tersedia); yang dibeli hanya ESC,
+> lihat pos ESC BLS 35A Mini V2. Disimpan sebagai acuan harga.
 
 | Harga (Rp) | Listing | Catatan |
 |---:|---|---|
@@ -270,4 +277,5 @@ jadi **pilih lakban putih atau kuning**, bukan hitam; listing yang sama menyedia
 varian warna tersebut, tetapi harganya belum diperiksa per varian.
 
 Sensor jarak terpilih (8 unit, Fase 4) memakai harga VL53L1X sebagai batas atas
-(8 × Rp98.500 = Rp788.000); bila HC-SR04 terpilih, nilainya 8 × Rp20.000 = Rp160.000.
+(8 × Rp98.500 = Rp788.000); bila HC-SR04 terpilih, nilainya 8 × Rp26.600 = Rp212.800 (harga listing,
+menggantikan angka lama RAB awal Rp20.000).

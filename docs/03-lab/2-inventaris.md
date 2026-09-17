@@ -1,6 +1,6 @@
 # Inventaris Perangkat Keras
 
-> Diperbarui 2026-09-17 (inventaris lengkap dari penulis). Sumber: 18 foto di `foto/`
+> Diperbarui 2026-09-17 (inventaris lengkap dari penulis). Sumber: 19 foto di [`foto/`](foto/README.md)
 > dan daftar inventaris yang dicatat penulis di lab. Kolom bertanda **?** belum pasti.
 
 ## 1. Wahana dan komponen terbang
@@ -25,7 +25,7 @@
 | Motor SpeedyBee 2006-1950KV | | 16 | 4 | **20** | cukup untuk 5 wahana |
 | Propeler Gemfan **D90S** | 3 bilah, 90 mm, *T-mount* 1,5 mm | 0 | 14 | **14** | 5 wahana butuh 20 |
 | Seeed XIAO ESP32-S3 | Wi-Fi 2,4 GHz + BLE | 4 | 1 | **5** | cukup untuk 5 wahana |
-| Penerima ExpressLRS EP2 TCXO | 2,4 GHz | 4 | — | **4** | + 1 "ELRS" lepas, jenis **?** |
+| Penerima ExpressLRS EP2 TCXO | 2,4 GHz | 4 | — | **4** | + 1 penerima ELRS lepas berbasis ESP8285 (total 5) |
 | Sensor MicoAir MTF-01 v1.1 | aliran optik + ToF 8 m, sudut pancar setengah 3°, UART 115200 100 Hz, 4,5 g ([MicoAir](https://micoair.com/optical_range_sensor_mtf-01/)) | 2 | 1 | **3** | **kandidat ketiga uji banding sensor jarak** (keputusan penulis 2026-09-17) |
 | Modul GNSS | GPS pada rangka 1–4; RUSHFPV M10 + HMC5883 | 4 | 2 | **6** | tidak dipakai (dalam ruangan) |
 | Antena | dipol tipe-T 2,4 GHz/915 MHz; dipol mini 2,4/5,8 GHz IPEX | — | 1 + 3 | **4** | dipol mini dapat untuk rangka 4 |
@@ -34,7 +34,7 @@
 
 ### 1c. Baterai LiPo
 
-Analisis kecocokan: [`analisis-baterai.md`](analisis-baterai.md).
+Analisis kecocokan: [`3-baterai-dan-bobot.md`](3-baterai-dan-bobot.md).
 
 | Baterai | Sel | Kapasitas | C | Jumlah | Cocok untuk Bee35 1950KV |
 |---|---|---:|---|---:|---|
@@ -45,29 +45,10 @@ Analisis kecocokan: [`analisis-baterai.md`](analisis-baterai.md).
 | Onbo Nano Power | 3S 11,1 V | 1500 mAh | 25C | 2 | ❌ |
 | LPB Power | 2S/3S | 1500 mAh | 20–25C | 1 | ❌ |
 
-### 1d. Perkiraan bobot terbang satu wahana
+### 1d. Bobot terbang
 
-Belum ditimbang dengan timbangan teliti (timbangan badan tidak memadai). Perkiraan
-dari lembar data dipakai sementara (keputusan penulis 2026-09-17); ditimbang ulang
-dengan timbangan dapur digital saat tersedia.
-
-| Komponen | Bobot | Sumber |
-|---|---:|---|
-| Rangka SpeedyBee Bee35 | 138 g | [SpeedyBee](https://www.speedybee.com/speedybee-bee35-3-5-inch-frame/) |
-| 4 motor 2006-1950KV (23 g termasuk kabel) | 92 g | [SpeedyBee](https://www.speedybee.com/speedybee-2006-1950kv-motor-bee35-3-5-inch-fpv/) |
-| *Flight controller* F405 Mini | 9,6 g | [SpeedyBee](https://www.speedybee.com/speedybee-f405-mini-bls-35a-20x20-stack/) |
-| ESC BLS 35A Mini V2 | 7,2 g | [SpeedyBee](https://www.speedybee.com/speedybee-f405-mini-bls-35a-20x20-stack/) |
-| 4 propeler Gemfan D90S (2,3 g) | 9,2 g | listing Zerius |
-| Penerima EP2 TCXO | 0,44 g | listing justShopIt |
-| Baterai CNHL 6S 1200 mAh | 220 g | listing shoppublic (CNHL menyebut sekitar 210 g) |
-| Pelat penanda akrilik 12 × 12 cm, tebal 2 mm | ≈ 34 g | perhitungan: 144 cm² × 0,2 cm × densitas akrilik ≈ 1,19 g/cm³ |
-| 2 sensor jarak (kandidat terberat yang datanya ada: MTF-01 4,5 g) | 9 g | [MicoAir](https://micoair.com/optical_range_sensor_mtf-01/) |
-| XIAO ESP32-S3, HC-SR04, tiang penanda cetak 3D, kabel, antena, tali baterai | **belum ada data** | — |
-| **Jumlah yang diketahui** | **≈ 520 g** (≈ 300 g tanpa baterai) | batas bawah |
-
-Bobot sebenarnya lebih besar dari angka ini karena beberapa komponen belum
-terhitung. Pelat penanda menyumbang bobot cukup besar; pelat dapat dilubangi di luar
-area pola AprilTag bila perlu.
+Perkiraan ≈ 520 g (batas bawah, belum ditimbang). Rincian per komponen di
+[`3-baterai-dan-bobot.md`](3-baterai-dan-bobot.md#bobot-terbang-satu-wahana).
 
 ## 2. Perangkat darat
 
@@ -83,7 +64,7 @@ area pola AprilTag bila perlu.
 
 ## 3. Belum tersedia — masuk rencana pengadaan
 
-Fase mengikuti BAB IV proposal. Harga dan sumbernya: [`survei-harga.md`](survei-harga.md).
+Fase mengikuti BAB IV proposal. Harga dan sumbernya: [`4-survei-harga.md`](4-survei-harga.md). Aturan pengadaan: [KP05](../02-keputusan/KP05-baterai-dan-pengadaan.md).
 
 | Komponen | Kebutuhan | Fase |
 |---|---|---|
@@ -115,10 +96,14 @@ diuji sebelum terbang pertama.
 
 ## 4. Yang masih perlu didata
 
-1. Spesifikasi komputer stasiun darat (CPU, RAM, port USB3).
-2. Model pengisi daya LiPo dan router Wi-Fi.
-3. ~~Identitas papan pada foto 13~~ → EP2 TCXO (2026-09-16).
-4. Jumlah modul RUSHFPV GNSS. FC/ESC dan XIAO ESP32-S3 untuk sementara dianggap
-   3 unit (keputusan penulis 2026-09-17) — pastikan saat inventaris ulang.
-5. Ukuran propeler (perkiraan 3,5 inci dari kelas rangka — belum dipastikan).
-6. Bobot terbang wahana lengkap dengan baterai.
+Daftar periksa lengkap ada di [`5-tugas-penulis.md`](5-tugas-penulis.md) bagian C. Ringkasnya:
+
+1. Merek, model, dan pita frekuensi router Wi-Fi.
+2. *Firmware* yang sekarang terpasang di FC.
+3. Pemetaan port USB fisik laptop ke dua pengendali USB 3.1.
+4. Bobot terbang hasil timbang (pengganti perkiraan ≈ 520 g).
+5. Versi ESC pada wahana terakit (V1/V2), dan apakah FC lepas kedua membawa ESC.
+
+Sudah terjawab: spesifikasi laptop, pengisi daya (SkyRC T6X80), identitas foto 13
+(EP2 TCXO), propeler (Gemfan D90S), penerima ELRS lepas (ESP8285), dan jumlah FC/ESC/ESP32-S3 (inventaris 1b
+menggantikan asumsi lama "3 unit").

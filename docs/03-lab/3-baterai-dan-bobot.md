@@ -1,6 +1,7 @@
-# Analisis Baterai untuk Wahana Bee35
+# Baterai dan Bobot Wahana Bee35
 
-> Dibuat 2026-09-17 dari inventaris yang dicatat penulis.
+> Dibuat 2026-09-17 dari inventaris yang dicatat penulis. Keputusan yang diambil dari
+> analisis ini: [KP05](../02-keputusan/KP05-baterai-dan-pengadaan.md).
 
 ## Acuan pabrikan
 
@@ -29,12 +30,15 @@ rancangan, apalagi dengan beban tambahan (ESP32-S3, penanda bertiang, dua sensor
 ## Kebutuhan
 
 - **Satu baterai 6S per wahana** untuk uji kawanan serentak → 5 baterai. Tersedia 2,
-  **kurang 3**.
-- Agar pengulangan uji tidak menunggu pengisian, idealnya **satu cadangan per wahana**
-  → 10 baterai, **kurang 8**.
+  kurang 3.
+- Agar pengulangan uji tidak menunggu pengisian, idealnya satu cadangan per wahana →
+  10 baterai, kurang 8.
 - Uji terbang tunggal (Fase 4 awal) cukup dengan 2 baterai 6S yang ada.
 - Papan pengisian paralel Power Genius hanya boleh mengisi baterai **bersel sama**
   (semua 6S) secara bersamaan, dan tetap memerlukan pengisi daya *balance*.
+
+**Keputusan penulis (2026-09-17):** total **6 baterai 6S** (5 wahana + 1 cadangan), jadi
+dibeli **4 unit** CNHL Pizza Series 6S 1200 mAh 100C pada Fase 4.
 
 ## Pengisian
 
@@ -49,3 +53,27 @@ Power Genius dan SkyRC *multi balance board*.
   (≈ 91 W) harus diturunkan arusnya di bawah 1C.
 - Dengan 6 baterai 6S, pengisian penuh berlangsung **sekitar tiga putaran** pengisian.
   Ini perlu diperhitungkan saat menjadwalkan sesi uji kawanan (Fase 4).
+
+## Bobot terbang satu wahana
+
+Belum ditimbang dengan timbangan teliti (timbangan badan tidak memadai). Perkiraan
+dari lembar data dipakai sementara (keputusan penulis 2026-09-17); ditimbang ulang
+dengan timbangan dapur digital saat tersedia.
+
+| Komponen | Bobot | Sumber |
+|---|---:|---|
+| Rangka SpeedyBee Bee35 | 138 g | [SpeedyBee](https://www.speedybee.com/speedybee-bee35-3-5-inch-frame/) |
+| 4 motor 2006-1950KV (23 g termasuk kabel) | 92 g | [SpeedyBee](https://www.speedybee.com/speedybee-2006-1950kv-motor-bee35-3-5-inch-fpv/) |
+| *Flight controller* F405 Mini | 9,6 g | [SpeedyBee](https://www.speedybee.com/speedybee-f405-mini-bls-35a-20x20-stack/) |
+| ESC BLS 35A Mini V2 | 7,2 g | [SpeedyBee](https://www.speedybee.com/speedybee-f405-mini-bls-35a-20x20-stack/) |
+| 4 propeler Gemfan D90S (2,3 g) | 9,2 g | listing Zerius |
+| Penerima EP2 TCXO | 0,44 g | listing justShopIt |
+| Baterai CNHL 6S 1200 mAh | 220 g | listing shoppublic (CNHL menyebut sekitar 210 g) |
+| Pelat penanda akrilik 12 × 12 cm, tebal 2 mm | ≈ 34 g | perhitungan: 144 cm² × 0,2 cm × densitas akrilik ≈ 1,19 g/cm³ |
+| 2 sensor jarak (kandidat terberat yang datanya ada: MTF-01 4,5 g) | 9 g | [MicoAir](https://micoair.com/optical_range_sensor_mtf-01/) |
+| XIAO ESP32-S3, HC-SR04, tiang penanda cetak 3D, kabel, antena, tali baterai | **belum ada data** | — |
+| **Jumlah yang diketahui** | **≈ 520 g** (≈ 300 g tanpa baterai) | batas bawah |
+
+Bobot sebenarnya lebih besar dari angka ini karena beberapa komponen belum
+terhitung. Pelat penanda menyumbang bobot cukup besar; pelat dapat dilubangi di luar
+area pola AprilTag bila perlu.

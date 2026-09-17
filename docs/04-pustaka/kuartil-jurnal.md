@@ -1,7 +1,8 @@
 # Kuartil Jurnal Rujukan Proposal
 
-> Diperbarui 2026-09-17. Mencakup seluruh 47 entri yang tercetak di Daftar Pustaka
-> proposal (`tulisan/proposal/main.bbl`), 48 entri setelah penggantian lima rujukan.
+> Diperbarui 2026-09-17. Mencakup seluruh **51 entri** yang tercetak di Daftar Pustaka
+> proposal (`tulisan/proposal/main.bbl`), termasuk tiga lembar data produk yang
+> ditambahkan setelah penggantian lima rujukan.
 
 ## Sumber data
 
@@ -56,6 +57,7 @@ cuplikan pencarian (kemungkinan data SJR 2024). Widget SCImago terbaru menunjukk
 | Laporan teknis / arXiv | welch…2006, brescianini…2013, quanDistributedSwarm…2022 | — |
 | Tesis S2 | argilianaPengembanganSistemKontrol2025 (ITB) | — |
 | Dokumentasi / perangkat lunak | ardupilot × 3, SpeedyBeeBee3535a, johnBobzwikQuadcopter_SimCon2025 | — |
+| Lembar data / halaman produk | elpGlobalShutterOG05B10, speedybeeBee35, micoairMTF01 | — |
 
 ## Rujukan lebih dari 5 tahun (terbit sebelum 2021)
 
