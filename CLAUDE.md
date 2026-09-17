@@ -50,8 +50,9 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
   Rincian: `docs/lab/spesifikasi-hw.md`; harga: `docs/lab/survei-harga.md`.
 - **Arena:** koridor 2,70 m, celah 0,90 m (kolom bangunan + dus), formasi V
   diskalakan 0,9; untuk wahana $R=0{,}125$ m ambang $\alpha R=1{,}0$ m.
-- **Metodologi:** 5 fase mengikuti `figures/metodologi_tesis.pdf` (diagram lama,
-  dipertahankan atas permintaan penulis): 1 Studi & Desain, 2 Implementasi,
+- **Metodologi:** 5 fase mengikuti `figures/metodologi_tesis.pdf` (diagram draw.io
+  penulis, isinya sudah diselaraskan; ekspor ulang lewat penampil draw.io di Chrome
+  *headless* → cetak PDF → `pdfcrop`): 1 Studi & Desain, 2 Implementasi,
   3 HITL, 4 Uji Terbang (tunggal → kawanan), 5 Analisis. Anggaran ada di Fase 2
   dan Fase 4; pembelian untuk lima wahana menunggu uji terbang tunggal lolos.
 - **Simulasi:** Python (NumPy/SciPy/SymPy/Matplotlib), dinamika diturunkan dengan
@@ -66,7 +67,7 @@ tulisan/proposal/        proposal tesis (main.tex), 5 bab, ±56 halaman
 tulisan/laporan-akhir/   kerangka laporan akhir — masih placeholder
 tulisan/common/          itb-tesis.sty + references.bib + logo (dipakai bersama)
 tulisan/gambar/          skrip gambar (gaya.py, parameter.py, gbr_*.py) → `make gambar`
-tulisan/diagrams/        sumber *.drawio (metodologi, EKF lama) — diekspor manual
+tulisan/diagrams/        sumber *.drawio; halaman Metodologi → figures/metodologi_tesis.pdf
 docs/workflow.md         alur kerja riset — baca ini sebelum memulai fase baru
 docs/lab/                inventaris, survei harga, analisis ruang, foto & video lab
 docs/experiments/        satu dokumen desain per eksperimen (dibuat SEBELUM ngoding)
@@ -99,6 +100,8 @@ src/MultiAgentSim/       clone simulator (gitignored); versi dikunci di src/Mult
   `docs/lab/survei-harga.md`. Tanpa sumber → tulis *survei*, jangan diperkirakan.
 - Setiap rumus perencana (ERC/IAPF) harus cocok dengan kode simulator versi terkunci.
 - Kalau angka di narasi dan di tabel berbeda, **tabel yang benar** — perbaiki narasinya.
+- Gaya kalimat: mengalir, tanpa titik dua di tengah kalimat atau sebelum persamaan
+  (pakai yaitu/karena/sehingga/melalui). Titik dua hanya di judul dan label tabel.
 - Jangan menghaluskan hasil yang jelek. Hasil negatif ditulis apa adanya di
   bagian Keterbatasan Penelitian.
 
