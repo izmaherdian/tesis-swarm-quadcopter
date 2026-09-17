@@ -1,6 +1,6 @@
 # Inventaris Perangkat Keras
 
-> Diperbarui 2026-09-16. Sumber: 17 foto di `foto/` (dibaca langsung) dan
+> Diperbarui 2026-09-17. Sumber: 17 foto di `foto/` (dibaca langsung) dan
 > konfirmasi lisan dari peneliti. Kolom bertanda **?** belum terdata.
 
 ## 1. Wahana dan komponen terbang
@@ -11,6 +11,7 @@
 | Motor BLDC | **2006 – 1950 KV** | 4 per wahana terpasang | foto 15 |
 | ESC | SpeedyBee **BLS 35A Mini** 4-in-1, BLHeli\_S | 4 | konfirmasi peneliti |
 | *Flight controller* | SpeedyBee **F405 Mini** — STM32F405 (flash 1 MB), IMU ICM-42688P, barometer DSP-310 | 4 | foto 14 + dok. ArduPilot |
+| Penerima kendali radio | **ExpressLRS EP2 TCXO** 2,4 GHz | **3** | foto 13 + konfirmasi peneliti |
 | *Companion computer* | Seeed Studio **XIAO ESP32-S3** — Wi-Fi 2,4 GHz + BLE, USB-C | 1 (**?** apakah ada lagi) | foto 16 |
 | Modul navigasi | **RUSHFPV GNSS 25+** — mesin u-Blox M10 (GPS/GLONASS/BDS/Galileo), kompas **HMC5883**, 115200 baud, masukan 5 V, antena tipe T | **?** | foto 12 |
 | Dudukan modul navigasi | Cetakan 3D, terpasang di tengah-depan bodi | terpasang | foto 17 |
@@ -19,19 +20,11 @@
 | Saluran (*duct*) cadangan | Cincin kuning | beberapa | foto 07, 08 |
 | Kartu program ESC | Turnigy AeroStar | 1 | foto 07, 08 |
 
-### ⚠️ Komponen belum teridentifikasi
+### Foto 13 — teridentifikasi
 
-Foto 13 memperlihatkan papan mungil berbungkus *heatshrink* bening, dipasang di
-atas busa peredam, dengan **empat kabel** (merah, hitam, kuning, hijau). Peneliti
-menamainya "IMU", namun *flight controller* sudah memuat IMU ICM-42688P sehingga
-identitas papan ini belum pasti. Tulisan yang terbaca pada papannya:
-**`1281 2343 45909`** — pola tersebut lebih menyerupai kode lot atau tanggal
-produksi daripada nomor komponen, sehingga belum cukup untuk identifikasi.
-Resolusi foto (720 × 1280) tidak memadai untuk dibaca ulang.
-
-**Cara memastikan:** foto lebih dekat pada papannya, atau telusuri keempat kabel
-ke pena mana pada *flight controller* (UART menandakan penerima atau modul
-serial; I\textsuperscript{2}C menandakan sensor).
+Papan berbungkus *heatshrink* dengan empat kabel pada foto 13 adalah **penerima
+ExpressLRS EP2 TCXO** (konfirmasi peneliti, 2026-09-16). Tersedia **3 unit**;
+**pemancarnya belum ada**.
 
 ## 2. Perangkat darat
 
@@ -44,30 +37,38 @@ serial; I\textsuperscript{2}C menandakan sensor).
 
 ## 3. Belum tersedia — masuk rencana pengadaan
 
-| Komponen | Kebutuhan | Tahap RAB |
+Fase mengikuti BAB IV proposal. Harga dan sumbernya: [`survei-harga.md`](survei-harga.md).
+
+| Komponen | Kebutuhan | Fase |
 |---|---|---|
-| **Kendali radio (pemancar + penerima)** | Pengambilalihan manual dan penghentian darurat | **Tahap 1 — keselamatan** |
-| Kamera atas 4K + lensa sudut lebar | Lokalisasi | Tahap 1 (unit ke-1), Tahap 2 (unit ke-2) |
-| Sensor ultrasonik HC-SR04 | Kandidat A persepsi rintangan | Tahap 1 (2 unit), Tahap 2 (sisanya) |
-| Sensor jarak laser VL53L1X | Kandidat B persepsi rintangan | Tahap 1 (2 unit) |
-| Penanda AprilTag + akrilik + tiang | Lokalisasi | Tahap 1 (1 set), Tahap 2 (4 set) |
-| Dus kardus rintangan | Arena | Tahap 3 |
-| Perlengkapan keselamatan | Tas tahan api, jaring, kacamata | Tahap 3 |
+| **Pemancar ExpressLRS** (RadioMaster Pocket) | Pengambilalihan manual dan penghentian darurat | **Fase 2** — sebelum terbang pertama |
+| Kamera USB 5 MP *global shutter*, lensa 120° | Lokalisasi | Fase 2 (unit ke-1), Fase 4 (unit ke-2) |
+| Kabel USB ekstensi 10 m + dudukan langit-langit | Lokalisasi | Fase 2 (1 set), Fase 4 (1 set) |
+| Sensor ultrasonik HC-SR04 | Kandidat A persepsi rintangan | Fase 2 (2 unit) |
+| Sensor jarak laser VL53L1X | Kandidat B persepsi rintangan | Fase 2 (2 unit) |
+| Sensor jarak terpilih | Lima wahana × 2 dikurangi 2 unit uji banding | Fase 4 (8 unit) |
+| Penanda AprilTag + akrilik + tiang | Lokalisasi | Fase 2 (1 set), Fase 4 (4 set) |
+| Perlengkapan keselamatan | Tas tahan api, jaring, kacamata | Fase 4 — sebelum uji terbang tunggal |
+| Penerima ExpressLRS EP2 TCXO | 5 wahana − 3 tersedia | Fase 4 (2 unit) |
+| *Stack* SpeedyBee F405 Mini + ESC BLS 35A | 5 wahana − 4 tersedia | Fase 4 (1 set) — **jumlah perlu dikonfirmasi** |
+| XIAO ESP32-S3 | 5 wahana − 1 tercatat | Fase 4 (4 unit) — **jumlah perlu dikonfirmasi** |
+| Dus kardus rintangan | Arena | Fase 4 (10 unit) |
+| Lakban penanda posisi lantai | Arena | Fase 4 |
 
 ### 🔴 Catatan keselamatan
 
-**Tautan kendali radio belum tersedia.** Tanpa itu, satu-satunya jalur
-penghentian darurat adalah MAVLink melalui Wi-Fi — dan apabila justru jaringan
-Wi-Fi yang bermasalah, tidak ada jalan keluar tersisa. Untuk uji terbang lima
-wahana di koridor yang juga dipakai orang lain, ini risiko yang tidak dapat
-diterima. Pengadaannya dinaikkan ke Tahap 1 dan prosedur keselamatan pada naskah
-harus menyebutkan mekanisme pengambilalihan manual secara eksplisit.
+**Penerima kendali radio sudah ada (3 × EP2 TCXO), pemancarnya belum.** Tanpa
+pemancar, satu-satunya jalur penghentian darurat adalah MAVLink melalui Wi-Fi —
+dan apabila justru jaringan Wi-Fi yang bermasalah, tidak ada jalan keluar
+tersisa. Pemancar karenanya diadakan pada **Fase 2**, dan pengambilalihan manual
+diuji sebelum terbang pertama.
 
 ## 4. Yang masih perlu didata
 
 1. Spesifikasi komputer stasiun darat (CPU, RAM, port USB3).
 2. Model pengisi daya LiPo dan router Wi-Fi.
-3. Identitas papan pada foto 13.
-4. Jumlah unit XIAO ESP32-S3 dan modul RUSHFPV GNSS.
+3. ~~Identitas papan pada foto 13~~ → EP2 TCXO (2026-09-16).
+4. Jumlah unit XIAO ESP32-S3, *flight controller*/ESC, dan modul RUSHFPV GNSS
+   (RAB Fase 4 berasumsi 1 ESP32-S3 dan 4 FC/ESC sesuai tabel di atas).
 5. Ukuran propeler (perkiraan 3,5 inci dari kelas rangka — belum dipastikan).
 6. Bobot terbang wahana lengkap dengan baterai.
