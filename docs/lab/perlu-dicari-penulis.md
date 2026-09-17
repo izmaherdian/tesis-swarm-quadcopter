@@ -27,8 +27,13 @@ Sudah diperiksa langsung di halaman Tokopedia (2026-09-17), detail per listing d
 - [x] XIAO ESP32-S3 — Rp282.500 (batas atas dari 4 listing).
 - [x] *Stack* F405 Mini + BLS 35A **V1** — Rp1.906.700 (batas atas dari 11 listing).
   Angka lama Rp2.244.428 ternyata produk lain (*kit board metal*).
-  - [ ] Pastikan wahana yang ada memakai **V1**. Bila yang dibeli nanti V2,
-    harganya Rp2.151.700–2.646.000 per set.
+  - [ ] Cek versi ESC pada wahana yang ada (opsional). Perbedaan V1/V2 ada di
+    **ESC**-nya (BLS 35A Mini V2), bukan di *flight controller*; halaman resmi
+    SpeedyBee untuk *stack* ini kini mencantumkan ESC V2, dan V2 kompatibel
+    (20×20, 35A, BLHeli_S). Cara cek: cari tulisan "V2" pada papan ESC (sisi atas
+    dan bawah, foto 14 hanya memperlihatkan sisi atas tanpa tanda versi), label
+    kotak, atau nota pembelian. Bila ingin anggaran konservatif untuk V2:
+    Rp2.151.700–2.646.000 per set.
 
 ## C. Inventaris lab
 
