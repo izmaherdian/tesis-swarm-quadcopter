@@ -12,7 +12,7 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
 | **Penulis** | Izma Alhazmi Herdian (23825301) |
 | **Program** | Magister Instrumentasi dan Kontrol, FTI, Institut Teknologi Bandung |
 | **Laboratorium** | PTIO ITB |
-| **Periode** | Agustus 2026 – April 2027 (9 bulan) |
+| **Periode** | September 2026 – Mei 2027 (9 bulan) |
 | **Bahasa tulisan** | Indonesia (istilah asing dalam `\textit{}`) |
 
 ## Inti teknis
@@ -23,20 +23,37 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
   rekonfigurasi formasi hanya terpicu saat parameter persepsi melewati ambang
   batas, dipadu **IAPF** (*Improved Artificial Potential Field*) untuk
   penghindaran rintangan.
-- **Pemicu utama:** lebar ruang terestimasi $w_e$ turun di bawah toleransi
-  formasi → transisi ke formasi *tailgating* (mengekor).
-- **Persepsi rintangan:** 2 sensor ultrasonik per agen, dipasang diagonal
-  $\theta = 45^\circ$, mengukur jarak lateral $d_l$ dan $d_r$.
-- **Lokalisasi:** kamera atas (*ceiling camera*) 60 FPS + penanda visual
-  **AprilTag**, pose 3D lewat *Perspective-n-Point*.
-  ⚠️ **Bukan UWB.** Proposal sempat memakai UWB lalu diganti; kalau menemukan
-  sisa istilah UWB/*anchor*/*two-way ranging* di naskah, itu sisa migrasi yang
-  harus dibersihkan.
-- **Estimasi state:** EKF, fusi IMU (laju tinggi, *drift*) + kamera atas
-  (absolut, tanpa *drift*).
-- **Kontrol tingkat rendah:** PID kaskade (posisi → kecepatan → sikap → laju sikap).
-- **Perangkat keras:** rangka SpeedyBee 35, FC SpeedyBee F4 Mini, *companion
-  computer* ESP32S3, komunikasi MAVLink di atas UDP.
+- **Pemicu utama:** lebar ruang terestimasi $w_e$. Sesuai kode simulator
+  (`MultiAgentERC.py`, versi `0d7ed5a`): $w_e \le \alpha R$ → mode mengekor
+  ($\sigma_i=0$); selain itu formasi ($\sigma_i=1$) dengan faktor skala
+  $\kappa=\min\{1,(w_e-2R)/w_f\}$. **Tanpa histeresis.** ⚠️ $\kappa$ dihitung tetapi
+  **belum diterapkan** di `behavior_formation()` — penerapannya dijadwalkan Fase 1.
+  Parameter sim: $R=0{,}2$, $\alpha=8$, $R_a=3R$, $w_f=2{,}0$, $V_{ref}=0{,}5$,
+  $d_{ref}=1{,}0$, $W_{form}=1{,}0$, $W_{tail}=1{,}2$, $W_{obs}=W_{col}=8{,}0$.
+- **Persepsi rintangan:** 2 sensor jarak per agen, dipasang diagonal bersudut
+  $\beta$ terhadap arah maju ($\theta$ dipakai untuk *pitch*). Jenisnya **belum
+  ditetapkan**: HC-SR04 vs VL53L1X diuji banding pada Fase 2.
+- **Lokalisasi:** 2 kamera atas USB **5 MP *global shutter*** 2592×1944 (4:3),
+  lensa 120°, 50 fps + penanda **AprilTag 12 cm** bertiang 7 cm, ketinggian terbang
+  1,2 m, pose lewat PnP di stasiun darat. Lembar data belum menyatakan 120°
+  horizontal atau diagonal — perhitungan liputan memuat keduanya
+  (`tulisan/gambar/parameter.py`). **Bukan UWB, bukan 4K** (keduanya keputusan lama).
+- **Estimasi state:** EKF3 bawaan ArduPilot, fusi IMU + pose kamera (ExtNav).
+- **Firmware FC:** SpeedyBee F405 Mini (flash 1 MB) — build stabil ArduPilot
+  menonaktifkan ExtNav, jadi dipakai **firmware racikan** (Custom Firmware Builder).
+  Cadangan: kalang posisi/kecepatan pindah ke *companion computer*.
+- **Kontrol tingkat rendah:** kaskade ArduPilot (P posisi → PID kecepatan → P sikap
+  → PID laju sudut → mixer → DShot).
+- **Perangkat keras:** rangka SpeedyBee Bee35 (6), FC SpeedyBee **F405** Mini (4),
+  ESC BLS 35A (4), XIAO ESP32-S3 (1 tercatat), penerima ExpressLRS EP2 TCXO (3,
+  **pemancar belum ada**). Semua lalu lintas MAVLink/UDP lewat satu router Wi-Fi.
+  Rincian: `docs/lab/spesifikasi-hw.md`; harga: `docs/lab/survei-harga.md`.
+- **Arena:** koridor 2,70 m, celah 0,90 m (kolom bangunan + dus), formasi V
+  diskalakan 0,9; untuk wahana $R=0{,}125$ m ambang $\alpha R=1{,}0$ m.
+- **Metodologi:** 5 fase mengikuti `figures/metodologi_tesis.pdf` (diagram lama,
+  dipertahankan atas permintaan penulis): 1 Studi & Desain, 2 Implementasi,
+  3 HITL, 4 Uji Terbang (tunggal → kawanan), 5 Analisis. Anggaran ada di Fase 2
+  dan Fase 4; pembelian untuk lima wahana menunggu uji terbang tunggal lolos.
 - **Simulasi:** Python (NumPy/SciPy/SymPy/Matplotlib), dinamika diturunkan dengan
   **metode Kane**. Repo terpisah: <https://github.com/izmaherdian/MultiAgentSim>.
 - **Metrik evaluasi:** RMSE galat formasi, waktu konvergensi, tingkat keberhasilan
@@ -45,15 +62,17 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
 ## Peta repo
 
 ```
-tulisan/proposal/        proposal tesis (main.tex) — SUDAH JADI, 48 halaman
+tulisan/proposal/        proposal tesis (main.tex), 5 bab, ±56 halaman
 tulisan/laporan-akhir/   kerangka laporan akhir — masih placeholder
 tulisan/common/          itb-tesis.sty + references.bib + logo (dipakai bersama)
-tulisan/diagrams/        sumber diagram *.drawio
+tulisan/gambar/          skrip gambar (gaya.py, parameter.py, gbr_*.py) → `make gambar`
+tulisan/diagrams/        sumber *.drawio (metodologi, EKF lama) — diekspor manual
 docs/workflow.md         alur kerja riset — baca ini sebelum memulai fase baru
+docs/lab/                inventaris, survei harga, analisis ruang, foto & video lab
 docs/experiments/        satu dokumen desain per eksperimen (dibuat SEBELUM ngoding)
 experiments/             konfigurasi tiap eksperimen (config.yaml + skrip jalan)
 results/                 keluaran run, satu folder per <tanggal>-<nama>
-src/                     kode simulasi (MultiAgentSim, belum di-clone ke sini)
+src/MultiAgentSim/       clone simulator (gitignored); versi dikunci di src/MultiAgentSim.version
 ```
 
 ## Aturan kerja di repo ini
@@ -65,12 +84,20 @@ src/                     kode simulasi (MultiAgentSim, belum di-clone ke sini)
 - Pengaturan format (font, margin, penomoran) **hanya** di
   `tulisan/common/itb-tesis.sty`. Jangan menaruh `\usepackage` atau `\renewcommand`
   format di `main.tex` masing-masing dokumen.
-- Satu bibliografi untuk semua: `tulisan/common/references.bib`.
+- Satu bibliografi untuk semua: `tulisan/common/references.bib`, gaya `IEEEtranN`.
+  Entri ber-DOI wajib punya `url = {https://doi.org/...}` agar dapat diklik.
+- Gambar diagram dibuat skrip di `tulisan/gambar/` (hitam-putih, Times New Roman,
+  tanpa judul, ukuran cetak 14 cm, disisipkan 1:1). Gambar yang isinya berkaitan
+  disusun satu baris dengan `\subcaptionbox`. Angka geometri diambil dari
+  `parameter.py`, bukan diketik ulang.
 - Artefak build (`*.aux`, `*.pdf`, dll.) tidak di-commit — sudah di `.gitignore`.
 
 **Klaim dan angka**
 - Setiap angka di naskah harus bisa ditelusuri ke `results/<id>/` atau ke tabel
   di naskah itu sendiri. Jangan pernah menulis angka yang tidak punya sumber.
+- Harga di RAB hanya dari RAB awal penulis atau listing yang dicatat di
+  `docs/lab/survei-harga.md`. Tanpa sumber → tulis *survei*, jangan diperkirakan.
+- Setiap rumus perencana (ERC/IAPF) harus cocok dengan kode simulator versi terkunci.
 - Kalau angka di narasi dan di tabel berbeda, **tabel yang benar** — perbaiki narasinya.
 - Jangan menghaluskan hasil yang jelek. Hasil negatif ditulis apa adanya di
   bagian Keterbatasan Penelitian.

@@ -26,6 +26,8 @@ matplotlib.rcParams.update({
     "mathtext.bf": "Times New Roman:bold",
     "mathtext.cal": "Times New Roman:italic",
     "mathtext.sf": "Times New Roman",
+    "mathtext.bfit": "Times New Roman:bold:italic",
+    "mathtext.fallback": "stix",      # glif yang tak ada di Times (aksen, ∫, ∀) → STIX, bukan DejaVu
     "font.size": 9,
     "axes.linewidth": 0.6,
     "lines.linewidth": 0.8,
