@@ -270,7 +270,7 @@ Meskipun algoritma desentralisasi berbasis ERC dan IAPF telah terbukti efektif d
 Pada penelitian pendahuluan, sistem kontrol dan navigasi kawanan \textit{quadcopter} telah dimodelkan dan divalidasi pada simulator komputasional, di mana kombinasi IAPF dan ERC terbukti mampu mempertahankan formasi serta mengeksekusi rekonfigurasi bentuk saat melintasi celah lorong sempit \cite{herdianDecentralizedFormationControl2026}. Membangun di atas fondasi hasil simulasi tersebut, penelitian tesis ini difokuskan untuk menjembatani kesenjangan antara model teoretis dan platform fisik di dunia nyata. Tesis ini merealisasikan, menguji, dan mengevaluasi kinerja sistem kontrol formasi adaptif terdesentralisasi menggunakan algoritma ERC secara langsung pada lima unit wahana \textit{quadcopter} fisik di koridor uji dalam ruangan, guna membuktikan efisiensi komunikasi serta ketahanannya terhadap kendala fisik nyata.
 
 \section{Rumusan Masalah}
-Berdasarkan latar belakang yang telah diuraikan, rumusan masalah dalam penelitian tesis ini adalah:
+Berdasarkan latar belakang yang telah diuraikan, rumusan masalah dalam penelitian tesis ini adalah sebagai berikut.
 
 \begin{enumerate}
     \item Bagaimana merancang arsitektur perangkat keras dan perangkat lunak tertanam untuk merealisasikan algoritma \textit{Event-Based Reconfiguration Control} (ERC) secara terdesentralisasi pada \textit{companion computer}\label{abbr:cc} di masing-masing \textit{quadcopter}?
@@ -279,7 +279,7 @@ Berdasarkan latar belakang yang telah diuraikan, rumusan masalah dalam penelitia
 \end{enumerate}
 
 \section{Ruang Lingkup}
-Agar penelitian ini tetap terarah dan dapat dieksekusi dengan baik pada platform fisik, ruang lingkup penelitian dibatasi pada:
+Agar penelitian ini tetap terarah dan dapat dieksekusi dengan baik pada platform fisik, ruang lingkup penelitian dibatasi sebagai berikut.
 
 \begin{enumerate}
     \item Pengujian fisik perangkat keras dibatasi pada sistem multi-agen yang terdiri dari lima unit \textit{quadcopter}.
@@ -290,7 +290,7 @@ Agar penelitian ini tetap terarah dan dapat dieksekusi dengan baik pada platform
 \section{Tujuan dan Sasaran}
 Tujuan utama dari penelitian tesis ini adalah merealisasikan dan mengevaluasi kinerja algoritma ERC secara eksperimental pada sistem perangkat keras kawanan quadcopter fisik untuk navigasi dan adaptasi formasi terdesentralisasi di lingkungan ruang sempit.
 
-Untuk mencapai tujuan utama tersebut, ditetapkan beberapa sasaran dan tujuan antara sebagai berikut:
+Untuk mencapai tujuan utama tersebut, ditetapkan beberapa sasaran dan tujuan antara sebagai berikut.
 
 \begin{enumerate}
     \item Merancang dan mengintegrasikan arsitektur perangkat keras serta perangkat lunak tertanam berbasis \textit{companion computer} pada 5 unit \textit{quadcopter} untuk memfasilitasi komputasi kontrol terdesentralisasi.
@@ -303,22 +303,15 @@ Untuk mencapai tujuan utama tersebut, ditetapkan beberapa sasaran dan tujuan ant
 Implementasi algoritma ERC pada perangkat keras kawanan \textit{quadcopter} mampu mereduksi pertukaran data komunikasi antar-agen secara signifikan dibandingkan skema kontrol formasi berbasis komunikasi periodik, dengan tetap mempertahankan integritas formasi dan keberhasilan manuver penghindaran rintangan di lingkungan celah sempit, selama tingkat latensi komunikasi nirkabel dan derau sensor berada dalam batas toleransi desain sistem.
 
 \section{Sistematika Penulisan}
-Proposal tesis ini disusun secara sistematis dalam lima bab utama sebagai berikut:
+Proposal tesis ini terdiri atas lima bab. Bab~I Pendahuluan memuat latar belakang, rumusan masalah, ruang lingkup, tujuan dan sasaran, hipotesa, serta sistematika penulisan.
 
-\noindent\textbf{BAB I: PENDAHULUAN}\\
-Memuat latar belakang, rumusan masalah, ruang lingkup, tujuan dan sasaran, hipotesa, serta sistematika penulisan.
+Bab~II Tinjauan Pustaka memuat studi terkait tentang kontrol formasi kawanan, penghindaran rintangan, dan implementasi fisiknya, serta landasan teori quadcopter yang meliputi konfigurasi motor, kerangka acuan, dan model dinamika.
 
-\noindent\textbf{BAB II: TINJAUAN PUSTAKA}\\
-Memuat tinjauan pustaka mengenai perkembangan penelitian mutakhir pada kontrol formasi kawanan quadcopter, penghindaran rintangan, dan lokalisasi dalam ruangan. Bab ini juga menguraikan landasan teori yang dipakai sebagai dasar perancangan, meliputi pemodelan dinamika wahana, lokalisasi visual berbasis penanda, sensor jarak, penapis Kalman terekstensi, serta kontrol kaskade dan kontrol formasi.
+Bab~III Perancangan Sistem memuat kondisi awal perangkat, arsitektur wahana, rancangan sistem lokalisasi dan persepsi rintangan, rancangan estimator dan pengendali, rancangan arena uji, serta arsitektur sistem menyeluruh.
 
-\noindent\textbf{BAB III: PERANCANGAN SISTEM}\\
-Memuat rancangan sistem yang dibangun pada penelitian ini: kondisi awal dan komponen yang telah tersedia, arsitektur wahana, perancangan sistem lokalisasi dan sistem persepsi rintangan, rancangan estimator dan pengontrol, rancangan arena pengujian, serta arsitektur sistem secara menyeluruh.
+Bab~IV Metodologi dan Rencana Pelaksanaan memuat lima fase penelitian beserta anggaran pada fase yang memerlukan pengadaan, rekapitulasi anggaran, dan jadwal pelaksanaan.
 
-\noindent\textbf{BAB IV: METODOLOGI DAN RENCANA PELAKSANAAN}\\
-Memuat metodologi penelitian yang dibagi ke dalam lima fase, serta rencana pelaksanaan yang mencakup lokasi, alat dan bahan, rencana anggaran biaya bertahap, dan jadwal pelaksanaan.
-
-\noindent\textbf{BAB V: PENUTUP}\\
-Memuat kesimpulan dari proposal serta harapan agar penelitian dapat berjalan sesuai rencana yang telah disusun.
+Bab~V Penutup memuat ringkasan proposal dan luaran yang ditargetkan.
 
 % ==========================================
 % BAB II TINJAUAN PUSTAKA
@@ -326,11 +319,11 @@ Memuat kesimpulan dari proposal serta harapan agar penelitian dapat berjalan ses
 \chapter{TINJAUAN PUSTAKA}
 
 \section{Studi Terkait}
-Penelitian kontrol formasi multi-agen pada wahana robotik telah berkembang pesat baik pada robot darat \cite{garciaCooperativeFormationControl2025}, robot permukaan air \cite{fangMultiAgentGenerativeAdversarial2025}, maupun kawanan robot terbang \textit{quadcopter} \cite{brescianiniNonlinearQuadrocopterAttitude2013a, johnBobzwikQuadcopter_SimCon2025}. Tujuan utama kontrol formasi adalah memelihara konfigurasi geometri relatif antar-agen selama bergerak menuju target. Dalam literatur, strategi kontrol formasi umumnya diklasifikasikan ke dalam tiga paradigma utama \cite{kurochkinMethodsFormationControl2021} (Gambar~\ref{fig:klasifikasi-metode-kontrol-formasi}):
+Penelitian kontrol formasi multi-agen pada wahana robotik telah berkembang pesat baik pada robot darat \cite{garciaCooperativeFormationControl2025}, robot permukaan air \cite{fangMultiAgentGenerativeAdversarial2025}, maupun kawanan robot terbang \textit{quadcopter} \cite{brescianiniNonlinearQuadrocopterAttitude2013a, johnBobzwikQuadcopter_SimCon2025}. Tujuan utama kontrol formasi adalah memelihara konfigurasi geometri relatif antar-agen selama bergerak menuju target. Dalam literatur, strategi kontrol formasi umumnya diklasifikasikan ke dalam tiga paradigma utama \cite{kurochkinMethodsFormationControl2021} sebagaimana ditunjukkan pada Gambar~\ref{fig:klasifikasi-metode-kontrol-formasi}.
 \begin{enumerate}
-    \item \textbf{\textit{Leader-Follower}:} Satu agen bertindak sebagai pemimpin yang menentukan trajektori acuan, sementara agen pengikut menjaga jarak atau posisi relatif tertentu terhadap pemimpin \cite{abroComprehensiveReviewNextGen2025}. Pendekatan ini terstruktur dan mudah diimplementasikan, namun rentan terhadap kegagalan titik tunggal apabila pemimpin mengalami gangguan.
-    \item \textbf{\textit{Virtual Structure}:} Seluruh agen dianggap terikat kaku pada satu struktur geometri maya yang bergerak bersama \cite{renFormationFeedbackControl2004, liuDecentralizationVirtualLinkage2018}. Pendekatan ini menjamin kekakuan formasi yang tinggi, namun kurang fleksibel saat wahana harus beradaptasi melintasi rintangan dengan celah sempit.
-    \item \textbf{\textit{Behavior-Based}}: Setiap agen digerakkan oleh kombinasi bobot aturan perilaku lokal, seperti penjagaan jarak formasi, penghindaran tabrakan, dan pelacakan target \cite{balchBehaviorbasedFormationControl1998}. Pendekatan ini sangat adaptif dan terdesentralisasi, namun kestabilan globalnya sangat bergantung pada penyelarasan parameter interaksi antar-agen.
+    \item Pada pendekatan \textit{leader-follower}, satu agen bertindak sebagai pemimpin yang menentukan trajektori acuan, sementara agen pengikut menjaga jarak atau posisi relatif tertentu terhadap pemimpin \cite{abroComprehensiveReviewNextGen2025}. Pendekatan ini terstruktur dan mudah diimplementasikan, namun rentan terhadap kegagalan titik tunggal apabila pemimpin mengalami gangguan.
+    \item Pada pendekatan \textit{virtual structure}, seluruh agen dianggap terikat kaku pada satu struktur geometri maya yang bergerak bersama \cite{renFormationFeedbackControl2004, liuDecentralizationVirtualLinkage2018}. Pendekatan ini menjamin kekakuan formasi yang tinggi, namun kurang fleksibel saat wahana harus beradaptasi melintasi rintangan dengan celah sempit.
+    \item Pada pendekatan \textit{behavior-based}, setiap agen digerakkan oleh kombinasi bobot aturan perilaku lokal, seperti penjagaan jarak formasi, penghindaran tabrakan, dan pelacakan target \cite{balchBehaviorbasedFormationControl1998}. Pendekatan ini sangat adaptif dan terdesentralisasi, namun kestabilan globalnya sangat bergantung pada penyelarasan parameter interaksi antar-agen.
 \end{enumerate}
 
 Berdasarkan representasi koordinatnya, kontrol formasi dapat dirumuskan secara \textit{position-based} (mengacu pada posisi koordinat inersia global), \textit{displacement-based} (mengacu pada vektor pergeseran relatif antar-agen pada kerangka lokal), atau \textit{distance-based} (hanya mengontrol jarak skalar antar-agen) \cite{ohSurveyMultiagentFormation2015} (Gambar~\ref{fig:klasifikasi-representasi-formasi}).
@@ -362,7 +355,7 @@ Implementasi fisik kontrol formasi terdesentralisasi telah didemonstrasikan oleh
         \hline
         \rowcolor{gray!20}
         \thead{Peneliti \&\\Tahun} & \thead{Metode\\Formasi} & \thead{Skema\\Pemicu} & \thead{Platform\\\& Skala} & \thead{Karakteristik \&\\Celah Riset} \\ \hline
-        Bui \textit{et al.} (2025) \cite{buiEventbasedReconfigurationControl2025} & ERC + APF & Berbasis kejadian (kondisi lingkungan) & Simulasi dan uji SIL & Pengusul ERC: peralihan antara formasi yang diinginkan dan formasi garis lurus pada lorong sempit; belum ada eksperimen fisik. \\ \hline
+        Bui \textit{et al.} (2025) \cite{buiEventbasedReconfigurationControl2025} & ERC + APF & Berbasis kejadian (kondisi lingkungan) & Simulasi dan uji SIL & Pengusul ERC untuk peralihan antara formasi yang diinginkan dan formasi garis lurus pada lorong sempit; belum ada eksperimen fisik. \\ \hline
         Herdian \textit{et al.} (2026) \cite{herdianDecentralizedFormationControl2026} & ERC + IAPF & Berbasis kejadian terdesentralisasi & Simulasi (5 quadcopter 3D) & Formulasi integrasi ERC dan IAPF pada dinamika 3D quadcopter di lorong sempit; belum divalidasi pada platform fisik riil. \\ \hline
         \textbf{Penelitian Tesis Ini} & \textbf{ERC + IAPF} & \textbf{Berbasis kejadian terdesentralisasi} & \textbf{Fisik (5 unit SpeedyBee Bee35)} & \textbf{Validasi empiris penuh pada platform fisik lima wahana di koridor sempit; evaluasi efisiensi komunikasi MAVLink UDP, latensi nirkabel, dan kendala fisik nyata.} \\ \hline
     \end{tabularx}
@@ -456,7 +449,7 @@ Untuk keperluan simulasi numerik komputasional dan pengujian \textit{Hardware-In
 % ==========================================
 \chapter{PERANCANGAN SISTEM}
 
-Bab ini memuat keputusan perancangan: perangkat yang dipilih, parameter yang ditetapkan, geometri wahana, dan arena uji. Uraian dimulai dari kondisi awal perangkat, dilanjutkan rancangan tiap subsistem, dan ditutup arsitektur sistem menyeluruh.
+Bab ini memuat keputusan perancangan, yaitu perangkat yang dipilih, parameter yang ditetapkan, geometri wahana, dan arena uji. Uraian dimulai dari kondisi awal perangkat, dilanjutkan rancangan tiap subsistem, dan ditutup arsitektur sistem menyeluruh.
 
 \section{Kondisi Awal dan Komponen yang Tersedia}
 \label{sec:kondisi_awal}
@@ -496,12 +489,12 @@ Wahana yang digunakan adalah \textit{quadcopter} tipe \textit{cinewhoop} dengan 
 
 Dari enam rangka yang tersedia, dua unit telah terpasang lengkap beserta propeler dan siap diterbangkan, dua unit telah terpasang motor dan saluran namun belum berpropeler, sementara dua unit sisanya masih berupa rangka kosong tanpa komponen elektronik. Dengan demikian kebutuhan lima agen dapat dipenuhi dari stok yang ada, dengan satu unit tersisa sebagai cadangan apabila terjadi kerusakan saat uji terbang.
 
-Modul navigasi RUSHFPV yang terpasang pada bagian atas wahana memuat penerima GNSS sekaligus magnetometer HMC5883. Penerima GNSS tidak dapat digunakan karena seluruh pengujian berlangsung di dalam ruangan. Magnetometer secara prinsip masih dapat menjadi acuan arah, namun pembacaannya di dalam gedung mudah terganggu struktur baja dan kabel daya, sehingga acuan \textit{yaw} diambil dari sistem kamera atas. Dengan demikian modul tersebut dilepas, dan pelepasannya justru menguntungkan: bobot berkurang, dan area datar di tengah bodi yang dibutuhkan untuk pemasangan penanda visual menjadi bebas, sebagaimana dibahas pada Subbab~\ref{sec:lokalisasi_rancangan}.
+Modul navigasi RUSHFPV yang terpasang pada bagian atas wahana memuat penerima GNSS sekaligus magnetometer HMC5883. Penerima GNSS tidak dapat digunakan karena seluruh pengujian berlangsung di dalam ruangan. Magnetometer secara prinsip masih dapat menjadi acuan arah, namun pembacaannya di dalam gedung mudah terganggu struktur baja dan kabel daya, sehingga acuan \textit{yaw} diambil dari sistem kamera atas. Dengan demikian modul tersebut dilepas, dan pelepasannya justru menguntungkan karena bobot berkurang dan area datar di tengah bodi yang dibutuhkan untuk pemasangan penanda visual menjadi bebas, sebagaimana dibahas pada Subbab~\ref{sec:lokalisasi_rancangan}.
 
 \subsection{Kondisi Ruang Pengujian}
 \label{subsec:kondisi_ruang}
 
-Pengujian eksperimental dilaksanakan di koridor Pusat Teknologi Instrumentasi dan Otomasi (PTIO) ITB. Ruangan tersebut bukan laboratorium terbang khusus, melainkan koridor berbentuk huruf L yang juga digunakan sebagai area lalu lintas dan kegiatan pelatihan. Karakteristik ruang yang relevan terhadap perancangan dirangkum pada Tabel~\ref{tab:kondisi_ruang}.
+Pengujian eksperimental dilaksanakan di koridor Pusat Teknologi Instrumentasi dan Otomasi (PTIO) ITB. Ruangan tersebut bukan laboratorium terbang khusus, melainkan koridor berbentuk huruf T yang juga digunakan sebagai area lalu lintas dan kegiatan pelatihan. Karakteristik ruang yang relevan terhadap perancangan dirangkum pada Tabel~\ref{tab:kondisi_ruang}.
 
 \begin{table}[htbp]
     \centering
@@ -527,34 +520,29 @@ Pengujian eksperimental dilaksanakan di koridor Pusat Teknologi Instrumentasi da
     \endgroup
 \end{table}
 
-Seluruh ukuran pada Tabel~\ref{tab:kondisi_ruang} diperoleh melalui pengukuran langsung di lokasi dengan ketelitian sekitar $\pm 5$ cm. Pada kondisi sehari-hari, sebagian lebar koridor terpakai oleh deretan kursi panjang, papan informasi berdiri, dan perlengkapan laboratorium. Karena ruangan dapat dijadwalkan untuk penggunaan eksklusif, perabot tersebut disingkirkan selama sesi pengujian sehingga lebar bersih $270$ cm dapat dimanfaatkan sepenuhnya. Ketersediaan lebar penuh ini merupakan syarat yang mengikat: dengan perabot tetap di tempatnya, lebar bersih hanya sekitar $180$ cm dan bentang formasi yang dirancang tidak akan muat, sehingga peristiwa pemicu rekonfigurasi tidak akan terjadi secara sah.
+Seluruh ukuran pada Tabel~\ref{tab:kondisi_ruang} diperoleh melalui pengukuran langsung di lokasi dengan ketelitian sekitar $\pm 5$ cm. Pada kondisi sehari-hari, sebagian lebar koridor terpakai oleh deretan kursi panjang, papan informasi berdiri, dan perlengkapan laboratorium. Karena ruangan dapat dijadwalkan untuk penggunaan eksklusif, perabot tersebut disingkirkan selama sesi pengujian sehingga lebar bersih $270$ cm dapat dimanfaatkan sepenuhnya. Ketersediaan lebar penuh ini merupakan syarat yang mengikat karena dengan perabot tetap di tempatnya, lebar bersih hanya sekitar $180$ cm dan bentang formasi yang dirancang tidak akan muat, sehingga peristiwa pemicu rekonfigurasi tidak akan terjadi secara sah.
 
 \section{Arsitektur Wahana}
-Wahana eksperimental adalah quadcopter konfigurasi X berbasis rangka SpeedyBee Bee35 (Gambar~\ref{fig:quadcopter-speedybee35}), kelanjutan platform penelitian sebelumnya \cite{argilianaPengembanganSistemKontrol2025}. Komponen dibagi dua lapis: \textit{companion computer} di sisi atas, sedangkan \textit{flight controller} (FC\label{abbr:fc}) dan \textit{Electronic Speed Controller} (ESC\label{abbr:esc}) di inti kerangka (Gambar~\ref{fig:struktur_fisik}).
+Wahana eksperimental adalah quadcopter konfigurasi X berbasis rangka SpeedyBee Bee35 (Gambar~\ref{fig:quadcopter-speedybee35}), kelanjutan platform penelitian sebelumnya \cite{argilianaPengembanganSistemKontrol2025}. Komponen dibagi dua lapis, yaitu \textit{companion computer} di sisi atas serta \textit{flight controller} (FC\label{abbr:fc}) dan \textit{Electronic Speed Controller} (ESC\label{abbr:esc}) di inti kerangka (Gambar~\ref{fig:struktur_fisik}).
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.55\textwidth]{figures/struktur_fisik.png}
-    \caption{Struktur fisik dan tata letak komponen: (a) tampak atas dan (b) tampak bawah \cite{argilianaPengembanganSistemKontrol2025}}
+    \caption{Struktur fisik dan tata letak komponen, (a) tampak atas dan (b) tampak bawah \cite{argilianaPengembanganSistemKontrol2025}}
     \label{fig:struktur_fisik}
 \end{figure}
 
 FC dan ESC 4-in-1 tersusun sebagai satu tumpukan vertikal. FC memuat IMU dan mengirim komando motor ke ESC, yang menggerakkan keempat motor BLDC. Tumpukan dipasang di atas peredam getaran silikon untuk mengurangi derau getaran motor pada IMU (Gambar~\ref{fig:esc_fc}).
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.45\textwidth]{figures/esc_fc.png}
-    \caption{Tumpukan \textit{flight controller} dan ESC 4-in-1}
-    \label{fig:esc_fc}
-\end{figure}
-
 Baterai LiPo mencatu ESC, yang menyalurkan daya teregulasi ke FC melalui BEC (\textit{Battery Eliminator Circuit}). XIAO ESP32-S3 terhubung ke FC melalui UART dengan TX dan RX disilangkan untuk pertukaran MAVLink, dan penerima ExpressLRS EP2 TCXO terhubung ke FC untuk kendali manual (Gambar~\ref{fig:wiring_diagram}). Modul GNSS pada gambar tersebut dilepas pada penelitian ini (Subbab~\ref{sec:kondisi_awal}).
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.35\textwidth]{figures/wiring_diagram.png}
-    \caption{Diagram pengabelan wahana}
-    \label{fig:wiring_diagram}
+    \subcaptionbox{Tumpukan FC dan ESC\label{fig:esc_fc}}[0.48\textwidth]{\includegraphics[height=7cm]{figures/esc_fc.png}}
+    \hfill
+    \subcaptionbox{Diagram pengabelan\label{fig:wiring_diagram}}[0.48\textwidth]{\includegraphics[height=7cm]{figures/wiring_diagram.png}}
+    \caption{Sistem elektronik wahana, (a) tumpukan \textit{flight controller} dan ESC serta (b) pengabelan komponen.}
+    \label{fig:elektronik_wahana}
 \end{figure}
 
 \subsection{Dimensi dan Tata Letak Komponen}
@@ -571,23 +559,23 @@ Tata letak dan dimensi luar wahana diperlihatkan pada Gambar~\ref{fig:sketsa_wah
 \end{figure}
 
 \subsection{Protokol Komunikasi}
-Seluruh komunikasi data memakai pesan MAVLink di atas soket UDP pada jaringan Wi-Fi lokal \cite{chenReviewUnmannedAerial2020, linLeaderFollowerUAV2026}. Jaringan dibentuk oleh satu \textit{router} khusus di area uji dan memuat dua jalur:
+Seluruh komunikasi data memakai pesan MAVLink di atas soket UDP pada jaringan Wi-Fi lokal \cite{chenReviewUnmannedAerial2020, linLeaderFollowerUAV2026}. Jaringan dibentuk oleh satu \textit{router} khusus di area uji dan memuat dua jalur berikut.
 \begin{enumerate}
-    \item \textbf{Antarwahana.} Tiap ESP32-S3 menyiarkan \textit{state} kinematikanya (posisi dan kecepatan) melalui UDP \textit{broadcast}. \textit{Router} hanya meneruskan paket; keputusan rekonfigurasi tetap diambil oleh tiap agen.
-    \item \textbf{Stasiun darat.} Stasiun darat menyiarkan pose hasil kamera atas dan menerima telemetri (\textit{heartbeat}, sikap, dan tegangan baterai), serta mengirim perintah \textit{arm/disarm}, pergantian mode, dan pendaratan darurat.
+    \item Pada jalur antarwahana, tiap ESP32-S3 menyiarkan \textit{state} kinematikanya (posisi dan kecepatan) melalui UDP \textit{broadcast}. \textit{Router} hanya meneruskan paket; keputusan rekonfigurasi tetap diambil oleh tiap agen.
+    \item Pada jalur stasiun darat, komputer darat menyiarkan pose hasil kamera atas dan menerima telemetri (\textit{heartbeat}, sikap, dan tegangan baterai), serta mengirim perintah \textit{arm/disarm}, pergantian mode, dan pendaratan darurat.
 \end{enumerate}
 Karena kedua jalur melewati \textit{router} yang sama, kegagalan \textit{router} memutus pose dan komunikasi antaragen sekaligus. Jalur penghentian yang tidak bergantung pada Wi-Fi karenanya disediakan melalui tautan radio ExpressLRS (Gambar~\ref{fig:arsitektur_sistem}).
 
 \section{Perancangan Sistem Lokalisasi Dalam Ruangan}
 \label{sec:lokalisasi_rancangan}
 
-GPS tidak tersedia di dalam ruangan, sehingga posisi absolut diperoleh dari kamera atas yang mengamati penanda visual pada wahana. Lokalisasi kamera eksternal tidak mengakumulasi \textit{drift}: galat pose di bawah $3$~cm dan $1^\circ$ telah dilaporkan untuk area dalam ruangan seluas sekitar $240$~m$^2$ \cite{bultmannExternalCameraBased2023}. Presisinya bergantung pada resolusi kamera, ukuran penanda, dan jarak kamera ke penanda; akurasi pose AprilTag menurun seiring bertambahnya jarak dan mengecilnya penanda \cite{zhangIntegratedFrameworkEnhancing2026}. Ketiga besaran tersebut karenanya dihitung dari dimensi ruang uji (Subbab~\ref{subsec:liputan_kamera}). Alternatif berbasis radio, misalnya sistem \textit{Ultra-Wide Band} dengan modul ESP32 \cite{hoDesignIndoorPositioning2023}, tidak dijadikan lokalisasi utama karena presisinya dibatasi kondisi tanpa garis pandang yang mengganggu perambatan sinyal di dalam ruangan.
+GPS tidak tersedia di dalam ruangan, sehingga posisi absolut diperoleh dari kamera atas yang mengamati penanda visual pada wahana. Lokalisasi kamera eksternal tidak mengakumulasi \textit{drift}, dan galat pose di bawah $3$~cm dan $1^\circ$ telah dilaporkan untuk area dalam ruangan seluas sekitar $240$~m$^2$ \cite{bultmannExternalCameraBased2023}. Presisinya bergantung pada resolusi kamera, ukuran penanda, dan jarak kamera ke penanda; akurasi pose AprilTag menurun seiring bertambahnya jarak dan mengecilnya penanda \cite{zhangIntegratedFrameworkEnhancing2026}. Ketiga besaran tersebut karenanya dihitung dari dimensi ruang uji (Subbab~\ref{subsec:liputan_kamera}). Alternatif berbasis radio, misalnya sistem \textit{Ultra-Wide Band} dengan modul ESP32 \cite{hoDesignIndoorPositioning2023}, tidak dijadikan lokalisasi utama karena presisinya dibatasi kondisi tanpa garis pandang yang mengganggu perambatan sinyal di dalam ruangan.
 
-Sistem lokalisasi terdiri atas tiga komponen:
+Sistem lokalisasi terdiri atas tiga komponen berikut.
 \begin{enumerate}
-    \item \textbf{Kamera atas.} Dua kamera dipasang statis di langit-langit menghadap tegak lurus ke bawah. Liputannya bertumpang tindih dan dikalibrasi ke satu kerangka acuan global, karena tinggi langit-langit membatasi liputan satu kamera.
-    \item \textbf{Penanda visual.} Tiap wahana membawa penanda AprilTag \cite{olsonAprilTagRobustFlexible2011, wangAprilTag2Efficient2016, krogiusFlexibleLayoutsFiducial2019}, keluarga penanda biner sejenis ArUco \cite{garridojuradoAutomaticGenerationDetection2014}, dengan ID unik (0 hingga 4) sehingga kelima agen dapat dibedakan.
-    \item \textbf{Stasiun pemroses citra.} Komputer darat menerima aliran video, mendeteksi penanda, dan menghitung pose tiap wahana.
+    \item Dua kamera atas dipasang statis di langit-langit menghadap tegak lurus ke bawah. Liputannya bertumpang tindih dan dikalibrasi ke satu kerangka acuan global, karena tinggi langit-langit membatasi liputan satu kamera.
+    \item Tiap wahana membawa penanda visual AprilTag \cite{olsonAprilTagRobustFlexible2011, wangAprilTag2Efficient2016, krogiusFlexibleLayoutsFiducial2019}, keluarga penanda biner sejenis ArUco \cite{garridojuradoAutomaticGenerationDetection2014}, dengan ID unik (0 hingga 4) sehingga kelima agen dapat dibedakan.
+    \item Stasiun pemroses citra di darat menerima aliran video, mendeteksi penanda, dan menghitung pose tiap wahana.
 \end{enumerate}
 
 Pose tiap wahana dihitung dengan model kamera lubang jarum dan penyelesaian masalah \textit{Perspective-n-Point} (PnP). Dengan matriks intrinsik $\mathbf{K}$ yang diperoleh dari kalibrasi, koordinat piksel $(u, v)$ dan koordinat dunia $(x_w, y_w, z_w)$ berhubungan melalui
@@ -661,13 +649,13 @@ Penanda $12$~cm tidak muat pada jalur datar selebar $4$~cm di sumbu tengah bodi 
 
 Pemicu ERC membutuhkan lebar ruang bebas yang diukur sendiri oleh tiap agen. Untuk itu setiap wahana membawa sepasang sensor jarak yang dipasang diagonal, satu di kiri dan satu di kanan, bersudut $\beta$ terhadap arah maju (Gambar~\ref{fig:ultrasonic_placement}). Jenis sensornya, ultrasonik atau laser, ditetapkan melalui uji banding pada Subbab~\ref{subsec:pemilihan_sensor}.
 
-Kandidat ultrasonik mengukur jarak dari waktu tempuh pantulan gelombang suara \cite{siegwartIntroductionAutonomousMobile2004, borensteinObstacleAvoidanceUltrasonic1988}:
+Kandidat ultrasonik mengukur jarak dari waktu tempuh pantulan gelombang suara \cite{siegwartIntroductionAutonomousMobile2004, borensteinObstacleAvoidanceUltrasonic1988} menurut
 \begin{equation}
     d_{\text{obs}} = \frac{v_{\text{suara}} \cdot t_{\text{pantul}}}{2}
 \end{equation}
 dengan $v_{\text{suara}}$ kecepatan rambat suara di udara (sekitar $343$ m/s pada $20^\circ\text{C}$) dan $t_{\text{pantul}}$ waktu tempuh bolak-balik gelombang.
 
-Jarak terukur sepanjang berkas, $d_{\mathrm{raw}}$, diproyeksikan menjadi jarak lateral kiri ($d_l$\label{sym:dl}) dan kanan ($d_r$\label{sym:dr}) oleh \textit{companion computer}:
+Jarak terukur sepanjang berkas, $d_{\mathrm{raw}}$, diproyeksikan menjadi jarak lateral kiri ($d_l$\label{sym:dl}) dan kanan ($d_r$\label{sym:dr}) oleh \textit{companion computer} melalui
 \begin{equation}
     d_l = d_{\mathrm{raw},l}\sin\beta, \qquad d_r = d_{\mathrm{raw},r}\sin\beta
 \end{equation}
@@ -682,14 +670,14 @@ dengan $w_{\text{body}}$\label{sym:wbody} jarak antarsensor pada badan wahana. N
 
 Rancangan di atas mengandalkan pembacaan jarak lateral yang tetap andal ketika berkas sensor mengenai permukaan secara miring. Pada sudut datang $45^\circ$ terhadap permukaan halus seperti dinding berplester atau kolom beton, sensor ultrasonik rawan kehilangan gema karena pantulan bersifat spekular dan energi pantul terlempar menjauh dari penerima. Permukaan kardus yang dipakai sebagai rintangan buatan memantul secara baur sehingga lebih ramah, tetapi dinding dan kolom tidak.
 
-Risiko ini menyentuh inti mekanisme ERC: kegagalan pembacaan pada sudut miring berarti estimasi $w_e$ menjadi tidak sahih, dan peristiwa pemicu dapat terlewat atau terpicu palsu. Oleh sebab itu jenis sensor tidak ditetapkan di muka, melainkan diputuskan melalui uji banding pada Fase~2. Dua kandidat diuji berdampingan:
+Risiko ini menyentuh inti mekanisme ERC karena kegagalan pembacaan pada sudut miring berarti estimasi $w_e$ menjadi tidak sahih, dan peristiwa pemicu dapat terlewat atau terpicu palsu. Oleh sebab itu jenis sensor tidak ditetapkan di muka, melainkan diputuskan melalui uji banding pada Fase~2. Dua kandidat yang diuji berdampingan adalah sebagai berikut.
 
 \begin{enumerate}
-    \item \textbf{Sensor ultrasonik} (HC-SR04). Berbiaya rendah, jangkauan memadai, dan tidak terpengaruh kondisi pencahayaan, namun memiliki resolusi sudut yang buruk akibat berkas yang lebar dan rentan terhadap pantulan spekular pada sudut datang miring \cite{pedroSenseAvoidSystem2025}.
-    \item \textbf{Sensor jarak laser \textit{time-of-flight}} (VL53L1X). Berkas jauh lebih sempit, lebih toleran terhadap sudut datang miring, dan berkomunikasi melalui antarmuka I\textsuperscript{2}C sehingga hemat pena masukan-keluaran pada \textit{companion computer} yang terbatas. Sensor berbasis laser memberikan resolusi spasial yang lebih tinggi karena memakai gelombang berpanjang gelombang jauh lebih pendek \cite{pedroSenseAvoidSystem2025}. Kelemahannya, jangkauan efektifnya menurun pada pencahayaan terang, sedangkan ruang pengujian menerima cahaya alami melalui kaca \textit{clerestory}.
+    \item Sensor ultrasonik HC-SR04 berbiaya rendah, jangkauannya memadai, dan tidak terpengaruh kondisi pencahayaan, namun memiliki resolusi sudut yang buruk akibat berkas yang lebar dan rentan terhadap pantulan spekular pada sudut datang miring \cite{pedroSenseAvoidSystem2025}.
+    \item Sensor jarak laser \textit{time-of-flight} VL53L1X memiliki berkas jauh lebih sempit, lebih toleran terhadap sudut datang miring, dan berkomunikasi melalui antarmuka I\textsuperscript{2}C sehingga hemat pena masukan-keluaran pada \textit{companion computer} yang terbatas. Sensor berbasis laser memberikan resolusi spasial yang lebih tinggi karena memakai gelombang berpanjang gelombang jauh lebih pendek \cite{pedroSenseAvoidSystem2025}. Kelemahannya, jangkauan efektifnya menurun pada pencahayaan terang, sedangkan ruang pengujian menerima cahaya alami melalui kaca \textit{clerestory}.
 \end{enumerate}
 
-Kriteria pemilihan ditetapkan sebelum pengujian dijalankan, yaitu: tingkat keberhasilan pembacaan pada sudut $45^\circ$ dan $90^\circ$ terhadap dinding berplester, kolom beton, dan permukaan kardus; sebaran galat pembacaan terhadap jarak acuan; serta laju pembaruan yang dapat dicapai untuk dua sensor sekaligus. Sensor yang memenuhi kriteria dengan margin terbesar dipakai untuk kelima wahana. Apabila kedua kandidat gagal pada sudut $45^\circ$, sudut pemasangan diperkecil dan konsekuensinya terhadap jangkauan deteksi ke depan dievaluasi ulang.
+Kriteria pemilihan ditetapkan sebelum pengujian dijalankan, yaitu tingkat keberhasilan pembacaan pada sudut $45^\circ$ dan $90^\circ$ terhadap dinding berplester, kolom beton, dan permukaan kardus; sebaran galat pembacaan terhadap jarak acuan; serta laju pembaruan yang dapat dicapai untuk dua sensor sekaligus. Sensor yang memenuhi kriteria dengan margin terbesar dipakai untuk kelima wahana. Apabila kedua kandidat gagal pada sudut $45^\circ$, sudut pemasangan diperkecil dan konsekuensinya terhadap jangkauan deteksi ke depan dievaluasi ulang.
 
 \section{Estimator dan Pengontrol}
 
@@ -700,18 +688,18 @@ Bagian ini menguraikan rancangan kalang estimasi dan kendali yang dijalankan di 
 
 Pose dari kamera atas hanya berguna bila \textit{flight controller} dapat menerimanya sebagai sumber navigasi eksternal. ArduPilot mendukung masukan ini melalui EKF3, tetapi fitur navigasi non-GPS memerlukan papan dengan memori \textit{flash} lebih dari 1~MB \cite{ardupilotNonGPSPositionEstimation}. SpeedyBee F405 Mini hanya memiliki 1~MB, dan build stabil resminya menonaktifkan fitur navigasi eksternal EKF3, odometri visual, serta masukan \textit{beacon} \cite{ardupilotFeaturesSpeedyBeeF405Mini}. Dengan firmware bawaan, pose kamera tidak dapat diterima.
 
-Penelitian ini karenanya memakai firmware ArduPilot racikan yang dibangun melalui ArduPilot Custom Firmware Builder \cite{ardupilotCustomFirmwareBuilder}: fitur navigasi eksternal EKF3 diaktifkan dan fitur yang tidak dipakai dinonaktifkan agar muat dalam 1~MB. Build ini dikerjakan pada Fase~2. Bila tidak muat, kalang posisi dan kecepatan dipindahkan ke \textit{companion computer}, dan \textit{flight controller} hanya menjalankan kalang sikap. Daftar fitur yang diaktifkan dan dinonaktifkan dicatat sebagai lampiran agar firmware dapat dibangun ulang.
+Penelitian ini karenanya memakai firmware ArduPilot racikan yang dibangun melalui ArduPilot Custom Firmware Builder \cite{ardupilotCustomFirmwareBuilder}, dengan fitur navigasi eksternal EKF3 diaktifkan dan fitur yang tidak dipakai dinonaktifkan agar muat dalam 1~MB. Build ini dikerjakan pada Fase~2. Bila tidak muat, kalang posisi dan kecepatan dipindahkan ke \textit{companion computer}, dan \textit{flight controller} hanya menjalankan kalang sikap. Daftar fitur yang diaktifkan dan dinonaktifkan dicatat sebagai lampiran agar firmware dapat dibangun ulang.
 
 \subsection{Estimator \textit{State} dengan \textit{Extended Kalman Filter} (EKF)}
 
 Dinamika quadcopter tidak linear dan setiap sensor mengandung derau, sehingga \textit{state} wahana diestimasi dengan EKF \cite{KalmanFilterGeneralizations2006}. EKF memadukan IMU yang cepat tetapi mengakumulasi \textit{drift} dengan pose kamera atas yang absolut tetapi lebih lambat. Pendekatan penapis Kalman tetap lazim untuk estimasi pose wahana udara mikro di dalam ruangan dan masih dibandingkan dengan pendekatan berbasis graf pada penelitian mutakhir \cite{kabiriGraphBasedErrorState2024}.
 
-Secara matematis, sistem estimasi \textit{state} quadcopter dirumuskan dalam model ruang keadaan non-linear diskrit \cite{welchIntroductionKalmanFilter2006}:
+Secara matematis, sistem estimasi \textit{state} quadcopter dirumuskan dalam model ruang keadaan non-linear diskrit \cite{welchIntroductionKalmanFilter2006}
 \begin{align}
     \mathbf{x}_k &= f(\mathbf{x}_{k-1}, \mathbf{u}_{k-1}) + \mathbf{w}_{k-1} \label{eq:ekf_system} \\
     \mathbf{z}_k &= h(\mathbf{x}_k) + \mathbf{v}_k \label{eq:ekf_measurement}
 \end{align}
-Formulasi berikut adalah model konseptual; implementasinya memakai EKF3 bawaan ArduPilot pada firmware racikan (Subbab~\ref{subsec:firmware_fc}), yang \textit{state}-nya lebih lengkap. Pada model konseptual ini, vektor \textit{state} $\mathbf{x}_k \in \mathbb{R}^{10}$ mencakup posisi 3D pada kerangka inersia global, kecepatan linear, dan \textit{quaternion} orientasi bodi:
+Formulasi berikut adalah model konseptual; implementasinya memakai EKF3 bawaan ArduPilot pada firmware racikan (Subbab~\ref{subsec:firmware_fc}), yang \textit{state}-nya lebih lengkap. Pada model konseptual ini, vektor \textit{state} $\mathbf{x}_k \in \mathbb{R}^{10}$ mencakup posisi 3D pada kerangka inersia global, kecepatan linear, dan \textit{quaternion} orientasi bodi, yaitu
 \begin{equation}
     \mathbf{x} = 
     \begin{bmatrix}
@@ -719,7 +707,7 @@ Formulasi berikut adalah model konseptual; implementasinya memakai EKF3 bawaan A
     \end{bmatrix}^T
     \label{eq:state_vector_ekf}
 \end{equation}
-Vektor masukan $\mathbf{u}_{k-1}$ berasal dari pembacaan sensor internal IMU bawaan \textit{flight controller} (ICM-42688P) pada laju yang jauh lebih tinggi daripada laju kamera, yang terdiri atas akselerasi linear bodi $\mathbf{a}_B = [a_x, a_y, a_z]^T$ dan laju rotasi bodi $\boldsymbol{\omega}_B = [p, q, r]^T$. Sementara itu, vektor pengukuran $\mathbf{z}_k \in \mathbb{R}^4$ diperoleh secara asinkron dari sistem kamera atas berbasis penanda visual AprilTag hingga $50$ kali per detik melalui paket MAVLink:
+Vektor masukan $\mathbf{u}_{k-1}$ berasal dari pembacaan sensor internal IMU bawaan \textit{flight controller} (ICM-42688P) pada laju yang jauh lebih tinggi daripada laju kamera, yang terdiri atas akselerasi linear bodi $\mathbf{a}_B = [a_x, a_y, a_z]^T$ dan laju rotasi bodi $\boldsymbol{\omega}_B = [p, q, r]^T$. Sementara itu, vektor pengukuran $\mathbf{z}_k \in \mathbb{R}^4$ diperoleh secara asinkron dari sistem kamera atas berbasis penanda visual AprilTag hingga $50$ kali per detik melalui paket MAVLink, yaitu
 \begin{equation}
     \mathbf{z}_k = 
     \begin{bmatrix}
@@ -729,15 +717,15 @@ Vektor masukan $\mathbf{u}_{k-1}$ berasal dari pembacaan sensor internal IMU baw
 \end{equation}
 Derau proses $\mathbf{w}_{k-1}$ dan derau pengukuran $\mathbf{v}_k$ dimodelkan sebagai derau Gaussian putih dengan kovariansi $\mathbf{Q}_k$ dan $\mathbf{R}_k$.
 
-Karena fungsi kinematika translasi dan rotasi bersifat non-linear, EKF melakukan linearisasi lokal pada setiap langkah waktu menggunakan matriks Jacobian \cite{gelbAppliedOptimalEstimation1974}:
+Karena fungsi kinematika translasi dan rotasi bersifat non-linear, EKF melakukan linearisasi lokal pada setiap langkah waktu menggunakan matriks Jacobian \cite{gelbAppliedOptimalEstimation1974}
 \begin{equation}
     \mathbf{F}_{k-1} = \left. \frac{\partial f}{\partial \mathbf{x}} \right|_{\hat{\mathbf{x}}_{k-1|k-1}, \mathbf{u}_{k-1}}, \quad \mathbf{H}_k = \left. \frac{\partial h}{\partial \mathbf{x}} \right|_{\hat{\mathbf{x}}_{k|k-1}}
 \end{equation}
 
-Proses estimasi EKF berjalan dalam arsitektur \textit{multi-rate} melalui dua tahapan utama:
+Proses estimasi EKF berjalan dalam arsitektur \textit{multi-rate} melalui dua tahapan utama berikut.
 
 \subsubsection{1. Tahap Prediksi}
-Dijalankan setiap cuplikan IMU. Model kinematika memproyeksikan posisi, kecepatan, dan orientasi maju:
+Tahap ini dijalankan setiap cuplikan IMU. Model kinematika memproyeksikan posisi, kecepatan, dan orientasi ke langkah berikutnya melalui
 \begin{align}
     \hat{\mathbf{x}}_{k|k-1} &= f(\hat{\mathbf{x}}_{k-1|k-1}, \mathbf{u}_{k-1}) \\
     \mathbf{P}_{k|k-1} &= \mathbf{F}_{k-1} \mathbf{P}_{k-1|k-1} \mathbf{F}_{k-1}^T + \mathbf{Q}_{k-1}
@@ -745,7 +733,7 @@ Dijalankan setiap cuplikan IMU. Model kinematika memproyeksikan posisi, kecepata
 di mana $\hat{\mathbf{x}}_{k|k-1}$ adalah estimasi \textit{state} apriori dan $\mathbf{P}_{k|k-1}$ adalah matriks kovariansi galat apriori.
 
 \subsubsection{2. Tahap Pembaruan Ukuran}
-Setiap kali pose absolut dari kamera atas tiba (hingga $50$ kali per detik), koreksi pengukuran dieksekusi untuk mereduksi akumulasi \textit{drift} dari integrasi IMU:
+Setiap kali pose absolut dari kamera atas tiba (hingga $50$ kali per detik), koreksi pengukuran dieksekusi untuk mereduksi akumulasi \textit{drift} dari integrasi IMU melalui
 \begin{align}
     \tilde{\mathbf{y}}_k &= \mathbf{z}_k - h(\hat{\mathbf{x}}_{k|k-1}) \\
     \mathbf{S}_k &= \mathbf{H}_k \mathbf{P}_{k|k-1} \mathbf{H}_k^T + \mathbf{R}_k \\
@@ -766,7 +754,7 @@ Estimasi $\hat{\mathbf{x}}_{k|k}$ menutup kalang pengendali tingkat rendah dan d
 
 \subsection{Pengendali Tingkat Rendah}
 
-Pengendali tingkat rendah berjalan pada \textit{flight controller} SpeedyBee F405 Mini (STM32F405) dengan \textit{firmware} ArduPilot Copter. Strukturnya kaskade: kalang translasi (posisi, kecepatan) di luar dan kalang rotasi (sikap, laju sudut) di dalam, seluruhnya ditutup oleh estimasi EKF3 (Gambar~\ref{fig:low_level_controller}). Tahapannya sebagai berikut.
+Pengendali tingkat rendah berjalan pada \textit{flight controller} SpeedyBee F405 Mini (STM32F405) dengan \textit{firmware} ArduPilot Copter. Strukturnya kaskade, dengan kalang translasi (posisi, kecepatan) di luar dan kalang rotasi (sikap, laju sudut) di dalam, seluruhnya ditutup oleh estimasi EKF3 (Gambar~\ref{fig:low_level_controller}). Tahapannya sebagai berikut.
 \begin{enumerate}
     \item \textbf{Referensi gerak.} \textit{Companion computer} XIAO ESP32-S3 mengirim pesan MAVLink \texttt{SET\_}\allowbreak\texttt{POSITION\_}\allowbreak\texttt{TARGET\_}\allowbreak\texttt{LOCAL\_}\allowbreak\texttt{NED} melalui UART. Pesan memuat posisi acuan $\mathbf{p}_{\mathrm{ref}}$, kecepatan umpan-maju $\mathbf{v}_{\mathrm{ref}}$, dan sudut \textit{yaw} acuan $\psi_{\mathrm{ref}}$.
     \item \textbf{Kalang translasi.} Galat posisi $\mathbf{e}_p = \mathbf{p}_{\mathrm{ref}} - \hat{\mathbf{p}}$ diolah pengendali P posisi menjadi kecepatan komando $\mathbf{v}_{\mathrm{cmd}} = K_p^{\mathrm{pos}}\mathbf{e}_p$. Setelah ditambah $\mathbf{v}_{\mathrm{ref}}$ dan dibandingkan dengan $\hat{\mathbf{v}}$, pengendali PID kecepatan menghasilkan percepatan komando $\mathbf{a}_{\mathrm{cmd}}$.
@@ -806,35 +794,35 @@ dengan $\sigma_i = 1$ pada mode formasi dan $\sigma_i = 0$ pada mode mengekor.
 
 \subsubsection{Perilaku Penyusun}
 
-Perilaku migrasi mengarahkan kawanan ke tujuan $\mathbf{p}_g$ dari pusat kawanan $\bar{\mathbf{p}}$ dengan laju acuan $V_{\mathrm{ref}}$:
+Perilaku migrasi mengarahkan kawanan ke tujuan $\mathbf{p}_g$ dari pusat kawanan $\bar{\mathbf{p}}$ dengan laju acuan $V_{\mathrm{ref}}$, yaitu
 \begin{equation}
     \mathbf{v}_i^{\mathrm{mig}} = V_{\mathrm{ref}}\,\frac{\mathbf{p}_g - \bar{\mathbf{p}}}{\lVert \mathbf{p}_g - \bar{\mathbf{p}} \rVert}
 \end{equation}
 
-Perilaku formasi menjaga posisi relatif terhadap topologi nominal $\boldsymbol{\delta}^*$ yang dirotasi searah lintasan, diskalakan oleh faktor $\kappa$:
+Perilaku formasi menjaga posisi relatif terhadap topologi nominal $\boldsymbol{\delta}^*$ yang dirotasi searah lintasan, diskalakan oleh faktor $\kappa$, yaitu
 \begin{equation}
     \mathbf{v}_i^{\mathrm{form}} = W_{\mathrm{form}} \sum_{j \neq i} \left[ (\mathbf{p}_j - \mathbf{p}_i) - \kappa\,(\boldsymbol{\delta}_j^* - \boldsymbol{\delta}_i^*) \right]
     \label{eq:erc_formasi}
 \end{equation}
 
-Penghindaran rintangan dan tabrakan antaragen berbentuk medan potensial tolak yang aktif di dalam radius waspada $R_a$, dengan $d$ jarak ke titik rintangan terdekat atau ke agen lain dan $\hat{\mathbf{n}}$ vektor satuan yang menjauhinya:
+Penghindaran rintangan dan tabrakan antaragen berbentuk medan potensial tolak yang aktif di dalam radius waspada $R_a$, dengan $d$ jarak ke titik rintangan terdekat atau ke agen lain dan $\hat{\mathbf{n}}$ vektor satuan yang menjauhinya, sehingga
 \begin{align}
     \mathbf{v}_i^{\mathrm{obs}} &= W_{\mathrm{obs}} \sum_{d_{io} < R_a} 0{,}5 \left( \frac{1}{d_{io}} - \frac{1}{R_a} \right) \frac{\hat{\mathbf{n}}_{io}}{d_{io}^2} \\
     \mathbf{v}_i^{\mathrm{col}} &= W_{\mathrm{col}} \sum_{d_{ij} < R_a} 2 \left( \frac{1}{d_{ij}} - \frac{1}{R_a} \right) \frac{\hat{\mathbf{n}}_{ij}}{d_{ij}^2}
 \end{align}
 
-Pada mode mengekor, agen mengikuti pemimpin lokal $l$ pada jarak acuan $d_{\mathrm{ref}}$ searah kecepatan pemimpin $\hat{\mathbf{u}}_l$:
+Pada mode mengekor, agen mengikuti pemimpin lokal $l$ pada jarak acuan $d_{\mathrm{ref}}$ searah kecepatan pemimpin $\hat{\mathbf{u}}_l$, yaitu
 \begin{equation}
     \mathbf{v}_i^{\mathrm{tail}} = W_{\mathrm{tail}} \left[ (\mathbf{p}_l - \mathbf{p}_i - d_{\mathrm{ref}}\,\hat{\mathbf{u}}_l) + \mathbf{v}_l \right]
 \end{equation}
 
 \subsubsection{Pemicu Berbasis Kejadian}
 
-Lebar ruang bebas $w_e$ diperoleh dari titik rintangan terdekat di sisi kiri $\mathbf{o}_l$ dan kanan $\mathbf{o}_r$ yang berada di depan agen, diproyeksikan ke sumbu tegak lurus arah gerak $\mathbf{u}_{\mathrm{ref}}^{\perp}$:
+Lebar ruang bebas $w_e$ diperoleh dari titik rintangan terdekat di sisi kiri $\mathbf{o}_l$ dan kanan $\mathbf{o}_r$ yang berada di depan agen, diproyeksikan ke sumbu tegak lurus arah gerak $\mathbf{u}_{\mathrm{ref}}^{\perp}$ sehingga
 \begin{equation}
     w_e = \left| \left\langle \mathbf{o}_r - \mathbf{o}_l,\; \mathbf{u}_{\mathrm{ref}}^{\perp} \right\rangle \right|
 \end{equation}
-Nilai $w_e$ menentukan mode dan faktor skala formasi:
+Nilai $w_e$ menentukan mode dan faktor skala formasi menurut
 \begin{equation}
     (\sigma_i, \kappa) =
     \begin{cases}
@@ -845,7 +833,7 @@ Nilai $w_e$ menentukan mode dan faktor skala formasi:
 \end{equation}
 dengan $R$ jari-jari agen, $\alpha$ faktor ambang, dan $w_f$ bentang lateral nominal formasi. Bila tidak ada rintangan di kedua sisi, $\sigma_i = 1$ dan $\kappa = 1$. Dengan demikian formasi menyusut proporsional saat lorong menyempit dan baru beralih mengekor ketika $w_e$ melewati ambang $\alpha R$. Tidak ada pita histeresis pada perpindahan mode.
 
-Saat beralih ke mode mengekor, setiap agen memilih pemimpinnya secara terdesentralisasi, yaitu agen terdekat yang berada di depannya sepanjang arah menuju tujuan $\hat{\mathbf{g}}$:
+Saat beralih ke mode mengekor, setiap agen memilih pemimpinnya secara terdesentralisasi, yaitu agen terdekat yang berada di depannya sepanjang arah menuju tujuan $\hat{\mathbf{g}}$ sehingga
 \begin{equation}
     l_i = \arg\min_{j\,:\,p_{ij} > 0} p_{ij}, \qquad p_{ij} = \langle \mathbf{p}_j - \mathbf{p}_i,\ \hat{\mathbf{g}} \rangle
 \end{equation}
@@ -886,7 +874,7 @@ Nilai parameter pada Tabel~\ref{tab:parameter_erc} merupakan nilai simulasi dan 
 
 Arena dirancang agar peristiwa pemicu rekonfigurasi benar-benar muncul karena penyempitan ruang yang dirancang, bukan karena keterbatasan arena itu sendiri. Rancangannya diturunkan dengan menskalakan geometri yang telah divalidasi pada simulasi \cite{herdianDecentralizedFormationControl2026} ke dimensi wahana dan ruang yang tersedia.
 
-Pada simulasi, agen dimodelkan berdiameter $0{,}40$ m dengan topologi formasi V berbentang lateral $2{,}40$ m, melintasi lorong sempit selebar $1{,}00$ m. Dua perbandingan menentukan perilaku sistem: bentang formasi terhadap lebar celah, dan lebar celah terhadap diameter agen. Perbandingan pertama menentukan apakah peristiwa pemicu muncul sama sekali, sedangkan perbandingan kedua menentukan seberapa ketat manuver mengekor harus dilakukan. Penskalaan mempertahankan perbandingan tersebut, bukan nilai mutlaknya.
+Pada simulasi, agen dimodelkan berdiameter $0{,}40$ m dengan topologi formasi V berbentang lateral $2{,}40$ m, melintasi lorong sempit selebar $1{,}00$ m. Perilaku sistem ditentukan oleh dua perbandingan, yaitu bentang formasi terhadap lebar celah dan lebar celah terhadap diameter agen. Perbandingan pertama menentukan apakah peristiwa pemicu muncul sama sekali, sedangkan perbandingan kedua menentukan seberapa ketat manuver mengekor harus dilakukan. Penskalaan mempertahankan perbandingan tersebut, bukan nilai mutlaknya.
 
 Dengan lebar bersih koridor $270$ cm dan syarat ruang bebas sekurang-kurangnya $30$ cm pada tiap sisi, bentang formasi maksimum yang dapat diuji adalah $205$ cm, yang tercapai pada faktor skala $0{,}9$. Lebar celah mengikuti pada $90$ cm. Perbandingan hasil penskalaan terhadap nilai pada simulasi dirangkum pada Tabel~\ref{tab:penskalaan_arena}.
 
@@ -918,7 +906,7 @@ Tata letak arena selengkapnya diperlihatkan pada Gambar~\ref{fig:sketsa_arena}. 
 \begin{figure}[htbp]
     \centering
     \includegraphics{figures/arena.pdf}
-    \caption{Denah arena uji (satuan m). A: kolom bangunan $0{,}60 \times 0{,}79$~m; B: dus rintangan. Lingkaran putih menunjukkan formasi V saat mendekat dan lingkaran abu-abu formasi mengekor di dalam kanal, dengan agen 1 memimpin. K1 dan K2 adalah posisi kamera; kurung di atas denah menunjukkan liputan minimum masing-masing kamera.}
+    \caption{Denah arena uji (satuan m). A adalah kolom bangunan $0{,}60 \times 0{,}79$~m dan B adalah dus rintangan. Lingkaran putih menunjukkan formasi V saat mendekat dan lingkaran abu-abu formasi mengekor di dalam kanal, dengan agen 1 memimpin. K1 dan K2 adalah posisi kamera; kurung di atas denah menunjukkan liputan minimum masing-masing kamera.}
     \label{fig:sketsa_arena}
 \end{figure}
 
@@ -936,7 +924,7 @@ Keseluruhan subsistem yang telah diuraikan disatukan ke dalam arsitektur pada Ga
     \label{fig:arsitektur_sistem}
 \end{figure}
 
-Arsitektur ini memisahkan \textbf{lokalisasi} (kamera atas) dari \textbf{persepsi} (sensor jarak pada wahana). Karena rintangan statis dan posisinya diketahui, $w_e$ sebenarnya dapat dihitung terpusat dari kamera lalu disiarkan. Hal itu tidak dilakukan: agen yang membaca peta kiriman pusat tidak lagi mempersepsi lingkungannya sendiri, dan sifat terdesentralisasi yang melandasi ERC gugur.
+Arsitektur ini memisahkan \textbf{lokalisasi} (kamera atas) dari \textbf{persepsi} (sensor jarak pada wahana). Karena rintangan statis dan posisinya diketahui, $w_e$ sebenarnya dapat dihitung terpusat dari kamera lalu disiarkan. Hal itu tidak dilakukan karena agen yang membaca peta kiriman pusat tidak lagi mempersepsi lingkungannya sendiri, sehingga sifat terdesentralisasi yang melandasi ERC gugur.
 
 % ==========================================
 % BAB IV METODOLOGI DAN RENCANA PELAKSANAAN
@@ -945,9 +933,9 @@ Arsitektur ini memisahkan \textbf{lokalisasi} (kamera atas) dari \textbf{perseps
 
 \section{Kerangka Metodologi}
 
-Penelitian dibagi ke dalam lima fase (Gambar~\ref{fig:diagram_metodologi}). Tiga titik keputusan menjadi gerbang kelayakan: evaluasi HITL pada Fase~3, kestabilan wahana tunggal, dan keberhasilan misi kawanan pada Fase~4. Bila gerbang tidak terlewati, pekerjaan kembali ke penanaman logika, bukan ke awal penelitian.
+Penelitian dibagi ke dalam lima fase (Gambar~\ref{fig:diagram_metodologi}). Tiga titik keputusan menjadi gerbang kelayakan, yaitu evaluasi HITL pada Fase~3, kestabilan wahana tunggal, dan keberhasilan misi kawanan pada Fase~4. Bila gerbang tidak terlewati, pekerjaan kembali ke penanaman logika, bukan ke awal penelitian.
 
-Pengadaan mengikuti gerbang tersebut. Komponen untuk lima wahana baru dibeli setelah uji terbang tunggal lolos, karena tiga ketidakpastian hanya dapat dijawab melalui percobaan: apakah \textit{firmware} racikan muat pada memori \textit{flash} 1~MB (Subbab~\ref{subsec:firmware_fc}), apakah penanda terdeteksi andal saat wahana bergerak (Subbab~\ref{subsec:liputan_kamera}), dan sensor jarak mana yang andal pada sudut datang miring (Subbab~\ref{subsec:pemilihan_sensor}).
+Pengadaan mengikuti gerbang tersebut. Komponen untuk lima wahana baru dibeli setelah uji terbang tunggal lolos, karena tiga ketidakpastian hanya dapat dijawab melalui percobaan, yaitu apakah \textit{firmware} racikan muat pada memori \textit{flash} 1~MB (Subbab~\ref{subsec:firmware_fc}), apakah penanda terdeteksi andal saat wahana bergerak (Subbab~\ref{subsec:liputan_kamera}), dan sensor jarak mana yang andal pada sudut datang miring (Subbab~\ref{subsec:pemilihan_sensor}).
 
 \begin{figure}[htbp]
     \centering
@@ -1001,18 +989,18 @@ Fase ini tidak memerlukan pengadaan.
 
 Algoritma pada \textit{companion computer} dijalankan dengan umpan balik simulasi gerak untuk mengukur beban CPU dan latensi komputasi sebelum wahana diterbangkan. Fase ini tidak memerlukan pengadaan.
 
-\noindent\textbf{Gerbang Fase 3:} beban CPU dan latensi berada dalam batas aman. Bila terjadi tunda atau galat program, pekerjaan kembali ke penanaman logika.
+Fase~3 dinyatakan lolos bila beban CPU dan latensi berada dalam batas aman. Bila terjadi tunda atau galat program, pekerjaan kembali ke penanaman logika.
 
 \section{Fase 4: Uji Terbang Eksperimen}
 
 \begin{enumerate}
     \item \textbf{Uji terbang tunggal.} Satu quadcopter memvalidasi EKF, tautan \textit{companion computer} ke \textit{flight controller}, penalaan PID, dan logika ERC agen tunggal. Deteksi penanda saat wahana bergerak dan jenis sensor jarak terpilih ikut dipastikan pada tahap ini.
 
-    \noindent\textbf{Gerbang:} wahana tunggal stabil dan aman.
+    Tahap ini dinyatakan lolos bila wahana tunggal stabil dan aman.
 
-    \item \textbf{Uji terbang kawanan.} Kamera kedua dipasang dan kedua kamera dikalibrasi ke satu kerangka acuan global. Inventaris (Tabel~\ref{tab:komponen_tersedia}) memuat tiga \textit{flight controller}, tiga ESC, dan tiga \textit{companion computer}, sehingga dua set untuk wahana keempat dan kelima dilengkapi pada tahap ini. Kelima wahana lebih dahulu terbang dalam formasi V di ruang terbuka sebagai acuan, kemudian melintasi arena (Subbab~\ref{sec:arena}): lebar ruang $w_e$ yang turun melewati ambang memicu ERC sehingga formasi menyusut, beralih mengekor melalui celah $90$~cm, lalu mengembang kembali.
+    \item \textbf{Uji terbang kawanan.} Kamera kedua dipasang dan kedua kamera dikalibrasi ke satu kerangka acuan global. Inventaris (Tabel~\ref{tab:komponen_tersedia}) memuat tiga \textit{flight controller}, tiga ESC, dan tiga \textit{companion computer}, sehingga dua set untuk wahana keempat dan kelima dilengkapi pada tahap ini. Kelima wahana lebih dahulu terbang dalam formasi V di ruang terbuka sebagai acuan, kemudian melintasi arena (Subbab~\ref{sec:arena}). Lebar ruang $w_e$ yang turun melewati ambang memicu ERC sehingga formasi menyusut, beralih mengekor melalui celah $90$~cm, lalu mengembang kembali.
 
-    \noindent\textbf{Gerbang:} manuver kawanan berhasil dan stabil.
+    Tahap ini dinyatakan lolos bila manuver kawanan berhasil dan stabil.
 \end{enumerate}
 
 \begin{table}[htbp]
@@ -1098,23 +1086,23 @@ Penelitian direncanakan selama sembilan bulan, dari September 2026 sampai Mei 20
         \rowcolor{gray!20}
         \multirow{-2}{*}{\textbf{No}} & \multirow{-2}{=}{\centering\textbf{Kegiatan}} & \textbf{9} & \textbf{10} & \textbf{11} & \textbf{12} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} \\ \hline
         \multicolumn{11}{|l|}{\cellcolor{gray!10}\textbf{Fase 1: Studi dan Desain Arsitektur}} \\ \hline
-        1 & Studi literatur: formasi multi-agen, dinamika wahana, dan simulasi ERC & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} \\ \hline
-        2 & Desain arsitektur: lima quadcopter (\textit{flight controller} dan \textit{companion computer}) & \cellcolor{gray!70} &  &  &  &  &  &  &  &  \\ \hline
+        1 & Studi literatur formasi multi-agen, dinamika wahana, dan simulasi ERC & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} \\ \hline
+        2 & Desain arsitektur lima quadcopter (\textit{flight controller} dan \textit{companion computer}) & \cellcolor{gray!70} &  &  &  &  &  &  &  &  \\ \hline
         \multicolumn{11}{|l|}{\cellcolor{gray!10}\textbf{Fase 2: Implementasi Teknologi}} \\ \hline
-        3 & Komunikasi internal: \textit{firmware} racikan, antarmuka serial, dan \mbox{MAVLink}\label{abbr:mavlink} &  & \cellcolor{gray!70} & \cellcolor{gray!70} &  &  &  &  &  &  \\ \hline
-        4 & Komunikasi eksternal: jaringan terdesentralisasi UDP\label{abbr:udp} &  & \cellcolor{gray!70} & \cellcolor{gray!70} &  &  &  &  &  &  \\ \hline
+        3 & Komunikasi internal dengan \textit{firmware} racikan, antarmuka serial, dan \mbox{MAVLink}\label{abbr:mavlink} &  & \cellcolor{gray!70} & \cellcolor{gray!70} &  &  &  &  &  &  \\ \hline
+        4 & Komunikasi eksternal melalui jaringan terdesentralisasi UDP\label{abbr:udp} &  & \cellcolor{gray!70} & \cellcolor{gray!70} &  &  &  &  &  &  \\ \hline
         5 & Lokalisasi kamera atas dan fusi EKF; uji banding sensor jarak &  & \cellcolor{gray!70} & \cellcolor{gray!70} &  &  &  &  &  &  \\ \hline
-        6 & Penanaman logika: IAPF\label{abbr:iapf} dan ERC &  & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} &  &  &  &  &  \\ \hline
+        6 & Penanaman logika IAPF\label{abbr:iapf} dan ERC &  & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} &  &  &  &  &  \\ \hline
         \multicolumn{11}{|l|}{\cellcolor{gray!10}\textbf{Fase 3: Pengujian \textit{Hardware-in-the-Loop}}} \\ \hline
-        7 & Uji HITL\label{abbr:hitl}: beban CPU dan latensi pada \textit{companion computer} &  &  &  & \cellcolor{gray!70} & \cellcolor{gray!70} &  &  &  &  \\ \hline
+        7 & Uji HITL\label{abbr:hitl} untuk beban CPU dan latensi pada \textit{companion computer} &  &  &  & \cellcolor{gray!70} & \cellcolor{gray!70} &  &  &  &  \\ \hline
         \multicolumn{11}{|l|}{\cellcolor{gray!10}\textbf{Fase 4: Uji Terbang Eksperimen}} \\ \hline
-        8 & Uji terbang tunggal: validasi EKF, tautan \textit{companion computer}--\textit{flight controller}, dan penalaan PID\label{abbr:pid} &  &  &  & \cellcolor{gray!70} & \cellcolor{gray!70} &  &  &  &  \\ \hline
-        9 & Uji terbang kawanan: formasi V acuan di ruang terbuka &  &  &  &  & \cellcolor{gray!70} & \cellcolor{gray!70} &  &  &  \\ \hline
-        10 & Uji terbang kawanan: formasi adaptif ERC melintasi celah $90$ cm &  &  &  &  &  & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} &  \\ \hline
-        11 & Karakterisasi komunikasi: trafik UDP dan latensi &  &  &  &  &  &  & \cellcolor{gray!70} & \cellcolor{gray!70} &  \\ \hline
+        8 & Uji terbang tunggal untuk validasi EKF, tautan \textit{companion computer}--\textit{flight controller}, dan penalaan PID\label{abbr:pid} &  &  &  & \cellcolor{gray!70} & \cellcolor{gray!70} &  &  &  &  \\ \hline
+        9 & Uji terbang kawanan dengan formasi V acuan di ruang terbuka &  &  &  &  & \cellcolor{gray!70} & \cellcolor{gray!70} &  &  &  \\ \hline
+        10 & Uji terbang kawanan dengan formasi adaptif ERC melintasi celah $90$ cm &  &  &  &  &  & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} &  \\ \hline
+        11 & Karakterisasi trafik UDP dan latensi komunikasi &  &  &  &  &  &  & \cellcolor{gray!70} & \cellcolor{gray!70} &  \\ \hline
         \multicolumn{11}{|l|}{\cellcolor{gray!10}\textbf{Fase 5: Analisis Data dan Pelaporan}} \\ \hline
-        12 & Ekstraksi data: log pose EKF, riwayat pemicu ERC, dan trafik UDP &  &  &  &  &  &  &  &  & \cellcolor{gray!70} \\ \hline
-        13 & Analisis metrik: galat formasi (RMSE\label{abbr:rmse}), keberhasilan melintasi celah, dan beban komunikasi &  &  &  &  &  &  &  &  & \cellcolor{gray!70} \\ \hline
+        12 & Ekstraksi log pose EKF, riwayat pemicu ERC, dan trafik UDP &  &  &  &  &  &  &  &  & \cellcolor{gray!70} \\ \hline
+        13 & Analisis metrik galat formasi (RMSE\label{abbr:rmse}), keberhasilan melintasi celah, dan beban komunikasi &  &  &  &  &  &  &  &  & \cellcolor{gray!70} \\ \hline
         14 & Penyusunan tesis dan naskah publikasi &  &  &  &  &  &  &  &  & \cellcolor{gray!70} \\ \hline
     \end{tabular}%
     }
@@ -1126,7 +1114,7 @@ Penelitian direncanakan selama sembilan bulan, dari September 2026 sampai Mei 20
 \chapter{PENUTUP}
 Dokumen proposal tesis ini telah memaparkan landasan teoretis, pertimbangan teknis, serta rencana implementasi fisik dan evaluasi sistem kontrol formasi terdesentralisasi berbasis \textit{Event-Based Reconfiguration Control} (ERC) pada kawanan lima unit \textit{quadcopter} di ruang sempit. Melalui pendekatan bertahap yang diawali dengan pembuktian jalur kerja pada satu wahana hingga uji skala penuh kawanan, penelitian ini dirancang untuk menjawab kesenjangan antara simulasi numerik dan keterbatasan fisik dunia nyata. 
 
-Luaran utama yang ditargetkan dari penelitian ini meliputi: (1) arsitektur sistem perangkat keras dan perangkat lunak terdesentralisasi yang siap direplikasi, (2) pustaka program algoritma ERC dan IAPF yang teruji pada sistem tertanam, (3) dataset penerbangan eksperimental yang memvalidasi efisiensi \textit{bandwidth} dan akurasi pelacakan posisi secara empiris, serta (4) naskah tesis magister dan publikasi ilmiah pada jurnal atau konferensi terindeks bereputasi. Dengan mitigasi risiko teknis melalui mekanisme pengambilalihan manual radio independen dan gerbang kelayakan bertahap, diharapkan penelitian ini dapat terlaksana sesuai dengan jadwal dan memberikan kontribusi nyata bagi pengembangan sistem robotika kawanan otonom.
+Luaran utama yang ditargetkan dari penelitian ini meliputi (1) arsitektur sistem perangkat keras dan perangkat lunak terdesentralisasi yang siap direplikasi, (2) pustaka program algoritma ERC dan IAPF yang teruji pada sistem tertanam, (3) dataset penerbangan eksperimental yang memvalidasi efisiensi \textit{bandwidth} dan akurasi pelacakan posisi secara empiris, serta (4) naskah tesis magister dan publikasi ilmiah pada jurnal atau konferensi terindeks bereputasi. Dengan mitigasi risiko teknis melalui mekanisme pengambilalihan manual radio independen dan gerbang kelayakan bertahap, diharapkan penelitian ini dapat terlaksana sesuai dengan jadwal dan memberikan kontribusi nyata bagi pengembangan sistem robotika kawanan otonom.
 
 % ==========================================
 % DAFTAR PUSTAKA (MENGGUNAKAN BERKAS EKSTERNAL)

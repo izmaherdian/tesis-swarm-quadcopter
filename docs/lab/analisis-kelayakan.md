@@ -8,6 +8,9 @@
 > berkasnya tidak rusak, **dekoder OpenCV yang gagal**. Temuan dari video ada di
 > bagian 9, dan sebagiannya mengubah kesimpulan di bagian 1.
 >
+> **Koreksi bentuk ruang (2026-09-17):** koridor PTIO berbentuk **huruf T**
+> (konfirmasi penulis), bukan huruf L. Ukuran lengan pada bagian 1 tetap dari denah.
+>
 > **⚠️ Keputusan kamera sudah berubah (2026-09-16):** rekomendasi kamera 4K
 > (HFOV ±109°, penanda 10 cm) di bagian 4 **digantikan** kamera USB 5 MP
 > *global shutter* 2592×1944 lensa 120° dengan penanda 12 cm. Perhitungan yang
