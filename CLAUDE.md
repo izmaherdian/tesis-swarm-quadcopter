@@ -50,7 +50,7 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
 - **Perangkat keras (inventaris 2026-09-17):** 6 rangka Bee35 (4 terakit tanpa propeler,
   2 kosong), 6 FC F405 Mini, 5 ESC BLS 35A (1 V2 lepas diduga rusak), 20 motor
   2006-1950KV (poros 1,5 mm), 5 XIAO ESP32-S3, 5 penerima ExpressLRS (**pemancar belum
-  ada**), 14 propeler Gemfan D90S (T-mount 1,5 mm), 3 MTF-01, pengisi daya SkyRC T6X80 (80 W). Baterai yang sesuai hanya **6S 1200 mAh
+  ada**), 14 propeler Gemfan D90S (T-mount 1,5 mm), 3 MTF-01, pengisi daya SkyRC T6X80 (80 W). Bobot terbang perkiraan ≈ 520 g (batas bawah dari lembar data, belum ditimbang). Baterai yang sesuai hanya **6S 1200 mAh
   CNHL** (2 unit; SpeedyBee menyarankan 6S 1050–1300 mAh untuk 1950KV). Stasiun darat = laptop
   penulis (Ryzen 5 4500U, Ubuntu 26.04). Semua lalu lintas MAVLink/UDP lewat satu router Wi-Fi. Rincian: `docs/lab/spesifikasi-hw.md`,
   `docs/lab/analisis-baterai.md`; harga: `docs/lab/survei-harga.md`.

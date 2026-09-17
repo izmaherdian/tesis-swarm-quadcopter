@@ -45,6 +45,30 @@ Analisis kecocokan: [`analisis-baterai.md`](analisis-baterai.md).
 | Onbo Nano Power | 3S 11,1 V | 1500 mAh | 25C | 2 | ❌ |
 | LPB Power | 2S/3S | 1500 mAh | 20–25C | 1 | ❌ |
 
+### 1d. Perkiraan bobot terbang satu wahana
+
+Belum ditimbang dengan timbangan teliti (timbangan badan tidak memadai). Perkiraan
+dari lembar data dipakai sementara (keputusan penulis 2026-09-17); ditimbang ulang
+dengan timbangan dapur digital saat tersedia.
+
+| Komponen | Bobot | Sumber |
+|---|---:|---|
+| Rangka SpeedyBee Bee35 | 138 g | [SpeedyBee](https://www.speedybee.com/speedybee-bee35-3-5-inch-frame/) |
+| 4 motor 2006-1950KV (23 g termasuk kabel) | 92 g | [SpeedyBee](https://www.speedybee.com/speedybee-2006-1950kv-motor-bee35-3-5-inch-fpv/) |
+| *Flight controller* F405 Mini | 9,6 g | [SpeedyBee](https://www.speedybee.com/speedybee-f405-mini-bls-35a-20x20-stack/) |
+| ESC BLS 35A Mini V2 | 7,2 g | [SpeedyBee](https://www.speedybee.com/speedybee-f405-mini-bls-35a-20x20-stack/) |
+| 4 propeler Gemfan D90S (2,3 g) | 9,2 g | listing Zerius |
+| Penerima EP2 TCXO | 0,44 g | listing justShopIt |
+| Baterai CNHL 6S 1200 mAh | 220 g | listing shoppublic (CNHL menyebut sekitar 210 g) |
+| Pelat penanda akrilik 12 × 12 cm, tebal 2 mm | ≈ 34 g | perhitungan: 144 cm² × 0,2 cm × densitas akrilik ≈ 1,19 g/cm³ |
+| 2 sensor jarak (kandidat terberat yang datanya ada: MTF-01 4,5 g) | 9 g | [MicoAir](https://micoair.com/optical_range_sensor_mtf-01/) |
+| XIAO ESP32-S3, HC-SR04, tiang penanda cetak 3D, kabel, antena, tali baterai | **belum ada data** | — |
+| **Jumlah yang diketahui** | **≈ 520 g** (≈ 300 g tanpa baterai) | batas bawah |
+
+Bobot sebenarnya lebih besar dari angka ini karena beberapa komponen belum
+terhitung. Pelat penanda menyumbang bobot cukup besar; pelat dapat dilubangi di luar
+area pola AprilTag bila perlu.
+
 ## 2. Perangkat darat
 
 | Komponen | Status | Keterangan |

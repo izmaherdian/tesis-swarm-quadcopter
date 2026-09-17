@@ -195,7 +195,7 @@ dan paket 10 pasang. Tipe **D90S dikonfirmasi penulis** (2026-09-17).
 ### MicoAir MTF-01 — kontinjensi, **tidak masuk subtotal**
 
 Tiga unit sudah tersedia. Harga dicatat untuk skenario MTF-01 memenangkan uji banding
-(butuh 7 unit tambahan; di naskah ditulis sebagai kontinjensi Rp10.955.000).
+(butuh 7 unit tambahan; di naskah hanya ditulis harga satuan tertinggi Rp1.565.000, sesuai keputusan penulis).
 
 | Harga (Rp) | Listing |
 |---:|---|
