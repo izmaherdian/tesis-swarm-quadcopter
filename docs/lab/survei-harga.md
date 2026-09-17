@@ -1,7 +1,7 @@
 # Survei Harga Pengadaan
 
 > Diperbarui 2026-09-17. Dipakai oleh tabel anggaran BAB IV proposal (Tabel 4.1
-> Fase 2, Tabel 4.2 Fase 4, Tabel 4.3 Rekapitulasi). Total RAB **Rp23.840.874**.
+> Fase 2, Tabel 4.2 Fase 4, Tabel 4.3 Rekapitulasi). Total RAB **Rp22.639.974**.
 > FC/ESC dan ESP32-S3 dianggap 3 unit tersedia (asumsi penulis).
 
 ## Aturan
@@ -157,6 +157,40 @@ seluruh penanda. Tiang dicetak dengan pencetak 3D lab.
 
 Dikecualikan: listing akrilik dengan pilihan ukuran A4/A3 atau A5/A4 (harga kartu
 ambigu), stiker transparan/bening (penanda perlu dasar putih), dan pak 500 lembar.
+
+### ESC SpeedyBee BLS 35A Mini V2 (tanpa FC) — dipakai **Rp941.000** (1 unit)
+
+| Harga (Rp) | Listing |
+|---:|---|
+| **941.000** | [fitrisemebe](https://www.tokopedia.com/fitrisemebew/speedybee-bls-35a-mini-v2-3-6s-20x20-4-in-1-esc-1730849361715365450) — diverifikasi, spesifikasi BLHeli\_S J-H-40, 3–6S |
+| 515.000 | [justShopIt](https://www.tokopedia.com/justshopit/speedybee-f405-mini-bls-35a-3-6s-20x20mm-stack-flight-controller-fc-esc-for-fpv-drones-dji-vista-link-air-unit-o3-esc-6a84a), varian ESC |
+
+Dikecualikan: listing *stack* FC + ESC (Rp1,79–2,95 juta), karena FC sudah tersedia.
+
+### Propeler Gemfan D90S tiga bilah, *T-mount* 1,5 mm — dipakai **Rp40.000**/paket isi 4
+
+Poros motor SpeedyBee 2006-1950KV 1,5 mm ([SpeedyBee](https://www.speedybee.com/speedybee-2006-1950kv-motor-bee35-3-5-inch-fpv/)).
+Kebutuhan 20 buah − 14 tersedia = 6 → **2 paket (8 buah)**.
+
+| Harga (Rp) | Listing |
+|---:|---|
+| **40.000** | [Zerius](https://www.tokopedia.com/zerius/gemfan-d90s-ducted-d90-s-3-blade-3-5inch-shaft-1-5mm-propeller-clear-gray) — diverifikasi, isi 4 (2 CW + 2 CCW) |
+| 29.999 | [Semut Emas FPV](https://www.tokopedia.com/semutemasfpv/gemfan-d90s-3-5-inch-propeller-ducted-3-blade-fpv-drone-cinelog35-clear-gray-3f34d) |
+
+Dikecualikan: riswantona Rp65.000 (isi paket tidak tercantum), versi poros M5, lima bilah,
+dan paket 10 pasang. **Tipe propeler perlu dipastikan penulis** (tertulis "D90RS?").
+
+### Baterai CNHL Pizza Series 6S 1200 mAh 100C — dipakai **Rp637.000** (4 unit)
+
+| Harga (Rp) | Listing |
+|---:|---|
+| **637.000** | [shoppublic](https://www.tokopedia.com/shoppublic/cnhl-pizza-series-1200mah-22-2v-6s-100c-lipo-battery-1730977420446827894) — diverifikasi, satu baterai 220 g |
+| 478.000 | [Kiddie Ma](https://www.tokopedia.com/lonceng-nusantara/big-promo-cnhl-pizza-series-1200mah-22-2v-6s-100c-lipo-battery-with-xt60-plug-1733455796097681148) |
+| 461.000 | [CVWeiPrima](https://www.tokopedia.com/db-cleaning/cnhl-pizza-series-1200mah-22-2v-6s-100c-lipo-battery-with-xt60-plug-1731305264300918326) |
+| 387.000 | [GRIOS car879](https://www.tokopedia.com/grios-car879/upg0-cnhl-pizza-series-1200mah-22-2v-6s-100c-lipo-battery-xt60) |
+| 374.000 | [Mantab Abadi](https://www.tokopedia.com/mantab-abadi/cnhl-pizza-series-1200mah-22-2v-6s-100c-lipo-battery-xt60-murah) |
+| 365.000 | [udin saprudin07](https://www.tokopedia.com/udinsaprudin/yuhh-cnhl-pizza-series-1200mah-22-2v-6s-100c-lipo-battery), [Sarnivera](https://www.tokopedia.com/sarniah39/sn07-cnhl-pizza-series-1200mah-22-2v-6s-100c-lipo-battery) |
+| 330.000 | [RC Hobby Aero](https://www.tokopedia.com/rchobbyaero/cnhl-pizza-series-1200mah-22-2v-6s-100c-lipo-battery-with-xt60-plug) |
 
 ### Kacamata pengaman berlensa bening — dipakai **Rp113.220** (1 unit)
 

@@ -472,22 +472,25 @@ Wahana yang digunakan adalah \textit{quadcopter} tipe \textit{cinewhoop} dengan 
         \hline
         \rowcolor{gray!20}
         \thead{No} & \thead{Komponen} & \thead{Spesifikasi} & \thead{Jumlah} \\ \hline
-        1 & Rangka \textit{cinewhoop} SpeedyBee Bee35 & Propeler bersaluran, dimensi luar $25 \times 21 \times 8$ cm & 6 unit \\ \hline
-        2 & Motor BLDC & $2006$, $1950$ KV & 4 per wahana \\ \hline
-        3 & \textit{Flight controller} SpeedyBee F405 Mini & Mikrokontroler STM32F405 (\textit{flash} 1 MB), IMU ICM-42688P, barometer DSP-310 & 3 unit \\ \hline
-        4 & ESC SpeedyBee BLS 35A Mini & 4-in-1, firmware BLHeli\_S & 3 unit \\ \hline
-        5 & \textit{Companion computer} Seeed XIAO ESP32-S3 & Wi-Fi 2,4 GHz dan BLE terintegrasi, antarmuka USB-C & 3 unit \\ \hline
-        6 & Penerima kendali radio ExpressLRS EP2 TCXO & 2,4 GHz; pemancar belum tersedia & 3 unit \\ \hline
-        7 & Baterai LiPo & $4 \times 1200$ mAh, $2 \times 1500$ mAh, $1 \times 2200$ mAh, $2 \times 5000$ mAh & 9 unit \\ \hline
-        8 & Propeler dan saluran cadangan & Propeler tiga bilah, cincin saluran & beberapa \\ \hline
-        9 & Modul navigasi RUSHFPV GNSS 25+ & Mesin u-Blox M10, kompas HMC5883, antarmuka serial 115200 baud & terpasang \\ \hline
-        10 & Pencetak tiga dimensi beserta filamen & Untuk mencetak dudukan penanda visual dan sensor & 1 unit \\ \hline
-        11 & Pengisi daya baterai, kontainer penyimpanan baterai, komputer stasiun darat, dan penghala Wi-Fi khusus & Perangkat pendukung di sisi darat & tersedia \\ \hline
+        1 & Rangka \textit{cinewhoop} SpeedyBee Bee35 & Propeler bersaluran, dimensi luar $25 \times 21 \times 8$ cm; empat terakit tanpa propeler, dua kosong & 6 unit \\ \hline
+        2 & Motor BLDC SpeedyBee & $2006$, $1950$ KV, poros $1{,}5$ mm; 16 terpasang, 4 cadangan & 20 unit \\ \hline
+        3 & \textit{Flight controller} SpeedyBee F405 Mini & Mikrokontroler STM32F405 (\textit{flash} 1 MB), IMU ICM-42688P, barometer DSP-310; 4 terpasang, 2 lepas & 6 unit \\ \hline
+        4 & ESC SpeedyBee BLS 35A Mini & 4-in-1, firmware BLHeli\_S; 4 terpasang, 1 unit V2 lepas diduga rusak & 5 unit \\ \hline
+        5 & \textit{Companion computer} Seeed XIAO ESP32-S3 & Wi-Fi 2,4 GHz dan BLE terintegrasi, antarmuka USB-C; 4 terpasang, 1 lepas & 5 unit \\ \hline
+        6 & Penerima kendali radio ExpressLRS & 2,4 GHz (EP2 TCXO dan modul berbasis ESP8285); 4 terpasang, 1 lepas; pemancar belum tersedia & 5 unit \\ \hline
+        7 & Baterai LiPo 6S 1200 mAh CNHL Pizza Series & $22{,}2$ V, 100C, konektor XT60; satu-satunya baterai yang sesuai motor $1950$ KV & 2 unit \\ \hline
+        8 & Baterai LiPo lain & 5S 5000 mAh ($\times 2$), 4S 1200 mAh ($\times 2$), 4S 2200 mAh, 3S 1500 mAh ($\times 2$), 2S/3S 1500 mAh; tidak dipakai terbang & 8 unit \\ \hline
+        9 & Propeler Gemfan 90 mm dan cadangan saluran & Propeler tiga bilah; dua paket pelindung dan penyangga saluran & 14 unit \\ \hline
+        10 & Sensor MicoAir MTF-01 & Aliran optik dan pengukur jarak laser & 3 unit \\ \hline
+        11 & Modul GNSS & RUSHFPV M10 dengan kompas HMC5883 dan modul GPS pada rangka terakit; tidak dipakai di dalam ruangan & 6 unit \\ \hline
+        12 & Pencetak tiga dimensi beserta filamen & Untuk mencetak dudukan penanda visual dan sensor & 1 unit \\ \hline
+        13 & Perlengkapan pengisian baterai & Papan pengisian paralel Power Genius 2--6S, SkyRC \textit{multi balance board}, kontainer penyimpanan baterai & tersedia \\ \hline
+        14 & Komputer stasiun darat dan penghala Wi-Fi khusus & Perangkat pendukung di sisi darat & tersedia \\ \hline
     \end{tabularx}
     \endgroup
 \end{table}
 
-Dari enam rangka yang tersedia, dua unit telah terpasang lengkap beserta propeler dan siap diterbangkan, dua unit telah terpasang motor dan saluran namun belum berpropeler, sementara dua unit sisanya masih berupa rangka kosong tanpa komponen elektronik. Dengan demikian kebutuhan lima agen dapat dipenuhi dari stok yang ada, dengan satu unit tersisa sebagai cadangan apabila terjadi kerusakan saat uji terbang.
+Dari enam rangka yang tersedia, empat unit telah terakit dengan \textit{flight controller}, ESC, \textit{companion computer}, penerima ExpressLRS, dan motor, tetapi belum berpropeler, sedangkan dua unit masih berupa rangka kosong. Komponen lepas mencukupi wahana kelima kecuali ESC, karena satu-satunya ESC lepas diduga rusak. Dari seluruh baterai, hanya dua baterai 6S 1200 mAh yang sesuai dengan motor 2006-1950KV, sebab pabrikan menyarankan baterai 6S berkapasitas 1050--1300 mAh untuk motor tersebut \cite{speedybeeBee35}.
 
 Modul navigasi RUSHFPV yang terpasang pada bagian atas wahana memuat penerima GNSS sekaligus magnetometer HMC5883. Penerima GNSS tidak dapat digunakan karena seluruh pengujian berlangsung di dalam ruangan. Magnetometer secara prinsip masih dapat menjadi acuan arah, namun pembacaannya di dalam gedung mudah terganggu struktur baja dan kabel daya, sehingga acuan \textit{yaw} diambil dari sistem kamera atas. Dengan demikian modul tersebut dilepas, dan pelepasannya justru menguntungkan karena bobot berkurang dan area datar di tengah bodi yang dibutuhkan untuk pemasangan penanda visual menjadi bebas, sebagaimana dibahas pada Subbab~\ref{sec:lokalisasi_rancangan}.
 
@@ -1002,7 +1005,7 @@ Fase~3 dinyatakan lolos bila beban CPU dan latensi berada dalam batas aman. Bila
 
     Tahap ini dinyatakan lolos bila wahana tunggal stabil dan aman.
 
-    \item \textbf{Uji terbang kawanan.} Kamera kedua dipasang dan kedua kamera dikalibrasi ke satu kerangka acuan global. Inventaris (Tabel~\ref{tab:komponen_tersedia}) memuat tiga \textit{flight controller}, tiga ESC, dan tiga \textit{companion computer}, sehingga dua set untuk wahana keempat dan kelima dilengkapi pada tahap ini. Kelima wahana lebih dahulu terbang dalam formasi V di ruang terbuka sebagai acuan, kemudian melintasi arena (Subbab~\ref{sec:arena}). Lebar ruang $w_e$ yang turun melewati ambang memicu ERC sehingga formasi menyusut, beralih mengekor melalui celah $90$~cm, lalu mengembang kembali.
+    \item \textbf{Uji terbang kawanan.} Kamera kedua dipasang dan kedua kamera dikalibrasi ke satu kerangka acuan global. Berdasarkan inventaris (Tabel~\ref{tab:komponen_tersedia}), wahana kelima dirakit dari rangka kosong dan komponen lepas, sehingga pada tahap ini diadakan satu ESC, satu \textit{companion computer} cadangan, propeler, dan empat baterai 6S agar tersedia enam baterai untuk lima wahana. Kelima wahana lebih dahulu terbang dalam formasi V di ruang terbuka sebagai acuan, kemudian melintasi arena (Subbab~\ref{sec:arena}). Lebar ruang $w_e$ yang turun melewati ambang memicu ERC sehingga formasi menyusut, beralih mengekor melalui celah $90$~cm, lalu mengembang kembali.
 
     Tahap ini dinyatakan lolos bila manuver kawanan berhasil dan stabil.
 \end{enumerate}
@@ -1027,12 +1030,13 @@ Fase~3 dinyatakan lolos bila beban CPU dan latensi berada dalam batas aman. Bila
         4 & Dudukan kamera \textit{super clamp} dengan \textit{ball head} 1/4 inci\newline{\footnotesize\href{https://www.tokopedia.com/asteranid/super-clamp-magic-arm-ball-head-mount-1-4-3-8-inch-camera-kamera-1732253921075430889}{tokopedia.com/asteranid}} & 1 unit & 105.027 & 105.027 \\ \hline
         5 & Sensor jarak terpilih (harga VL53L1X)\newline{\footnotesize\href{https://www.tokopedia.com/cncstorebandung/modul-sensor-jarak-tof200c-vl53l0x-tof400c-vl53l1x-tof050c-vl6180x-modules-distance-sersor-vl53l1x-92c0f}{tokopedia.com/cncstorebandung}} & 8 unit & 98.500 & 788.000 \\ \hline
         6 & Akrilik bening 2 mm ukuran A4 untuk tiga pelat penanda\newline{\footnotesize\href{https://www.tokopedia.com/jualacrylic/acrylic-akrilik-lembaran-potongan-2mm-clear-bening-ukuran-a4-30-x-21cm}{tokopedia.com/jualacrylic}} & 2 lembar & 30.000 & 60.000 \\ \hline
-        7 & Penerima ExpressLRS EP2 TCXO\newline{\footnotesize\href{https://www.tokopedia.com/sabinar/terbaru-happymodel-2-4g-expresslrs-elrs-ep2-tcxo-long-range-rc-receiver-terlaris-1731126126732018778}{tokopedia.com/sabinar}} & 2 unit & 337.000 & 674.000 \\ \hline
-        8 & \textit{Stack} SpeedyBee F405 Mini dan ESC BLS 35A\newline{\footnotesize\href{https://www.tokopedia.com/lapakfianprasetyo/speedybee-f405-mini-bls-35a-20x20-stack-f405-flight-controller-35}{tokopedia.com/lapakfianprasetyo}} & 2 set & 1.906.700 & 3.813.400 \\ \hline
-        9 & \textit{Companion computer} Seeed XIAO ESP32-S3\newline{\footnotesize\href{https://www.tokopedia.com/cncstorebandung/xiao-esp32s3-original-board-iot-development-kit-dual-core-wifi-bluetooth-5-0-ble-microcontroller-1732253317634623038}{tokopedia.com/cncstorebandung}} & 2 unit & 282.500 & 565.000 \\ \hline
-        10 & Kardus polos 60 $\times$ 40 $\times$ 40 cm sebagai rintangan\newline{\footnotesize\href{https://www.tokopedia.com/berlian90/dus-packing-polos-jumbo-60x40x40-cm-kardus-besar-kardus-packing-polos-box-jumbo-kondisi-baru-1730914591889655635}{tokopedia.com/berlian90}} & 10 unit & 34.700 & 347.000 \\ \hline
-        11 & Lakban lantai vinil 3M 764, 2 inci $\times$ 33 m\newline{\footnotesize\href{https://www.tokopedia.com/dewielectrical/3m-lakban-lantai-3m-764-vinyl-floor-marking-tape-2-x33-m-hitam}{tokopedia.com/dewielectrical}} & 1 rol & 55.000 & 55.000 \\ \hline
-        \multicolumn{4}{|r|}{\textbf{Subtotal}} & \textbf{13.794.647} \\ \hline
+        7 & ESC SpeedyBee BLS 35A Mini V2 4-in-1\newline{\footnotesize\href{https://www.tokopedia.com/fitrisemebew/speedybee-bls-35a-mini-v2-3-6s-20x20-4-in-1-esc-1730849361715365450}{tokopedia.com/fitrisemebew}} & 1 unit & 941.000 & 941.000 \\ \hline
+        8 & \textit{Companion computer} Seeed XIAO ESP32-S3\newline{\footnotesize\href{https://www.tokopedia.com/cncstorebandung/xiao-esp32s3-original-board-iot-development-kit-dual-core-wifi-bluetooth-5-0-ble-microcontroller-1732253317634623038}{tokopedia.com/cncstorebandung}} & 1 unit & 282.500 & 282.500 \\ \hline
+        9 & Propeler Gemfan D90S tiga bilah, \textit{T-mount} $1{,}5$ mm, isi 4 per paket\newline{\footnotesize\href{https://www.tokopedia.com/zerius/gemfan-d90s-ducted-d90-s-3-blade-3-5inch-shaft-1-5mm-propeller-clear-gray}{tokopedia.com/zerius}} & 2 paket & 40.000 & 80.000 \\ \hline
+        10 & Baterai LiPo CNHL Pizza Series 6S 1200 mAh 100C\newline{\footnotesize\href{https://www.tokopedia.com/shoppublic/cnhl-pizza-series-1200mah-22-2v-6s-100c-lipo-battery-1730977420446827894}{tokopedia.com/shoppublic}} & 4 unit & 637.000 & 2.548.000 \\ \hline
+        11 & Kardus polos 60 $\times$ 40 $\times$ 40 cm sebagai rintangan\newline{\footnotesize\href{https://www.tokopedia.com/berlian90/dus-packing-polos-jumbo-60x40x40-cm-kardus-besar-kardus-packing-polos-box-jumbo-kondisi-baru-1730914591889655635}{tokopedia.com/berlian90}} & 10 unit & 34.700 & 347.000 \\ \hline
+        12 & Lakban lantai vinil 3M 764, 2 inci $\times$ 33 m\newline{\footnotesize\href{https://www.tokopedia.com/dewielectrical/3m-lakban-lantai-3m-764-vinyl-floor-marking-tape-2-x33-m-hitam}{tokopedia.com/dewielectrical}} & 1 rol & 55.000 & 55.000 \\ \hline
+        \multicolumn{4}{|r|}{\textbf{Subtotal}} & \textbf{12.593.747} \\ \hline
     \end{tabularx}
     \endgroup
 \end{table}
@@ -1067,9 +1071,9 @@ Rencana Anggaran Biaya (RAB\label{abbr:rab}) dirangkum pada Tabel~\ref{tab:rekap
         Fase 1: Studi dan Desain Arsitektur & -- \\ \hline
         Fase 2: Implementasi Teknologi & 10.046.227 \\ \hline
         Fase 3: Pengujian HITL & -- \\ \hline
-        Fase 4: Uji Terbang Eksperimen & 13.794.647 \\ \hline
+        Fase 4: Uji Terbang Eksperimen & 12.593.747 \\ \hline
         Fase 5: Analisis Data dan Pelaporan & -- \\ \hline
-        \textbf{Total} & \textbf{23.840.874} \\ \hline
+        \textbf{Total} & \textbf{22.639.974} \\ \hline
     \end{tabularx}
     \endgroup
 \end{table}

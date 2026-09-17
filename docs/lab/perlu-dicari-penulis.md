@@ -41,6 +41,11 @@ Sudah diperiksa langsung di halaman Tokopedia (2026-09-17), detail per listing d
 
 Isi kolom "Hasil" langsung di sini atau kirim fotonya. Urutan = prioritas.
 
+> **2026-09-17:** inventaris dari penulis sudah dicatat di `spesifikasi-hw.md` dan
+> analisis baterai di `analisis-baterai.md`. Yang masih terbuka: tipe propeler pasti
+> (tertulis "D90RS?"), model *balance charger* (papan Power Genius dan SkyRC bukan
+> pengisi daya), bobot terbang, firmware FC, dan perangkat darat (C3–C4).
+
 ### C1. Kelengkapan untuk lima wahana — **menentukan RAB**
 
 | Data yang dicatat | Cara cek | Kenapa perlu | Hasil |

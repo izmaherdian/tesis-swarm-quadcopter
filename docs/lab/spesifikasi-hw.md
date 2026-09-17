@@ -64,22 +64,26 @@ Fase mengikuti BAB IV proposal. Harga dan sumbernya: [`survei-harga.md`](survei-
 | Komponen | Kebutuhan | Fase |
 |---|---|---|
 | **Pemancar ExpressLRS** (RadioMaster Pocket) | Pengambilalihan manual dan penghentian darurat | **Fase 2** — sebelum terbang pertama |
-| Kamera USB 5 MP *global shutter*, lensa 120° | Lokalisasi | Fase 2 (unit ke-1), Fase 4 (unit ke-2) |
-| Kabel USB ekstensi 10 m + dudukan langit-langit | Lokalisasi | Fase 2 (1 set), Fase 4 (1 set) |
-| Sensor ultrasonik HC-SR04 | Kandidat A persepsi rintangan | Fase 2 (2 unit) |
-| Sensor jarak laser VL53L1X | Kandidat B persepsi rintangan | Fase 2 (2 unit) |
+| Kamera ELP-U3GS05B10C-IB21 | Lokalisasi | Fase 2 (unit ke-1), Fase 4 (unit ke-2) |
+| Kabel USB 3.0 aktif 10 m + dudukan *super clamp* | Lokalisasi | Fase 2 (1 set), Fase 4 (1 set) |
+| Sensor ultrasonik HC-SR04 | Kandidat persepsi rintangan | Fase 2 (2 unit) |
+| Sensor jarak laser VL53L1X | Kandidat persepsi rintangan | Fase 2 (2 unit) |
 | Sensor jarak terpilih | Lima wahana × 2 dikurangi 2 unit uji banding | Fase 4 (8 unit) |
-| Penanda AprilTag + akrilik + tiang | Lokalisasi | Fase 2 (1 set), Fase 4 (4 set) |
-| Kacamata pengaman | 1 unit (tas baterai tidak perlu, jaring tidak perlu — keputusan penulis) | Fase 4 — sebelum uji terbang tunggal |
-| Penerima ExpressLRS EP2 TCXO | 5 wahana − 3 tersedia | Fase 4 (2 unit) |
-| *Stack* SpeedyBee F405 Mini + ESC BLS 35A | 5 wahana − 3 tersedia | Fase 4 (2 set) |
-| XIAO ESP32-S3 | 5 wahana − 3 tersedia | Fase 4 (2 unit) |
+| Akrilik A4 + kertas stiker vinil | Penanda AprilTag (tiang dicetak 3D) | Fase 2 (1 lembar + 1 pak), Fase 4 (2 lembar) |
+| Kacamata pengaman | 1 unit (tas baterai dan jaring tidak perlu — keputusan penulis) | Fase 4 — sebelum uji terbang tunggal |
+| ESC SpeedyBee BLS 35A Mini V2 | Wahana kelima (ESC lepas diduga rusak) | Fase 4 (1 unit) |
+| XIAO ESP32-S3 | Cadangan (5 sudah tersedia) — keputusan penulis | Fase 4 (1 unit) |
+| Propeler Gemfan D90S 3 bilah (isi 4) | 20 untuk 5 wahana − 14 tersedia | Fase 4 (2 paket = 8 buah) |
+| Baterai CNHL Pizza 6S 1200 mAh 100C | Total 6 baterai 6S (5 wahana + 1 cadangan) − 2 tersedia | Fase 4 (4 unit) |
 | Dus kardus rintangan | Arena | Fase 4 (10 unit) |
 | Lakban penanda posisi lantai | Arena | Fase 4 |
 
+Tidak perlu dibeli lagi: motor (20 tersedia), *flight controller* (6 tersedia), penerima
+ExpressLRS (5 tersedia; yang lepas berbasis ESP8285).
+
 ### 🔴 Catatan keselamatan
 
-**Penerima kendali radio sudah ada (3 × EP2 TCXO), pemancarnya belum.** Tanpa
+**Penerima kendali radio sudah ada (5 unit), pemancarnya belum.** Tanpa
 pemancar, satu-satunya jalur penghentian darurat adalah MAVLink melalui Wi-Fi —
 dan apabila justru jaringan Wi-Fi yang bermasalah, tidak ada jalan keluar
 tersisa. Pemancar karenanya diadakan pada **Fase 2**, dan pengambilalihan manual

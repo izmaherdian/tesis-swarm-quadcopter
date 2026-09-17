@@ -47,10 +47,13 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
   Cadangan: kalang posisi/kecepatan pindah ke *companion computer*.
 - **Kontrol tingkat rendah:** kaskade ArduPilot (P posisi → PID kecepatan → P sikap
   → PID laju sudut → mixer → DShot).
-- **Perangkat keras:** rangka SpeedyBee Bee35 (6), FC SpeedyBee **F405** Mini (3),
-  ESC BLS 35A (3), XIAO ESP32-S3 (3) — jumlah FC/ESC/ESP32 asumsi penulis, penerima ExpressLRS EP2 TCXO (3,
-  **pemancar belum ada**). Semua lalu lintas MAVLink/UDP lewat satu router Wi-Fi.
-  Rincian: `docs/lab/spesifikasi-hw.md`; harga: `docs/lab/survei-harga.md`.
+- **Perangkat keras (inventaris 2026-09-17):** 6 rangka Bee35 (4 terakit tanpa propeler,
+  2 kosong), 6 FC F405 Mini, 5 ESC BLS 35A (1 V2 lepas diduga rusak), 20 motor
+  2006-1950KV (poros 1,5 mm), 5 XIAO ESP32-S3, 5 penerima ExpressLRS (**pemancar belum
+  ada**), 14 propeler Gemfan 90 mm, 3 MTF-01. Baterai yang sesuai hanya **6S 1200 mAh
+  CNHL** (2 unit; SpeedyBee menyarankan 6S 1050–1300 mAh untuk 1950KV). Semua lalu
+  lintas MAVLink/UDP lewat satu router Wi-Fi. Rincian: `docs/lab/spesifikasi-hw.md`,
+  `docs/lab/analisis-baterai.md`; harga: `docs/lab/survei-harga.md`.
 - **Arena:** koridor 2,70 m, celah 0,90 m (kolom bangunan + dus), formasi V
   diskalakan 0,9; untuk wahana $R=0{,}125$ m ambang $\alpha R=1{,}0$ m.
 - **Metodologi:** 5 fase mengikuti `figures/metodologi_tesis.pdf` (diagram draw.io
