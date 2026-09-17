@@ -16,9 +16,8 @@
   kuning** karena lantai gelap.
 - [x] Kabel USB 3.0 aktif 10 m, dudukan *super clamp*, HC-SR04, akrilik A4, kertas
   stiker vinil, kardus — listing Tokopedia (batas atas) sudah di RAB.
-- [ ] **Perlengkapan keselamatan** masih Rp500.000 dari RAB awal. Tentukan rinciannya:
-  jumlah tas tahan api baterai LiPo, jumlah kacamata, dan apakah jaring pengaman
-  diperlukan (untuk apa dan berapa ukurannya).
+- [x] **Perlengkapan keselamatan:** 1 kacamata pengaman (Rp113.220). Tas baterai tidak perlu
+  karena kontainer lab tersedia; jaring pengaman tidak diperlukan.
 
 ## B. Harga yang sudah diisi
 

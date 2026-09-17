@@ -31,6 +31,7 @@ ExpressLRS EP2 TCXO** (konfirmasi peneliti, 2026-09-16). Tersedia **3 unit**;
 | Komponen | Status | Keterangan |
 |---|---|---|
 | Pengisi daya baterai LiPo | ✅ tersedia | model **?** |
+| Kontainer penyimpanan baterai LiPo | ✅ tersedia | konfirmasi penulis 2026-09-17 |
 | Komputer stasiun darat | ✅ tersedia | CPU, RAM, jumlah port USB3 **?** — menentukan apakah deteksi penanda dua kamera 4K dapat berjalan seketika |
 | Router Wi-Fi khusus | ✅ tersedia | model dan pita frekuensi **?** |
 | Pencetak tiga dimensi + filamen | ✅ tersedia | untuk dudukan penanda dan sensor |
@@ -48,7 +49,7 @@ Fase mengikuti BAB IV proposal. Harga dan sumbernya: [`survei-harga.md`](survei-
 | Sensor jarak laser VL53L1X | Kandidat B persepsi rintangan | Fase 2 (2 unit) |
 | Sensor jarak terpilih | Lima wahana × 2 dikurangi 2 unit uji banding | Fase 4 (8 unit) |
 | Penanda AprilTag + akrilik + tiang | Lokalisasi | Fase 2 (1 set), Fase 4 (4 set) |
-| Perlengkapan keselamatan | Tas tahan api, jaring, kacamata | Fase 4 — sebelum uji terbang tunggal |
+| Kacamata pengaman | 1 unit (tas baterai tidak perlu, jaring tidak perlu — keputusan penulis) | Fase 4 — sebelum uji terbang tunggal |
 | Penerima ExpressLRS EP2 TCXO | 5 wahana − 3 tersedia | Fase 4 (2 unit) |
 | *Stack* SpeedyBee F405 Mini + ESC BLS 35A | 5 wahana − 3 tersedia | Fase 4 (2 set) |
 | XIAO ESP32-S3 | 5 wahana − 3 tersedia | Fase 4 (2 unit) |

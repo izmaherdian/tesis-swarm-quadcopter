@@ -1,7 +1,7 @@
 # Survei Harga Pengadaan
 
 > Diperbarui 2026-09-17. Dipakai oleh tabel anggaran BAB IV proposal (Tabel 4.1
-> Fase 2, Tabel 4.2 Fase 4, Tabel 4.3 Rekapitulasi). Total RAB **Rp24.227.654**.
+> Fase 2, Tabel 4.2 Fase 4, Tabel 4.3 Rekapitulasi). Total RAB **Rp23.840.874**.
 > FC/ESC dan ESP32-S3 dianggap 3 unit tersedia (asumsi penulis).
 
 ## Aturan
@@ -20,8 +20,7 @@
 ## Harga dari RAB awal penulis
 
 Diambil dari tabel RAB proposal sebelum revisi (commit `18a62a8`). Sejak
-2026-09-17 **hanya perlengkapan keselamatan (Rp500.000/set) yang masih memakai
-angka ini**; pos lain sudah diganti listing Tokopedia di bawah.
+2026-09-17 **seluruh angka ini sudah diganti** listing Tokopedia di bawah.
 
 | Pos | Harga satuan (Rp) | Status |
 |---|---:|---|
@@ -29,7 +28,7 @@ angka ini**; pos lain sudah diganti listing Tokopedia di bawah.
 | Sensor ultrasonik HC-SR04 | 20.000 | diganti listing |
 | Penanda AprilTag + akrilik | 20.000 / set | diganti: lembar akrilik A4 + kertas stiker vinil |
 | Dus kardus rintangan | 30.000 | diganti listing |
-| Perlengkapan keselamatan | 500.000 / set | **masih dipakai** — rincian menunggu keputusan penulis |
+| Perlengkapan keselamatan | 500.000 / set | diganti: 1 kacamata pengaman; tas baterai tidak perlu (kontainer lab tersedia); jaring tidak perlu (keputusan penulis) |
 
 Harga kamera Rp1.500.000 pada RAB awal adalah untuk **kamera 60 FPS**, bukan kamera
 5 MP *global shutter* yang kini dipilih, sehingga tidak dipakai.
@@ -158,6 +157,20 @@ seluruh penanda. Tiang dicetak dengan pencetak 3D lab.
 
 Dikecualikan: listing akrilik dengan pilihan ukuran A4/A3 atau A5/A4 (harga kartu
 ambigu), stiker transparan/bening (penanda perlu dasar putih), dan pak 500 lembar.
+
+### Kacamata pengaman berlensa bening — dipakai **Rp113.220** (1 unit)
+
+Hanya kacamata model biasa berlensa bening; *goggles*, pelindung karet, dan lensa
+gelap/cermin dikecualikan.
+
+| Harga (Rp) | Listing |
+|---:|---|
+| **113.220** | [Safety Jogger Tsavo, Safety Jogger Official](https://www.tokopedia.com/safetyjogger/safety-jogger-works-tsavo-kacamata-safety-dengan-lensa-bening-polikarbonat-anti-gores-anti-kabut-perlindungan-uv-lengkap-ringan-nyaman-1731302808503747796) — batas atas, diverifikasi |
+| 55.300 | [Nankai Trial, Nankai Tools](https://www.tokopedia.com/nankaitools/kacamata-safety-trial-bening-nankai) |
+| 39.800 | [Allefix bertali](https://www.tokopedia.com/allefixshop/allefix-kacamata-safety-multifungsi-dengan-tali-elastis-adjustable-lensa-bening-perlindungan-mata-dari-pecahan-dan-debu-1735325783902225634-1735326019177252066) |
+| 25.200 | [Nankai Sporty](https://www.tokopedia.com/nankaitools/kacamata-safety-sepeda-sporty-bening-nankai) |
+| 25.000 | [Juragan Wearfacts](https://www.tokopedia.com/juragan-wearpack/kacamata-safety-merk-juragan-wearfacts-warna-bening-frame-bening) |
+| 16.800 | [Allefix APD](https://www.tokopedia.com/allefixshop/allefix-kacamata-safety-apd-dengan-lensa-bening-tahan-benturan-dan-pelindung-samping-untuk-keselamatan-kerja-k3-6917-1735327984383263970-1735328220062975202) |
 
 ### Kardus polos 60 × 40 × 40 cm — dipakai **Rp34.700**
 
