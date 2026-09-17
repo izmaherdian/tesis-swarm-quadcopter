@@ -17,18 +17,18 @@
 - [x] **Lakban lantai 3M 764** — Rp55.000 (Dewielectrical). Pilih warna **putih atau
   kuning** karena lantai gelap.
 
-## B. Harga yang sudah diisi tetapi perlu dicek langsung
+## B. Harga yang sudah diisi
 
-Angka berasal dari cuplikan hasil pencarian, bukan halaman produk. Detail di
-[`survei-harga.md`](survei-harga.md).
+Sudah diperiksa langsung di halaman Tokopedia (2026-09-17), detail per listing di
+[`survei-harga.md`](survei-harga.md). Tersisa satu hal yang perlu kamu putuskan:
 
-- [ ] ***Stack* SpeedyBee F405 Mini + ESC BLS 35A** — dipakai Rp2.244.428 (e-Hely).
-  Rentang listing Rp1.275.000–2.244.428; pastikan listing e-Hely memang *stack*
-  yang sama (judulnya menyebut "Board Metal").
-- [ ] **Pemancar RadioMaster Pocket ELRS** — Rp1.150.000, baru satu listing
-  (varian *Pocket Crush*).
-- [ ] **Seeed XIAO ESP32-S3** (tanpa kamera) — Rp198.000, baru satu listing.
-- [ ] **Penerima EP2 TCXO** — dipakai Rp309.000 (batas atas dari 3 listing).
+- [x] Pemancar RadioMaster Pocket — Rp2.339.000 (batas atas dari 7 listing).
+- [x] Penerima EP2 TCXO — Rp337.000 (batas atas dari 5 listing).
+- [x] XIAO ESP32-S3 — Rp282.500 (batas atas dari 4 listing).
+- [x] *Stack* F405 Mini + BLS 35A **V1** — Rp1.906.700 (batas atas dari 11 listing).
+  Angka lama Rp2.244.428 ternyata produk lain (*kit board metal*).
+  - [ ] Pastikan wahana yang ada memakai **V1**. Bila yang dibeli nanti V2,
+    harganya Rp2.151.700–2.646.000 per set.
 
 ## C. Inventaris lab
 
