@@ -16,9 +16,13 @@ D_SALURAN  = 0.105     # m, diameter luar saluran propeler
 R_WAHANA   = W_WAHANA / 2
 TIANG      = 0.07      # m, tinggi tiang penyangga penanda
 
-# ── Kamera: ELP 5 MP global shutter, lensa 120° (keputusan penulis) ────
+# ── Kamera: ELP-U3GS05B10C-IB21 (lembar data ELP, docs/lab/foto/18) ───
 NPX_PANJANG, NPX_PENDEK = 2592, 1944
-FOV_DERAJAT = 120.0
+PIKSEL      = 2.2e-6   # m, ukuran piksel
+SENSOR_W, SENSOR_H = 5.737e-3, 4.312e-3   # m, larik aktif OG05B10
+F_LENSA     = 2.1e-3   # m, lensa CS 2,1 mm
+HFOV_ELP    = 150.0    # derajat, dicantumkan ELP untuk lensa IB21
+FPS         = 60       # MJPEG 2592x1944 pada USB 3.0
 H_TERBANG   = 1.20     # m
 PENANDA     = 0.12     # m, sisi penanda AprilTag
 PX_MINIMUM, PX_NYAMAN = 48, 80
@@ -34,31 +38,37 @@ TOPOLOGI = [(1.0, 0.0), (0.0, -0.5), (0.0, 0.5), (-1.0, 1.0), (-1.0, -1.0)]
 ALPHA, R_SIM = 8, 0.2
 
 
-def liputan(h_terbang=H_TERBANG, tafsiran="horizontal"):
-    """Liputan satu kamera pada bidang puncak wahana, sensor 4:3."""
+def liputan(h_terbang=H_TERBANG):
+    """Liputan dan resolusi satu kamera pada bidang puncak wahana, model lubang jarum."""
     d = H_PLAFON - (h_terbang + H_WAHANA)
-    setengah = math.radians(FOV_DERAJAT) / 2
-    if tafsiran == "horizontal":
-        th = setengah
-        tv = math.atan(math.tan(th) * 3 / 4)
-    else:                                   # diagonal 4:3 -> 4:3:5
-        th = math.atan(math.tan(setengah) * 4 / 5)
-        tv = math.atan(math.tan(setengah) * 3 / 5)
-    panjang, lebar = 2 * d * math.tan(th), 2 * d * math.tan(tv)
-    mm_px = panjang / NPX_PANJANG * 1000
+    panjang, lebar = d * SENSOR_W / F_LENSA, d * SENSOR_H / F_LENSA
+    mm_px = d * PIKSEL / F_LENSA * 1000
     return dict(d=d, panjang=panjang, lebar=lebar, mm_px=mm_px,
                 px10=100 / mm_px, px12=120 / mm_px,
-                tumpang=2 * panjang - L_SEGMEN)
+                tumpang=2 * panjang - L_SEGMEN,
+                hfov=2 * math.degrees(math.atan(SENSOR_W / 2 / F_LENSA)))
+
+
+def px_ekuidistan(x, y, sisi=PENANDA, h_terbang=H_TERBANG):
+    """Piksel sisi penanda di (x, y) dari sumbu optik bila lensa berproyeksi ekuidistan.
+
+    Batas pesimistis untuk lensa sudut lebar terdistorsi: arah radial menyusut cos^2(theta),
+    arah tangensial theta/tan(theta).
+    """
+    d = H_PLAFON - (h_terbang + H_WAHANA)
+    th = math.atan(math.hypot(x, y) / d)
+    pusat = sisi / (d * PIKSEL / F_LENSA)
+    if th == 0:
+        return pusat, pusat
+    return pusat * math.cos(th) ** 2, pusat * th / math.tan(th)
 
 
 if __name__ == "__main__":
-    print(f"Plafon {H_PLAFON} m, terbang {H_TERBANG} m, sensor {NPX_PANJANG}x{NPX_PENDEK}, lensa {FOV_DERAJAT:.0f}°\n")
-    for taf in ("horizontal", "diagonal"):
-        g = liputan(tafsiran=taf)
-        print(f"[{taf:>10}] jarak {g['d']:.2f} m | liputan {g['panjang']:.2f} x {g['lebar']:.2f} m "
-              f"| {g['mm_px']:.2f} mm/px | penanda 10 cm {g['px10']:.0f} px, 12 cm {g['px12']:.0f} px "
-              f"| tumpang tindih 2 kamera {g['tumpang']:.2f} m | lebar lorong tertutup: {g['lebar'] >= W_KORIDOR}")
-    for h in (1.0, 1.2, 1.5):
-        a, b = liputan(h, "horizontal"), liputan(h, "diagonal")
-        print(f"terbang {h:.1f} m: 12 cm = {a['px12']:.0f} px (horiz) / {b['px12']:.0f} px (diag); "
-              f"tumpang tindih {a['tumpang']:.2f} / {b['tumpang']:.2f} m")
+    g = liputan()
+    print(f"Plafon {H_PLAFON} m, terbang {H_TERBANG} m, jarak {g['d']:.2f} m, lensa {F_LENSA*1e3:.1f} mm")
+    print(f"lubang jarum: HFOV {g['hfov']:.1f} deg (ELP: {HFOV_ELP:.0f}) | liputan {g['panjang']:.2f} x {g['lebar']:.2f} m "
+          f"| {g['mm_px']:.2f} mm/px | penanda 10 cm {g['px10']:.1f} px, 12 cm {g['px12']:.1f} px "
+          f"| tumpang tindih 2 kamera {g['tumpang']:.2f} m")
+    for x, y in ((0, 0), (0, W_KORIDOR / 2), (g['panjang'] / 2, 0), (g['panjang'] / 2, W_KORIDOR / 2)):
+        r, t = px_ekuidistan(x, y)
+        print(f"ekuidistan di ({x:.2f}, {y:.2f}) m: radial {r:.0f} px, tangensial {t:.0f} px")

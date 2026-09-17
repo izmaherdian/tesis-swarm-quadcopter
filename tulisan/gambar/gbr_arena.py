@@ -9,7 +9,7 @@ CH0 = (L - P.KANAL) / 2
 KX = CH0 + (P.KANAL - P.KOLOM_W) / 2
 DUS = W - P.KOLOM_D - P.CELAH
 D, k = P.W_WAHANA, P.K_SKALA
-g = P.liputan(tafsiran="diagonal")["panjang"]          # liputan minimum
+g = P.liputan()["panjang"]          # liputan model lubang jarum
 kam = (g / 2, L - g / 2)
 
 fig, ax = plt.subplots(figsize=(LEBAR, 7.2 * CM))
@@ -56,4 +56,4 @@ ukur(ax, (CH0 + P.KANAL, DUS), (CH0 + P.KANAL, DUS + P.CELAH), f"{P.CELAH:.2f}".
 ax.set_xlim(-0.25, L + 0.65); ax.set_ylim(-1.05, W + 1.40)
 ax.set_aspect("equal"); ax.axis("off")
 simpan(fig, "arena")
-print(f"liputan minimum per kamera {g:.2f} m, kamera di x = {kam[0]:.2f} dan {kam[1]:.2f} m, tumpang tindih {2*g - L:.2f} m")
+print(f"liputan per kamera {g:.2f} m, kamera di x = {kam[0]:.2f} dan {kam[1]:.2f} m, tumpang tindih {2*g - L:.2f} m")

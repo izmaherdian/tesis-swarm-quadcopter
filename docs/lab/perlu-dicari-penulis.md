@@ -6,13 +6,11 @@
 
 ## A. Harga (Tokopedia)
 
-- [x] **Kamera ELP 5 MP *global shutter* OG05B10** — Rp6.600.000 (Fast Importir).
-  - [ ] **Tanyakan ke penjual:** bisa dikirim dengan lensa CS **2,1 mm** atau modul
-    lensa **120°**? Berapa harganya? Lensa bawaan 3,6–10 mm terlalu sempit untuk
-    koridor 2,70 m.
-  - [ ] Minta lembar spesifikasi lensa yang dipilih (HFOV/VFOV). Data ELP untuk lensa
-    100° menunjukkan angka sudut lensanya diagonal; bila 120° juga diagonal,
-    penanda 10 cm sudah cukup.
+- [x] **Kamera ELP-U3GS05B10C-IB21** — Rp6.600.000 (Fast Importir), lensa 2,1 mm
+  harga sama, **pra-pesan 3 minggu**. Lembar data: `foto/18-datasheet-kamera-elp-og05b10.png`.
+  - [ ] Saat kamera pertama tiba (Fase 2): kalibrasi intrinsik + distorsi, lalu
+    ukur piksel sisi penanda 12 cm di tengah, di tepi koridor, dan di ujung liputan.
+    Menentukan apakah dua kamera cukup (lihat risiko distorsi di BAB III).
 - [x] **VL53L1X** — Rp98.500 (CNC Store Bandung).
 - [x] **Lakban lantai 3M 764** — Rp55.000 (Dewielectrical). Pilih warna **putih atau
   kuning** karena lantai gelap.

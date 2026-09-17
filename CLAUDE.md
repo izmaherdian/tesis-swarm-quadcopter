@@ -33,11 +33,14 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
 - **Persepsi rintangan:** 2 sensor jarak per agen, dipasang diagonal bersudut
   $\beta$ terhadap arah maju ($\theta$ dipakai untuk *pitch*). Jenisnya **belum
   ditetapkan**: HC-SR04 vs VL53L1X diuji banding pada Fase 2.
-- **Lokalisasi:** 2 kamera atas USB **5 MP *global shutter*** 2592×1944 (4:3),
-  lensa 120°, 50 fps + penanda **AprilTag 12 cm** bertiang 7 cm, ketinggian terbang
-  1,2 m, pose lewat PnP di stasiun darat. Lembar data belum menyatakan 120°
-  horizontal atau diagonal — perhitungan liputan memuat keduanya
-  (`tulisan/gambar/parameter.py`). **Bukan UWB, bukan 4K** (keduanya keputusan lama).
+- **Lokalisasi:** 2 kamera atas **ELP-U3GS05B10C-IB21**: OG05B10 *global shutter*
+  2592×1944, piksel 2,2 µm, larik 5,737 × 4,312 mm, **lensa CS 2,1 mm**, 60 fps MJPEG
+  USB 3.0 (lembar data: `docs/lab/foto/18-…`). Penanda **AprilTag 12 cm** bertiang 7 cm,
+  terbang 1,2 m, pose lewat PnP di stasiun darat. Model lubang jarum: liputan
+  4,70 × 3,53 m, 1,80 mm/px, 12 cm = 66 px, tumpang tindih 2,20 m (`parameter.py`).
+  ⚠️ ELP menyebut HFOV 150° (lubang jarum 107,6°) → distorsi kuat; batas pesimistis
+  ekuidistan: 12 cm hanya ±23 px radial di ujung segmen. Diukur saat kalibrasi Fase 2.
+  Pra-pesan 3 minggu. **Bukan UWB, bukan 4K, bukan "120°"** (keputusan lama).
 - **Estimasi state:** EKF3 bawaan ArduPilot, fusi IMU + pose kamera (ExtNav).
 - **Firmware FC:** SpeedyBee F405 Mini (flash 1 MB) — build stabil ArduPilot
   menonaktifkan ExtNav, jadi dipakai **firmware racikan** (Custom Firmware Builder).

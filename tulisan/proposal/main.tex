@@ -578,7 +578,7 @@ Sistem lokalisasi terdiri atas tiga komponen berikut.
     \item Stasiun pemroses citra di darat menerima aliran video, mendeteksi penanda, dan menghitung pose tiap wahana.
 \end{enumerate}
 
-Pose tiap wahana dihitung dengan model kamera lubang jarum dan penyelesaian masalah \textit{Perspective-n-Point} (PnP). Dengan matriks intrinsik $\mathbf{K}$ yang diperoleh dari kalibrasi, koordinat piksel $(u, v)$ dan koordinat dunia $(x_w, y_w, z_w)$ berhubungan melalui
+Pose tiap wahana dihitung dengan model kamera lubang jarum dan penyelesaian masalah \textit{Perspective-n-Point} (PnP). Setelah citra dikoreksi distorsi lensanya dan dengan matriks intrinsik $\mathbf{K}$ yang diperoleh dari kalibrasi, koordinat piksel $(u, v)$ dan koordinat dunia $(x_w, y_w, z_w)$ berhubungan melalui
 \begin{equation}
     s 
     \begin{bmatrix}
@@ -604,44 +604,46 @@ dengan $s$ faktor skala, $\mathbf{R} \in \mathbb{R}^{3 \times 3}$ matriks rotasi
 \end{equation}
 dengan $(f_x, f_y)$ panjang fokus dalam piksel dan $(c_x, c_y)$ titik pusat optik. Dari ukuran penanda yang diketahui ($12 \times 12$~cm) dan empat titik sudutnya pada citra, Persamaan~\ref{eq:pinhole_pnp} diselesaikan secara numerik dengan optimasi Levenberg\allowbreak--Marquardt, menghasilkan posisi $(x, y, z)$ dan sudut \textit{yaw} $\psi$ tiap wahana.
 
-Pose tersebut dikemas sebagai pesan MAVLink dan disiarkan melalui UDP ke \textit{companion computer} tiap wahana. Laju pembaruannya dibatasi laju bingkai kamera ($50$ bingkai per detik) dan tertunda oleh pemrosesan citra, sehingga pose kamera tidak diumpankan langsung ke kalang kendali, melainkan difusikan dengan IMU melalui \textit{Extended Kalman Filter} (EKF\label{abbr:ekf}).
+Pose tersebut dikemas sebagai pesan MAVLink dan disiarkan melalui UDP ke \textit{companion computer} tiap wahana. Laju pembaruannya dibatasi laju bingkai kamera ($60$ bingkai per detik) dan tertunda oleh pemrosesan citra, sehingga pose kamera tidak diumpankan langsung ke kalang kendali, melainkan difusikan dengan IMU melalui \textit{Extended Kalman Filter} (EKF\label{abbr:ekf}).
 
 \subsection{Penentuan Jumlah Kamera dan Ukuran Penanda}
 \label{subsec:liputan_kamera}
 
-Kamera yang dipilih adalah kamera USB \textit{global shutter} beresolusi $2592 \times 1944$ piksel (format $4{:}3$) dengan lensa $120^\circ$. Rana global dipilih karena rana bergulir memelintir citra penanda saat wahana bergerak. Liputan dan ukuran penanda diturunkan dari dimensi ruang pada Tabel~\ref{tab:kondisi_ruang}. Dengan langit-langit setinggi $h_p = 3{,}00$~m, tinggi wahana $0{,}08$~m, dan ketinggian terbang $h_t = 1{,}2$~m, jarak kamera ke penanda adalah
+Kamera yang dipilih adalah ELP-U3GS05B10C-IB21 dengan sensor OmniVision OG05B10 \textit{global shutter} beresolusi $2592 \times 1944$ piksel, ukuran piksel $2{,}2$~\textmu m, larik aktif $5{,}737 \times 4{,}312$~mm, dan lensa CS $2{,}1$~mm. Melalui USB~3.0, kamera ini mengirim citra resolusi penuh hingga $60$ bingkai per detik dalam format MJPEG \cite{elpGlobalShutterOG05B10}. Rana global dipilih karena rana bergulir memelintir citra penanda saat wahana bergerak. Liputan dan ukuran penanda diturunkan dari dimensi ruang pada Tabel~\ref{tab:kondisi_ruang}. Dengan langit-langit setinggi $h_p = 3{,}00$~m, tinggi wahana $0{,}08$~m, dan ketinggian terbang $h_t = 1{,}2$~m, jarak kamera ke penanda adalah
 \begin{equation}
     d = h_p - (h_t + 0{,}08) = 1{,}72\ \text{m}
 \end{equation}
-Untuk sudut pandang horizontal $\gamma_h$ dan vertikal $\gamma_v$, liputan satu kamera pada bidang terbang adalah
+Menurut model kamera lubang jarum, liputan satu kamera pada bidang terbang dan resolusinya adalah
 \begin{equation}
-    w_\parallel = 2d\tan\frac{\gamma_h}{2}, \qquad w_\perp = 2d\tan\frac{\gamma_v}{2}
+    w_\parallel = \frac{d\,b_h}{f}, \qquad w_\perp = \frac{d\,b_v}{f}, \qquad \rho = \frac{d\,p}{f}
 \end{equation}
-dengan $w_\parallel$ searah koridor dan $w_\perp$ melintang koridor. Lembar data kamera belum menyatakan apakah $120^\circ$ merupakan sudut horizontal atau diagonal, sehingga keduanya dihitung (Tabel~\ref{tab:liputan_kamera}).
+dengan $b_h$ dan $b_v$ lebar dan tinggi larik sensor, $p$ ukuran piksel, $f$ panjang fokus, $w_\parallel$ liputan searah koridor, dan $w_\perp$ liputan melintang koridor. Hasilnya dirangkum pada Tabel~\ref{tab:liputan_kamera}.
 
 \begin{table}[htbp]
     \centering
-    \caption{Liputan satu kamera dan ukuran penanda pada ketinggian terbang $1{,}2$~m}
+    \caption{Liputan satu kamera dan ukuran penanda pada ketinggian terbang $1{,}2$~m menurut model lubang jarum}
     \label{tab:liputan_kamera}
     \begingroup
     \small
     \renewcommand{\arraystretch}{1.25}
-    \begin{tabularx}{\textwidth}{|X|>{\centering\arraybackslash}p{3.0cm}|>{\centering\arraybackslash}p{3.0cm}|}
+    \begin{tabularx}{\textwidth}{|X|>{\centering\arraybackslash}p{4.0cm}|}
         \hline
         \rowcolor{gray!20}
-        \thead{Besaran} & \thead{$120^\circ$ horizontal} & \thead{$120^\circ$ diagonal} \\ \hline
-        Liputan $w_\parallel \times w_\perp$ & $5{,}96 \times 4{,}47$ m & $4{,}77 \times 3{,}57$ m \\ \hline
-        Resolusi pada bidang terbang & $2{,}30$ mm/piksel & $1{,}84$ mm/piksel \\ \hline
-        Penanda $10$ cm & $44$ piksel & $54$ piksel \\ \hline
-        Penanda $12$ cm & $52$ piksel & $65$ piksel \\ \hline
-        Tumpang tindih dua kamera pada segmen $7{,}20$ m & $4{,}72$ m & $2{,}33$ m \\ \hline
+        \thead{Besaran} & \thead{Nilai} \\ \hline
+        Liputan $w_\parallel \times w_\perp$ & $4{,}70 \times 3{,}53$ m \\ \hline
+        Resolusi $\rho$ pada bidang terbang & $1{,}80$ mm/piksel \\ \hline
+        Sisi penanda $10$ cm & $55$ piksel \\ \hline
+        Sisi penanda $12$ cm & $66$ piksel \\ \hline
+        Tumpang tindih dua kamera pada segmen $7{,}20$ m & $2{,}20$ m \\ \hline
     \end{tabularx}
     \endgroup
 \end{table}
 
-Pada kedua tafsiran, liputan melintang melebihi lebar koridor $2{,}70$~m, dan satu kamera tidak mencukupi segmen uji sepanjang $7{,}20$~m. Dua kamera menutup segmen tersebut dengan tumpang tindih sekurang-kurangnya $2{,}33$~m, yang dipakai untuk menyatukan keduanya ke satu kerangka acuan global.
+Liputan melintang $3{,}53$~m melebihi lebar koridor $2{,}70$~m, sedangkan satu kamera tidak mencukupi segmen uji sepanjang $7{,}20$~m. Dua kamera karenanya menutup segmen tersebut dengan tumpang tindih $2{,}20$~m, yang dipakai untuk menyatukan keduanya ke satu kerangka acuan global.
 
-Ukuran penanda ditetapkan dari syarat deteksi. Penanda dianggap terdeteksi andal bila sisinya mencakup sekurang-kurangnya $48$ piksel. Penanda $10$~cm tidak memenuhi syarat ini pada tafsiran horizontal ($44$ piksel), sedangkan penanda $12$~cm memenuhi pada kedua tafsiran. Karena itu ukuran penanda ditetapkan $12$~cm; bila lembar data menyatakan sudut diagonal, penanda $10$~cm sudah memadai. Marginnya tetap tipis terhadap $80$ piksel yang nyaman untuk wahana bergerak, sehingga keandalan deteksi saat terbang dipastikan pada uji terbang tunggal sebelum komponen kawanan dibeli (Bab~IV).
+Model lubang jarum hanya berlaku untuk lensa tanpa distorsi, sedangkan ELP mencantumkan sudut pandang horizontal $150^\circ$ untuk lensa ini \cite{elpGlobalShutterOG05B10}, jauh di atas $107{,}6^\circ$ menurut model tersebut. Lensa ini dengan demikian berdistorsi tong. Distorsi memperluas liputan tetapi menurunkan kepadatan piksel ke arah tepi citra, sehingga nilai pada Tabel~\ref{tab:liputan_kamera} hanya berlaku di sekitar sumbu optik. Bila lensa diasumsikan berproyeksi ekuidistan sebagai batas pesimistis, sisi penanda $12$~cm pada arah radial tinggal sekitar $41$ piksel di tepi koridor yang sejajar dengan kamera dan sekitar $23$ piksel di ujung segmen. Kepadatan piksel sebenarnya diukur melalui kalibrasi intrinsik pada Fase~2. Bila penanda di tepi liputan tidak terdeteksi andal, pilihan yang tersedia adalah memperbesar penanda, menaikkan ketinggian terbang agar jarak kamera ke penanda berkurang, atau menambah kamera ketiga.
+
+Ukuran penanda ditetapkan dari syarat deteksi. Penanda dianggap terdeteksi andal bila sisinya mencakup sekurang-kurangnya $48$ piksel. Di sekitar sumbu optik, penanda $10$~cm ($55$ piksel) dan $12$~cm ($66$ piksel) sama-sama memenuhi syarat, tetapi ukuran $12$~cm dipilih untuk menyisakan margin terhadap penurunan kepadatan piksel di tepi citra dan mendekati $80$ piksel yang nyaman untuk wahana bergerak. Keandalan deteksi saat terbang dipastikan pada uji terbang tunggal sebelum komponen kawanan dibeli (Bab~IV).
 
 Penanda $12$~cm tidak muat pada jalur datar selebar $4$~cm di sumbu tengah bodi (Gambar~\ref{fig:sketsa_wahana}), dan menempelkannya langsung di atas saluran propeler akan menutup aliran udara masuk dan menggerus daya angkat. Penanda karenanya dipasang pada pelat yang dinaikkan tiang penyangga setinggi $7$~cm di atas bodi, dengan dudukan dicetak menggunakan pencetak tiga dimensi yang tersedia.
 
@@ -707,7 +709,7 @@ Formulasi berikut adalah model konseptual; implementasinya memakai EKF3 bawaan A
     \end{bmatrix}^T
     \label{eq:state_vector_ekf}
 \end{equation}
-Vektor masukan $\mathbf{u}_{k-1}$ berasal dari pembacaan sensor internal IMU bawaan \textit{flight controller} (ICM-42688P) pada laju yang jauh lebih tinggi daripada laju kamera, yang terdiri atas akselerasi linear bodi $\mathbf{a}_B = [a_x, a_y, a_z]^T$ dan laju rotasi bodi $\boldsymbol{\omega}_B = [p, q, r]^T$. Sementara itu, vektor pengukuran $\mathbf{z}_k \in \mathbb{R}^4$ diperoleh secara asinkron dari sistem kamera atas berbasis penanda visual AprilTag hingga $50$ kali per detik melalui paket MAVLink, yaitu
+Vektor masukan $\mathbf{u}_{k-1}$ berasal dari pembacaan sensor internal IMU bawaan \textit{flight controller} (ICM-42688P) pada laju yang jauh lebih tinggi daripada laju kamera, yang terdiri atas akselerasi linear bodi $\mathbf{a}_B = [a_x, a_y, a_z]^T$ dan laju rotasi bodi $\boldsymbol{\omega}_B = [p, q, r]^T$. Sementara itu, vektor pengukuran $\mathbf{z}_k \in \mathbb{R}^4$ diperoleh secara asinkron dari sistem kamera atas berbasis penanda visual AprilTag hingga $60$ kali per detik melalui paket MAVLink, yaitu
 \begin{equation}
     \mathbf{z}_k = 
     \begin{bmatrix}
@@ -733,7 +735,7 @@ Tahap ini dijalankan setiap cuplikan IMU. Model kinematika memproyeksikan posisi
 di mana $\hat{\mathbf{x}}_{k|k-1}$ adalah estimasi \textit{state} apriori dan $\mathbf{P}_{k|k-1}$ adalah matriks kovariansi galat apriori.
 
 \subsubsection{2. Tahap Pembaruan Ukuran}
-Setiap kali pose absolut dari kamera atas tiba (hingga $50$ kali per detik), koreksi pengukuran dieksekusi untuk mereduksi akumulasi \textit{drift} dari integrasi IMU melalui
+Setiap kali pose absolut dari kamera atas tiba (hingga $60$ kali per detik), koreksi pengukuran dieksekusi untuk mereduksi akumulasi \textit{drift} dari integrasi IMU melalui
 \begin{align}
     \tilde{\mathbf{y}}_k &= \mathbf{z}_k - h(\hat{\mathbf{x}}_{k|k-1}) \\
     \mathbf{S}_k &= \mathbf{H}_k \mathbf{P}_{k|k-1} \mathbf{H}_k^T + \mathbf{R}_k \\
@@ -906,7 +908,7 @@ Tata letak arena selengkapnya diperlihatkan pada Gambar~\ref{fig:sketsa_arena}. 
 \begin{figure}[htbp]
     \centering
     \includegraphics{figures/arena.pdf}
-    \caption{Denah arena uji (satuan m). A adalah kolom bangunan $0{,}60 \times 0{,}79$~m dan B adalah dus rintangan. Lingkaran putih menunjukkan formasi V saat mendekat dan lingkaran abu-abu formasi mengekor di dalam kanal, dengan agen 1 memimpin. K1 dan K2 adalah posisi kamera; kurung di atas denah menunjukkan liputan minimum masing-masing kamera.}
+    \caption{Denah arena uji (satuan m). A adalah kolom bangunan $0{,}60 \times 0{,}79$~m dan B adalah dus rintangan. Lingkaran putih menunjukkan formasi V saat mendekat dan lingkaran abu-abu formasi mengekor di dalam kanal, dengan agen 1 memimpin. K1 dan K2 adalah posisi kamera; kurung di atas denah menunjukkan liputan masing-masing kamera menurut model lubang jarum.}
     \label{fig:sketsa_arena}
 \end{figure}
 
@@ -957,7 +959,7 @@ Fase ini tidak memerlukan pengadaan.
 \begin{enumerate}
     \item \textbf{Komunikasi internal.} \textit{Firmware} ArduPilot racikan dibangun (Subbab~\ref{subsec:firmware_fc}), lalu antarmuka UART MAVLink antara \textit{companion computer} dan \textit{flight controller} dikonfigurasi.
     \item \textbf{Komunikasi eksternal.} Jaringan terdesentralisasi antaragen dibangun dengan UDP melalui Wi-Fi.
-    \item \textbf{Lokalisasi.} Kamera pertama dikalibrasi; deteksi penanda AprilTag, penyelesaian pose, pengiriman MAVLink, dan fusi EKF dijalankan menerus. Pada tahap ini pula HC-SR04 dan VL53L1X diuji banding dengan kriteria pada Subbab~\ref{subsec:pemilihan_sensor}.
+    \item \textbf{Lokalisasi.} Kamera pertama dikalibrasi, termasuk model distorsi lensanya; deteksi penanda AprilTag, penyelesaian pose, pengiriman MAVLink, dan fusi EKF dijalankan menerus. Pada tahap ini pula HC-SR04 dan VL53L1X diuji banding dengan kriteria pada Subbab~\ref{subsec:pemilihan_sensor}.
     \item \textbf{Penanaman logika} algoritma ERC dan IAPF pada \textit{companion computer}.
     \item \textbf{Tautan kendali manual.} Pemancar ExpressLRS diikat ke penerima EP2 TCXO yang telah tersedia. Pemancar diadakan sebelum uji terbang karena merupakan satu-satunya jalur penghentian darurat yang tidak bergantung pada Wi-Fi.
 \end{enumerate}
@@ -974,7 +976,7 @@ Fase ini tidak memerlukan pengadaan.
         \hline
         \rowcolor{gray!20}
         \thead{No} & \thead{Komponen} & \thead{Jumlah} & \thead{Harga\\Satuan (Rp)} & \thead{Harga\\Total (Rp)} \\ \hline
-        1 & Kamera USB 3.0 ELP 5 MP \textit{global shutter} OG05B10 & 1 unit & 6.600.000 & 6.600.000 \\ \hline
+        1 & Kamera ELP-U3GS05B10C-IB21 (5 MP \textit{global shutter}, lensa 2,1 mm) & 1 unit & 6.600.000 & 6.600.000 \\ \hline
         2 & Kabel USB ekstensi 10 m dan dudukan langit-langit & 1 set & 150.000 & 150.000 \\ \hline
         3 & Pemancar ExpressLRS 2,4 GHz RadioMaster Pocket & 1 unit & 2.339.000 & 2.339.000 \\ \hline
         4 & Sensor ultrasonik HC-SR04 (kandidat) & 2 unit & 20.000 & 40.000 \\ \hline
@@ -1018,7 +1020,7 @@ Fase~3 dinyatakan lolos bila beban CPU dan latensi berada dalam batas aman. Bila
         \multicolumn{5}{|l|}{\textit{Sebelum uji terbang tunggal}} \\ \hline
         1 & Perlengkapan keselamatan (tas tahan api baterai, jaring, kacamata) & 1 set & 500.000 & 500.000 \\ \hline
         \multicolumn{5}{|l|}{\textit{Setelah uji terbang tunggal lolos}} \\ \hline
-        2 & Kamera USB 3.0 ELP 5 MP \textit{global shutter} OG05B10 kedua & 1 unit & 6.600.000 & 6.600.000 \\ \hline
+        2 & Kamera ELP-U3GS05B10C-IB21 kedua & 1 unit & 6.600.000 & 6.600.000 \\ \hline
         3 & Kabel USB ekstensi 10 m dan dudukan langit-langit & 1 set & 150.000 & 150.000 \\ \hline
         4 & Sensor jarak terpilih & 8 unit & 98.500 & 788.000 \\ \hline
         5 & Penanda AprilTag, akrilik, dan tiang cetak tiga dimensi & 4 set & 20.000 & 80.000 \\ \hline
@@ -1046,7 +1048,7 @@ Seluruh kegiatan berlangsung di Pusat Teknologi Instrumentasi dan Otomasi (PTIO\
 \subsection{Rekapitulasi Anggaran}
 \label{subsec:rab}
 
-Rencana Anggaran Biaya (RAB\label{abbr:rab}) dirangkum pada Tabel~\ref{tab:rekap_rab}. Harga bersumber dari RAB awal penulis dan survei Tokopedia pada September 2026. Bila terdapat beberapa listing, dipakai harga tertinggi. Harga kamera mengacu pada listing dengan lensa varifokal bawaan, sedangkan harga dengan lensa sudut lebar masih dikonfirmasi ke penjual.
+Rencana Anggaran Biaya (RAB\label{abbr:rab}) dirangkum pada Tabel~\ref{tab:rekap_rab}. Harga bersumber dari RAB awal penulis dan survei Tokopedia pada September 2026. Bila terdapat beberapa listing, dipakai harga tertinggi. Penjual kamera mengonfirmasi bahwa lensa $2{,}1$~mm tersedia dengan harga yang sama melalui pra-pesan selama tiga minggu, sehingga kamera pertama dipesan pada Fase~1 dan kamera kedua dipesan segera setelah uji terbang tunggal lolos.
 
 \begin{table}[htbp]
     \centering

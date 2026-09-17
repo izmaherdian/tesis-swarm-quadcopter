@@ -45,3 +45,9 @@ rapi, yang penting terbaca.
 - Untuk foto 02 (menghadap ke atas): berdiri di tengah area terbang, arahkan
   kamera lurus ke atas. Ini yang saya pakai menilai opsi pemasangan.
 - Kompres kalau ukurannya besar; tidak perlu resolusi penuh.
+
+## Foto tambahan
+
+| # | Berkas | Isi |
+|---|---|---|
+| 18 | `18-datasheet-kamera-elp-og05b10.png` | Lembar spesifikasi kamera ELP-U3GS05B10C (dari penjual Fast Importir) |

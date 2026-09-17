@@ -112,22 +112,21 @@ terhadap syarat naskah: 5 MP, *global shutter*, 2592×1944, ≥ 50 fps.
 | k6 | [120FPS Global Shutter Color OV9782](https://www.tokopedia.com/cahayaprocure/120fps-global-shutter-color-usb-camera-module-uvc-plug-play-webcam-for-android-linux-windows-mac-1734519382647539006) | CahayaProcure | 1.384.000 | OV9782 *global shutter*, 640×480 120 fps, USB 2.0, kirim 15–20 hari | ❌ resolusi rendah |
 | k7 | [ELP 5MP IMX335 Fisheye BL170](https://www.tokopedia.com/herubaguy/elp-5mp-30fps-2592-1944-fisheye-webcam-machine-vision-imx335-usb-camera-with-mini-black-box-case) | herubaguy, Jakarta Timur | 2.599.000 | IMX335 (rana bergulir), 30 fps, *fisheye* 170° | ❌ |
 
-**Catatan lensa k1.** Sensor OG05B berformat optik 1/2,53 inci
-([OmniVision](https://www.ovt.com/products/og05b/)). Untuk kamera ELP dengan sensor
-yang sama, lensa "100°" dinyatakan ELP setara HFOV ±84° dan VFOV ±68°
-([Amazon, ELP OG05B10 100°](https://us.amazon.com/Global-Shutter-USB3-0-Camera-Module/dp/B0H3QM4FQY)),
-artinya angka sudut lensa ELP adalah **diagonal**. ELP juga menjual varian lensa
-**120°** untuk sensor ini
-([Amazon, ELP OG05B10 120°](https://us.amazon.com/Global-Shutter-USB3-0-Camera-Module/dp/B0H3QBBL8H)).
-Lensa varifokal 3,6–10 mm pada listing k1 jauh lebih sempit dari 120°, sehingga
-perlu ditanyakan ke penjual apakah tersedia lensa 2,1 mm atau modul 120° dan
-berapa harganya.
+**Catatan lensa k1 (diperbarui 2026-09-17).** Lembar data dari penjual
+([foto 18](foto/18-datasheet-kamera-elp-og05b10.png)) dan
+[halaman resmi ELP](https://www.elpcctv.com/elp-5mp-60fps-global-shutter-usb30-camera-og05b10-sensor-with-cs-3610mm-lens-3x-optical-zoom-p-731.html):
+sensor OG05B10 1/2,5", larik aktif 5,737 × 4,312 mm, piksel 2,2 µm, MJPEG
+2592×1944 60 fps pada USB 3.0. Pilihan lensa CS dengan HFOV menurut ELP: 2,1 mm
+(IB21) 150°, 2,5 mm 142°, 4 mm 90°, 6 mm 59°, 8 mm 46°, varifokal 3,6–10 mm 85–37°.
+Model lubang jarum untuk 2,1 mm memberi HFOV 107,6° (diagonal 119,3°), sedangkan
+proyeksi ekuidistan memberi 156,5° — dekat dengan angka ELP, jadi lensa kemungkinan
+berdistorsi tong kuat. Hitungan di `tulisan/gambar/parameter.py`.
 
 ## Kamera, sensor laser, dan lakban (dari tautan penulis, 2026-09-17)
 
 | Pos | Listing | Harga (Rp) | Dipakai (Rp) |
 |---|---|---:|---:|
-| Kamera ELP 5 MP *global shutter* OG05B10, USB 3.0 | [Fast Importir, Jakarta Selatan](https://www.tokopedia.com/inithriftshop/elp-5mp-global-shutter-color-usb3-0-camera-og05b10-60fps-2592x1944-high-speed-camera-with-3-6-10mm-manual-vafifocus-cs-lens-1736975155939870122) | 6.600.000 | **6.600.000** ⚠️ harga untuk lensa bawaan 3,6–10 mm; harga lensa 2,1 mm/120° ditanyakan ke penjual |
+| Kamera ELP-U3GS05B10C-**IB21** (OG05B10, lensa CS 2,1 mm), USB 3.0 | [Fast Importir, Jakarta Selatan](https://www.tokopedia.com/inithriftshop/elp-5mp-global-shutter-color-usb3-0-camera-og05b10-60fps-2592x1944-high-speed-camera-with-3-6-10mm-manual-vafifocus-cs-lens-1736975155939870122) | 6.600.000 | **6.600.000** — penjual mengonfirmasi lensa 2,1 mm **harga sama**, sistem **pra-pesan 3 minggu** |
 | Sensor laser VL53L1X (modul TOF400C), varian VL53L1X | [CNC Store Bandung](https://www.tokopedia.com/cncstorebandung/modul-sensor-jarak-tof200c-vl53l0x-tof400c-vl53l1x-tof050c-vl6180x-modules-distance-sersor-vl53l1x-92c0f) | 98.500 | **98.500** |
 | Lakban lantai vinil 3M 764, 2" × 33 m | [Dewielectrical, Kota Tangerang](https://www.tokopedia.com/dewielectrical/3m-lakban-lantai-3m-764-vinyl-floor-marking-tape-2-x33-m-hitam) | 55.000 | **55.000** ⚠️ harga terbaca untuk varian hitam |
 
