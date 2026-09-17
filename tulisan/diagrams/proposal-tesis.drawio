@@ -18,7 +18,7 @@
         <mxCell id="I6gkzI-VmDY3ozpuSO-s-15" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-5">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Studi Literatur Dinamika Quadcopter dan Evaluasi Simulasi ERC (Penerapan \(\kappa\) dan Simulasi Arena Berskala)" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Studi Literatur Dinamika Quadcopter dan Evaluasi Simulasi ERC (Penerapan &lt;i&gt;κ&lt;/i&gt; dan Simulasi Arena Berskala)" vertex="1">
           <mxGeometry height="60" width="260" x="265" y="120" as="geometry" />
         </mxCell>
         <mxCell id="I6gkzI-VmDY3ozpuSO-s-16" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-6" value="">
@@ -170,13 +170,13 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-34" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Deteksi Kejadian saat Lebar Ruang \(w_e \le \alpha R\)" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-34" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Deteksi Kejadian saat Lebar Ruang &lt;i&gt;w&lt;/i&gt;&lt;sub&gt;e&lt;/sub&gt; ≤ &lt;i&gt;αR&lt;/i&gt;" vertex="1">
           <mxGeometry height="60" width="260" x="573" y="680" as="geometry" />
         </mxCell>
         <mxCell id="I6gkzI-VmDY3ozpuSO-s-37" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-30" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-35" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Pemicu ERC sehingga Formasi Menyusut, Mengekor (&lt;i&gt;Tailgating&lt;/i&gt;), lalu Mengembang Kembali" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-35" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Formasi Menyusut, Mengekor (&lt;i&gt;Tailgating&lt;/i&gt;), lalu Mengembang Kembali" vertex="1">
           <mxGeometry height="60" width="260" x="265" y="805" as="geometry" />
         </mxCell>
         <mxCell id="I6gkzI-VmDY3ozpuSO-s-42" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-39">
@@ -200,7 +200,7 @@
         <mxCell id="I6gkzI-VmDY3ozpuSO-s-44" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Selesai" vertex="1">
           <mxGeometry height="80" width="120" x="525" y="1091.94" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-51" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=70;dashed=1;fontFamily=Times New Roman;" value="Fase 1&lt;div&gt;Studi dan Desain Arsitektur&lt;/div&gt;" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-51" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=70;dashed=1;fontFamily=Times New Roman;" value="Fase 1&lt;div&gt;Studi &amp;amp; Desain Arsitektur&lt;/div&gt;" vertex="1">
           <mxGeometry height="86" width="750" x="170" y="104" as="geometry" />
         </mxCell>
         <mxCell id="I6gkzI-VmDY3ozpuSO-s-52" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=70;dashed=1;fontFamily=Times New Roman;" value="Fase 2&lt;div&gt;Implementasi Teknologi&lt;/div&gt;" vertex="1">
