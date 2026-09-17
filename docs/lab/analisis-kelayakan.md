@@ -10,6 +10,7 @@
 >
 > **Koreksi bentuk ruang (2026-09-17):** koridor PTIO berbentuk **huruf T**
 > (konfirmasi penulis), bukan huruf L. Ukuran lengan pada bagian 1 tetap dari denah.
+> Pengujian hanya memakai **bagian lurus** selebar 270 cm dan panjang 720–960 cm.
 >
 > **⚠️ Keputusan kamera sudah berubah (2026-09-16):** rekomendasi kamera 4K
 > (HFOV ±109°, penanda 10 cm) di bagian 4 **digantikan** kamera USB 5 MP
@@ -19,7 +20,7 @@
 
 ## 1. Ruangan
 
-Koridor-L institusi (area pelatihan CITA ITB), **bukan ruang lab tertutup**.
+Koridor berbentuk T institusi (area pelatihan CITA ITB); yang dipakai hanya bagian lurusnya, **bukan ruang lab tertutup**.
 
 | Besaran | Nilai |
 |---|---|

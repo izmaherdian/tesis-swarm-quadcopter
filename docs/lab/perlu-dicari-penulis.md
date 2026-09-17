@@ -49,9 +49,8 @@ Sudah diperiksa langsung di halaman Tokopedia (2026-09-17), detail per listing d
 
 ## D. Ruang uji
 
-- [ ] Denah ulang koridor **berbentuk T**: panjang tiap lengan dan lebar
-  pertemuannya. Tabel kondisi ruang masih memakai ukuran lengan dari denah lama
-  (720–960 cm).
+- [x] Denah lama tetap dipakai. Pengujian hanya di **bagian lurus** koridor (lebar
+  270 cm, panjang 720–960 cm), bukan persimpangan T (konfirmasi penulis 2026-09-17).
 
 ## E. Pustaka
 
