@@ -35,17 +35,42 @@ Sudah diperiksa langsung di halaman Tokopedia (2026-09-17), detail per listing d
     kotak, atau nota pembelian. Bila ingin anggaran konservatif untuk V2:
     Rp2.151.700–2.646.000 per set.
 
-## C. Inventaris lab
+## C. Inventaris lab (dikerjakan saat di lab)
 
-- [ ] Jumlah **flight controller**, **ESC**, dan **XIAO ESP32-S3** yang benar-benar
-  ada. Naskah sementara menganggap masing-masing **3 unit**, sehingga RAB membeli
-  2 set lagi.
-- [ ] Jumlah modul **RUSHFPV GNSS 25+**.
-- [ ] Spesifikasi **komputer stasiun darat**: CPU, RAM, jumlah port USB 3.
-  Menentukan apakah deteksi penanda dari dua kamera 5 MP bisa berjalan seketika.
-- [ ] Model **pengisi daya LiPo** dan **router Wi-Fi** (pita 2,4/5 GHz).
-- [ ] **Ukuran propeler** (perkiraan 3,5 inci dari kelas rangka, belum dipastikan).
-- [ ] **Bobot terbang** satu wahana lengkap dengan baterai dan penanda.
+Isi kolom "Hasil" langsung di sini atau kirim fotonya. Urutan = prioritas.
+
+### C1. Kelengkapan untuk lima wahana — **menentukan RAB**
+
+| Data yang dicatat | Cara cek | Kenapa perlu | Hasil |
+|---|---|---|---|
+| Jumlah *flight controller* F405 Mini, ESC BLS 35A, dan XIAO ESP32-S3, dipisah **terpasang** vs **cadangan** | Hitung per rangka + isi kotak/lemari | RAB menganggap masing-masing 3 unit, sehingga membeli 2 set | |
+| **Jumlah motor 2006** yang ada (terpasang + cadangan) | Hitung per rangka | Tercatat 4 rangka sudah bermotor (16 motor). Wahana kelima dari rangka kosong butuh 4 motor lagi, **dan motor belum ada di RAB** | |
+| Propeler: **ukuran (inci), pitch, jumlah bilah**, dan jumlah cadangan | Tulisan di bilah propeler, mis. "3.5x2.8x3" | Menentukan gaya dorong, dan apakah perlu beli cadangan untuk 5 wahana | |
+| Penerima EP2 TCXO: sudah terpasang di wahana mana saja | Lihat kabel ke FC | RAB membeli 2 unit untuk wahana ke-4 dan ke-5 | |
+| Versi ESC (V1/V2) | Tulisan "V2" di papan ESC, kotak, atau nota | Lihat bagian B | |
+
+### C2. Baterai dan daya
+
+| Data yang dicatat | Cara cek | Kenapa perlu | Hasil |
+|---|---|---|---|
+| Tiap baterai: **jumlah sel (S)**, kapasitas, rating C, jenis konektor (XT30/XT60) | Label baterai | Inventaris baru mencatat kapasitas (4×1200, 2×1500, 1×2200, 2×5000 mAh) tanpa jumlah sel; menentukan waktu terbang, bobot, dan apakah 5 wahana bisa memakai baterai seragam | |
+| Pengisi daya: merek/model, jumlah port, arus maksimum | Label pengisi daya | Berapa baterai bisa diisi per sesi uji | |
+
+### C3. Wahana
+
+| Data yang dicatat | Cara cek | Kenapa perlu | Hasil |
+|---|---|---|---|
+| **Bobot terbang** satu wahana lengkap (baterai, ESP32, penerima, tanpa modul GNSS) | Timbangan dapur | Rasio gaya dorong terhadap bobot dan ruang sisa untuk penanda + sensor | |
+| *Firmware* yang sekarang terpasang di FC (Betaflight/INAV/ArduPilot + versi) | Colok USB, buka Betaflight Configurator atau Mission Planner | Titik awal sebelum dipasang *firmware* ArduPilot racikan | |
+| Jumlah modul RUSHFPV GNSS 25+ | Hitung | Hanya inventaris (modul dilepas) — prioritas rendah | |
+
+### C4. Perangkat darat
+
+| Data yang dicatat | Cara cek | Kenapa perlu | Hasil |
+|---|---|---|---|
+| Komputer stasiun darat: **CPU, RAM, sistem operasi** | Linux: `lscpu`, `free -h` · Windows: Task Manager → Performance | Deteksi AprilTag dari dua kamera 5 MP 60 fps berjalan di komputer ini | |
+| **Jumlah port USB 3.0** dan apakah berada di pengendali USB berbeda | Linux: `lsusb -t` · Windows: Device Manager; port USB 3.0 biasanya biru/berlogo SS | Tiap kamera USB 3.0 sebaiknya di jalur sendiri agar tidak berebut *bandwidth* | |
+| Router Wi-Fi: merek/model, **pita 2,4 GHz** tersedia | Label bawah router | ESP32-S3 hanya bekerja di 2,4 GHz; seluruh komunikasi MAVLink/UDP lewat router ini | |
 
 ## D. Ruang uji
 
