@@ -7,7 +7,7 @@ from matplotlib.patches import Circle
 from gaya import LEBAR, CM, GARIS, TIPIS, ABU, PUTUS, FS_KECIL, kotak, panah, garis, simpan
 
 TINGGI = 7.3
-fig = plt.figure(figsize=(LEBAR, TINGGI * CM))
+fig = plt.figure(figsize=(LEBAR - 0.3 * CM, TINGGI * CM))   # sisakan pad simpan
 ax = fig.add_axes([0, 0, 1, 1])
 B = dict(fs=FS_KECIL)
 R, H = 0.2, 0.8
