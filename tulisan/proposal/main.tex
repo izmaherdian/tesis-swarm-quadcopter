@@ -372,13 +372,6 @@ Quadcopter, dengan empat motornya, merupakan sistem mekatronika dari konsep robo
 
 Terdapat dua konfigurasi pemasangan motor yang umum digunakan pada quadcopter, yaitu konfigurasi ``+'' dan konfigurasi ``X''. Pada konfigurasi ``+'', lengan quadcopter sejajar dengan sumbu longitudinal dan lateral wahana, sehingga satu motor berada pada arah depan, satu motor pada arah belakang, dan dua motor lainnya berada pada sisi kanan serta kiri. Sementara itu, pada konfigurasi ``X'', lengan quadcopter membentuk sudut sekitar $45^{\circ}$ terhadap sumbu longitudinal dan lateral. Konfigurasi ``X'' banyak digunakan karena arah depan wahana berada di antara dua lengan, sehingga area pemasangan sensor atau kamera pada bagian depan relatif lebih terbuka. Ilustrasi perbedaan kedua konfigurasi tersebut ditunjukkan pada Gambar~\ref{fig:konfigurasi-quadcopter-plus-x}.
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.85\textwidth]{figures/konfigurasi_quadcopter_plus_x.png}
-    \caption{Konfigurasi pemasangan motor quadcopter: kiri ``+'' dan kanan ``X'' \cite{quanDynamicModelingExperiment2020}}
-    \label{fig:konfigurasi-quadcopter-plus-x}
-\end{figure}
-
 Pengontrolan quadcopter dicapai dengan memanipulasi kecepatan putar keempat motor. Gerakan vertikal atau perubahan ketinggian dihasilkan dengan menaikkan atau menurunkan kecepatan seluruh motor secara bersamaan sehingga resultan gaya dorong total berubah. Sebaliknya, gerakan rotasi seperti \textit{roll}, \textit{pitch}, dan \textit{yaw} diperoleh dengan memberikan perbedaan kecepatan antar motor. Perbedaan gaya dorong pada sisi kanan dan kiri menghasilkan momen \textit{roll}, perbedaan gaya dorong pada sisi depan dan belakang menghasilkan momen \textit{pitch}, sedangkan perbedaan torsi reaksi antara pasangan motor yang berputar searah dan berlawanan arah jarum jam menghasilkan momen \textit{yaw}. Dengan demikian, perubahan posisi dan orientasi quadcopter merupakan hasil kombinasi dari gaya dorong total dan momen diferensial yang diberikan oleh aktuator motor.
 
 Dalam pemodelan dinamika quadcopter, digunakan dua kerangka acuan utama, yaitu kerangka acuan inersia dan kerangka acuan bodi. Kerangka acuan inersia $N$ dianggap tetap terhadap permukaan bumi dan digunakan sebagai referensi absolut untuk menyatakan posisi serta orientasi wahana. Konvensi yang umum digunakan adalah NED (\textit{North-East-Down}), dengan sumbu $x_N$ mengarah ke utara, sumbu $y_N$ mengarah ke timur, dan sumbu $z_N$ mengarah ke bawah. Pada konvensi ini, percepatan gravitasi bernilai positif pada arah sumbu $z_N$.
@@ -387,9 +380,11 @@ Kerangka acuan bodi $B$ melekat kaku pada quadcopter dengan titik asal umumnya d
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics{figures/kerangka_acuan_ned_frd.png}
-    \caption{Kerangka acuan inersia NED dan kerangka bodi FRD pada quadcopter \cite{quanDynamicModelingExperiment2020}}
-    \label{fig:kerangka-acuan-ned-frd}
+    \subcaptionbox{Konfigurasi ``+'' dan ``X''\label{fig:konfigurasi-quadcopter-plus-x}}[0.59\textwidth]{\includegraphics{figures/konfigurasi-quad.pdf}}
+    \hfill
+    \subcaptionbox{Kerangka NED dan FRD\label{fig:kerangka-acuan-ned-frd}}[0.39\textwidth]{\includegraphics{figures/kerangka-ned-frd.pdf}}
+    \caption[Konfigurasi motor dan kerangka acuan quadcopter.]{Konfigurasi motor dan kerangka acuan quadcopter, diadaptasi dari \cite{quanDynamicModelingExperiment2020}. (a) Tampak atas; angka menandai baling-baling, busur menandai arah putar. (b) Kerangka inersia $\{N\}$ dan kerangka bodi $\{B\}$ dengan posisi $\mathbf{p}$.}
+    \label{fig:konfigurasi_kerangka}
 \end{figure}
 
 \subsection{Model Dinamika Sistem Quadcopter}
