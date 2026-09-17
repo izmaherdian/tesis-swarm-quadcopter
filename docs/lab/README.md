@@ -26,6 +26,8 @@ subbab Perangkat Keras dan Lokasi Pelaksanaan.
 |---|---|
 | `kondisi-lab.md` | Ukuran ruangan, langit-langit, pencahayaan, lantai, dinding |
 | `spesifikasi-hw.md` | Kamera, flight controller, companion computer, wahana, sensor |
+| `survei-harga.md` | Harga pengadaan beserta sumber listing (dipakai RAB BAB IV) |
+| `perlu-dicari-penulis.md` | Daftar harga, spesifikasi, dan data lab yang masih harus dicari penulis |
 | `foto/` | Foto dari ponsel — lihat `foto/README.md` untuk daftar yang diminta |
 
 Isi seadanya. **Kolom yang belum diketahui tulis `?`** — jangan dikosongkan,
