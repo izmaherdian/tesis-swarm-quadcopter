@@ -4,7 +4,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-14" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Verdana;" target="I6gkzI-VmDY3ozpuSO-s-4">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-14" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-4">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="585" y="100" />
@@ -12,40 +12,40 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Verdana;" value="Mulai" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Mulai" vertex="1">
           <mxGeometry height="80" width="120" x="525" y="10" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-15" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Verdana;" target="I6gkzI-VmDY3ozpuSO-s-5">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-15" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-5">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" value="Studi Literatur: Dinamika Quadcopter dan Evaluasi Simulasi ERC" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Studi Literatur Dinamika Quadcopter dan Evaluasi Simulasi ERC (Penerapan \(\kappa\) dan Simulasi Arena Berskala)" vertex="1">
           <mxGeometry height="60" width="260" x="265" y="120" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-16" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Verdana;" target="I6gkzI-VmDY3ozpuSO-s-6" value="">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-16" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-6" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" value="Desain Arsitektur: 5 Quadcopter (&lt;i&gt;Flight Controller &lt;/i&gt;dan&lt;i&gt; Companion Computer&lt;/i&gt;)" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Desain Arsitektur Lima Quadcopter (&lt;i&gt;Flight Controller&lt;/i&gt; dan &lt;i&gt;Companion Computer&lt;/i&gt;)" vertex="1">
           <mxGeometry height="60" width="260" x="645" y="120" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-17" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Verdana;" target="I6gkzI-VmDY3ozpuSO-s-7">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-17" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-7">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" value="Setup Komunikasi Internal: Antarmuka Serial &amp;amp; Protokol MAVLink" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Komunikasi Internal dengan &lt;i&gt;Firmware&lt;/i&gt; Racikan, Antarmuka Serial, dan MAVLink" vertex="1">
           <mxGeometry height="60" width="260" x="645" y="209" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-18" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Verdana;" target="I6gkzI-VmDY3ozpuSO-s-8" value="">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-18" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-8" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" value="Setup Komunikasi Eksternal: Jaringan Desentralisasi UDP/Wi-Fi/ESP-NOW" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Komunikasi Eksternal melalui Jaringan UDP pada Wi-Fi Lokal" vertex="1">
           <mxGeometry height="60" width="260" x="265" y="209" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-19" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Verdana;" target="I6gkzI-VmDY3ozpuSO-s-9">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-19" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-9">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" value="Setup Lokalisasi: Kamera Atas, AprilTag, SolvePnP, &amp;amp;&amp;nbsp;&lt;i&gt;Extended Kalman Filter&lt;/i&gt; (EKF)" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Lokalisasi Kamera Atas (AprilTag, PnP, EKF) dan Uji Banding Sensor Jarak" vertex="1">
           <mxGeometry height="60" width="260" x="265" y="304" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-20" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Verdana;" target="I6gkzI-VmDY3ozpuSO-s-10">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-20" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-10">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="703" y="380" />
@@ -54,16 +54,16 @@
             <mxPoint x="703" y="364" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" value="Penanaman Logika: Algoritma&lt;i&gt; Event-Based Reconfiguration Control&lt;/i&gt; (ERC)" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Penanaman Logika Algoritma &lt;i&gt;Event-Based Reconfiguration Control&lt;/i&gt; (ERC) dan IAPF" vertex="1">
           <mxGeometry height="60" width="260" x="573" y="304" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-21" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Verdana;" target="I6gkzI-VmDY3ozpuSO-s-11">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-21" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-11">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" value="Pelaksanaan &lt;i&gt;Uji Hardware In the Loop&lt;/i&gt;: Algoritma Fisik pada &lt;i&gt;Companion Computer&lt;/i&gt; dengan Simulasi Gerak" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Uji &lt;i&gt;Hardware-in-the-Loop&lt;/i&gt; Algoritma pada &lt;i&gt;Companion Computer&lt;/i&gt; dengan Simulasi Gerak" vertex="1">
           <mxGeometry height="60" width="260" x="265" y="423" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-12" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Verdana;" target="I6gkzI-VmDY3ozpuSO-s-9">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-12" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-9">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="853" y="453" />
@@ -71,12 +71,12 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-13" connectable="0" parent="I6gkzI-VmDY3ozpuSO-s-12" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Verdana;" value="Tidak&amp;nbsp;&lt;div&gt;(&lt;i&gt;Delay/Bug&lt;/i&gt;)&lt;/div&gt;" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-13" connectable="0" parent="I6gkzI-VmDY3ozpuSO-s-12" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Times New Roman;" value="Tidak&amp;nbsp;&lt;div&gt;(&lt;i&gt;Delay/Bug&lt;/i&gt;)&lt;/div&gt;" vertex="1">
           <mxGeometry relative="1" x="-0.5432" y="-2" as="geometry">
             <mxPoint x="-13" y="-28" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-26" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Verdana;" target="I6gkzI-VmDY3ozpuSO-s-22">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-26" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-22">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="703" y="520" />
@@ -84,21 +84,21 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-48" connectable="0" parent="I6gkzI-VmDY3ozpuSO-s-26" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Verdana;" value="Ya&lt;div&gt;(Sistem Stabil)&lt;/div&gt;" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-48" connectable="0" parent="I6gkzI-VmDY3ozpuSO-s-26" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Times New Roman;" value="Ya&lt;div&gt;(Sistem Stabil)&lt;/div&gt;" vertex="1">
           <mxGeometry relative="1" x="-0.1263" y="2" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-11" parent="1" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Verdana;" value="Evaluasi Hardware In The Loop:&lt;div&gt;Beban CPU dan Latensi Aman?&lt;/div&gt;" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-11" parent="1" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Beban CPU dan Latensi&lt;div&gt;dalam Batas Aman?&lt;/div&gt;" vertex="1">
           <mxGeometry height="110" width="245" x="580.5" y="398" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-27" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Verdana;" target="I6gkzI-VmDY3ozpuSO-s-23" value="">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-27" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-23" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-22" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" value="Uji Terbang (&lt;i&gt;Single&lt;/i&gt;): Validasi EKF, CC-FC Link, Tuning PID, dan &lt;i&gt;Single-Agent ERC Logic&lt;/i&gt;&amp;nbsp;pada masing-masing quadcopter" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-22" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Uji Terbang Tunggal untuk Validasi EKF, Tautan &lt;i&gt;Companion Computer&lt;/i&gt; ke &lt;i&gt;Flight Controller&lt;/i&gt;, dan Penalaan PID" vertex="1">
           <mxGeometry height="60" width="260" x="265" y="562" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-24" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Verdana;" target="I6gkzI-VmDY3ozpuSO-s-9">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-24" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-9">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="880" y="592" />
@@ -106,12 +106,12 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-25" connectable="0" parent="I6gkzI-VmDY3ozpuSO-s-24" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Verdana;" value="Tidak&lt;br&gt;(&lt;i&gt;Crash&lt;/i&gt;/Gagal)" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-25" connectable="0" parent="I6gkzI-VmDY3ozpuSO-s-24" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Times New Roman;" value="Tidak&lt;br&gt;(&lt;i&gt;Crash&lt;/i&gt;/Gagal)" vertex="1">
           <mxGeometry relative="1" x="-0.3173" y="4" as="geometry">
             <mxPoint x="-4" y="38" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-29" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Verdana;" target="I6gkzI-VmDY3ozpuSO-s-28">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-29" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-28">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="703" y="660" />
@@ -119,21 +119,21 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-47" connectable="0" parent="I6gkzI-VmDY3ozpuSO-s-29" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Verdana;" value="Ya&lt;div&gt;(Sistem Stabil)&lt;/div&gt;" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-47" connectable="0" parent="I6gkzI-VmDY3ozpuSO-s-29" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Times New Roman;" value="Ya&lt;div&gt;(Sistem Stabil)&lt;/div&gt;" vertex="1">
           <mxGeometry relative="1" x="-0.1645" y="2" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-23" parent="1" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Verdana;" value="&lt;i&gt;Single&lt;/i&gt;-Quadcopter&amp;nbsp;&lt;div&gt;Stabil dan Aman?&lt;/div&gt;" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-23" parent="1" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Wahana Tunggal&lt;div&gt;Stabil dan Aman?&lt;/div&gt;" vertex="1">
           <mxGeometry height="110" width="245" x="580.5" y="537" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-49" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Verdana;" target="I6gkzI-VmDY3ozpuSO-s-34" value="">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-49" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-34" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-28" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" value="Uji Terbang (&lt;i&gt;Swarm&lt;/i&gt;): Lima Quadcopter &lt;i&gt;Indoor &lt;/i&gt;menuju target (validasi &lt;i&gt;Multi-Agent ERC Logic&lt;/i&gt;)" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-28" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Uji Terbang Kawanan Lima Quadcopter dengan Formasi V Acuan, lalu Melintasi Arena" vertex="1">
           <mxGeometry height="60" width="260" x="265" y="680" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-32" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Verdana;" target="I6gkzI-VmDY3ozpuSO-s-9">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-32" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-9">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="910" y="835" />
@@ -141,12 +141,12 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-33" connectable="0" parent="I6gkzI-VmDY3ozpuSO-s-32" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Verdana;" value="Tidak&lt;div&gt;(&lt;i&gt;Crash&lt;/i&gt;/Gagal)&lt;/div&gt;" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-33" connectable="0" parent="I6gkzI-VmDY3ozpuSO-s-32" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Times New Roman;" value="Tidak&lt;div&gt;(&lt;i&gt;Crash&lt;/i&gt;/Gagal)&lt;/div&gt;" vertex="1">
           <mxGeometry relative="1" x="-0.531" y="5" as="geometry">
             <mxPoint x="-27" y="6" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-41" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Verdana;" target="I6gkzI-VmDY3ozpuSO-s-38">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-41" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-38">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="703" y="900" />
@@ -154,15 +154,15 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-46" connectable="0" parent="I6gkzI-VmDY3ozpuSO-s-41" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Verdana;" value="Ya&lt;div&gt;(Berhasil Adaptasi)&lt;/div&gt;" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-46" connectable="0" parent="I6gkzI-VmDY3ozpuSO-s-41" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Times New Roman;" value="Ya&lt;div&gt;(Berhasil Adaptasi)&lt;/div&gt;" vertex="1">
           <mxGeometry relative="1" x="-0.154" y="1" as="geometry">
             <mxPoint x="14" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-30" parent="1" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Verdana;" value="Evaluasi Misi: Manuver&lt;i&gt;&amp;nbsp;Swarm-&lt;/i&gt;Quadcopter&amp;nbsp;Berhasil &amp;amp; Stabil?" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-30" parent="1" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Manuver Kawanan&lt;div&gt;Berhasil dan Stabil?&lt;/div&gt;" vertex="1">
           <mxGeometry height="110" width="245" x="580.5" y="780" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-36" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Verdana;" target="I6gkzI-VmDY3ozpuSO-s-35">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-36" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-35">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="703" y="760" />
@@ -170,49 +170,49 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-34" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" value="Deteksi &lt;i&gt;Event&lt;/i&gt;: Jarak Formasi Melewati Ambang Batas (&lt;i&gt;Threshold&lt;/i&gt;)" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-34" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Deteksi Kejadian saat Lebar Ruang \(w_e \le \alpha R\)" vertex="1">
           <mxGeometry height="60" width="260" x="573" y="680" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-37" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Verdana;" target="I6gkzI-VmDY3ozpuSO-s-30" value="">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-37" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-30" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-35" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" value="&lt;i&gt;Trigger&lt;/i&gt; ERC: Memutus Formasi Lama &amp;amp; Rekonfigurasi Bentuk (&lt;i&gt;Tailgating&lt;/i&gt;)" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-35" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Pemicu ERC sehingga Formasi Menyusut, Mengekor (&lt;i&gt;Tailgating&lt;/i&gt;), lalu Mengembang Kembali" vertex="1">
           <mxGeometry height="60" width="260" x="265" y="805" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-42" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Verdana;" target="I6gkzI-VmDY3ozpuSO-s-39">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-42" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-39">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-38" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" value="Ekstraksi Data: Log Posisi EKF &amp;amp; Trafik Jaringan UDP/Wi-Fi/ESP-NOW" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-38" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Ekstraksi &lt;i&gt;Log&lt;/i&gt; Pose EKF, Riwayat Pemicu ERC, dan Trafik UDP" vertex="1">
           <mxGeometry height="60" width="260" x="265" y="933.94" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-43" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Verdana;" target="I6gkzI-VmDY3ozpuSO-s-40">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-43" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-40">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-39" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" value="Analisis Metrik: Efisiensi Bandwidth, Error Posisi (RMSE), Latensi, dan Indeks Keteraturan" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-39" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Analisis RMSE Galat Formasi, Keberhasilan Melintasi Celah, Jarak Minimum Antaragen, dan Beban Komunikasi" vertex="1">
           <mxGeometry height="60" width="260" x="645" y="933.94" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-45" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Verdana;" target="I6gkzI-VmDY3ozpuSO-s-44" value="">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-45" edge="1" parent="1" source="I6gkzI-VmDY3ozpuSO-s-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;" target="I6gkzI-VmDY3ozpuSO-s-44" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-40" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" value="Penyusunan Laporan: Komparasi Fisik vs Teori Simulasi" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-40" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Penyusunan Tesis dan Perbandingan Hasil Fisik dengan Simulasi" vertex="1">
           <mxGeometry height="60" width="260" x="455" y="999.94" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-44" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Verdana;" value="Selesai" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-44" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;" value="Selesai" vertex="1">
           <mxGeometry height="80" width="120" x="525" y="1091.94" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-51" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=70;dashed=1;fontFamily=Verdana;" value="Fase 1:&lt;div&gt;Studi &amp;amp; Desain Arsitektur&lt;/div&gt;" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-51" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=70;dashed=1;fontFamily=Times New Roman;" value="Fase 1&lt;div&gt;Studi dan Desain Arsitektur&lt;/div&gt;" vertex="1">
           <mxGeometry height="86" width="750" x="170" y="104" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-52" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=70;dashed=1;fontFamily=Verdana;" value="Fase 2:&lt;div&gt;Implementasi Teknologi&lt;/div&gt;" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-52" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=70;dashed=1;fontFamily=Times New Roman;" value="Fase 2&lt;div&gt;Implementasi Teknologi&lt;/div&gt;" vertex="1">
           <mxGeometry height="174" width="750" x="170" y="196" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-53" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=70;dashed=1;fontFamily=Verdana;" value="Fase 3:&lt;div&gt;Pengujian &lt;i&gt;Hardware In The Loop&lt;/i&gt;&lt;/div&gt;" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-53" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=70;dashed=1;fontFamily=Times New Roman;" value="Fase 3&lt;div&gt;Pengujian &lt;i&gt;Hardware-in-the-Loop&lt;/i&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="122" width="750" x="170" y="388" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-54" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=70;dashed=1;fontFamily=Verdana;" value="Fase 4:&lt;div&gt;Uji Terbang Eksperimen&lt;/div&gt;" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-54" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=70;dashed=1;fontFamily=Times New Roman;" value="Fase 4&lt;div&gt;Uji Terbang Eksperimen&lt;/div&gt;" vertex="1">
           <mxGeometry height="355" width="750" x="170" y="535" as="geometry" />
         </mxCell>
-        <mxCell id="I6gkzI-VmDY3ozpuSO-s-55" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=70;dashed=1;fontFamily=Verdana;" value="Fase 5:&lt;div&gt;Analisis Data &amp;amp;&amp;nbsp;&lt;/div&gt;&lt;div&gt;Pelaporan&lt;/div&gt;" vertex="1">
+        <mxCell id="I6gkzI-VmDY3ozpuSO-s-55" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=70;dashed=1;fontFamily=Times New Roman;" value="Fase 5&lt;div&gt;Analisis Data dan Pelaporan&lt;/div&gt;" vertex="1">
           <mxGeometry height="152.06" width="750" x="170" y="917.94" as="geometry" />
         </mxCell>
       </root>
