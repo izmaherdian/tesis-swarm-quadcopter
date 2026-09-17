@@ -1,6 +1,7 @@
 # Survei Harga Pengadaan
 
-> Diperbarui 2026-09-17 (batas atas; FC/ESC dan ESP32-S3 dianggap 3 unit tersedia). Dipakai oleh tabel anggaran BAB IV proposal
+> Diperbarui 2026-09-17 (batas atas; FC/ESC dan ESP32-S3 dianggap 3 unit tersedia;
+> seluruh pos kini berharga, total RAB Rp22.132.856). Dipakai oleh tabel anggaran BAB IV proposal
 > (Tabel 4.1 Fase 2, Tabel 4.2 Fase 4, Tabel 4.3 Rekapitulasi).
 
 ## Aturan
@@ -72,13 +73,18 @@ Lensa varifokal 3,6–10 mm pada listing k1 jauh lebih sempit dari 120°, sehing
 perlu ditanyakan ke penjual apakah tersedia lensa 2,1 mm atau modul 120° dan
 berapa harganya.
 
-## Menunggu harga dari penulis
+## Kamera, sensor laser, dan lakban (dari tautan penulis, 2026-09-17)
 
-| Pos | Jumlah | Fase |
-|---|---|---|
-| Kamera USB 5 MP *global shutter* 2592×1944, lensa 120° (ELP) — **sertakan spesifikasi FOV: horizontal atau diagonal** | 2 | Fase 2, Fase 4 |
-| Sensor jarak laser VL53L1X, varian satuan | 2 | Fase 2 |
-| Lakban lantai 48 mm | 1 set | Fase 4 |
+| Pos | Listing | Harga (Rp) | Dipakai (Rp) |
+|---|---|---:|---:|
+| Kamera ELP 5 MP *global shutter* OG05B10, USB 3.0 | [Fast Importir, Jakarta Selatan](https://www.tokopedia.com/inithriftshop/elp-5mp-global-shutter-color-usb3-0-camera-og05b10-60fps-2592x1944-high-speed-camera-with-3-6-10mm-manual-vafifocus-cs-lens-1736975155939870122) | 6.600.000 | **6.600.000** ⚠️ harga untuk lensa bawaan 3,6–10 mm; harga lensa 2,1 mm/120° ditanyakan ke penjual |
+| Sensor laser VL53L1X (modul TOF400C), varian VL53L1X | [CNC Store Bandung](https://www.tokopedia.com/cncstorebandung/modul-sensor-jarak-tof200c-vl53l0x-tof400c-vl53l1x-tof050c-vl6180x-modules-distance-sersor-vl53l1x-92c0f) | 98.500 | **98.500** |
+| Lakban lantai vinil 3M 764, 2" × 33 m | [Dewielectrical, Kota Tangerang](https://www.tokopedia.com/dewielectrical/3m-lakban-lantai-3m-764-vinyl-floor-marking-tape-2-x33-m-hitam) | 55.000 | **55.000** ⚠️ harga terbaca untuk varian hitam |
 
-Sensor jarak terpilih (8 unit, Fase 4) mengikuti hasil uji banding: bila HC-SR04
-terpilih, nilainya 8 × Rp20.000 = Rp160.000; bila VL53L1X, menunggu harga di atas.
+Deskripsi listing VL53L1X menyebut jangkauan 4 cm–4 m, resolusi 1 mm, sudut
+pandang 27°, antarmuka I²C, tegangan 2,6–3,5 V. Lantai ruang uji berwarna gelap,
+jadi **pilih lakban putih atau kuning**, bukan hitam; listing yang sama menyediakan
+varian warna tersebut, tetapi harganya belum diperiksa per varian.
+
+Sensor jarak terpilih (8 unit, Fase 4) memakai harga VL53L1X sebagai batas atas
+(8 × Rp98.500 = Rp788.000); bila HC-SR04 terpilih, nilainya 8 × Rp20.000 = Rp160.000.

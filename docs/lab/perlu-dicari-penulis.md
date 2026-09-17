@@ -4,18 +4,18 @@
 > (halaman Tokopedia dan SCImago terblokir, atau butuh pengecekan fisik di lab).
 > Centang bila sudah, lalu kabari supaya naskah dan anggaran diperbarui.
 
-## A. Harga (Tokopedia) — naskah masih menulis *survei*
+## A. Harga (Tokopedia)
 
-Kirim **harga + tautan listing**. Kalau ada beberapa listing, catat semua; yang
-dipakai di RAB adalah **batas atas**.
-
-- [ ] **Kamera USB 5 MP *global shutter*** 2592×1944, lensa 120° (ELP), 2 unit
-  - [ ] Sekalian foto/tangkap layar **lembar spesifikasinya**: apakah 120° itu
-    sudut **horizontal** atau **diagonal**? Menentukan ukuran penanda (10 atau 12 cm),
-    lihat Tabel "Liputan satu kamera" di BAB III.
-  - [ ] Pastikan antarmuka USB dan laju bingkai pada resolusi penuh (naskah memakai 50 fps).
-- [ ] **Sensor jarak laser VL53L1X**, varian satuan (bukan paket), 2 unit
-- [ ] **Lakban lantai** 48 mm untuk penanda posisi dus, 1 set
+- [x] **Kamera ELP 5 MP *global shutter* OG05B10** — Rp6.600.000 (Fast Importir).
+  - [ ] **Tanyakan ke penjual:** bisa dikirim dengan lensa CS **2,1 mm** atau modul
+    lensa **120°**? Berapa harganya? Lensa bawaan 3,6–10 mm terlalu sempit untuk
+    koridor 2,70 m.
+  - [ ] Minta lembar spesifikasi lensa yang dipilih (HFOV/VFOV). Data ELP untuk lensa
+    100° menunjukkan angka sudut lensanya diagonal; bila 120° juga diagonal,
+    penanda 10 cm sudah cukup.
+- [x] **VL53L1X** — Rp98.500 (CNC Store Bandung).
+- [x] **Lakban lantai 3M 764** — Rp55.000 (Dewielectrical). Pilih warna **putih atau
+  kuning** karena lantai gelap.
 
 ## B. Harga yang sudah diisi tetapi perlu dicek langsung
 

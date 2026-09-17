@@ -974,13 +974,13 @@ Fase ini tidak memerlukan pengadaan.
         \hline
         \rowcolor{gray!20}
         \thead{No} & \thead{Komponen} & \thead{Jumlah} & \thead{Harga\\Satuan (Rp)} & \thead{Harga\\Total (Rp)} \\ \hline
-        1 & Kamera USB 5 MP \textit{global shutter}, lensa $120^\circ$ & 1 unit & \textit{survei} & \textit{survei} \\ \hline
+        1 & Kamera USB 3.0 ELP 5 MP \textit{global shutter} OG05B10 & 1 unit & 6.600.000 & 6.600.000 \\ \hline
         2 & Kabel USB ekstensi 10 m dan dudukan langit-langit & 1 set & 150.000 & 150.000 \\ \hline
         3 & Pemancar ExpressLRS 2,4 GHz RadioMaster Pocket & 1 unit & 1.150.000 & 1.150.000 \\ \hline
         4 & Sensor ultrasonik HC-SR04 (kandidat) & 2 unit & 20.000 & 40.000 \\ \hline
-        5 & Sensor jarak laser VL53L1X (kandidat) & 2 unit & \textit{survei} & \textit{survei} \\ \hline
+        5 & Sensor jarak laser VL53L1X (kandidat) & 2 unit & 98.500 & 197.000 \\ \hline
         6 & Penanda AprilTag, akrilik, dan tiang cetak tiga dimensi & 1 set & 20.000 & 20.000 \\ \hline
-        \multicolumn{4}{|r|}{\textbf{Subtotal}} & \textbf{1.360.000 + \textit{survei}} \\ \hline
+        \multicolumn{4}{|r|}{\textbf{Subtotal}} & \textbf{8.157.000} \\ \hline
     \end{tabularx}
     \endgroup
 \end{table}
@@ -1018,21 +1018,21 @@ Fase~3 dinyatakan lolos bila beban CPU dan latensi berada dalam batas aman. Bila
         \multicolumn{5}{|l|}{\textit{Sebelum uji terbang tunggal}} \\ \hline
         1 & Perlengkapan keselamatan (tas tahan api baterai, jaring, kacamata) & 1 set & 500.000 & 500.000 \\ \hline
         \multicolumn{5}{|l|}{\textit{Setelah uji terbang tunggal lolos}} \\ \hline
-        2 & Kamera USB 5 MP \textit{global shutter} kedua, lensa $120^\circ$ & 1 unit & \textit{survei} & \textit{survei} \\ \hline
+        2 & Kamera USB 3.0 ELP 5 MP \textit{global shutter} OG05B10 kedua & 1 unit & 6.600.000 & 6.600.000 \\ \hline
         3 & Kabel USB ekstensi 10 m dan dudukan langit-langit & 1 set & 150.000 & 150.000 \\ \hline
-        4 & Sensor jarak terpilih & 8 unit & \textit{survei} & \textit{survei} \\ \hline
+        4 & Sensor jarak terpilih & 8 unit & 98.500 & 788.000 \\ \hline
         5 & Penanda AprilTag, akrilik, dan tiang cetak tiga dimensi & 4 set & 20.000 & 80.000 \\ \hline
         6 & Penerima ExpressLRS EP2 TCXO & 2 unit & 309.000 & 618.000 \\ \hline
         7 & \textit{Stack} SpeedyBee F405 Mini dan ESC BLS 35A & 2 set & 2.244.428 & 4.488.856 \\ \hline
         8 & \textit{Companion computer} Seeed XIAO ESP32-S3 & 2 unit & 198.000 & 396.000 \\ \hline
         9 & Dus kardus sebagai rintangan & 10 unit & 30.000 & 300.000 \\ \hline
-        10 & Lakban penanda posisi lantai & 1 set & \textit{survei} & \textit{survei} \\ \hline
-        \multicolumn{4}{|r|}{\textbf{Subtotal}} & \textbf{6.532.856 + \textit{survei}} \\ \hline
+        10 & Lakban lantai vinil 3M 764, 2 inci $\times$ 33 m & 1 rol & 55.000 & 55.000 \\ \hline
+        \multicolumn{4}{|r|}{\textbf{Subtotal}} & \textbf{13.975.856} \\ \hline
     \end{tabularx}
     \endgroup
 \end{table}
 
-Harga sensor jarak mengikuti hasil uji banding; bila HC-SR04 terpilih, pos tersebut bernilai Rp160.000.
+Pos sensor jarak terpilih memakai harga VL53L1X sebagai batas atas; bila HC-SR04 yang terpilih, pos tersebut turun menjadi Rp160.000.
 
 \section{Fase 5: Analisis Data dan Pelaporan}
 
@@ -1046,7 +1046,7 @@ Seluruh kegiatan berlangsung di Pusat Teknologi Instrumentasi dan Otomasi (PTIO\
 \subsection{Rekapitulasi Anggaran}
 \label{subsec:rab}
 
-Rencana Anggaran Biaya (RAB\label{abbr:rab}) dirangkum pada Tabel~\ref{tab:rekap_rab}. Harga bersumber dari RAB awal penulis dan survei Tokopedia pada September 2026. Bila terdapat beberapa listing, dipakai harga tertinggi. Pos bertanda \textit{survei} belum memiliki harga dan tidak diperkirakan.
+Rencana Anggaran Biaya (RAB\label{abbr:rab}) dirangkum pada Tabel~\ref{tab:rekap_rab}. Harga bersumber dari RAB awal penulis dan survei Tokopedia pada September 2026. Bila terdapat beberapa listing, dipakai harga tertinggi. Harga kamera mengacu pada listing dengan lensa varifokal bawaan, sedangkan harga dengan lensa sudut lebar masih dikonfirmasi ke penjual.
 
 \begin{table}[htbp]
     \centering
@@ -1055,16 +1055,16 @@ Rencana Anggaran Biaya (RAB\label{abbr:rab}) dirangkum pada Tabel~\ref{tab:rekap
     \begingroup
     \small
     \renewcommand{\arraystretch}{1.3}
-    \begin{tabularx}{\textwidth}{|l|>{\raggedleft\arraybackslash}p{3.0cm}|X|}
+    \begin{tabularx}{\textwidth}{|X|>{\raggedleft\arraybackslash}p{4.0cm}|}
         \hline
         \rowcolor{gray!20}
-        \thead{Fase} & \thead{Harga pasti (Rp)} & \thead{Pos menunggu survei} \\ \hline
-        Fase 1: Studi dan Desain Arsitektur & -- & -- \\ \hline
-        Fase 2: Implementasi Teknologi & 1.360.000 & kamera, VL53L1X \\ \hline
-        Fase 3: Pengujian HITL & -- & -- \\ \hline
-        Fase 4: Uji Terbang Eksperimen & 6.532.856 & kamera kedua, sensor jarak terpilih, lakban \\ \hline
-        Fase 5: Analisis Data dan Pelaporan & -- & -- \\ \hline
-        \textbf{Total} & \textbf{7.892.856} & \\ \hline
+        \thead{Fase} & \thead{Anggaran (Rp)} \\ \hline
+        Fase 1: Studi dan Desain Arsitektur & -- \\ \hline
+        Fase 2: Implementasi Teknologi & 8.157.000 \\ \hline
+        Fase 3: Pengujian HITL & -- \\ \hline
+        Fase 4: Uji Terbang Eksperimen & 13.975.856 \\ \hline
+        Fase 5: Analisis Data dan Pelaporan & -- \\ \hline
+        \textbf{Total} & \textbf{22.132.856} \\ \hline
     \end{tabularx}
     \endgroup
 \end{table}
