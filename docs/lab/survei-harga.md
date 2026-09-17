@@ -192,6 +192,18 @@ dan paket 10 pasang. Tipe **D90S dikonfirmasi penulis** (2026-09-17).
 | 365.000 | [udin saprudin07](https://www.tokopedia.com/udinsaprudin/yuhh-cnhl-pizza-series-1200mah-22-2v-6s-100c-lipo-battery), [Sarnivera](https://www.tokopedia.com/sarniah39/sn07-cnhl-pizza-series-1200mah-22-2v-6s-100c-lipo-battery) |
 | 330.000 | [RC Hobby Aero](https://www.tokopedia.com/rchobbyaero/cnhl-pizza-series-1200mah-22-2v-6s-100c-lipo-battery-with-xt60-plug) |
 
+### MicoAir MTF-01 — kontinjensi, **tidak masuk subtotal**
+
+Tiga unit sudah tersedia. Harga dicatat untuk skenario MTF-01 memenangkan uji banding
+(butuh 7 unit tambahan; di naskah ditulis sebagai kontinjensi Rp10.955.000).
+
+| Harga (Rp) | Listing |
+|---:|---|
+| **1.565.000** | [amelia shop3, *pre-order*](https://www.tokopedia.com/tokoameliashop/micoair-optical-flow-lidar-sensor-mtf-01-compatible-with-1732257046341190770) — batas atas, diverifikasi |
+| 1.396.000 | [apiip papang, *pre-order*](https://www.tokopedia.com/apiippapang/mtf-01-micoair-optical-flow-lidar-sensor-module-uav-positioning-module-1731221569124598814) |
+| 816.000 | [irish manda store](https://www.tokopedia.com/tokoisijahit/mtf-01-micoair-optical-flow-lidar-sensor-module-uav-positioning-module-for-px4-1732123277656294627) |
+| 414.999 | [Semut Emas FPV](https://www.tokopedia.com/semutemasfpv/micoair-mtf-01-optical-flow-and-lidar-sensor-1737302422301803754) |
+
 ### Kacamata pengaman berlensa bening — dipakai **Rp113.220** (1 unit)
 
 Hanya kacamata model biasa berlensa bening; *goggles*, pelindung karet, dan lensa

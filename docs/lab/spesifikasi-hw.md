@@ -26,7 +26,7 @@
 | Propeler Gemfan **D90S** | 3 bilah, 90 mm, *T-mount* 1,5 mm | 0 | 14 | **14** | 5 wahana butuh 20 |
 | Seeed XIAO ESP32-S3 | Wi-Fi 2,4 GHz + BLE | 4 | 1 | **5** | cukup untuk 5 wahana |
 | Penerima ExpressLRS EP2 TCXO | 2,4 GHz | 4 | — | **4** | + 1 "ELRS" lepas, jenis **?** |
-| Sensor MicoAir MTF-01 v1.1 | aliran optik + pengukur jarak laser 8 m | 2 | 1 | **3** | tidak dipakai (keputusan penulis) |
+| Sensor MicoAir MTF-01 v1.1 | aliran optik + ToF 8 m, sudut pancar setengah 3°, UART 115200 100 Hz, 4,5 g ([MicoAir](https://micoair.com/optical_range_sensor_mtf-01/)) | 2 | 1 | **3** | **kandidat ketiga uji banding sensor jarak** (keputusan penulis 2026-09-17) |
 | Modul GNSS | GPS pada rangka 1–4; RUSHFPV M10 + HMC5883 | 4 | 2 | **6** | tidak dipakai (dalam ruangan) |
 | Antena | dipol tipe-T 2,4 GHz/915 MHz; dipol mini 2,4/5,8 GHz IPEX | — | 1 + 3 | **4** | dipol mini dapat untuk rangka 4 |
 | Pelindung dan *holder* kuning | cadangan saluran dan penyangga | — | 2 paket | **2 paket** | |
@@ -53,7 +53,7 @@ Analisis kecocokan: [`analisis-baterai.md`](analisis-baterai.md).
 | Papan pengisian paralel Power Genius 2-in-1 | ✅ 1 | 2–6S, untuk mengisi beberapa baterai bersel sama sekaligus |
 | SkyRC multi balance board | ✅ 1 | adaptor *balance* 2–6S |
 | Kontainer penyimpanan baterai LiPo | ✅ tersedia | konfirmasi penulis 2026-09-17 |
-| Komputer stasiun darat | ✅ tersedia | CPU, RAM, jumlah port USB3 **?** — menentukan apakah deteksi penanda dua kamera 5 MP dapat berjalan seketika |
+| Komputer stasiun darat | ✅ laptop penulis | **Lenovo 82FN, AMD Ryzen 5 4500U** (6 inti/6 utas), memori 14 GiB terbaca, **Ubuntu 26.04**, Wi-Fi 6 Intel AX200; **dua pengendali USB 3.1** terpisah (tiap kamera dapat di pengendali sendiri; jumlah port fisik per pengendali **?**). Kemampuan deteksi AprilTag dua kamera 5 MP 60 fps diukur di Fase 2 |
 | Router Wi-Fi khusus | ✅ tersedia | model dan pita frekuensi **?** |
 | Pencetak tiga dimensi + filamen | ✅ tersedia | untuk dudukan penanda dan sensor |
 

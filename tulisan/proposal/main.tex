@@ -481,11 +481,11 @@ Wahana yang digunakan adalah \textit{quadcopter} tipe \textit{cinewhoop} dengan 
         7 & Baterai LiPo 6S 1200 mAh CNHL Pizza Series & $22{,}2$ V, 100C, konektor XT60; satu-satunya baterai yang sesuai motor $1950$ KV & 2 unit \\ \hline
         8 & Baterai LiPo lain & 5S 5000 mAh ($\times 2$), 4S 1200 mAh ($\times 2$), 4S 2200 mAh, 3S 1500 mAh ($\times 2$), 2S/3S 1500 mAh; tidak dipakai terbang & 8 unit \\ \hline
         9 & Propeler Gemfan D90S dan cadangan saluran & Tiga bilah, 90 mm, \textit{T-mount} $1{,}5$ mm; dua paket pelindung dan penyangga saluran & 14 unit \\ \hline
-        10 & Sensor MicoAir MTF-01 & Aliran optik dan pengukur jarak laser & 3 unit \\ \hline
+        10 & Sensor MicoAir MTF-01 & Aliran optik dan pengukur jarak \textit{time-of-flight} 8 m; kandidat uji banding sensor jarak & 3 unit \\ \hline
         11 & Modul GNSS & RUSHFPV M10 dengan kompas HMC5883 dan modul GPS pada rangka terakit; tidak dipakai di dalam ruangan & 6 unit \\ \hline
         12 & Pencetak tiga dimensi beserta filamen & Untuk mencetak dudukan penanda visual dan sensor & 1 unit \\ \hline
         13 & Perlengkapan pengisian baterai & Pengisi daya SkyRC T6X80 (1--6S, 80 W), papan pengisian paralel Power Genius 2--6S, SkyRC \textit{multi balance board}, kontainer penyimpanan baterai & tersedia \\ \hline
-        14 & Komputer stasiun darat dan penghala Wi-Fi khusus & Perangkat pendukung di sisi darat & tersedia \\ \hline
+        14 & Komputer stasiun darat dan penghala Wi-Fi khusus & Laptop Lenovo AMD Ryzen 5 4500U (6 inti), memori 14 GiB, Ubuntu 26.04, dua pengendali USB 3.1; model penghala belum dicatat & tersedia \\ \hline
     \end{tabularx}
     \endgroup
 \end{table}
@@ -652,7 +652,7 @@ Penanda $12$~cm tidak muat pada jalur datar selebar $4$~cm di sumbu tengah bodi 
 
 \section{Perancangan Sistem Persepsi Rintangan}
 
-Pemicu ERC membutuhkan lebar ruang bebas yang diukur sendiri oleh tiap agen. Untuk itu setiap wahana membawa sepasang sensor jarak yang dipasang diagonal, satu di kiri dan satu di kanan, bersudut $\beta$ terhadap arah maju (Gambar~\ref{fig:ultrasonic_placement}). Jenis sensornya, ultrasonik atau laser, ditetapkan melalui uji banding pada Subbab~\ref{subsec:pemilihan_sensor}.
+Pemicu ERC membutuhkan lebar ruang bebas yang diukur sendiri oleh tiap agen. Untuk itu setiap wahana membawa sepasang sensor jarak yang dipasang diagonal, satu di kiri dan satu di kanan, bersudut $\beta$ terhadap arah maju (Gambar~\ref{fig:ultrasonic_placement}). Jenis sensornya ditetapkan melalui uji banding tiga kandidat pada Subbab~\ref{subsec:pemilihan_sensor}.
 
 Kandidat ultrasonik mengukur jarak dari waktu tempuh pantulan gelombang suara \cite{siegwartIntroductionAutonomousMobile2004, borensteinObstacleAvoidanceUltrasonic1988} menurut
 \begin{equation}
@@ -675,14 +675,15 @@ dengan $w_{\text{body}}$\label{sym:wbody} jarak antarsensor pada badan wahana. N
 
 Rancangan di atas mengandalkan pembacaan jarak lateral yang tetap andal ketika berkas sensor mengenai permukaan secara miring. Pada sudut datang $45^\circ$ terhadap permukaan halus seperti dinding berplester atau kolom beton, sensor ultrasonik rawan kehilangan gema karena pantulan bersifat spekular dan energi pantul terlempar menjauh dari penerima. Permukaan kardus yang dipakai sebagai rintangan buatan memantul secara baur sehingga lebih ramah, tetapi dinding dan kolom tidak.
 
-Risiko ini menyentuh inti mekanisme ERC karena kegagalan pembacaan pada sudut miring berarti estimasi $w_e$ menjadi tidak sahih, dan peristiwa pemicu dapat terlewat atau terpicu palsu. Oleh sebab itu jenis sensor tidak ditetapkan di muka, melainkan diputuskan melalui uji banding pada Fase~2. Dua kandidat yang diuji berdampingan adalah sebagai berikut.
+Risiko ini menyentuh inti mekanisme ERC karena kegagalan pembacaan pada sudut miring berarti estimasi $w_e$ menjadi tidak sahih, dan peristiwa pemicu dapat terlewat atau terpicu palsu. Oleh sebab itu jenis sensor tidak ditetapkan di muka, melainkan diputuskan melalui uji banding pada Fase~2. Tiga kandidat yang diuji berdampingan adalah sebagai berikut.
 
 \begin{enumerate}
     \item Sensor ultrasonik HC-SR04 berbiaya rendah, jangkauannya memadai, dan tidak terpengaruh kondisi pencahayaan, namun memiliki resolusi sudut yang buruk akibat berkas yang lebar dan rentan terhadap pantulan spekular pada sudut datang miring \cite{pedroSenseAvoidSystem2025}.
     \item Sensor jarak laser \textit{time-of-flight} VL53L1X memiliki berkas jauh lebih sempit, lebih toleran terhadap sudut datang miring, dan berkomunikasi melalui antarmuka I\textsuperscript{2}C sehingga hemat pena masukan-keluaran pada \textit{companion computer} yang terbatas. Sensor berbasis laser memberikan resolusi spasial yang lebih tinggi karena memakai gelombang berpanjang gelombang jauh lebih pendek \cite{pedroSenseAvoidSystem2025}. Kelemahannya, jangkauan efektifnya menurun pada pencahayaan terang, sedangkan ruang pengujian menerima cahaya alami melalui kaca \textit{clerestory}.
+    \item Modul MicoAir MTF-01 yang telah tersedia di laboratorium memadukan kamera aliran optik dengan pengukur jarak \textit{time-of-flight} bersudut pancar setengah $3^\circ$ dan jangkauan hingga $8$~m pada pantulan $90\%$, dengan keluaran UART $115200$ baud hingga $100$~Hz dalam protokol MAVLink \cite{micoairMTF01}. Hanya pengukur jaraknya yang diuji, dengan modul dipasang miring seperti kandidat lain. Kelemahannya, jangkauan turun menjadi $5$~m pada cahaya sangat terang \cite{micoairMTF01}, dan setiap modul memerlukan satu port UART pada \textit{companion computer}, sehingga dua modul ditambah tautan ke \textit{flight controller} membutuhkan tiga port UART.
 \end{enumerate}
 
-Kriteria pemilihan ditetapkan sebelum pengujian dijalankan, yaitu tingkat keberhasilan pembacaan pada sudut $45^\circ$ dan $90^\circ$ terhadap dinding berplester, kolom beton, dan permukaan kardus; sebaran galat pembacaan terhadap jarak acuan; serta laju pembaruan yang dapat dicapai untuk dua sensor sekaligus. Sensor yang memenuhi kriteria dengan margin terbesar dipakai untuk kelima wahana. Apabila kedua kandidat gagal pada sudut $45^\circ$, sudut pemasangan diperkecil dan konsekuensinya terhadap jangkauan deteksi ke depan dievaluasi ulang.
+Kriteria pemilihan ditetapkan sebelum pengujian dijalankan, yaitu tingkat keberhasilan pembacaan pada sudut $45^\circ$ dan $90^\circ$ terhadap dinding berplester, kolom beton, dan permukaan kardus; sebaran galat pembacaan terhadap jarak acuan; serta laju pembaruan yang dapat dicapai untuk dua sensor sekaligus. Sensor yang memenuhi kriteria dengan margin terbesar dipakai untuk kelima wahana. Apabila seluruh kandidat gagal pada sudut $45^\circ$, sudut pemasangan diperkecil dan konsekuensinya terhadap jangkauan deteksi ke depan dievaluasi ulang.
 
 \section{Estimator dan Pengontrol}
 
@@ -962,7 +963,7 @@ Fase ini tidak memerlukan pengadaan.
 \begin{enumerate}
     \item \textbf{Komunikasi internal.} \textit{Firmware} ArduPilot racikan dibangun (Subbab~\ref{subsec:firmware_fc}), lalu antarmuka UART MAVLink antara \textit{companion computer} dan \textit{flight controller} dikonfigurasi.
     \item \textbf{Komunikasi eksternal.} Jaringan terdesentralisasi antaragen dibangun dengan UDP melalui Wi-Fi.
-    \item \textbf{Lokalisasi.} Kamera pertama dikalibrasi, termasuk model distorsi lensanya; deteksi penanda AprilTag, penyelesaian pose, pengiriman MAVLink, dan fusi EKF dijalankan menerus. Pada tahap ini pula HC-SR04 dan VL53L1X diuji banding dengan kriteria pada Subbab~\ref{subsec:pemilihan_sensor}.
+    \item \textbf{Lokalisasi.} Kamera pertama dikalibrasi, termasuk model distorsi lensanya; deteksi penanda AprilTag, penyelesaian pose, pengiriman MAVLink, dan fusi EKF dijalankan menerus. Pada tahap ini pula HC-SR04, VL53L1X, dan MTF-01 diuji banding dengan kriteria pada Subbab~\ref{subsec:pemilihan_sensor}.
     \item \textbf{Penanaman logika} algoritma ERC dan IAPF pada \textit{companion computer}.
     \item \textbf{Tautan kendali manual.} Pemancar ExpressLRS diikat ke penerima EP2 TCXO yang telah tersedia. Pemancar diadakan sebelum uji terbang karena merupakan satu-satunya jalur penghentian darurat yang tidak bergantung pada Wi-Fi.
 \end{enumerate}
@@ -1041,7 +1042,7 @@ Fase~3 dinyatakan lolos bila beban CPU dan latensi berada dalam batas aman. Bila
     \endgroup
 \end{table}
 
-Pos sensor jarak terpilih memakai harga VL53L1X sebagai batas atas; bila HC-SR04 yang terpilih, pos tersebut turun menjadi Rp212.800.
+Pos sensor jarak terpilih memakai harga VL53L1X. Bila HC-SR04 yang terpilih, pos tersebut turun menjadi Rp212.800. Bila MTF-01 yang terpilih, tiga unit yang tersedia perlu dilengkapi tujuh unit, dan dengan harga listing tertinggi Rp1.565.000 per unit pos tersebut naik menjadi Rp10.955.000.
 
 \section{Fase 5: Analisis Data dan Pelaporan}
 

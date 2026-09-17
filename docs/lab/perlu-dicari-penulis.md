@@ -67,7 +67,7 @@ Isi kolom "Hasil" langsung di sini atau kirim fotonya. Urutan = prioritas.
 
 | Data yang dicatat | Cara cek | Kenapa perlu | Hasil |
 |---|---|---|---|
-| **Bobot terbang** satu wahana lengkap (baterai, ESP32, penerima, tanpa modul GNSS) | Timbangan dapur | Rasio gaya dorong terhadap bobot dan ruang sisa untuk penanda + sensor | |
+| **Bobot terbang** satu wahana lengkap (baterai, ESP32, penerima, tanpa modul GNSS) | **Timbangan dapur digital** (resolusi 1 g, kapasitas ≥ 1 kg) — timbangan badan tidak cukup teliti | Perkiraan "±100 g" dari timbangan badan terlalu rendah: dari lembar data saja rangka 138 g + 4 motor 92 g + baterai 6S 220 g + ESC 7 g + propeler 9 g ≈ 466 g, belum termasuk FC, ESP32, penerima, dan kabel | |
 | *Firmware* yang sekarang terpasang di FC (Betaflight/INAV/ArduPilot + versi) | Colok USB, buka Betaflight Configurator atau Mission Planner | Titik awal sebelum dipasang *firmware* ArduPilot racikan | |
 | Jumlah modul RUSHFPV GNSS 25+ | Hitung | Hanya inventaris (modul dilepas) — prioritas rendah | |
 
@@ -75,8 +75,8 @@ Isi kolom "Hasil" langsung di sini atau kirim fotonya. Urutan = prioritas.
 
 | Data yang dicatat | Cara cek | Kenapa perlu | Hasil |
 |---|---|---|---|
-| Komputer stasiun darat: **CPU, RAM, sistem operasi** | Linux: `lscpu`, `free -h` · Windows: Task Manager → Performance | Deteksi AprilTag dari dua kamera 5 MP 60 fps berjalan di komputer ini | |
-| **Jumlah port USB 3.0** dan apakah berada di pengendali USB berbeda | Linux: `lsusb -t` · Windows: Device Manager; port USB 3.0 biasanya biru/berlogo SS | Tiap kamera USB 3.0 sebaiknya di jalur sendiri agar tidak berebut *bandwidth* | |
+| ~~Komputer stasiun darat~~ | ✅ laptop penulis (Ryzen 5 4500U, 14 GiB, Ubuntu 26.04) | dicatat 2026-09-17 | ✅ |
+| Port USB fisik laptop: mana yang terhubung ke pengendali USB 3.1 pertama dan kedua | Colok flashdisk USB 3 bergantian di tiap port, jalankan `lsusb -t` (lihat Bus 002 vs Bus 004) | Dua kamera sebaiknya di pengendali berbeda | |
 | Router Wi-Fi: merek/model, **pita 2,4 GHz** tersedia | Label bawah router | ESP32-S3 hanya bekerja di 2,4 GHz; seluruh komunikasi MAVLink/UDP lewat router ini | |
 
 ## D. Ruang uji

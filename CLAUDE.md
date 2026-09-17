@@ -32,7 +32,7 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
   $d_{ref}=1{,}0$, $W_{form}=1{,}0$, $W_{tail}=1{,}2$, $W_{obs}=W_{col}=8{,}0$.
 - **Persepsi rintangan:** 2 sensor jarak per agen, dipasang diagonal bersudut
   $\beta$ terhadap arah maju ($\theta$ dipakai untuk *pitch*). Jenisnya **belum
-  ditetapkan**: HC-SR04 vs VL53L1X diuji banding pada Fase 2.
+  ditetapkan**: HC-SR04 vs VL53L1X vs MicoAir MTF-01 (3 unit tersedia) diuji banding pada Fase 2.
 - **Lokalisasi:** 2 kamera atas **ELP-U3GS05B10C-IB21**: OG05B10 *global shutter*
   2592×1944, piksel 2,2 µm, larik 5,737 × 4,312 mm, **lensa CS 2,1 mm**, 60 fps MJPEG
   USB 3.0 (lembar data: `docs/lab/foto/18-…`). Penanda **AprilTag 12 cm** bertiang 7 cm,
@@ -51,8 +51,8 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
   2 kosong), 6 FC F405 Mini, 5 ESC BLS 35A (1 V2 lepas diduga rusak), 20 motor
   2006-1950KV (poros 1,5 mm), 5 XIAO ESP32-S3, 5 penerima ExpressLRS (**pemancar belum
   ada**), 14 propeler Gemfan D90S (T-mount 1,5 mm), 3 MTF-01, pengisi daya SkyRC T6X80 (80 W). Baterai yang sesuai hanya **6S 1200 mAh
-  CNHL** (2 unit; SpeedyBee menyarankan 6S 1050–1300 mAh untuk 1950KV). Semua lalu
-  lintas MAVLink/UDP lewat satu router Wi-Fi. Rincian: `docs/lab/spesifikasi-hw.md`,
+  CNHL** (2 unit; SpeedyBee menyarankan 6S 1050–1300 mAh untuk 1950KV). Stasiun darat = laptop
+  penulis (Ryzen 5 4500U, Ubuntu 26.04). Semua lalu lintas MAVLink/UDP lewat satu router Wi-Fi. Rincian: `docs/lab/spesifikasi-hw.md`,
   `docs/lab/analisis-baterai.md`; harga: `docs/lab/survei-harga.md`.
 - **Arena:** koridor 2,70 m, celah 0,90 m (kolom bangunan + dus), formasi V
   diskalakan 0,9; untuk wahana $R=0{,}125$ m ambang $\alpha R=1{,}0$ m.
