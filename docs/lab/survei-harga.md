@@ -1,7 +1,7 @@
 # Survei Harga Pengadaan
 
 > Diperbarui 2026-09-17. Dipakai oleh tabel anggaran BAB IV proposal (Tabel 4.1
-> Fase 2, Tabel 4.2 Fase 4, Tabel 4.3 Rekapitulasi). Total RAB **Rp22.871.400**.
+> Fase 2, Tabel 4.2 Fase 4, Tabel 4.3 Rekapitulasi). Total RAB **Rp24.227.654**.
 > FC/ESC dan ESP32-S3 dianggap 3 unit tersedia (asumsi penulis).
 
 ## Aturan
@@ -19,15 +19,17 @@
 
 ## Harga dari RAB awal penulis
 
-Diambil dari tabel RAB proposal sebelum revisi (commit `18a62a8`).
+Diambil dari tabel RAB proposal sebelum revisi (commit `18a62a8`). Sejak
+2026-09-17 **hanya perlengkapan keselamatan (Rp500.000/set) yang masih memakai
+angka ini**; pos lain sudah diganti listing Tokopedia di bawah.
 
-| Pos | Harga satuan (Rp) |
-|---|---:|
-| Kabel USB ekstensi 10 m + dudukan langit-langit | 150.000 / set |
-| Sensor ultrasonik HC-SR04 | 20.000 |
-| Penanda AprilTag + akrilik | 20.000 / set |
-| Dus kardus rintangan | 30.000 |
-| Perlengkapan keselamatan | 500.000 / set |
+| Pos | Harga satuan (Rp) | Status |
+|---|---:|---|
+| Kabel USB ekstensi 10 m + dudukan langit-langit | 150.000 / set | diganti: kabel USB 3.0 aktif + *super clamp* |
+| Sensor ultrasonik HC-SR04 | 20.000 | diganti listing |
+| Penanda AprilTag + akrilik | 20.000 / set | diganti: lembar akrilik A4 + kertas stiker vinil |
+| Dus kardus rintangan | 30.000 | diganti listing |
+| Perlengkapan keselamatan | 500.000 / set | **masih dipakai** — rincian menunggu keputusan penulis |
 
 Harga kamera Rp1.500.000 pada RAB awal adalah untuk **kamera 60 FPS**, bukan kamera
 5 MP *global shutter* yang kini dipilih, sehingga tidak dipakai.
@@ -96,6 +98,79 @@ sama dengan pilihan varian ESC/FC/*stack*; harga kartu mungkin bukan harga varia
 | 198.000 | [Mikatronics, Makassar](https://www.tokopedia.com/mikatronics/seeed-studio-xiao-esp32s3-2-4ghz-wifi-ble-5-0-8mb-psram-8mb-flash) | stok habis |
 
 Dikecualikan: varian *Sense* (berkamera), *Plus*, dan kit LoRa/Meshtastic/ReSpeaker.
+
+### Kabel ekstensi USB 3.0 aktif 10 m — dipakai **Rp674.000**
+
+Hanya listing yang khusus 10 m; listing multi-panjang (5/10/15/20/30 m) dikecualikan
+karena harga kartu adalah varian termurah. Catatan: lembar data kamera menyebut
+MJPEG 2592×1944 60 fps juga didukung USB 2.0, sehingga kabel aktif USB 2.0 yang lebih
+murah dapat menjadi alternatif.
+
+| Harga (Rp) | Listing |
+|---:|---|
+| **674.000** | [Vention CBMBL 10 m, pampamolshop](https://www.tokopedia.com/pampamolshop/vention-cbmbl-kabel-active-extension-usb-a-3-0-male-to-usb-a-female-1gbps-10-meter-10m-with-type-c-power-supply-2a-tipe-c-cable-aktif-1732878617013290940) — batas atas, diverifikasi |
+| 600.000 | [Netline 10 m, Gadget Crown](https://www.tokopedia.com/gadgetcrown/netline-usb-3-0-active-extension-cable-10-meter-kabel-extender-aktif) |
+| 510.000 | [Bafo BF-3032 10 m, Edgecom](https://www.tokopedia.com/edgecom8888/bafo-kabel-usb-3-0-extension-aktif-active-male-to-female-with-power-external-10-meter-bf-3032-bf-3032) |
+| 345.000 | [Netline 10 m, OBREN SHOP](https://www.tokopedia.com/obrenshop/netline-usb-3-0-active-extension-cable-10-meter-kabel-extender-aktif) |
+
+### Dudukan kamera *super clamp* + *ball head* 1/4" — dipakai **Rp105.027**
+
+Dijepitkan ke rel rangka-T langit-langit; kamera diarahkan tegak lurus ke bawah.
+Kit *magic arm* besar (K&F Concept, Ulanzi Rp265.000–449.000) dan penjepit tanpa
+*ball head* dikecualikan.
+
+| Harga (Rp) | Listing |
+|---:|---|
+| **105.027** | [AsteranID](https://www.tokopedia.com/asteranid/super-clamp-magic-arm-ball-head-mount-1-4-3-8-inch-camera-kamera-1732253921075430889) — batas atas, diverifikasi |
+| 55.000 | [Focus Technology](https://www.tokopedia.com/focus-technology/super-clamp-articulated-magic-arm-mini-ball-head-with-1-4-20-thread-hole-kit-ball-head-3944e) |
+| 44.028 | [MiAcc (Andoer)](https://www.tokopedia.com/idmiacc/andoer-super-clamp-magic-arm-ball-head-mount-1-4-3-8-inch-gopro-insta360-dslr-1420-jt10002-black-1733145386138240537) |
+
+### Sensor ultrasonik HC-SR04 — dipakai **Rp26.600**
+
+| Harga (Rp) | Listing |
+|---:|---|
+| **26.600** | [sakurashop29.ID](https://www.tokopedia.com/sakurashop29id/sensor-jarak-range-finder-ultrasonic-ultrasonik-hc-sr04-arduino) — batas atas, diverifikasi |
+| 25.900 | [semutin](https://www.tokopedia.com/semutin-official/sensor-ultrasonik-hc-sr04-mengukur-jarak-range-finder) |
+| 19.990 | [Pi Toserba](https://www.tokopedia.com/pitoserba/sensor-ultrasonic-hc-sr04-ultrasonik-module-sr-04-modul-pengukur-jarak) |
+| 19.900 | [Mechatron](https://www.tokopedia.com/mechatron/sensor-jarak-range-finder-ultrasonic-ultrasonik-hc-sr04-arduino) |
+| 17.000 | [EasyWare Electronics](https://www.tokopedia.com/easyware-id/hc-sr04-ultrasonic-sensor) |
+| 15.000 | [Rajawali3D](https://www.tokopedia.com/rajawali3d/sensor-ultrasonic-module-modul-sensor-ultrasonik-5v-4pin-hc-sr04), [Arduinoku Robotic](https://www.tokopedia.com/arduinoku-robotic/hc-sr04-sensor-ultrasonic-range-module-hcsr04-ultrasonik) |
+| 14.400 | [Mirorim](https://www.tokopedia.com/mirorim/hc-sr04-modul-sensor-jarak-ultrasonik-ultrasonic-wave-ping-for-arduino) |
+| 13.000 | [Starlectric](https://www.tokopedia.com/starlectric/hc-sr04-sensor-ultrasonik-ultrasonic-ping) |
+| 12.500 | [Kyware](https://www.tokopedia.com/kyware/hc-sr04-ultrasonik-pengukur-jarak-hc-sr04-distance-ultrasonic-sensor) |
+
+Dikecualikan: HY-SRF05, kit DIY, *bracket*, dan *casing*.
+
+### Penanda AprilTag
+
+Satu lembar akrilik A4 (21 × 30 cm) menghasilkan dua pelat 12 × 12 cm, sehingga lima
+wahana butuh tiga lembar (1 di Fase 2, 2 di Fase 4). Satu pak stiker cukup untuk
+seluruh penanda. Tiang dicetak dengan pencetak 3D lab.
+
+| Pos | Harga (Rp) | Listing |
+|---|---:|---|
+| Akrilik bening 2 mm A4 | **30.000** | [blessing acrylic](https://www.tokopedia.com/jualacrylic/acrylic-akrilik-lembaran-potongan-2mm-clear-bening-ukuran-a4-30-x-21cm) — batas atas listing A4 tunggal, diverifikasi |
+| | 27.500 | [solusilight (Marga Cipta)](https://www.tokopedia.com/solusilight/akrilik-lembaran-2mm-a4-akrilik-ukuran-21-x-30cm-2-mm-bening-1-lembar-marga-cipta-acrylic-sheet-clear-1729545140961577474) |
+| | 25.000 | [rifad jaya mandiri](https://www.tokopedia.com/rifadjayamandiri/akrilik-potongan-ukuran-a4-bening-tebal-2mm) |
+| | 22.000 | [King Acrylic](https://www.tokopedia.com/king-acrylic---raja-akrilik/acrylic-akrilik-bening-lembar-media-lukis-qr-ukuran-a4-21-x-30-cm-tebal-2mm-lembaran-1729670399538923275) |
+| | 17.000–20.500 | beberapa listing lain |
+| Kertas stiker vinil A4 isi 20, varian *matte* | **48.000** | [QUAFF Official](https://www.tokopedia.com/quaff-offical-store/quaff-stiker-inkjet-vinyl-a4-transparan-glossy-matte-20-lembar-kertas-stiker-glossy-printer-stiker-quaff-ukuran-a4-mengkilap-matte-transparan-kompatibel-dengan-tinta-pewarna-1733700494513112197) — diverifikasi, varian glossy/matte/transparan sama harga |
+
+Dikecualikan: listing akrilik dengan pilihan ukuran A4/A3 atau A5/A4 (harga kartu
+ambigu), stiker transparan/bening (penanda perlu dasar putih), dan pak 500 lembar.
+
+### Kardus polos 60 × 40 × 40 cm — dipakai **Rp34.700**
+
+| Harga (Rp) | Listing |
+|---:|---|
+| **34.700** | [berlian90](https://www.tokopedia.com/berlian90/dus-packing-polos-jumbo-60x40x40-cm-kardus-besar-kardus-packing-polos-box-jumbo-kondisi-baru-1730914591889655635) — batas atas, diverifikasi; juga [kotakkemasanbandung](https://www.tokopedia.com/kemasanberlian/kardus-besar-60x40x40-dus-packing-box-polos) |
+| 31.000 | [JoyyStoree (tebal 4 mm)](https://www.tokopedia.com/joyystore-1/kardus-besar-jumbo-uk-60x40x40-tebal-4mm-polos-dan-baru) |
+| 19.950 | [Markas Packing](https://www.tokopedia.com/markaspacking/kardus-packing-jumbo-60x40x40-karton-kotak-box-polos-c-f) |
+| 18.000 | [Kardus Djakarta](https://www.tokopedia.com/kardusdjakarta/kardus-karton-box-packing-polos-besar-60x40x40-cm-1731634500315809138), [RumahPackaging](https://www.tokopedia.com/rumahpackaging/kardus-karton-box-packing-polos-besar-60x40x40-cm-1729819448748115162) |
+| 17.500 | [GudangKardus](https://www.tokopedia.com/gudangkardus-954/kardus-karton-box-besar-60x40x40-cm-dus-packing-packaging-pindahan-jumbo-polos-1729774589828958153) |
+| 14.500 | [KardusHolic](https://www.tokopedia.com/k-holic/kardus-besar-polos-karton-box-uk-60x40x40-cm) |
+
+Dikecualikan: listing dengan pilihan 1-ply/2-ply atau berbagai ukuran (harga kartu ambigu).
 
 ## Survei kamera dari tautan penulis (dibaca 2026-09-17)
 

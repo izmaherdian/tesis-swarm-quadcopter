@@ -14,6 +14,11 @@
 - [x] **VL53L1X** — Rp98.500 (CNC Store Bandung).
 - [x] **Lakban lantai 3M 764** — Rp55.000 (Dewielectrical). Pilih warna **putih atau
   kuning** karena lantai gelap.
+- [x] Kabel USB 3.0 aktif 10 m, dudukan *super clamp*, HC-SR04, akrilik A4, kertas
+  stiker vinil, kardus — listing Tokopedia (batas atas) sudah di RAB.
+- [ ] **Perlengkapan keselamatan** masih Rp500.000 dari RAB awal. Tentukan rinciannya:
+  jumlah tas tahan api baterai LiPo, jumlah kacamata, dan apakah jaring pengaman
+  diperlukan (untuk apa dan berapa ukurannya).
 
 ## B. Harga yang sudah diisi
 
