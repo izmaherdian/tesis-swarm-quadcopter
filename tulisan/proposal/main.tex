@@ -447,12 +447,12 @@ Untuk keperluan simulasi numerik komputasional dan pengujian \textit{Hardware-In
 % ==========================================
 \chapter{PERANCANGAN SISTEM}
 
-Bab ini menguraikan rancangan sistem yang dibangun pada penelitian ini. Berbeda dengan Bab~II yang memaparkan teori dan karya terdahulu, bab ini memuat keputusan perancangan yang diambil sendiri: perangkat yang dipilih, parameter yang ditetapkan, geometri fisik yang dirancang, serta arena pengujian yang disiapkan. Uraian dimulai dari kondisi awal perangkat yang telah tersedia, dilanjutkan dengan rancangan tiap subsistem, dan ditutup dengan arsitektur sistem secara menyeluruh.
+Bab ini memuat keputusan perancangan: perangkat yang dipilih, parameter yang ditetapkan, geometri wahana, dan arena uji. Uraian dimulai dari kondisi awal perangkat, dilanjutkan rancangan tiap subsistem, dan ditutup arsitektur sistem menyeluruh.
 
 \section{Kondisi Awal dan Komponen yang Tersedia}
 \label{sec:kondisi_awal}
 
-Penelitian ini tidak dimulai dari nol. Sebagian perangkat keras telah tersedia di laboratorium sebagai kelanjutan dari platform penelitian sebelumnya \cite{argilianaPengembanganSistemKontrol2025}, sehingga perancangan yang diuraikan pada bab ini dibatasi oleh apa yang sudah ada dan hanya melengkapi bagian yang belum tersedia. Pemetaan kondisi awal ini sekaligus menjadi dasar penyusunan rencana anggaran biaya bertahap pada Bab~IV.
+Sebagian perangkat keras telah tersedia di laboratorium sebagai kelanjutan platform penelitian sebelumnya \cite{argilianaPengembanganSistemKontrol2025}. Perancangan hanya melengkapi bagian yang belum ada, dan pemetaan ini menjadi dasar anggaran pada Bab~IV.
 
 \subsection{Wahana dan Komponen Elektronik}
 
@@ -521,83 +521,67 @@ Pengujian eksperimental dilaksanakan di koridor Pusat Teknologi Instrumentasi da
 Seluruh ukuran pada Tabel~\ref{tab:kondisi_ruang} diperoleh melalui pengukuran langsung di lokasi dengan ketelitian sekitar $\pm 5$ cm. Pada kondisi sehari-hari, sebagian lebar koridor terpakai oleh deretan kursi panjang, papan informasi berdiri, dan perlengkapan laboratorium. Karena ruangan dapat dijadwalkan untuk penggunaan eksklusif, perabot tersebut disingkirkan selama sesi pengujian sehingga lebar bersih $270$ cm dapat dimanfaatkan sepenuhnya. Ketersediaan lebar penuh ini merupakan syarat yang mengikat: dengan perabot tetap di tempatnya, lebar bersih hanya sekitar $180$ cm dan bentang formasi yang dirancang tidak akan muat, sehingga peristiwa pemicu rekonfigurasi tidak akan terjadi secara sah.
 
 \section{Arsitektur Wahana}
-Wahana eksperimental yang digunakan adalah quadcopter konfigurasi tipe `X' berbasis platform SpeedyBee Bee35, kelanjutan dari arsitektur fisik pada penelitian sebelumnya \cite{argilianaPengembanganSistemKontrol2025} yang ditingkatkan untuk mendukung komputasi kontrol desentralisasi penuh secara \textit{onboard}. Arsitektur fisiknya terdiri atas struktur mekanik, sistem propulsi, sistem kontrol terbang, sistem komputasi tingkat tinggi, subsistem daya, dan jalur komunikasi antarkomponen.
-
-Rincian tiap komponen diuraikan berikut ini.
-
-\subsubsection{1. Platform Utama (SpeedyBee 35)}
-Sebagai acuan dasar geometri dan dimensi mekanis, wahana ini menggunakan basis \textit{frame} quadcopter SpeedyBee 35. Desain kerangka yang kompak ini dipilih agar ideal untuk pergerakan navigasi di dalam ruangan namun tetap kuat menopang komponen avionik tambahan. Wujud platform acuan ini ditunjukkan pada Gambar~\ref{fig:quadcopter-speedybee35}.
-
-\subsubsection{2. Struktur Fisik dan Komponen (Tampak Atas-Bawah)}
-Untuk menyiasati keterbatasan ruang pada \textit{frame}, komponen elektronik dibagi menjadi dua area penempatan utama, yaitu pada sisi atas dan sisi bawah kerangka. Komponen tingkat tinggi seperti \textit{companion computer} dan modul komunikasi nirkabel diletakkan pada bagian atas wahana untuk mengoptimalkan ruang kerja sensor serta memudahkan akses antarmuka data. Sementara itu, komponen sistem propulsi dan kontrol dasar seperti \textit{flight controller}\label{abbr:fc} serta \textit{Electronic Speed Controller} (ESC\label{abbr:esc}) ditempatkan di bagian bawah atau inti kerangka. Susunan bertingkat secara vertikal yang memisahkan komponen manajemen data dan manajemen daya ini menjaga keseimbangan pusat massa wahana tetap berada di tengah, seperti diperlihatkan pada Gambar~\ref{fig:struktur_fisik}.
+Wahana eksperimental adalah quadcopter konfigurasi X berbasis rangka SpeedyBee Bee35 (Gambar~\ref{fig:quadcopter-speedybee35}), kelanjutan platform penelitian sebelumnya \cite{argilianaPengembanganSistemKontrol2025}. Komponen dibagi dua lapis: \textit{companion computer} di sisi atas, sedangkan \textit{flight controller} (FC\label{abbr:fc}) dan \textit{Electronic Speed Controller} (ESC\label{abbr:esc}) di inti kerangka (Gambar~\ref{fig:struktur_fisik}).
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.55\textwidth]{figures/struktur_fisik.png}
-    \caption{Struktur Fisik dan Tata Letak Komponen (a) Tampak Atas dan (b) Tampak Bawah \cite{argilianaPengembanganSistemKontrol2025}}
+    \caption{Struktur fisik dan tata letak komponen: (a) tampak atas dan (b) tampak bawah \cite{argilianaPengembanganSistemKontrol2025}}
     \label{fig:struktur_fisik}
 \end{figure}
 
-\subsubsection{3. Sistem Elektronik Inti (ESC-FC)}
-Stabilisasi kalang dalam dikoordinasikan secara penuh oleh integrasi \textit{Flight Controller} (FC) dan \textit{Electronic Speed Controller} (ESC) yang disusun terpadu dalam satu kesatuan struktur tumpuk vertikal. \textit{Flight controller} berada di sisi atas sebagai unit pemroses mikro yang dilengkapi sensor \textit{Inertial Measurement Unit} (IMU) untuk mengestimasi orientasi sikap wahana secara \textit{real-time}. Modul FC ini terhubung ke papan 4-in-1 ESC di bawahnya melalui \textit{interconnect cable harness} untuk mentransmisikan sinyal komando kecepatan motor. ESC kemudian bertugas menerjemahkan sinyal kontrol tersebut menjadi regulasi arus multi-fasa guna menggerakkan keempat motor BLDC secara sinkron. Guna menjaga akurasi pembacaan sensor IMU dari derau mekanis yang dihasilkan oleh putaran motor, seluruh struktur ini dipasang memanfaatkan peredam getaran silikon, seperti diperlihatkan pada Gambar~\ref{fig:esc_fc}.
+FC dan ESC 4-in-1 tersusun sebagai satu tumpukan vertikal. FC memuat IMU dan mengirim komando motor ke ESC, yang menggerakkan keempat motor BLDC. Tumpukan dipasang di atas peredam getaran silikon untuk mengurangi derau getaran motor pada IMU (Gambar~\ref{fig:esc_fc}).
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.45\textwidth]{figures/esc_fc.png}
-    \caption{Integrasi Unit \textit{Electronic Speed Controller} (ESC) dan \textit{Flight Controller} (FC)}
+    \caption{Tumpukan \textit{flight controller} dan ESC 4-in-1}
     \label{fig:esc_fc}
 \end{figure}
 
-\subsubsection{4. Skematik Elektrik dan Pengabelan}
-Sistem pengabelan pada wahana ini merangkum interkoneksi jalur distribusi daya dan alur komunikasi data antar subsistem elektronik. Sumber daya utama dari baterai LiPo dihubungkan secara langsung menuju papan \textit{Electronic Speed Controller} (ESC) 4-in-1 guna melayani kebutuhan arus tinggi bagi keempat motor \textit{brushless}. ESC tersebut kemudian mendistribusikan daya teregulasi melalui rangkaian BEC (\textit{Battery Eliminator Circuit}) untuk menyalakan modul \textit{Flight Controller} (FC) SpeedyBee F405. 
-
-Pada lapis komputasi tingkat tinggi, \textit{companion computer} (ESP-32) dihubungkan dengan FC melalui antarmuka serial UART (pin TX dan RX silang) guna memfasilitasi pertukaran pesan kontrol berbasis MAVLink secara \textit{real-time}. Selain itu, skematik ini juga memperlihatkan pemetaan sinyal kontrol motor dari FC ke ESC, serta koneksi penerima sinyal radio (seperti TBS Crossfire) untuk keperluan kendali manual atau intervensi pengaman (\textit{fail-safe}). Skematik elektrik diagram pengabelan ini ditunjukkan secara menyeluruh pada Gambar~\ref{fig:wiring_diagram}.
+Baterai LiPo mencatu ESC, yang menyalurkan daya teregulasi ke FC melalui BEC (\textit{Battery Eliminator Circuit}). XIAO ESP32-S3 terhubung ke FC melalui UART dengan TX dan RX disilangkan untuk pertukaran MAVLink, dan penerima ExpressLRS EP2 TCXO terhubung ke FC untuk kendali manual (Gambar~\ref{fig:wiring_diagram}). Modul GNSS pada gambar tersebut dilepas pada penelitian ini (Subbab~\ref{sec:kondisi_awal}).
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.35\textwidth]{figures/wiring_diagram.png}
-    \caption[Skematik Elektrik dan Diagram Pengabelan Wahana]{Skematik Elektrik dan Diagram Pengabelan Seluruh Komponen Wahana}
+    \caption{Diagram pengabelan wahana}
     \label{fig:wiring_diagram}
 \end{figure}
 
 \subsection{Dimensi dan Tata Letak Komponen}
 
-Tata letak komponen utama serta dimensi luar wahana diperlihatkan pada Gambar~\ref{fig:sketsa_wahana}. Wahana berukuran $25 \times 21$ cm dengan tinggi $8$ cm termasuk baterai. Empat saluran propeler menempati hampir seluruh permukaan atas, menyisakan jalur datar selebar hanya $4$ cm di sepanjang sumbu tengah bodi. Keterbatasan ruang datar ini berdampak langsung pada perancangan sistem lokalisasi dan dibahas pada Subbab~\ref{sec:lokalisasi_rancangan}.
+Tata letak dan dimensi luar wahana diperlihatkan pada Gambar~\ref{fig:sketsa_wahana}. Empat saluran propeler menempati hampir seluruh permukaan atas, menyisakan jalur datar selebar hanya $4$ cm di sepanjang sumbu tengah bodi. Keterbatasan ruang datar ini berdampak langsung pada perancangan sistem lokalisasi dan dibahas pada Subbab~\ref{sec:lokalisasi_rancangan}.
 
 \begin{figure}[htbp]
     \centering
     \subcaptionbox{Tampak atas wahana (cm)\label{fig:sketsa_wahana}}[0.49\textwidth]{\includegraphics{figures/wahana-atas.pdf}}
     \hfill
     \subcaptionbox{Geometri estimasi lebar ruang\label{fig:ultrasonic_placement}}[0.49\textwidth]{\includegraphics{figures/geometri-we.pdf}}
-    \caption{Wahana uji dan penempatan sensor jarak. (a) Empat saluran propeler menyisakan jalur datar selebar $4$~cm di sumbu tengah; penanda $12$~cm dipasang bertiang di atasnya. (b) Dua sensor diagonal bersudut $\theta$ terhadap arah maju menghasilkan jarak lateral $d_l$ dan $d_r$ untuk estimasi $w_e$.}
+    \caption{Wahana uji dan penempatan sensor jarak. (a) Empat saluran propeler menyisakan jalur datar selebar $4$~cm di sumbu tengah; penanda $12$~cm dipasang bertiang di atasnya. (b) Dua sensor diagonal bersudut $\beta$ terhadap arah maju menghasilkan jarak lateral $d_l$ dan $d_r$ untuk estimasi $w_e$.}
     \label{fig:wahana_sensor}
 \end{figure}
 
 \subsection{Protokol Komunikasi}
-Sistem komunikasi kawanan quadcopter dirancang dengan memisahkan secara jelas antara lapisan protokol data dan arsitektur jaringan fisik. Baik komunikasi antar-wahana (Quadcopter-Quadcopter) maupun komunikasi stasiun darat (Quadcopter-GCS) secara seragam mengadopsi protokol pesan biner \textbf{MAVLink} (\textit{Micro Air Vehicle Link}) yang ditransmisikan di atas media jaringan \textbf{Wi-Fi lokal} berbasis soket UDP (\textit{User Datagram Protocol}) \cite{chenReviewUnmannedAerial2020, linLeaderFollowerUAV2026}. Perbedaan utama dari kedua jalur komunikasi ini terletak pada rute aliran dan topologi jaringannya.
-
-\subsubsection{1. Komunikasi Antar-Wahana (Quadcopter-Quadcopter)}
-Jalur komunikasi antar-wahana merupakan fondasi dari arsitektur kontrol terdesentralisasi. Modul Wi-Fi internal pada mikrokontroler ESP32 di setiap wahana dikonfigurasi untuk saling bertukar data secara langsung menggunakan metode soket UDP \textit{broadcast} atau \textit{multicast} tanpa melalui \textit{router} perantara. Jalur fisik mandiri ini digunakan untuk menyiarkan paket biner MAVLink yang berisi data \textit{state} kinematika aktual (posisi 3D dan kecepatan). Karakteristik paket MAVLink yang sangat ringan memastikan algoritma \textit{Event-Based Reconfiguration Control} (ERC) dapat mengeksekusi adaptasi formasi dengan latensi minimal dan bebas dari risiko pemutusan akibat kegagalan titik tunggal pada jaringan pusat.
-
-\subsubsection{2. Komunikasi Stasiun Darat (Quadcopter-GCS)}
-Jalur komunikasi stasiun darat memfasilitasi pemantauan telemetri dan kontrol intervensi jarak jauh. Berbeda dengan jalur antar-wahana, arsitektur jaringan pada jalur ini bersifat terpusat dengan memanfaatkan sebuah \textit{router} nirkabel sebagai \textit{access point} utama di dalam area pengujian dalam ruangan. Melalui medium ini, setiap ESP32 mengirimkan paket telemetri MAVLink berupa sinyal \textit{heartbeat}, estimasi orientasi sikap, dan kapasitas baterai menuju \textit{Ground Control Station} (GCS). Sebaliknya, GCS menggunakan jalur Wi-Fi terpusat ini untuk mengirimkan komando tingkat tinggi seperti perintah \textit{arm/disarm}, perpindahan mode terbang, atau komando pendaratan darurat secara \textit{real-time}.
+Seluruh komunikasi data memakai pesan MAVLink di atas soket UDP pada jaringan Wi-Fi lokal \cite{chenReviewUnmannedAerial2020, linLeaderFollowerUAV2026}. Jaringan dibentuk oleh satu \textit{router} khusus di area uji dan memuat dua jalur:
+\begin{enumerate}
+    \item \textbf{Antarwahana.} Tiap ESP32-S3 menyiarkan \textit{state} kinematikanya (posisi dan kecepatan) melalui UDP \textit{broadcast}. \textit{Router} hanya meneruskan paket; keputusan rekonfigurasi tetap diambil oleh tiap agen.
+    \item \textbf{Stasiun darat.} Stasiun darat menyiarkan pose hasil kamera atas dan menerima telemetri (\textit{heartbeat}, sikap, dan tegangan baterai), serta mengirim perintah \textit{arm/disarm}, pergantian mode, dan pendaratan darurat.
+\end{enumerate}
+Karena kedua jalur melewati \textit{router} yang sama, kegagalan \textit{router} memutus pose dan komunikasi antaragen sekaligus. Jalur penghentian yang tidak bergantung pada Wi-Fi karenanya disediakan melalui tautan radio ExpressLRS (Gambar~\ref{fig:arsitektur_sistem}).
 
 \section{Perancangan Sistem Lokalisasi Dalam Ruangan}
 \label{sec:lokalisasi_rancangan}
 
-Mengingat pengujian navigasi kawanan \textit{quadcopter} dilakukan di lingkungan dalam ruangan, sistem tidak dapat mengandalkan \textit{Global Positioning System} (GPS) untuk mendapatkan informasi posisi spasial absolut.
-Sebagai solusinya, arsitektur perangkat keras ini memanfaatkan sistem lokalisasi eksternal berbasis visi komputer menggunakan kamera atas yang dipadukan dengan penanda visual pada wahana.
-Metode ini dipilih karena sistem lokalisasi berbasis kamera eksternal mampu memberikan presisi pose dalam skala sentimeter tanpa akumulasi penyimpangan posisi seiring waktu; galat pose di bawah $3$~cm dan $1^\circ$ tanpa \textit{drift} telah dilaporkan untuk area dalam ruangan seluas sekitar $240$~m$^2$ \cite{bultmannExternalCameraBased2023}. Selain itu, metode ini tidak terpengaruh oleh interferensi \textit{multipath} yang kerap terjadi pada sensor berbasis sinyal radio di ruangan tertutup. Presisi yang tercapai bukan besaran tetap, melainkan bergantung pada resolusi kamera, ukuran penanda, dan jarak pandang kamera terhadap wahana; akurasi estimasi pose \textit{AprilTag} diketahui menurun seiring bertambahnya jarak dan mengecilnya ukuran penanda \cite{zhangIntegratedFrameworkEnhancing2026}. Ketiga besaran tersebut karenanya ditentukan melalui perhitungan geometri terhadap dimensi area pengujian, bukan diasumsikan.
+GPS tidak tersedia di dalam ruangan, sehingga posisi absolut diperoleh dari kamera atas yang mengamati penanda visual pada wahana. Lokalisasi kamera eksternal tidak mengakumulasi \textit{drift}: galat pose di bawah $3$~cm dan $1^\circ$ telah dilaporkan untuk area dalam ruangan seluas sekitar $240$~m$^2$ \cite{bultmannExternalCameraBased2023}. Presisinya bergantung pada resolusi kamera, ukuran penanda, dan jarak kamera ke penanda; akurasi pose AprilTag menurun seiring bertambahnya jarak dan mengecilnya penanda \cite{zhangIntegratedFrameworkEnhancing2026}. Ketiga besaran tersebut karenanya dihitung dari dimensi ruang uji (Subbab~\ref{subsec:liputan_kamera}).
 
-Sistem lokalisasi kamera atas yang diimplementasikan terdiri dari tiga komponen utama:
+Sistem lokalisasi terdiri atas tiga komponen:
 \begin{enumerate}
-    \item \textbf{Kamera Atas Sudut Lebar.} Dua unit kamera dipasang pada posisi statis di langit-langit area pengujian dengan orientasi menghadap tegak lurus ke bawah (nadir). Liputan kedua kamera dibuat saling bertumpang tindih dan dikalibrasi ke dalam satu kerangka acuan inersia global sehingga seluruh panjang lintasan uji tercakup. Penggunaan dua unit diperlukan karena tinggi langit-langit ruang pengujian membatasi jarak pandang kamera terhadap wahana, sehingga liputan satu kamera tidak mencukupi panjang lintasan yang diuji.
-    \item \textbf{Penanda Visual (AprilTag \cite{olsonAprilTagRobustFlexible2011, wangAprilTag2Efficient2016, krogiusFlexibleLayoutsFiducial2019} atau ArUco \cite{garridojuradoAutomaticGenerationDetection2014}).} Dipasang secara datar pada bagian atas bodi masing-masing \textit{quadcopter}. Setiap wahana menggunakan pola matriks biner dengan identitas (ID) unik (misalnya ID 0 hingga 4 untuk lima wahana), sehingga sistem persepsi dapat membedakan dan melacak setiap agen secara simultan.
-    \item \textbf{Stasiun Pemroses Citra.} Komputer di darat yang menerima aliran video dari kamera untuk mengeksekusi algoritma ekstraksi posisi 3D dan orientasi wahana secara \textit{real-time}.
+    \item \textbf{Kamera atas.} Dua kamera dipasang statis di langit-langit menghadap tegak lurus ke bawah. Liputannya bertumpang tindih dan dikalibrasi ke satu kerangka acuan global, karena tinggi langit-langit membatasi liputan satu kamera.
+    \item \textbf{Penanda visual.} Tiap wahana membawa penanda AprilTag \cite{olsonAprilTagRobustFlexible2011, wangAprilTag2Efficient2016, krogiusFlexibleLayoutsFiducial2019}, keluarga penanda biner sejenis ArUco \cite{garridojuradoAutomaticGenerationDetection2014}, dengan ID unik (0 hingga 4) sehingga kelima agen dapat dibedakan.
+    \item \textbf{Stasiun pemroses citra.} Komputer darat menerima aliran video, mendeteksi penanda, dan menghitung pose tiap wahana.
 \end{enumerate}
 
-Proses penentuan posisi spasial 3D dan orientasi sikap wahana didasarkan pada model kamera lubang jarum dan penyelesaian masalah \textit{Perspective-n-Point} (PnP).
-Dengan mengasumsikan matriks kalibrasi intrinsik kamera $\mathbf{K}$ telah diketahui melalui proses kalibrasi awal, hubungan antara koordinat piksel $(u, v)$ pada bidang citra dan koordinat spasial absolut $(x_w, y_w, z_w)$ pada kerangka acuan dunia dinyatakan sebagai:
+Pose tiap wahana dihitung dengan model kamera lubang jarum dan penyelesaian masalah \textit{Perspective-n-Point} (PnP). Dengan matriks intrinsik $\mathbf{K}$ yang diperoleh dari kalibrasi, koordinat piksel $(u, v)$ dan koordinat dunia $(x_w, y_w, z_w)$ berhubungan melalui
 \begin{equation}
     s 
     \begin{bmatrix}
@@ -612,7 +596,7 @@ Dengan mengasumsikan matriks kalibrasi intrinsik kamera $\mathbf{K}$ telah diket
     \end{bmatrix}
     \label{eq:pinhole_pnp}
 \end{equation}
-di mana $s$ adalah faktor skala kedalaman, $\mathbf{R} \in \mathbb{R}^{3 \times 3}$ adalah matriks rotasi 3D yang menggambarkan orientasi sikap wahana (khususnya sudut \textit{yaw} $\psi$), $\mathbf{T} = [x, y, z]^T$ adalah vektor translasi posisi 3D absolut \textit{quadcopter} terhadap pusat optik kamera, dan $\mathbf{K}$ adalah matriks intrinsik kamera yang didefinisikan sebagai:
+dengan $s$ faktor skala, $\mathbf{R} \in \mathbb{R}^{3 \times 3}$ matriks rotasi, $\mathbf{T} \in \mathbb{R}^3$ vektor translasi, dan
 \begin{equation}
     \mathbf{K} = 
     \begin{bmatrix}
@@ -621,14 +605,9 @@ di mana $s$ adalah faktor skala kedalaman, $\mathbf{R} \in \mathbb{R}^{3 \times 
         0 & 0 & 1
     \end{bmatrix}
 \end{equation}
-dengan $(f_x, f_y)$ merepresentasikan panjang fokus dalam satuan piksel dan $(c_x, c_y)$ adalah titik pusat optik kamera.
+dengan $(f_x, f_y)$ panjang fokus dalam piksel dan $(c_x, c_y)$ titik pusat optik. Dari ukuran penanda yang diketahui ($12 \times 12$~cm) dan empat titik sudutnya pada citra, Persamaan~\ref{eq:pinhole_pnp} diselesaikan secara numerik dengan optimasi Levenberg\allowbreak--Marquardt, menghasilkan posisi $(x, y, z)$ dan sudut \textit{yaw} $\psi$ tiap wahana.
 
-Menggunakan dimensi fisik penanda yang telah diketahui ($12 \times 12$~cm, Subbab~\ref{subsec:liputan_kamera}) dan empat titik sudut penanda yang terdeteksi pada citra, sistem menyelesaikan Persamaan~\ref{eq:pinhole_pnp} menggunakan algoritma numerik \textit{SolvePnP} berbasis optimasi Levenberg\allowbreak--Marquardt.
-Keluaran dari algoritma ini berupa estimasi koordinat spasial absolut $(x, y, z)$ dan sudut \textit{yaw} ($\psi$) secara \textit{real-time} untuk setiap wahana.
-
-Data posisi dan orientasi terhitung dari komputer darat dikemas ke dalam format pesan biner MAVLink dan disiarkan melalui jaringan nirkabel (soket UDP/Wi-Fi) menuju \textit{companion computer} (ESP32) di masing-masing \textit{quadcopter}.
-Meskipun sistem lokalisasi berbasis kamera atas memberikan referensi posisi absolut yang sangat akurat dan bebas dari \textit{drift}, keluaran datanya memiliki laju pembaruan yang dibatasi oleh laju bingkai kamera ($50$ bingkai per detik) serta memiliki latensi pemrosesan citra.
-Oleh karena itu, data posisi spasial dari kamera atas ini tidak langsung diumpankan ke kalang pengontrol tingkat rendah, melainkan difusikan terlebih dahulu dengan data sensor internal IMU (\textit{Inertial Measurement Unit}) berkecepatan tinggi melalui modul \textit{Extended Kalman Filter} (EKF\label{abbr:ekf}) untuk menghasilkan estimasi \textit{state} yang mulus dan stabil.
+Pose tersebut dikemas sebagai pesan MAVLink dan disiarkan melalui UDP ke \textit{companion computer} tiap wahana. Laju pembaruannya dibatasi laju bingkai kamera ($50$ bingkai per detik) dan tertunda oleh pemrosesan citra, sehingga pose kamera tidak diumpankan langsung ke kalang kendali, melainkan difusikan dengan IMU melalui \textit{Extended Kalman Filter} (EKF\label{abbr:ekf}).
 
 \subsection{Penentuan Jumlah Kamera dan Ukuran Penanda}
 \label{subsec:liputan_kamera}
@@ -637,9 +616,9 @@ Kamera yang dipilih adalah kamera USB \textit{global shutter} beresolusi $2592 \
 \begin{equation}
     d = h_p - (h_t + 0{,}08) = 1{,}72\ \text{m}
 \end{equation}
-Untuk sudut pandang horizontal $\theta_h$ dan vertikal $\theta_v$, liputan satu kamera pada bidang terbang adalah
+Untuk sudut pandang horizontal $\gamma_h$ dan vertikal $\gamma_v$, liputan satu kamera pada bidang terbang adalah
 \begin{equation}
-    w_\parallel = 2d\tan\frac{\theta_h}{2}, \qquad w_\perp = 2d\tan\frac{\theta_v}{2}
+    w_\parallel = 2d\tan\frac{\gamma_h}{2}, \qquad w_\perp = 2d\tan\frac{\gamma_v}{2}
 \end{equation}
 dengan $w_\parallel$ searah koridor dan $w_\perp$ melintang koridor. Lembar data kamera belum menyatakan apakah $120^\circ$ merupakan sudut horizontal atau diagonal, sehingga keduanya dihitung (Tabel~\ref{tab:liputan_kamera}).
 
@@ -665,37 +644,29 @@ dengan $w_\parallel$ searah koridor dan $w_\perp$ melintang koridor. Lembar data
 
 Pada kedua tafsiran, liputan melintang melebihi lebar koridor $2{,}70$~m, dan satu kamera tidak mencukupi segmen uji sepanjang $7{,}20$~m. Dua kamera menutup segmen tersebut dengan tumpang tindih sekurang-kurangnya $2{,}33$~m, yang dipakai untuk menyatukan keduanya ke satu kerangka acuan global.
 
-Ukuran penanda ditetapkan dari syarat deteksi. Penanda dianggap terdeteksi andal bila sisinya mencakup sekurang-kurangnya $48$ piksel. Penanda $10$~cm tidak memenuhi syarat ini pada tafsiran horizontal ($44$ piksel), sedangkan penanda $12$~cm memenuhi pada kedua tafsiran. Karena itu ukuran penanda ditetapkan $12$~cm; bila lembar data menyatakan sudut diagonal, penanda $10$~cm sudah memadai. Marginnya tetap tipis terhadap $80$ piksel yang nyaman untuk wahana bergerak, sehingga keandalan deteksi saat terbang dijadikan gerbang kelayakan Fase~2.
+Ukuran penanda ditetapkan dari syarat deteksi. Penanda dianggap terdeteksi andal bila sisinya mencakup sekurang-kurangnya $48$ piksel. Penanda $10$~cm tidak memenuhi syarat ini pada tafsiran horizontal ($44$ piksel), sedangkan penanda $12$~cm memenuhi pada kedua tafsiran. Karena itu ukuran penanda ditetapkan $12$~cm; bila lembar data menyatakan sudut diagonal, penanda $10$~cm sudah memadai. Marginnya tetap tipis terhadap $80$ piksel yang nyaman untuk wahana bergerak, sehingga keandalan deteksi saat terbang dipastikan pada uji terbang tunggal sebelum komponen kawanan dibeli (Bab~IV).
 
 Penanda $12$~cm tidak muat pada jalur datar selebar $4$~cm di sumbu tengah bodi (Gambar~\ref{fig:sketsa_wahana}), dan menempelkannya langsung di atas saluran propeler akan menutup aliran udara masuk dan menggerus daya angkat. Penanda karenanya dipasang pada pelat yang dinaikkan tiang penyangga setinggi $7$~cm di atas bodi, dengan dudukan dicetak menggunakan pencetak tiga dimensi yang tersedia.
 
 \section{Perancangan Sistem Persepsi Rintangan}
 
-Selain informasi posisi absolut, kemampuan kawanan quadcopter untuk bermanuver dan mengubah formasi secara adaptif sangat bergantung pada persepsi spasial terhadap lingkungan di sekitarnya. Untuk memfasilitasi algoritma penghindaran tabrakan dan pemicu rekonfigurasi adaptif pada strategi \textit{Event-Based Reconfiguration Control} (ERC), wahana dilengkapi dengan sistem deteksi rintangan berbasis sensor ultrasonik \cite{siegwartIntroductionAutonomousMobile2004}.
+Pemicu ERC membutuhkan lebar ruang bebas yang diukur sendiri oleh tiap agen. Untuk itu setiap wahana membawa sepasang sensor jarak yang dipasang diagonal, satu di kiri dan satu di kanan, bersudut $\beta$ terhadap arah maju (Gambar~\ref{fig:ultrasonic_placement}). Jenis sensornya, ultrasonik atau laser, ditetapkan melalui uji banding pada Subbab~\ref{subsec:pemilihan_sensor}.
 
-Sensor ultrasonik dipilih karena kemampuannya memberikan pengukuran jarak linier yang akurat pada jarak dekat hingga menengah, serta beban komputasinya yang sangat ringan bagi mikrokontroler. Pada perancangan perangkat keras ini, sepasang sensor ultrasonik diposisikan secara strategis menghadap ke arah lateral, yaitu satu sensor di sisi kiri dan satu sensor di sisi kanan kerangka quadcopter. Penempatan lateral ini secara khusus ditujukan untuk mengukur jarak wahana terhadap dinding atau rintangan di sekitarnya saat melintasi lorong sempit.
-
-Prinsip kerja sensor ultrasonik didasarkan pada pancaran gelombang suara frekuensi tinggi (umumnya 40 kHz) yang memantul kembali ketika mengenai permukaan sebuah objek padat. Jarak rintangan ($d_{\text{obs}}$) dihitung menggunakan prinsip waktu tempuh pantulan gelombang suara dengan persamaan dasar \cite{borensteinObstacleAvoidanceUltrasonic1988}:
+Kandidat ultrasonik mengukur jarak dari waktu tempuh pantulan gelombang suara \cite{siegwartIntroductionAutonomousMobile2004, borensteinObstacleAvoidanceUltrasonic1988}:
 \begin{equation}
     d_{\text{obs}} = \frac{v_{\text{suara}} \cdot t_{\text{pantul}}}{2}
 \end{equation}
-di mana $v_{\text{suara}}$ adalah kecepatan rambat suara di udara (sekitar $343$ m/s pada suhu ruangan $20^\circ\text{C}$), dan $t_{\text{pantul}}$ adalah waktu tempuh bolak-balik terukur sejak gelombang dipancarkan hingga pantulannya diterima kembali oleh penerima pada sensor.
+dengan $v_{\text{suara}}$ kecepatan rambat suara di udara (sekitar $343$ m/s pada $20^\circ\text{C}$) dan $t_{\text{pantul}}$ waktu tempuh bolak-balik gelombang.
 
-Dalam arsitektur sistem ini, hasil pembacaan jarak dari sensor kiri ($d_l$\label{sym:dl}) dan sensor kanan ($d_r$\label{sym:dr}) diakuisisi secara periodik oleh \textit{companion computer} (ESP32). Data dari kedua sensor ini kemudian dikalkulasi untuk menghasilkan estimasi ketersediaan lebar lingkungan aktual ($w_e$\label{sym:we}) tegak lurus terhadap arah gerak wahana. Formulasi matematis untuk estimasi lebar lorong ini dinyatakan sebagai:
+Jarak terukur sepanjang berkas, $d_{\mathrm{raw}}$, diproyeksikan menjadi jarak lateral kiri ($d_l$\label{sym:dl}) dan kanan ($d_r$\label{sym:dr}) oleh \textit{companion computer}:
 \begin{equation}
-    d_l = d_{\mathrm{raw},l}\sin\theta, \qquad d_r = d_{\mathrm{raw},r}\sin\theta
+    d_l = d_{\mathrm{raw},l}\sin\beta, \qquad d_r = d_{\mathrm{raw},r}\sin\beta
 \end{equation}
-dengan $d_{\mathrm{raw}}$ jarak terukur sepanjang berkas sensor dan $\theta$ sudut berkas terhadap arah maju. Lebar ruang bebas adalah
+Lebar ruang bebas ($w_e$\label{sym:we}) tegak lurus arah gerak adalah
 \begin{equation}
     w_e = d_l + d_r + w_{\text{body}}
 \end{equation}
-di mana $w_{\text{body}}$\label{sym:wbody} merepresentasikan lebar fisik badan quadcopter (jarak antar-sensor). 
-
-Variabel $w_e$ ini berfungsi sebagai parameter utama yang diumpankan ke perencana tingkat tinggi. Jika total jarak bebas lateral menyempit dan nilai $w_e$ turun melewati ambang batas toleransi formasi ideal, sistem akan mengenali kondisi tersebut sebagai rintangan lorong sempit dan memicu transisi mode formasi menjadi formasi mengekor. Skema pengukuran dan penempatan sensor ini dapat dilihat pada Gambar~\ref{fig:ultrasonic_placement}.
-
-
-
-Setelah seluruh sistem persepsi---baik lokalisasi spasial menggunakan kamera atas maupun persepsi rintangan menggunakan ultrasonik---berhasil memetakan kondisi eksternal, kerangka kontrol membutuhkan estimasi \textit{state} internal wahana yang bersih dari derau agar dapat mengeksekusi manuver dengan stabil. Oleh karena itu, data posisi dari kamera atas diproses lebih lanjut pada modul estimator \textit{state}.
+dengan $w_{\text{body}}$\label{sym:wbody} jarak antarsensor pada badan wahana. Nilai $w_e$ diumpankan ke perencana tingkat tinggi dan memicu mode mengekor ketika $w_e \le \alpha R$ (Persamaan~\ref{eq:erc_pemicu}).
 
 \subsection{Pemilihan Sensor Jarak}
 \label{subsec:pemilihan_sensor}
@@ -720,13 +691,11 @@ Bagian ini menguraikan rancangan kalang estimasi dan kendali yang dijalankan di 
 
 Pose dari kamera atas hanya berguna bila \textit{flight controller} dapat menerimanya sebagai sumber navigasi eksternal. ArduPilot mendukung masukan ini melalui EKF3, tetapi fitur navigasi non-GPS memerlukan papan dengan memori \textit{flash} lebih dari 1~MB \cite{ardupilotNonGPSPositionEstimation}. SpeedyBee F405 Mini hanya memiliki 1~MB, dan build stabil resminya menonaktifkan fitur navigasi eksternal EKF3, odometri visual, serta masukan \textit{beacon} \cite{ardupilotFeaturesSpeedyBeeF405Mini}. Dengan firmware bawaan, pose kamera tidak dapat diterima.
 
-Penelitian ini karenanya memakai firmware ArduPilot racikan yang dibangun melalui ArduPilot Custom Firmware Builder \cite{ardupilotCustomFirmwareBuilder}: fitur navigasi eksternal EKF3 diaktifkan dan fitur yang tidak dipakai dinonaktifkan agar muat dalam 1~MB. Keberhasilan build ini menjadi bagian gerbang kelayakan Fase~2. Bila tidak muat, kalang posisi dan kecepatan dipindahkan ke \textit{companion computer}, dan \textit{flight controller} hanya menjalankan kalang sikap. Daftar fitur yang diaktifkan dan dinonaktifkan dicatat sebagai lampiran agar firmware dapat dibangun ulang.
+Penelitian ini karenanya memakai firmware ArduPilot racikan yang dibangun melalui ArduPilot Custom Firmware Builder \cite{ardupilotCustomFirmwareBuilder}: fitur navigasi eksternal EKF3 diaktifkan dan fitur yang tidak dipakai dinonaktifkan agar muat dalam 1~MB. Build ini dikerjakan pada Fase~2. Bila tidak muat, kalang posisi dan kecepatan dipindahkan ke \textit{companion computer}, dan \textit{flight controller} hanya menjalankan kalang sikap. Daftar fitur yang diaktifkan dan dinonaktifkan dicatat sebagai lampiran agar firmware dapat dibangun ulang.
 
 \subsection{Estimator \textit{State} dengan \textit{Extended Kalman Filter} (EKF)}
 
-Keberhasilan manuver yang dihasilkan oleh perencana tingkat tinggi dan keandalan stabilisasi oleh pengontrol tingkat rendah sangat bergantung pada akurasi informasi \textit{state} aktual dari wahana. Mengingat dinamika quadcopter bersifat non-linear dan sensor pengukuran selalu mengandung derau, sistem ini dilengkapi dengan algoritma \textit{Extended Kalman Filter} (EKF) sebagai estimator \textit{state} utama \cite{KalmanFilterGeneralizations2006}. 
-
-EKF memfusikan data sensor secara \textit{real-time}. Pendekatan berbasis penapis Kalman tetap menjadi pilihan umum untuk estimasi pose wahana udara mikro di dalam ruangan, dan masih dibandingkan secara aktif dengan pendekatan berbasis graf pada penelitian mutakhir \cite{kabiriGraphBasedErrorState2024}. Algoritma ini menggabungkan data dari sensor internal bawaan seperti \textit{Inertial Measurement Unit} (IMU) yang memiliki laju pembaruan tinggi namun rentan terhadap akumulasi \textit{drift} seiring waktu, dengan data dari sistem lokalisasi kamera atas berbasis penanda visual yang memberikan referensi posisi absolut. 
+Dinamika quadcopter tidak linear dan setiap sensor mengandung derau, sehingga \textit{state} wahana diestimasi dengan EKF \cite{KalmanFilterGeneralizations2006}. EKF memadukan IMU yang cepat tetapi mengakumulasi \textit{drift} dengan pose kamera atas yang absolut tetapi lebih lambat. Pendekatan penapis Kalman tetap lazim untuk estimasi pose wahana udara mikro di dalam ruangan dan masih dibandingkan dengan pendekatan berbasis graf pada penelitian mutakhir \cite{kabiriGraphBasedErrorState2024}.
 
 Secara matematis, sistem estimasi \textit{state} quadcopter dirumuskan dalam model ruang keadaan non-linear diskrit \cite{welchIntroductionKalmanFilter2006}:
 \begin{align}
@@ -749,7 +718,7 @@ Vektor masukan $\mathbf{u}_{k-1}$ berasal dari pembacaan sensor internal IMU baw
     \end{bmatrix}^T
     \label{eq:measurement_vector_ekf}
 \end{equation}
-Variabel $\mathbf{w}_{k-1}$ dan $\mathbf{v}_k$ masing-masing merepresentasikan derau proses dan derau pengukuran, yang dimodelkan sebagai derau Gaussian putih berdistribusi normal dengan matriks kovariansi $\mathbf{Q}_k$ dan $\mathbf{R}_k$.
+Derau proses $\mathbf{w}_{k-1}$ dan derau pengukuran $\mathbf{v}_k$ dimodelkan sebagai derau Gaussian putih dengan kovariansi $\mathbf{Q}_k$ dan $\mathbf{R}_k$.
 
 Karena fungsi kinematika translasi dan rotasi bersifat non-linear, EKF melakukan linearisasi lokal pada setiap langkah waktu menggunakan matriks Jacobian \cite{gelbAppliedOptimalEstimation1974}:
 \begin{equation}
@@ -775,9 +744,9 @@ Setiap kali pose absolut dari kamera atas tiba (hingga $50$ kali per detik), kor
     \hat{\mathbf{x}}_{k|k} &= \hat{\mathbf{x}}_{k|k-1} + \mathbf{K}_k \tilde{\mathbf{y}}_k \\
     \mathbf{P}_{k|k} &= (\mathbf{I} - \mathbf{K}_k \mathbf{H}_k) \mathbf{P}_{k|k-1}
 \end{align}
-di mana $\tilde{\mathbf{y}}_k$ adalah nilai inovasi dan $\mathbf{K}_k$ adalah matriks penguatan Kalman. Matriks $\mathbf{K}_k$ secara dinamis membobot kepercayaan antara integrasi kinematika IMU berkecepatan tinggi dan data posisi absolut kamera atas.
+dengan $\tilde{\mathbf{y}}_k$ inovasi dan $\mathbf{K}_k$ penguatan Kalman yang membobot prediksi IMU terhadap pose kamera.
 
-Keluaran akhir $\hat{\mathbf{x}}_{k|k}$ menghasilkan estimasi pose 3D dan kecepatan linear yang mulus dan bebas \textit{drift}. Estimasi ini diumpankan ke pengontrol tingkat rendah untuk menutup kalang stabilisasi, serta diteruskan ke \textit{companion computer} untuk keperluan evaluasi logika kontrol formasi ERC secara terdesentralisasi.
+Estimasi $\hat{\mathbf{x}}_{k|k}$ menutup kalang pengendali tingkat rendah dan diteruskan ke \textit{companion computer} untuk perencana tingkat tinggi (Gambar~\ref{fig:ekf_diagram}).
 
 \begin{figure}[htbp]
     \centering
@@ -933,9 +902,9 @@ Dengan lebar bersih koridor $270$ cm dan syarat ruang bebas sekurang-kurangnya $
     \endgroup
 \end{table}
 
-Dua perbedaan pada Tabel~\ref{tab:penskalaan_arena} perlu dinyatakan terbuka karena akan memengaruhi penafsiran hasil. Pertama, perbandingan celah terhadap diameter agen pada arena fisik lebih besar daripada pada simulasi, karena wahana nyata secara relatif lebih ramping dibanding agen tersimulasi. Artinya lintasan fisik justru lebih longgar daripada lintasan tersimulasi, sehingga keberhasilan di arena fisik tidak serta-merta membuktikan keberhasilan pada rasio yang lebih ketat. Kedua, bagian sempit arena hanya sepanjang $1{,}80$ m, jauh lebih pendek daripada hasil penskalaan langsung, sehingga fase mengekor berlangsung lebih singkat. Penyelarasan atas perbedaan kedua ini dilakukan dengan menambahkan skema baru pada simulator yang meniru geometri arena fisik, bukan dengan memaksa arena meniru skema simulasi.
+Dua perbedaan pada Tabel~\ref{tab:penskalaan_arena} memengaruhi penafsiran hasil. Pertama, rasio celah terhadap diameter agen di arena lebih besar karena wahana nyata relatif lebih ramping, sehingga keberhasilan di arena tidak serta-merta membuktikan keberhasilan pada rasio simulasi yang lebih ketat. Kedua, bagian sempit arena hanya $1{,}80$ m sehingga fase mengekor lebih singkat. Untuk perbedaan kedua, simulator diberi skema baru yang meniru geometri arena, bukan arena yang dipaksa meniru simulasi.
 
-Tata letak arena selengkapnya diperlihatkan pada Gambar~\ref{fig:sketsa_arena}. Salah satu kolom bangunan yang menjorok ke dalam koridor dimanfaatkan sebagai salah satu sisi penyempitan. Pemanfaatan kolom ini disengaja: posisinya permanen dan kaku sehingga geometri rintangan dapat direproduksi antar sesi pengujian tanpa pengukuran ulang. Sisi seberangnya dilengkapi susunan dus kardus yang menjorok sedalam $1{,}01$ m sehingga menyisakan celah $90$ cm.
+Tata letak arena selengkapnya diperlihatkan pada Gambar~\ref{fig:sketsa_arena}. Salah satu kolom bangunan yang menjorok ke koridor menjadi satu sisi penyempitan karena posisinya permanen, sehingga geometri rintangan dapat direproduksi antarsesi tanpa pengukuran ulang. Sisi seberangnya dilengkapi susunan dus kardus yang menjorok sedalam $1{,}01$ m sehingga menyisakan celah $90$ cm.
 
 \begin{figure}[htbp]
     \centering
@@ -958,7 +927,7 @@ Keseluruhan subsistem yang telah diuraikan disatukan ke dalam arsitektur pada Ga
     \label{fig:arsitektur_sistem}
 \end{figure}
 
-Satu prinsip dipertahankan tegas di seluruh arsitektur: \textbf{kamera atas berperan sebagai sistem lokalisasi, sedangkan sensor jarak pada wahana berperan sebagai sistem persepsi}. Pemisahan ini bukan sekadar pembagian teknis. Kamera atas mengetahui posisi absolut seluruh agen, dan rintangan bersifat statis pada posisi yang diketahui, sehingga $w_e$ dapat saja dihitung terpusat lalu disiarkan. Namun bila itu dilakukan, agen tidak lagi mempersepsi lingkungannya sendiri melainkan membaca peta kiriman pusat, dan sifat terdesentralisasi yang melandasi ERC menjadi gugur. Dengan mempertahankan pemisahan tersebut, tiap agen tetap memutuskan rekonfigurasi berdasarkan pengukuran yang dilakukannya sendiri.
+Arsitektur ini memisahkan \textbf{lokalisasi} (kamera atas) dari \textbf{persepsi} (sensor jarak pada wahana). Karena rintangan statis dan posisinya diketahui, $w_e$ sebenarnya dapat dihitung terpusat dari kamera lalu disiarkan. Hal itu tidak dilakukan: agen yang membaca peta kiriman pusat tidak lagi mempersepsi lingkungannya sendiri, dan sifat terdesentralisasi yang melandasi ERC gugur.
 
 % ==========================================
 % BAB IV METODOLOGI DAN RENCANA PELAKSANAAN

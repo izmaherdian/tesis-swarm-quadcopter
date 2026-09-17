@@ -57,7 +57,7 @@ for s in (-1, 1):
     garis(ax, [s*SX, s*SX], [SY, SY + 1.5], lw=TIPIS, warna=ABU, z=2)
     a0, a1 = (90, 135) if s < 0 else (45, 90)
     ax.add_patch(Arc((s*SX, SY), 1.5, 1.5, theta1=a0, theta2=a1, lw=TIPIS, zorder=3))
-    ax.text(s*SX - s*0.28, SY + 0.95, r"$\theta$", fontsize=FS, ha="center", va="center")
+    ax.text(s*SX - s*0.28, SY + 0.95, r"$\beta$", fontsize=FS, ha="center", va="center")
     mid = ((s*SX + hit[0])/2, (SY + hit[1])/2)
     ax.text(mid[0] - s*0.32, mid[1] + 0.25, r"$d_{\mathrm{raw},%s}$" % ("l" if s < 0 else "r"),
             fontsize=FS, ha="center", va="center", rotation=-s*45,
