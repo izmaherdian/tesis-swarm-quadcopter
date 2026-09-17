@@ -3,6 +3,7 @@
 #   make proposal   → kompilasi tulisan/proposal/main.pdf
 #   make laporan    → kompilasi tulisan/laporan-akhir/main.pdf
 #   make all        → keduanya
+#   make gambar     → hasilkan ulang seluruh gambar dari tulisan/gambar/gbr_*.py
 #   make watch-p    → kompilasi ulang otomatis tiap kali proposal disimpan
 #   make clean      → buang artefak build, PDF tetap ada
 #   make distclean  → buang artefak build beserta PDF-nya
@@ -11,7 +12,7 @@
 
 LATEXMK := latexmk -xelatex -bibtex -interaction=nonstopmode -halt-on-error
 
-.PHONY: all proposal laporan watch-p watch-l clean distclean check
+.PHONY: all proposal laporan gambar watch-p watch-l clean distclean check
 
 all: proposal laporan
 
@@ -20,6 +21,11 @@ proposal:
 
 laporan:
 	$(LATEXMK) -cd tulisan/laporan-akhir/main.tex
+
+# Gambar dibuat skrip (Times New Roman, PDF vektor ukuran cetak) — jangan
+# menyunting PDF di tulisan/proposal/figures/ secara manual.
+gambar:
+	@cd tulisan/gambar && for f in gbr_*.py; do python3 $$f || exit 1; done
 
 watch-p:
 	$(LATEXMK) -pvc -cd tulisan/proposal/main.tex

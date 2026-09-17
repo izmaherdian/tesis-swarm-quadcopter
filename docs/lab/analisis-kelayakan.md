@@ -7,6 +7,12 @@
 > kini sudah terbaca setelah `ffmpeg` dipasang. Laporan sebelumnya keliru —
 > berkasnya tidak rusak, **dekoder OpenCV yang gagal**. Temuan dari video ada di
 > bagian 9, dan sebagiannya mengubah kesimpulan di bagian 1.
+>
+> **⚠️ Keputusan kamera sudah berubah (2026-09-16):** rekomendasi kamera 4K
+> (HFOV ±109°, penanda 10 cm) di bagian 4 **digantikan** kamera USB 5 MP
+> *global shutter* 2592×1944 lensa 120° dengan penanda 12 cm. Perhitungan yang
+> berlaku ada di Subbab "Penentuan Jumlah Kamera dan Ukuran Penanda" proposal dan
+> `tulisan/gambar/parameter.py`. Bagian 4 dibiarkan sebagai catatan jejak keputusan.
 
 ## 1. Ruangan
 
@@ -295,9 +301,9 @@ membandingkan hasil fisik dengan hasil simulasi.
 
 ## 11. Rancangan arena (final)
 
-![Sketsa arena uji](sketsa-arena.png)
-
-Dibuat oleh `sketsa_arena.py` — jalankan ulang bila geometri berubah.
+Denah: [`tulisan/proposal/figures/arena.pdf`](../../tulisan/proposal/figures/arena.pdf),
+dibuat oleh `tulisan/gambar/gbr_arena.py` (`make gambar`) dari parameter di
+`tulisan/gambar/parameter.py` — jalankan ulang bila geometri berubah.
 
 **Keputusan yang mengubah rancangan sebelumnya:**
 

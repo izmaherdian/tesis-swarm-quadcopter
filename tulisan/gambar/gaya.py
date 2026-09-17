@@ -107,7 +107,8 @@ def ukur(ax, p1, p2, teks, offset, fs=FS_KECIL, bantu=True, celah=0.0):
 def simpan(fig, nama):
     os.makedirs(KELUAR, exist_ok=True)
     pdf = os.path.join(KELUAR, f"{nama}.pdf")
-    fig.savefig(pdf, bbox_inches="tight", pad_inches=0.02, facecolor="white")
+    fig.savefig(pdf, bbox_inches="tight", pad_inches=0.02, facecolor="white",
+                metadata={"CreationDate": None})   # PDF identik bila isi tak berubah
     if PRATINJAU:
         os.makedirs(PRATINJAU, exist_ok=True)
         fig.savefig(os.path.join(PRATINJAU, f"{nama}.png"), bbox_inches="tight",
