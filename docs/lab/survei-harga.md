@@ -38,12 +38,12 @@ Harga kamera Rp1.500.000 pada RAB awal adalah untuk **kamera 60 FPS**, bukan kam
 
 | Harga (Rp) | Listing | Catatan |
 |---:|---|---|
-| **2.339.000** | [Dunia Fantasiku, Jakarta Pusat](https://www.tokopedia.com/dfantasiku/radiomaster-pocket-elrs-2-4ghz-radio-controller-tx-charcoal-gratis-ongkir) | batas atas |
+| **2.339.000** | [Dunia Fantasiku, Jakarta Pusat](https://www.tokopedia.com/dfantasiku/radiomaster-pocket-elrs-2-4ghz-radio-controller-tx-charcoal-gratis-ongkir-1730797488802858854) | batas atas |
 | 2.035.000 | [Buaya Aerotech, Sleman](https://www.tokopedia.com/buayaaerotech/radiomaster-pocket-hall-gimbals-elrs-transmitter-remote-control-1731231873418430268) | |
-| 1.739.000 | [xexxyy, Bekasi](https://www.tokopedia.com/xexxyy/radiomaster-pocket-elrs-2-4ghz-radio-controller-tx-charcoal-17311351577381124) | |
-| 1.699.000 | [FPV addiction, Jakarta Selatan](https://www.tokopedia.com/fpvaddiction/radiomaster-pocket-hall-sensor-gimbals-radio-transmitter-charcoal-trans) | |
-| 1.639.000 | [exhobbyfpv, Tangerang](https://www.tokopedia.com/exhobby/radiomaster-pocket-crush-2-4ghz-elrs-hall-gimbal-transmitter-portable-lightw) | varian *Pocket Crush* |
-| 1.329.000 | [Indah Jaya Store 21, Jakarta Timur](https://www.tokopedia.com/indahjayastore21/radiomaster-pocket-elrs-2-4ghz-radio-controller-tx-charcoal-1731530) | |
+| 1.739.000 | [xexxyy, Bekasi](https://www.tokopedia.com/xexxyy/radiomaster-pocket-elrs-2-4ghz-radio-controller-tx-charcoal-1731135157738112412) | |
+| 1.699.000 | [FPV addiction, Jakarta Selatan](https://www.tokopedia.com/fpvaddiction/radiomaster-pocket-hall-sensor-gimbals-radio-transmitter-charcoal-transparan-elrs-charcoal-elrs-8da45) | |
+| 1.639.000 | [exhobbyfpv, Tangerang](https://www.tokopedia.com/exhobby/radiomaster-pocket-crush-2-4ghz-elrs-hall-gimbal-transmitter-portable-lightweight-foldable-antenna-1736740678019941704-1736740670765761864) | varian *Pocket Crush* |
+| 1.329.000 | [Indah Jaya Store 21, Jakarta Timur](https://www.tokopedia.com/indahjayastore21/radiomaster-pocket-elrs-2-4ghz-radio-controller-tx-charcoal-1731530938771933113) | |
 | 1.249.000 | [Dandaanan, Tangerang](https://www.tokopedia.com/dandaanan/dand-radiomaster-pocket-elrs-2-4ghz-radio-controller-tx-charcoal) | |
 | 985.000 | [RC Hobby Aero, Depok](https://www.tokopedia.com/rchobbyaero/radiomaster-pocket-radio-controller-m2-elrs-2-4ghz-charcoal-f438b) | stok habis |
 
@@ -55,10 +55,10 @@ Rp29.551.000 yang jelas tidak wajar.
 
 | Harga (Rp) | Listing | Catatan |
 |---:|---|---|
-| **337.000** | [Abadi store07, Tangerang](https://www.tokopedia.com/sabinar/terbaru-happymodel-2-4g-expresslrs-elrs-ep2-tcxo-long-range-rc-receiver-terl) | batas atas |
-| 322.000 | [cv gamasentosa, Jakarta Selatan](https://www.tokopedia.com/cgamasentosa/happymodel-2-4g-expresslrs-elrs-ep2-tcxo-long-range-rc-receiver-murah-1) | |
+| **337.000** | [Abadi store07, Tangerang](https://www.tokopedia.com/sabinar/terbaru-happymodel-2-4g-expresslrs-elrs-ep2-tcxo-long-range-rc-receiver-terlaris-1731126126732018778) | batas atas |
+| 322.000 | [cv gamasentosa, Jakarta Selatan](https://www.tokopedia.com/cgamasentosa/happymodel-2-4g-expresslrs-elrs-ep2-tcxo-long-range-rc-receiver-murah-1730775054842955535) | |
 | 310.000 | [Mahatma Tech, Malang](https://www.tokopedia.com/mahatma-tech/happymodel-2-4g-expresslrs-elrs-ep2-tcxo-long-range-rc-receiver) | |
-| 295.000 | [ILMIYAID, Jakarta Selatan](https://www.tokopedia.com/ilmiyaid/happymodel-2-4g-expresslrs-elrs-ep2-tcxo-long-range-rc-receiver-17309954295) | |
+| 295.000 | [ILMIYAID, Jakarta Selatan](https://www.tokopedia.com/ilmiyaid/happymodel-2-4g-expresslrs-elrs-ep2-tcxo-long-range-rc-receiver-1730995429586666948) | |
 | 246.000 | [justShopIt, Bandung](https://www.tokopedia.com/justshopit/happymodel-2-4g-expresslrs-elrs-ep2-tcxo-long-range-rc-receiver) | |
 
 Dikecualikan: listing gabungan EP1/EP2/EP1 Dual (Rp500.000–690.000, harga kartu
@@ -69,15 +69,15 @@ bisa untuk varian EP1 Dual) dan paket 1/2/3 buah (Rp2.235.150).
 | Harga (Rp) | Listing | Catatan |
 |---:|---|---|
 | **1.906.700** | [Lapak Fian Prasetyo, Jakarta Barat](https://www.tokopedia.com/lapakfianprasetyo/speedybee-f405-mini-bls-35a-20x20-stack-f405-flight-controller-35) | batas atas, *pre-order* |
-| 1.785.400 | [sentry store12, Jakarta Timur](https://www.tokopedia.com/sentrystore/speedybee-f405-mini-bls-35a-20x20mm-stack-flytower-3-6s-lipo-17338373143) | |
-| 1.785.400 | [Teacengerdec, Jakarta Timur](https://www.tokopedia.com/teacengerdec/speedybee-f405-mini-bls-35a-20x20mm-stack-flytower-3-6s-lipo-1733836257) | |
-| 1.644.000 | [the anaristr](https://www.tokopedia.com/the-anaristr/speedybee-f405-mini-bls-35a-3-6s-20x20mm-stack-flight-controller-fc-esc) | |
-| 1.443.000 | [Nusantara Maju1](https://www.tokopedia.com/nusantaramaju1/speedybee-f405-mini-bls-35a-3-6s-20x20mm-stack-flight-controller-fc-e) | |
+| 1.785.400 | [sentry store12, Jakarta Timur](https://www.tokopedia.com/sentrystore/speedybee-f405-mini-bls-35a-20x20mm-stack-flytower-3-6s-lipo-1733837314357560619) | |
+| 1.785.400 | [Teacengerdec, Jakarta Timur](https://www.tokopedia.com/teacengerdec/speedybee-f405-mini-bls-35a-20x20mm-stack-flytower-3-6s-lipo-1733836257530382289) | |
+| 1.644.000 | [the anaristr](https://www.tokopedia.com/the-anaristr/speedybee-f405-mini-bls-35a-3-6s-20x20mm-stack-flight-controller-fc-esc-for-fpv-drones-dji-vista-link-air-unit-o3-1731303669302985998) | |
+| 1.443.000 | [Nusantara Maju1](https://www.tokopedia.com/nusantaramaju1/speedybee-f405-mini-bls-35a-3-6s-20x20mm-stack-flight-controller-fc-esc-for-fpv-drones-dji-vista-link-air-unit-o3-1730860097454638933) | |
 | 1.420.000 | [axisacell, Jakarta Barat](https://www.tokopedia.com/sinarmart-jkt/speedybee-f405-mini-bls-35a-20x20-stack-drone-1731009143216505923) | |
-| 1.343.000 | [ILMIYAID](https://www.tokopedia.com/ilmiyaid/speedybee-f405-mini-bls-35a-3-6s-20x20mm-stack-flight-controller-fc-esc-for) | |
+| 1.343.000 | [ILMIYAID](https://www.tokopedia.com/ilmiyaid/speedybee-f405-mini-bls-35a-3-6s-20x20mm-stack-flight-controller-fc-esc-for-fpv-drones-dji-vista-link-air-unit-o3-1730995949501318596) | |
 | 1.275.000 | [Powerloops, Jakarta Utara](https://www.tokopedia.com/powerloops/speedybee-f405-mini-35a-4in1-bluetooth-fc-esc-flight-controller-stack) | stok habis |
 | 1.250.000 | [e-Hely, Jakarta Selatan](https://www.tokopedia.com/e-hely/speedybee-f405-mini-bls-35a-20x20-stack-drone) | stok habis |
-| 991.000 | [SEPRAI](https://www.tokopedia.com/grosirsepraii/speedybee-f405-mini-bls-35a-3-6s-20x20mm-stack-flight-controller-fc-es) | |
+| 991.000 | [SEPRAI](https://www.tokopedia.com/grosirsepraii/speedybee-f405-mini-bls-35a-3-6s-20x20mm-stack-flight-controller-fc-esc-for-fpv-drones-dji-vista-link-air-unit-o3-1732251103977047806) | |
 | 940.000 | [justShopIt, Bandung](https://www.tokopedia.com/justshopit/speedybee-f405-mini-bls-35a-3-6s-20x20mm-stack-flight-controller-fc-esc-for-fpv-drones-dji-vista-link-air-unit-o3-esc-6a84a), varian *FC ESC Stack* | stok habis |
 
 Dikecualikan: "Drone Stack Kit 4-In-1 ESC Board Metal" (Riannaomi, Rp2.244.428,
@@ -90,9 +90,9 @@ sama dengan pilihan varian ESC/FC/*stack*; harga kartu mungkin bukan harga varia
 
 | Harga (Rp) | Listing | Catatan |
 |---:|---|---|
-| **282.500** | [CNC Store Bandung](https://www.tokopedia.com/cncstorebandung/xiao-esp32s3-original-board-iot-development-kit-dual-core-wifi-bluet) | batas atas |
+| **282.500** | [CNC Store Bandung](https://www.tokopedia.com/cncstorebandung/xiao-esp32s3-original-board-iot-development-kit-dual-core-wifi-bluetooth-5-0-ble-microcontroller-1732253317634623038) | batas atas |
 | 279.000 | [GRES STUDIO, Jakarta Barat](https://www.tokopedia.com/gresstudio/seeed-studio-xiao-esp32s3-2-4g-wifi-ble-mesh-5-0-8mb-1730810225826301815) | |
-| 245.500 | [warehouseelectronic](https://www.tokopedia.com/warehouseelectronic/seeeduino-xiao-esp32-s3-mini-development-board-original-seeed-st) | |
+| 245.500 | [warehouseelectronic](https://www.tokopedia.com/warehouseelectronic/seeeduino-xiao-esp32-s3-mini-development-board-original-seeed-studio-esp32s3-2-4ghz-wifi-ble-5-0-dual-core-battery-charge-power-efficiency-8mb-psram-8mb-flash-esp32-s3-xiao) | |
 | 198.000 | [Mikatronics, Makassar](https://www.tokopedia.com/mikatronics/seeed-studio-xiao-esp32s3-2-4ghz-wifi-ble-5-0-8mb-psram-8mb-flash) | stok habis |
 
 Dikecualikan: varian *Sense* (berkamera), *Plus*, dan kit LoRa/Meshtastic/ReSpeaker.
