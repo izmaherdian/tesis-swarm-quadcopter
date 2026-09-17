@@ -23,7 +23,7 @@
 | *Flight controller* SpeedyBee F405 Mini ("F4 Mini") | STM32F405 (flash 1 MB), ICM-42688P, DSP-310 | 4 | 2 | **6** | satu lepas masih terhubung ESC yang diduga rusak; satu lepas sudah berkabel baterai dan kapasitor |
 | ESC SpeedyBee BLS 35A Mini 4-in-1 | BLHeli\_S | 4 | 1 (+?) | **5 (+?)** | yang lepas = **V2, diduga rusak**; apakah FC lepas kedua juga membawa ESC **?** |
 | Motor SpeedyBee 2006-1950KV | | 16 | 4 | **20** | cukup untuk 5 wahana |
-| Propeler | ukuran **?** (Bee35: 90 mm) | 0 | 14 | **14** | 5 wahana butuh 20 |
+| Propeler Gemfan **D90S** | 3 bilah, 90 mm, *T-mount* 1,5 mm | 0 | 14 | **14** | 5 wahana butuh 20 |
 | Seeed XIAO ESP32-S3 | Wi-Fi 2,4 GHz + BLE | 4 | 1 | **5** | cukup untuk 5 wahana |
 | Penerima ExpressLRS EP2 TCXO | 2,4 GHz | 4 | — | **4** | + 1 "ELRS" lepas, jenis **?** |
 | Sensor MicoAir MTF-01 v1.1 | aliran optik + pengukur jarak laser 8 m | 2 | 1 | **3** | tidak dipakai (keputusan penulis) |
@@ -49,7 +49,7 @@ Analisis kecocokan: [`analisis-baterai.md`](analisis-baterai.md).
 
 | Komponen | Status | Keterangan |
 |---|---|---|
-| Pengisi daya baterai LiPo | ✅ tersedia | model **?** (penulis mencatat papan pengisian paralel, belum pengisi dayanya) |
+| Pengisi daya baterai LiPo | ✅ 1 | **SkyRC T6X80** *balance charger/discharger* AC/DC, 1–6S, maks. 80 W ([foto 19](foto/19-pengisi-daya-skyrc.png)) |
 | Papan pengisian paralel Power Genius 2-in-1 | ✅ 1 | 2–6S, untuk mengisi beberapa baterai bersel sama sekaligus |
 | SkyRC multi balance board | ✅ 1 | adaptor *balance* 2–6S |
 | Kontainer penyimpanan baterai LiPo | ✅ tersedia | konfirmasi penulis 2026-09-17 |
@@ -73,7 +73,7 @@ Fase mengikuti BAB IV proposal. Harga dan sumbernya: [`survei-harga.md`](survei-
 | Kacamata pengaman | 1 unit (tas baterai dan jaring tidak perlu — keputusan penulis) | Fase 4 — sebelum uji terbang tunggal |
 | ESC SpeedyBee BLS 35A Mini V2 | Wahana kelima (ESC lepas diduga rusak) | Fase 4 (1 unit) |
 | XIAO ESP32-S3 | Cadangan (5 sudah tersedia) — keputusan penulis | Fase 4 (1 unit) |
-| Propeler Gemfan D90S 3 bilah (isi 4) | 20 untuk 5 wahana − 14 tersedia | Fase 4 (2 paket = 8 buah) |
+| Propeler Gemfan D90S 3 bilah (isi 4, tipe dikonfirmasi penulis) | 20 untuk 5 wahana − 14 tersedia | Fase 4 (2 paket = 8 buah) |
 | Baterai CNHL Pizza 6S 1200 mAh 100C | Total 6 baterai 6S (5 wahana + 1 cadangan) − 2 tersedia | Fase 4 (4 unit) |
 | Dus kardus rintangan | Arena | Fase 4 (10 unit) |
 | Lakban penanda posisi lantai | Arena | Fase 4 |

@@ -51,3 +51,4 @@ rapi, yang penting terbaca.
 | # | Berkas | Isi |
 |---|---|---|
 | 18 | `18-datasheet-kamera-elp-og05b10.png` | Lembar spesifikasi kamera ELP-U3GS05B10C (dari penjual Fast Importir) |
+| 19 | `19-pengisi-daya-skyrc.png` | Pengisi daya SkyRC T6X80 AC/DC *balance charger/discharger* |

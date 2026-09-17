@@ -35,3 +35,17 @@ rancangan, apalagi dengan beban tambahan (ESP32-S3, penanda bertiang, dua sensor
 - Uji terbang tunggal (Fase 4 awal) cukup dengan 2 baterai 6S yang ada.
 - Papan pengisian paralel Power Genius hanya boleh mengisi baterai **bersel sama**
   (semua 6S) secara bersamaan, dan tetap memerlukan pengisi daya *balance*.
+
+## Pengisian
+
+Pengisi daya yang tersedia adalah **SkyRC T6X80** (1–6S, daya pengisian maksimum
+80 W; [foto 19](foto/19-pengisi-daya-skyrc.png)), dipakai bersama papan paralel
+Power Genius dan SkyRC *multi balance board*.
+
+- Tegangan penuh 6S = 6 × 4,2 V = 25,2 V. Mengisi satu baterai 1200 mAh pada 1C
+  (1,2 A) butuh sekitar 25,2 × 1,2 ≈ 30 W.
+- Batas 80 W setara arus total sekitar 80 / 25,2 ≈ 3,2 A, sehingga pengisian paralel
+  pada 1C **paling banyak 2 baterai sekaligus** (2 × 30 W ≈ 60 W). Tiga baterai sekaligus
+  (≈ 91 W) harus diturunkan arusnya di bawah 1C.
+- Dengan 6 baterai 6S, pengisian penuh berlangsung **sekitar tiga putaran** pengisian.
+  Ini perlu diperhitungkan saat menjadwalkan sesi uji kawanan (Fase 4).

@@ -178,7 +178,7 @@ Kebutuhan 20 buah − 14 tersedia = 6 → **2 paket (8 buah)**.
 | 29.999 | [Semut Emas FPV](https://www.tokopedia.com/semutemasfpv/gemfan-d90s-3-5-inch-propeller-ducted-3-blade-fpv-drone-cinelog35-clear-gray-3f34d) |
 
 Dikecualikan: riswantona Rp65.000 (isi paket tidak tercantum), versi poros M5, lima bilah,
-dan paket 10 pasang. **Tipe propeler perlu dipastikan penulis** (tertulis "D90RS?").
+dan paket 10 pasang. Tipe **D90S dikonfirmasi penulis** (2026-09-17).
 
 ### Baterai CNHL Pizza Series 6S 1200 mAh 100C — dipakai **Rp637.000** (4 unit)
 
