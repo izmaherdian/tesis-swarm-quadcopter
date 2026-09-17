@@ -581,7 +581,7 @@ Karena kedua jalur melewati \textit{router} yang sama, kegagalan \textit{router}
 \section{Perancangan Sistem Lokalisasi Dalam Ruangan}
 \label{sec:lokalisasi_rancangan}
 
-GPS tidak tersedia di dalam ruangan, sehingga posisi absolut diperoleh dari kamera atas yang mengamati penanda visual pada wahana. Lokalisasi kamera eksternal tidak mengakumulasi \textit{drift}: galat pose di bawah $3$~cm dan $1^\circ$ telah dilaporkan untuk area dalam ruangan seluas sekitar $240$~m$^2$ \cite{bultmannExternalCameraBased2023}. Presisinya bergantung pada resolusi kamera, ukuran penanda, dan jarak kamera ke penanda; akurasi pose AprilTag menurun seiring bertambahnya jarak dan mengecilnya penanda \cite{zhangIntegratedFrameworkEnhancing2026}. Ketiga besaran tersebut karenanya dihitung dari dimensi ruang uji (Subbab~\ref{subsec:liputan_kamera}).
+GPS tidak tersedia di dalam ruangan, sehingga posisi absolut diperoleh dari kamera atas yang mengamati penanda visual pada wahana. Lokalisasi kamera eksternal tidak mengakumulasi \textit{drift}: galat pose di bawah $3$~cm dan $1^\circ$ telah dilaporkan untuk area dalam ruangan seluas sekitar $240$~m$^2$ \cite{bultmannExternalCameraBased2023}. Presisinya bergantung pada resolusi kamera, ukuran penanda, dan jarak kamera ke penanda; akurasi pose AprilTag menurun seiring bertambahnya jarak dan mengecilnya penanda \cite{zhangIntegratedFrameworkEnhancing2026}. Ketiga besaran tersebut karenanya dihitung dari dimensi ruang uji (Subbab~\ref{subsec:liputan_kamera}). Alternatif berbasis radio, misalnya sistem \textit{Ultra-Wide Band} dengan modul ESP32 \cite{hoDesignIndoorPositioning2023}, tidak dijadikan lokalisasi utama karena presisinya dibatasi kondisi tanpa garis pandang yang mengganggu perambatan sinyal di dalam ruangan.
 
 Sistem lokalisasi terdiri atas tiga komponen:
 \begin{enumerate}
@@ -786,7 +786,7 @@ Pengendali tingkat rendah berjalan pada \textit{flight controller} SpeedyBee F40
 \subsection{Perencana Tingkat Tinggi dan Formulasi ERC}
 \label{subsec:erc}
 
-Perencana tingkat tinggi dijalankan terpisah pada \textit{companion computer} tiap agen. Keluarannya berupa kecepatan acuan yang diintegrasikan menjadi \textit{setpoint} posisi bagi pengendali tingkat rendah (Gambar~\ref{fig:high_level_planner}). Formulasi berikut mengikuti rancangan penelitian sebelumnya \cite{herdianDecentralizedFormationControl2026, PerancanganSistemKendali}, yang mengembangkan ERC dari Bui \textit{et al.} \cite{buiEventbasedReconfigurationControl2025}, dan sesuai dengan implementasi simulator yang digunakan.
+Perencana tingkat tinggi dijalankan terpisah pada \textit{companion computer} tiap agen. Keluarannya berupa kecepatan acuan yang diintegrasikan menjadi \textit{setpoint} posisi bagi pengendali tingkat rendah (Gambar~\ref{fig:high_level_planner}). Formulasi berikut mengikuti rancangan penelitian sebelumnya \cite{herdianDecentralizedFormationControl2026}, yang mengembangkan ERC dari Bui \textit{et al.} \cite{buiEventbasedReconfigurationControl2025}, dan sesuai dengan implementasi simulator yang digunakan.
 
 \begin{figure}[htbp]
     \centering
