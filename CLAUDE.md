@@ -44,8 +44,8 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
   Cadangan: kalang posisi/kecepatan pindah ke *companion computer*.
 - **Kontrol tingkat rendah:** kaskade ArduPilot (P posisi → PID kecepatan → P sikap
   → PID laju sudut → mixer → DShot).
-- **Perangkat keras:** rangka SpeedyBee Bee35 (6), FC SpeedyBee **F405** Mini (4),
-  ESC BLS 35A (4), XIAO ESP32-S3 (1 tercatat), penerima ExpressLRS EP2 TCXO (3,
+- **Perangkat keras:** rangka SpeedyBee Bee35 (6), FC SpeedyBee **F405** Mini (3),
+  ESC BLS 35A (3), XIAO ESP32-S3 (3) — jumlah FC/ESC/ESP32 asumsi penulis, penerima ExpressLRS EP2 TCXO (3,
   **pemancar belum ada**). Semua lalu lintas MAVLink/UDP lewat satu router Wi-Fi.
   Rincian: `docs/lab/spesifikasi-hw.md`; harga: `docs/lab/survei-harga.md`.
 - **Arena:** koridor 2,70 m, celah 0,90 m (kolom bangunan + dus), formasi V

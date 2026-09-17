@@ -9,10 +9,10 @@
 |---|---|---|---|
 | Rangka *cinewhoop* SpeedyBee Bee35 | Propeler bersaluran, $25 \times 21 \times 8$ cm | **6** — 2 siap terbang, 2 terpasang sebagian, 2 rangka kosong | foto 07, 08 |
 | Motor BLDC | **2006 – 1950 KV** | 4 per wahana terpasang | foto 15 |
-| ESC | SpeedyBee **BLS 35A Mini** 4-in-1, BLHeli\_S | 4 | konfirmasi peneliti |
-| *Flight controller* | SpeedyBee **F405 Mini** — STM32F405 (flash 1 MB), IMU ICM-42688P, barometer DSP-310 | 4 | foto 14 + dok. ArduPilot |
+| ESC | SpeedyBee **BLS 35A Mini** 4-in-1, BLHeli\_S | **3** (asumsi penulis 2026-09-17) | konfirmasi peneliti |
+| *Flight controller* | SpeedyBee **F405 Mini** — STM32F405 (flash 1 MB), IMU ICM-42688P, barometer DSP-310 | **3** (asumsi penulis 2026-09-17) | foto 14 + dok. ArduPilot |
 | Penerima kendali radio | **ExpressLRS EP2 TCXO** 2,4 GHz | **3** | foto 13 + konfirmasi peneliti |
-| *Companion computer* | Seeed Studio **XIAO ESP32-S3** — Wi-Fi 2,4 GHz + BLE, USB-C | 1 (**?** apakah ada lagi) | foto 16 |
+| *Companion computer* | Seeed Studio **XIAO ESP32-S3** — Wi-Fi 2,4 GHz + BLE, USB-C | **3** (asumsi penulis 2026-09-17) | foto 16 |
 | Modul navigasi | **RUSHFPV GNSS 25+** — mesin u-Blox M10 (GPS/GLONASS/BDS/Galileo), kompas **HMC5883**, 115200 baud, masukan 5 V, antena tipe T | **?** | foto 12 |
 | Dudukan modul navigasi | Cetakan 3D, terpasang di tengah-depan bodi | terpasang | foto 17 |
 | Baterai LiPo | $4 \times 1200$ mAh · $2 \times 1500$ mAh · $1 \times 2200$ mAh · $2 \times 5000$ mAh | **9** | foto 07, 08 |
@@ -50,8 +50,8 @@ Fase mengikuti BAB IV proposal. Harga dan sumbernya: [`survei-harga.md`](survei-
 | Penanda AprilTag + akrilik + tiang | Lokalisasi | Fase 2 (1 set), Fase 4 (4 set) |
 | Perlengkapan keselamatan | Tas tahan api, jaring, kacamata | Fase 4 — sebelum uji terbang tunggal |
 | Penerima ExpressLRS EP2 TCXO | 5 wahana − 3 tersedia | Fase 4 (2 unit) |
-| *Stack* SpeedyBee F405 Mini + ESC BLS 35A | 5 wahana − 4 tersedia | Fase 4 (1 set) — **jumlah perlu dikonfirmasi** |
-| XIAO ESP32-S3 | 5 wahana − 1 tercatat | Fase 4 (4 unit) — **jumlah perlu dikonfirmasi** |
+| *Stack* SpeedyBee F405 Mini + ESC BLS 35A | 5 wahana − 3 tersedia | Fase 4 (2 set) |
+| XIAO ESP32-S3 | 5 wahana − 3 tersedia | Fase 4 (2 unit) |
 | Dus kardus rintangan | Arena | Fase 4 (10 unit) |
 | Lakban penanda posisi lantai | Arena | Fase 4 |
 
@@ -68,7 +68,7 @@ diuji sebelum terbang pertama.
 1. Spesifikasi komputer stasiun darat (CPU, RAM, port USB3).
 2. Model pengisi daya LiPo dan router Wi-Fi.
 3. ~~Identitas papan pada foto 13~~ → EP2 TCXO (2026-09-16).
-4. Jumlah unit XIAO ESP32-S3, *flight controller*/ESC, dan modul RUSHFPV GNSS
-   (RAB Fase 4 berasumsi 1 ESP32-S3 dan 4 FC/ESC sesuai tabel di atas).
+4. Jumlah modul RUSHFPV GNSS. FC/ESC dan XIAO ESP32-S3 untuk sementara dianggap
+   3 unit (keputusan penulis 2026-09-17) — pastikan saat inventaris ulang.
 5. Ukuran propeler (perkiraan 3,5 inci dari kelas rangka — belum dipastikan).
 6. Bobot terbang wahana lengkap dengan baterai.

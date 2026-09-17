@@ -481,9 +481,9 @@ Wahana yang digunakan adalah \textit{quadcopter} tipe \textit{cinewhoop} dengan 
         \thead{No} & \thead{Komponen} & \thead{Spesifikasi} & \thead{Jumlah} \\ \hline
         1 & Rangka \textit{cinewhoop} SpeedyBee Bee35 & Propeler bersaluran, dimensi luar $25 \times 21 \times 8$ cm & 6 unit \\ \hline
         2 & Motor BLDC & $2006$, $1950$ KV & 4 per wahana \\ \hline
-        3 & \textit{Flight controller} SpeedyBee F405 Mini & Mikrokontroler STM32F405 (\textit{flash} 1 MB), IMU ICM-42688P, barometer DSP-310 & 4 unit \\ \hline
-        4 & ESC SpeedyBee BLS 35A Mini & 4-in-1, firmware BLHeli\_S & 4 unit \\ \hline
-        5 & \textit{Companion computer} Seeed XIAO ESP32-S3 & Wi-Fi 2,4 GHz dan BLE terintegrasi, antarmuka USB-C & 1 unit \\ \hline
+        3 & \textit{Flight controller} SpeedyBee F405 Mini & Mikrokontroler STM32F405 (\textit{flash} 1 MB), IMU ICM-42688P, barometer DSP-310 & 3 unit \\ \hline
+        4 & ESC SpeedyBee BLS 35A Mini & 4-in-1, firmware BLHeli\_S & 3 unit \\ \hline
+        5 & \textit{Companion computer} Seeed XIAO ESP32-S3 & Wi-Fi 2,4 GHz dan BLE terintegrasi, antarmuka USB-C & 3 unit \\ \hline
         6 & Penerima kendali radio ExpressLRS EP2 TCXO & 2,4 GHz; pemancar belum tersedia & 3 unit \\ \hline
         7 & Baterai LiPo & $4 \times 1200$ mAh, $2 \times 1500$ mAh, $1 \times 2200$ mAh, $2 \times 5000$ mAh & 9 unit \\ \hline
         8 & Propeler dan saluran cadangan & Propeler tiga bilah, cincin saluran & beberapa \\ \hline
@@ -1010,7 +1010,7 @@ Algoritma pada \textit{companion computer} dijalankan dengan umpan balik simulas
 
     \noindent\textbf{Gerbang:} wahana tunggal stabil dan aman.
 
-    \item \textbf{Uji terbang kawanan.} Kamera kedua dipasang dan kedua kamera dikalibrasi ke satu kerangka acuan global. Inventaris (Tabel~\ref{tab:komponen_tersedia}) memuat empat \textit{flight controller} dan ESC serta satu \textit{companion computer}, sehingga kekurangannya dilengkapi pada tahap ini. Kelima wahana lebih dahulu terbang dalam formasi V di ruang terbuka sebagai acuan, kemudian melintasi arena (Subbab~\ref{sec:arena}): lebar ruang $w_e$ yang turun melewati ambang memicu ERC sehingga formasi menyusut, beralih mengekor melalui celah $90$~cm, lalu mengembang kembali.
+    \item \textbf{Uji terbang kawanan.} Kamera kedua dipasang dan kedua kamera dikalibrasi ke satu kerangka acuan global. Inventaris (Tabel~\ref{tab:komponen_tersedia}) memuat tiga \textit{flight controller}, tiga ESC, dan tiga \textit{companion computer}, sehingga dua set untuk wahana keempat dan kelima dilengkapi pada tahap ini. Kelima wahana lebih dahulu terbang dalam formasi V di ruang terbuka sebagai acuan, kemudian melintasi arena (Subbab~\ref{sec:arena}): lebar ruang $w_e$ yang turun melewati ambang memicu ERC sehingga formasi menyusut, beralih mengekor melalui celah $90$~cm, lalu mengembang kembali.
 
     \noindent\textbf{Gerbang:} manuver kawanan berhasil dan stabil.
 \end{enumerate}
@@ -1034,12 +1034,12 @@ Algoritma pada \textit{companion computer} dijalankan dengan umpan balik simulas
         3 & Kabel USB ekstensi 10 m dan dudukan langit-langit & 1 set & 150.000 & 150.000 \\ \hline
         4 & Sensor jarak terpilih & 8 unit & \textit{survei} & \textit{survei} \\ \hline
         5 & Penanda AprilTag, akrilik, dan tiang cetak tiga dimensi & 4 set & 20.000 & 80.000 \\ \hline
-        6 & Penerima ExpressLRS EP2 TCXO & 2 unit & 215.000 & 430.000 \\ \hline
-        7 & \textit{Stack} SpeedyBee F405 Mini dan ESC BLS 35A & 1 set & 1.906.700 & 1.906.700 \\ \hline
-        8 & \textit{Companion computer} Seeed XIAO ESP32-S3 & 4 unit & 198.000 & 792.000 \\ \hline
+        6 & Penerima ExpressLRS EP2 TCXO & 2 unit & 309.000 & 618.000 \\ \hline
+        7 & \textit{Stack} SpeedyBee F405 Mini dan ESC BLS 35A & 2 set & 2.244.428 & 4.488.856 \\ \hline
+        8 & \textit{Companion computer} Seeed XIAO ESP32-S3 & 2 unit & 198.000 & 396.000 \\ \hline
         9 & Dus kardus sebagai rintangan & 10 unit & 30.000 & 300.000 \\ \hline
         10 & Lakban penanda posisi lantai & 1 set & \textit{survei} & \textit{survei} \\ \hline
-        \multicolumn{4}{|r|}{\textbf{Subtotal}} & \textbf{4.158.700 + \textit{survei}} \\ \hline
+        \multicolumn{4}{|r|}{\textbf{Subtotal}} & \textbf{6.532.856 + \textit{survei}} \\ \hline
     \end{tabularx}
     \endgroup
 \end{table}
@@ -1058,7 +1058,7 @@ Seluruh kegiatan berlangsung di Pusat Teknologi Instrumentasi dan Otomasi (PTIO\
 \subsection{Rekapitulasi Anggaran}
 \label{subsec:rab}
 
-Rencana Anggaran Biaya (RAB\label{abbr:rab}) dirangkum pada Tabel~\ref{tab:rekap_rab}. Harga bersumber dari RAB awal penulis dan survei Tokopedia pada September 2026; pos bertanda \textit{survei} belum memiliki harga dan tidak diperkirakan.
+Rencana Anggaran Biaya (RAB\label{abbr:rab}) dirangkum pada Tabel~\ref{tab:rekap_rab}. Harga bersumber dari RAB awal penulis dan survei Tokopedia pada September 2026. Bila terdapat beberapa listing, dipakai harga tertinggi. Pos bertanda \textit{survei} belum memiliki harga dan tidak diperkirakan.
 
 \begin{table}[htbp]
     \centering
@@ -1074,9 +1074,9 @@ Rencana Anggaran Biaya (RAB\label{abbr:rab}) dirangkum pada Tabel~\ref{tab:rekap
         Fase 1: Studi dan Desain Arsitektur & -- & -- \\ \hline
         Fase 2: Implementasi Teknologi & 1.360.000 & kamera, VL53L1X \\ \hline
         Fase 3: Pengujian HITL & -- & -- \\ \hline
-        Fase 4: Uji Terbang Eksperimen & 4.158.700 & kamera kedua, sensor jarak terpilih, lakban \\ \hline
+        Fase 4: Uji Terbang Eksperimen & 6.532.856 & kamera kedua, sensor jarak terpilih, lakban \\ \hline
         Fase 5: Analisis Data dan Pelaporan & -- & -- \\ \hline
-        \textbf{Total} & \textbf{5.518.700} & \\ \hline
+        \textbf{Total} & \textbf{7.892.856} & \\ \hline
     \end{tabularx}
     \endgroup
 \end{table}
