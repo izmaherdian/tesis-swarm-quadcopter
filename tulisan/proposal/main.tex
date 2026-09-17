@@ -701,7 +701,7 @@ Setelah seluruh sistem persepsi---baik lokalisasi spasial menggunakan kamera ata
 
 Rancangan di atas mengandalkan pembacaan jarak lateral yang tetap andal ketika berkas sensor mengenai permukaan secara miring. Pada sudut datang $45^\circ$ terhadap permukaan halus seperti dinding berplester atau kolom beton, sensor ultrasonik rawan kehilangan gema karena pantulan bersifat spekular dan energi pantul terlempar menjauh dari penerima. Permukaan kardus yang dipakai sebagai rintangan buatan memantul secara baur sehingga lebih ramah, tetapi dinding dan kolom tidak.
 
-Risiko ini menyentuh inti mekanisme ERC: kegagalan pembacaan pada sudut miring berarti estimasi $w_e$ menjadi tidak sahih, dan peristiwa pemicu dapat terlewat atau terpicu palsu. Oleh sebab itu jenis sensor tidak ditetapkan di muka, melainkan diputuskan melalui uji banding pada tahap awal pelaksanaan. Dua kandidat diuji berdampingan:
+Risiko ini menyentuh inti mekanisme ERC: kegagalan pembacaan pada sudut miring berarti estimasi $w_e$ menjadi tidak sahih, dan peristiwa pemicu dapat terlewat atau terpicu palsu. Oleh sebab itu jenis sensor tidak ditetapkan di muka, melainkan diputuskan melalui uji banding pada Fase~2. Dua kandidat diuji berdampingan:
 
 \begin{enumerate}
     \item \textbf{Sensor ultrasonik} (HC-SR04). Berbiaya rendah, jangkauan memadai, dan tidak terpengaruh kondisi pencahayaan, namun memiliki resolusi sudut yang buruk akibat berkas yang lebar dan rentan terhadap pantulan spekular pada sudut datang miring \cite{pedroSenseAvoidSystem2025}.
@@ -964,176 +964,179 @@ Satu prinsip dipertahankan tegas di seluruh arsitektur: \textbf{kamera atas berp
 % ==========================================
 \chapter{METODOLOGI DAN RENCANA PELAKSANAAN}
 
-\section{Metodologi Penelitian}
-Penelitian ini dilaksanakan melalui pendekatan sistematis yang mencakup perancangan arsitektur, implementasi perangkat keras dan lunak, pengujian simulasi hibrida, hingga eksperimen penerbangan nyata di lingkungan dalam ruangan. Secara keseluruhan, metodologi penelitian ini dibagi ke dalam lima fase utama yang saling berkesinambungan. Alur kerja penelitian secara lengkap diilustrasikan pada diagram alir pada Gambar~\ref{fig:diagram_metodologi}.
+\section{Kerangka Metodologi}
+
+Penelitian dibagi ke dalam lima fase (Gambar~\ref{fig:diagram_metodologi}). Tiga titik keputusan menjadi gerbang kelayakan: evaluasi HITL pada Fase~3, kestabilan wahana tunggal, dan keberhasilan misi kawanan pada Fase~4. Bila gerbang tidak terlewati, pekerjaan kembali ke penanaman logika, bukan ke awal penelitian.
+
+Pengadaan mengikuti gerbang tersebut. Komponen untuk lima wahana baru dibeli setelah uji terbang tunggal lolos, karena tiga ketidakpastian hanya dapat dijawab melalui percobaan: apakah \textit{firmware} racikan muat pada memori \textit{flash} 1~MB (Subbab~\ref{subsec:firmware_fc}), apakah penanda terdeteksi andal saat wahana bergerak (Subbab~\ref{subsec:liputan_kamera}), dan sensor jarak mana yang andal pada sudut datang miring (Subbab~\ref{subsec:pemilihan_sensor}).
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{figures/metodologi_tesis.pdf}
-    \caption{Diagram alir metodologi penelitian untuk implementasi kontrol formasi desentralisasi pada kawanan quadcopter.}
+    \caption{Diagram alir metodologi penelitian.}
     \label{fig:diagram_metodologi}
 \end{figure}
 
-\subsection{Fase 1: Studi dan Desain Arsitektur}
-Fase pertama difokuskan pada pematangan konsep teoritis dan perancangan arsitektur sistem. Tahapan ini diawali dengan studi literatur mendalam mengenai dinamika quadcopter dan evaluasi simulasi dari algoritma \textit{Event-Based Reconfiguration Control} (ERC). Berdasarkan landasan teoritis tersebut, dilakukan desain arsitektur perangkat keras untuk lima buah agen quadcopter. Desain ini menetapkan pembagian tugas komputasi secara hierarkis antara \textit{Flight Controller} (sebagai pengontrol tingkat rendah) dan \textit{Companion Computer} (sebagai perencana tingkat tinggi).
+\section{Fase 1: Studi dan Desain Arsitektur}
 
-\subsection{Fase 2: Implementasi Teknologi}
-Fase kedua merupakan tahap perakitan dan konfigurasi sistem secara menyeluruh, yang mencakup:
-\begin{itemize}
-    \item \textbf{Setup Komunikasi Eksternal:} Membangun jaringan komunikasi nirkabel terdesentralisasi antar-wahana menggunakan modul Wi-Fi internal ESP32 dengan protokol soket UDP \textit{broadcast/multicast}.
-    \item \textbf{Setup Komunikasi Internal:} Mengkonfigurasi antarmuka serial (UART) untuk menjembatani komunikasi data berformat MAVLink antara \textit{Companion Computer} dan \textit{Flight Controller}.
-    \item \textbf{Setup Lokalisasi:} Mengintegrasikan sistem penentuan posisi dalam ruangan berbasis kamera atas penanda AprilTag dan mengimplementasikan \textit{Extended Kalman Filter} (EKF) untuk fusi data sensor.
-    \item \textbf{Penanaman Logika:} Menginisialisasi dan menanamkan program algoritma ERC dan IAPF\label{abbr:iapf} ke dalam unit \textit{Companion Computer} masing-masing agen.
-\end{itemize}
-
-\subsection{Fase 3: Pengujian \textit{Hardware-In-The-Loop} (HITL\label{abbr:hitl})}
-Sebelum diterbangkan, sistem menjalani pengujian \textit{Hardware-In-The-Loop} (HITL). Pada tahap ini, algoritma fisik yang telah ditanamkan pada \textit{Companion Computer} diuji menggunakan data umpan balik dari simulator gerak virtual. Pengujian ini bertujuan untuk mengevaluasi kelayakan beban kerja CPU dan memastikan latensi komputasi berada dalam batas aman. Jika terdeteksi adanya \textit{delay} atau \textit{bug} yang menyebabkan sistem tidak stabil, proses akan diulang kembali ke tahap penanaman logika untuk dilakukan perbaikan kode.
-
-\subsection{Fase 4: Uji Terbang Eksperimen}
-Fase ini merupakan validasi fisik di arena penerbangan dalam ruangan, yang dieksekusi secara bertahap:
 \begin{enumerate}
-    \item \textbf{Uji Terbang Wahana Tunggal:} Melibatkan satu quadcopter untuk memvalidasi kinerja EKF, stabilitas tautan komunikasi MAVLink, \textit{tuning} parameter PID, dan eksekusi logika kontrol agen tunggal. Pengujian kawanan hanya akan dilanjutkan apabila agen tunggal terbukti stabil dan aman.
-    \item \textbf{Uji Terbang Kawanan:} Melibatkan kelima quadcopter yang terbang bersama menuju target tujuan. Tahap ini menguji koordinasi multi-agen: terbang formasi statis sebagai acuan pembanding, disusul pengujian formasi adaptif di mana deteksi penyempitan celah oleh sensor jarak memicu algoritma ERC untuk merekonfigurasi formasi V menjadi formasi mengekor, serta mengembang kembali setelah celah terlewati.
+    \item \textbf{Studi literatur} dinamika quadcopter dan evaluasi simulasi ERC, berlangsung sepanjang penelitian. Termasuk di dalamnya penerapan faktor skala $\kappa$ pada simulator (Subbab~\ref{subsec:erc}) dan simulasi arena berskala dengan geometri Tabel~\ref{tab:penskalaan_arena}, yang hasilnya menjadi pembanding pada Fase~5.
+    \item \textbf{Desain arsitektur} lima quadcopter dengan pembagian kerja antara \textit{flight controller} sebagai pengendali tingkat rendah dan \textit{companion computer} sebagai perencana tingkat tinggi (Bab~III).
+\end{enumerate}
+Fase ini tidak memerlukan pengadaan.
+
+\section{Fase 2: Implementasi Teknologi}
+
+\begin{enumerate}
+    \item \textbf{Komunikasi internal.} \textit{Firmware} ArduPilot racikan dibangun (Subbab~\ref{subsec:firmware_fc}), lalu antarmuka UART MAVLink antara \textit{companion computer} dan \textit{flight controller} dikonfigurasi.
+    \item \textbf{Komunikasi eksternal.} Jaringan terdesentralisasi antaragen dibangun dengan UDP melalui Wi-Fi.
+    \item \textbf{Lokalisasi.} Kamera pertama dikalibrasi; deteksi penanda AprilTag, penyelesaian pose, pengiriman MAVLink, dan fusi EKF dijalankan menerus. Pada tahap ini pula HC-SR04 dan VL53L1X diuji banding dengan kriteria pada Subbab~\ref{subsec:pemilihan_sensor}.
+    \item \textbf{Penanaman logika} algoritma ERC dan IAPF pada \textit{companion computer}.
+    \item \textbf{Tautan kendali manual.} Pemancar ExpressLRS diikat ke penerima EP2 TCXO yang telah tersedia. Pemancar diadakan sebelum uji terbang karena merupakan satu-satunya jalur penghentian darurat yang tidak bergantung pada Wi-Fi.
 \end{enumerate}
 
-\subsection{Fase 5: Analisis Data dan Pelaporan}
-Fase terakhir dilakukan setelah eksekusi eksperimen berhasil dilewati. Data penerbangan diekstraksi dari \textit{log} sistem, yang mencakup rekaman data posisi estimasi dari EKF, serta rekaman kepadatan trafik jaringan komunikasi berbasis UDP\label{abbr:udp} (Wi-Fi lokal). Data empiris ini kemudian dianalisis untuk memvalidasi keberhasilan respons manuver adaptif sistem dan mengukur kinerja latensi jaringan desentralisasinya, yang pada akhirnya disusun ke dalam dokumen laporan atau tesis akhir.
+\begin{table}[htbp]
+    \centering
+    \caption{Anggaran Fase 2}
+    \label{tab:rab_fase2}
+    \begingroup
+    \small
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|c|X|>{\centering\arraybackslash}p{1.35cm}|>{\raggedleft\arraybackslash}p{2.1cm}|>{\raggedleft\arraybackslash}p{2.8cm}|}
+        \hline
+        \rowcolor{gray!20}
+        \thead{No} & \thead{Komponen} & \thead{Jumlah} & \thead{Harga\\Satuan (Rp)} & \thead{Harga\\Total (Rp)} \\ \hline
+        1 & Kamera USB 5 MP \textit{global shutter}, lensa $120^\circ$ & 1 unit & \textit{survei} & \textit{survei} \\ \hline
+        2 & Kabel USB ekstensi 10 m dan dudukan langit-langit & 1 set & 150.000 & 150.000 \\ \hline
+        3 & Pemancar ExpressLRS 2,4 GHz RadioMaster Pocket & 1 unit & 1.150.000 & 1.150.000 \\ \hline
+        4 & Sensor ultrasonik HC-SR04 (kandidat) & 2 unit & 20.000 & 40.000 \\ \hline
+        5 & Sensor jarak laser VL53L1X (kandidat) & 2 unit & \textit{survei} & \textit{survei} \\ \hline
+        6 & Penanda AprilTag, akrilik, dan tiang cetak tiga dimensi & 1 set & 20.000 & 20.000 \\ \hline
+        \multicolumn{4}{|r|}{\textbf{Subtotal}} & \textbf{1.360.000 + \textit{survei}} \\ \hline
+    \end{tabularx}
+    \endgroup
+\end{table}
+
+\section{Fase 3: Pengujian \textit{Hardware-in-the-Loop}}
+
+Algoritma pada \textit{companion computer} dijalankan dengan umpan balik simulasi gerak untuk mengukur beban CPU dan latensi komputasi sebelum wahana diterbangkan. Fase ini tidak memerlukan pengadaan.
+
+\noindent\textbf{Gerbang Fase 3:} beban CPU dan latensi berada dalam batas aman. Bila terjadi tunda atau galat program, pekerjaan kembali ke penanaman logika.
+
+\section{Fase 4: Uji Terbang Eksperimen}
+
+\begin{enumerate}
+    \item \textbf{Uji terbang tunggal.} Satu quadcopter memvalidasi EKF, tautan \textit{companion computer} ke \textit{flight controller}, penalaan PID, dan logika ERC agen tunggal. Deteksi penanda saat wahana bergerak dan jenis sensor jarak terpilih ikut dipastikan pada tahap ini.
+
+    \noindent\textbf{Gerbang:} wahana tunggal stabil dan aman.
+
+    \item \textbf{Uji terbang kawanan.} Kamera kedua dipasang dan kedua kamera dikalibrasi ke satu kerangka acuan global. Inventaris (Tabel~\ref{tab:komponen_tersedia}) memuat empat \textit{flight controller} dan ESC serta satu \textit{companion computer}, sehingga kekurangannya dilengkapi pada tahap ini. Kelima wahana lebih dahulu terbang dalam formasi V di ruang terbuka sebagai acuan, kemudian melintasi arena (Subbab~\ref{sec:arena}): lebar ruang $w_e$ yang turun melewati ambang memicu ERC sehingga formasi menyusut, beralih mengekor melalui celah $90$~cm, lalu mengembang kembali.
+
+    \noindent\textbf{Gerbang:} manuver kawanan berhasil dan stabil.
+\end{enumerate}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Anggaran Fase 4}
+    \label{tab:rab_fase4}
+    \begingroup
+    \small
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|c|X|>{\centering\arraybackslash}p{1.35cm}|>{\raggedleft\arraybackslash}p{2.1cm}|>{\raggedleft\arraybackslash}p{2.8cm}|}
+        \hline
+        \rowcolor{gray!20}
+        \thead{No} & \thead{Komponen} & \thead{Jumlah} & \thead{Harga\\Satuan (Rp)} & \thead{Harga\\Total (Rp)} \\ \hline
+        \multicolumn{5}{|l|}{\textit{Sebelum uji terbang tunggal}} \\ \hline
+        1 & Perlengkapan keselamatan (tas tahan api baterai, jaring, kacamata) & 1 set & 500.000 & 500.000 \\ \hline
+        \multicolumn{5}{|l|}{\textit{Setelah uji terbang tunggal lolos}} \\ \hline
+        2 & Kamera USB 5 MP \textit{global shutter} kedua, lensa $120^\circ$ & 1 unit & \textit{survei} & \textit{survei} \\ \hline
+        3 & Kabel USB ekstensi 10 m dan dudukan langit-langit & 1 set & 150.000 & 150.000 \\ \hline
+        4 & Sensor jarak terpilih & 8 unit & \textit{survei} & \textit{survei} \\ \hline
+        5 & Penanda AprilTag, akrilik, dan tiang cetak tiga dimensi & 4 set & 20.000 & 80.000 \\ \hline
+        6 & Penerima ExpressLRS EP2 TCXO & 2 unit & 215.000 & 430.000 \\ \hline
+        7 & \textit{Stack} SpeedyBee F405 Mini dan ESC BLS 35A & 1 set & 1.906.700 & 1.906.700 \\ \hline
+        8 & \textit{Companion computer} Seeed XIAO ESP32-S3 & 4 unit & 198.000 & 792.000 \\ \hline
+        9 & Dus kardus sebagai rintangan & 10 unit & 30.000 & 300.000 \\ \hline
+        10 & Lakban penanda posisi lantai & 1 set & \textit{survei} & \textit{survei} \\ \hline
+        \multicolumn{4}{|r|}{\textbf{Subtotal}} & \textbf{4.158.700 + \textit{survei}} \\ \hline
+    \end{tabularx}
+    \endgroup
+\end{table}
+
+Harga sensor jarak mengikuti hasil uji banding; bila HC-SR04 terpilih, pos tersebut bernilai Rp160.000.
+
+\section{Fase 5: Analisis Data dan Pelaporan}
+
+Data diekstraksi dari \textit{log} pose EKF, riwayat pemicu ERC, dan trafik UDP. Metrik yang dihitung adalah RMSE galat formasi, waktu konvergensi, tingkat keberhasilan melintasi celah, jarak minimum antaragen, serta beban komputasi dan \textit{bandwidth}. Hasil fisik dibandingkan dengan simulasi arena berskala dari Fase~1, lalu disusun menjadi tesis dan naskah publikasi. Fase ini tidak memerlukan pengadaan.
 
 \section{Rencana Pelaksanaan}
-Pelaksanaan penelitian ini direncanakan secara sistematis mencakup tahap perancangan, implementasi perangkat keras dan lunak, pengujian komputasi, hingga eksperimen penerbangan fisik dan evaluasi data. Seluruh rangkaian kegiatan ini disusun agar target penelitian dapat dicapai secara terstruktur, efisien, dan memenuhi standar keselamatan pengujian wahana udara.
 
-\subsection{Lokasi Pelaksanaan}
-Seluruh rangkaian penelitian akan dilaksanakan di Pusat Teknologi Instrumentasi dan Otomasi (PTIO\label{abbr:ptio}), Gedung Pusat Antar Universitas (PAU) Lantai 8, Institut Teknologi Bandung. Kegiatan yang dilakukan di lokasi ini mencakup perakitan wahana fisik, pemrograman \textit{companion computer}, pengujian \textit{Hardware-In-The-Loop} (HITL), serta eksperimen uji terbang kawanan quadcopter di lingkungan dalam ruangan.
+\subsection{Lokasi}
+Seluruh kegiatan berlangsung di Pusat Teknologi Instrumentasi dan Otomasi (PTIO\label{abbr:ptio}) ITB, Gedung Pusat Antar Universitas Lantai~8. Uji terbang dilakukan di koridor yang diuraikan pada Subbab~\ref{subsec:kondisi_ruang}.
 
-\subsection{Alat dan Bahan}
-
-Sebagian besar wahana dan komponen elektronik telah tersedia di laboratorium sebagaimana dirinci pada Subbab~\ref{sec:kondisi_awal}. Kebutuhan pengadaan karenanya terbatas pada komponen yang belum dimiliki, yaitu sistem lokalisasi kamera atas, sensor persepsi rintangan, penanda visual, serta perlengkapan arena dan keselamatan.
-
-Perangkat utama yang perlu diadakan meliputi kamera sudut lebar beresolusi 4K yang dipasang di langit-langit beserta penanda visual pada tiap wahana sebagai sistem lokalisasi dalam ruangan, sensor jarak untuk persepsi rintangan lateral, dus kardus sebagai rintangan buatan pembentuk celah sempit, serta perlengkapan keselamatan untuk mendukung eksperimen di dalam ruangan.
-
-\subsection{Rencana Anggaran Biaya Bertahap}
+\subsection{Rekapitulasi Anggaran}
 \label{subsec:rab}
 
-Rencana Anggaran Biaya (RAB\label{abbr:rab}) pada penelitian ini disusun secara bertahap, bukan sekaligus di awal. Pembagiannya mengikuti pencapaian teknis: setiap tahap memiliki gerbang kelayakan yang harus dilewati sebelum pengadaan tahap berikutnya dilakukan. Penyusunan seperti ini dipilih karena beberapa keputusan perancangan masih memuat ketidakpastian yang hanya dapat dijawab melalui percobaan, yaitu kelayakan laju pembaruan lokalisasi kamera atas dan sensor jarak mana yang paling andal pada sudut datang miring. Apabila salah satu gerbang tidak terlewati, rancangan dapat disesuaikan tanpa anggaran tahap berikutnya telanjur dikeluarkan.
-
-\subsubsection{Tahap 1: Bukti Jalur Kerja}
-
-Tahap pertama membuktikan rantai perolehan posisi berjalan utuh: deteksi penanda visual, penyelesaian pose, pengiriman melalui jaringan, hingga penerimaan oleh \textit{flight controller}. Tahap ini hanya membutuhkan satu kamera dan satu wahana. Pada tahap ini pula uji banding sensor jarak pada Subbab~\ref{subsec:pemilihan_sensor} dilaksanakan, sehingga kedua kandidat sensor diadakan dalam jumlah kecil. Tautan kendali radio turut diadakan pada tahap ini meskipun kendali otonom belum diuji penuh, karena tautan tersebut merupakan satu-satunya jalur pengambilalihan manual yang tidak bergantung pada jaringan Wi-Fi. Tanpa tautan itu, kegagalan jaringan akan menghilangkan seluruh kemampuan menghentikan wahana. Rincian anggarannya diberikan pada Tabel~\ref{tab:rab_tahap1}.
+Rencana Anggaran Biaya (RAB\label{abbr:rab}) dirangkum pada Tabel~\ref{tab:rekap_rab}. Harga bersumber dari RAB awal penulis dan survei Tokopedia pada September 2026; pos bertanda \textit{survei} belum memiliki harga dan tidak diperkirakan.
 
 \begin{table}[htbp]
     \centering
-    \caption{Rencana anggaran Tahap 1: bukti jalur kerja}
-    \label{tab:rab_tahap1}
+    \caption{Rekapitulasi anggaran per fase}
+    \label{tab:rekap_rab}
     \begingroup
     \small
-    \setlength{\tabcolsep}{3pt}
     \renewcommand{\arraystretch}{1.3}
-    \begin{tabularx}{\textwidth}{|c|X|>{\centering\arraybackslash}p{1.8cm}|>{\raggedleft\arraybackslash}p{2.3cm}|>{\raggedleft\arraybackslash}p{2.3cm}|}
+    \begin{tabularx}{\textwidth}{|l|>{\raggedleft\arraybackslash}p{3.0cm}|X|}
         \hline
         \rowcolor{gray!20}
-        \thead{No} & \thead{Komponen} & \thead{Kuantitas} & \thead{Harga Satuan\\(Rp)} & \thead{Harga Total\\(Rp)} \\ \hline
-        1 & Kamera atas 4K beserta lensa sudut lebar $\pm 109^\circ$ & 1 unit & 1.500.000 & 1.500.000 \\ \hline
-        2 & Kabel USB ekstensi 10 m dan dudukan langit-langit & 1 set & 150.000 & 150.000 \\ \hline
-        3 & Pemancar dan penerima kendali radio manual & 1 set & 1.200.000 & 1.200.000 \\ \hline
-        4 & Sensor ultrasonik HC-SR04 (kandidat A) & 2 unit & 20.000 & 40.000 \\ \hline
-        5 & Sensor jarak laser VL53L1X ToF (kandidat B) & 2 unit & 75.000 & 150.000 \\ \hline
-        6 & Penanda \textit{AprilTag}, akrilik, dan tiang penyangga 3D & 1 set & 20.000 & 20.000 \\ \hline
-        \multicolumn{4}{|r|}{\textbf{SUBTOTAL TAHAP 1}} & \textbf{3.060.000} \\ \hline
+        \thead{Fase} & \thead{Harga pasti (Rp)} & \thead{Pos menunggu survei} \\ \hline
+        Fase 1: Studi dan Desain Arsitektur & -- & -- \\ \hline
+        Fase 2: Implementasi Teknologi & 1.360.000 & kamera, VL53L1X \\ \hline
+        Fase 3: Pengujian HITL & -- & -- \\ \hline
+        Fase 4: Uji Terbang Eksperimen & 4.158.700 & kamera kedua, sensor jarak terpilih, lakban \\ \hline
+        Fase 5: Analisis Data dan Pelaporan & -- & -- \\ \hline
+        \textbf{Total} & \textbf{5.518.700} & \\ \hline
     \end{tabularx}
     \endgroup
 \end{table}
-
-\noindent\textbf{Gerbang kelayakan Tahap 1:} rantai perolehan posisi berjalan menerus; satu wahana mampu melayang stabil dengan acuan posisi dari kamera atas; dan jenis sensor jarak yang dipakai telah ditetapkan berdasarkan kriteria yang ditentukan di muka.
-
-\subsubsection{Tahap 2: Skala Kawanan}
-
-Tahap kedua memperluas sistem dari satu wahana menjadi lima agen dan dari satu kamera menjadi dua kamera dengan liputan bertumpang tindih. Jenis sensor jarak yang diadakan pada tahap ini adalah kandidat yang memenangkan uji banding Tahap 1, sehingga pengadaan sepuluh unit tidak dilakukan sebelum keandalannya terbukti. Rincian anggarannya diberikan pada Tabel~\ref{tab:rab_tahap2}.
-
-\begin{table}[htbp]
-    \centering
-    \caption{Rencana anggaran Tahap 2: skala kawanan}
-    \label{tab:rab_tahap2}
-    \begingroup
-    \small
-    \setlength{\tabcolsep}{3pt}
-    \renewcommand{\arraystretch}{1.3}
-    \begin{tabularx}{\textwidth}{|c|X|>{\centering\arraybackslash}p{1.8cm}|>{\raggedleft\arraybackslash}p{2.3cm}|>{\raggedleft\arraybackslash}p{2.3cm}|}
-        \hline
-        \rowcolor{gray!20}
-        \thead{No} & \thead{Komponen} & \thead{Kuantitas} & \thead{Harga Satuan\\(Rp)} & \thead{Harga Total\\(Rp)} \\ \hline
-        1 & Kamera atas 4K kedua beserta lensa dan dudukan & 1 unit & 1.500.000 & 1.500.000 \\ \hline
-        2 & Sensor jarak terpilih hasil uji Tahap 1 & 8 unit & 75.000 & 600.000 \\ \hline
-        3 & Penanda \textit{AprilTag}, akrilik, dan tiang penyangga 3D & 4 set & 20.000 & 80.000 \\ \hline
-        \multicolumn{4}{|r|}{\textbf{SUBTOTAL TAHAP 2}} & \textbf{2.180.000} \\ \hline
-    \end{tabularx}
-    \endgroup
-\end{table}
-
-\noindent\textbf{Gerbang kelayakan Tahap 2:} kelima wahana mampu terbang mempertahankan formasi dengan lokalisasi dua kamera yang telah dikalibrasi ke dalam satu kerangka acuan global.
-
-\subsubsection{Tahap 3: Arena dan Keselamatan}
-
-Tahap ketiga menyiapkan arena pengujian beserta perlengkapan keselamatannya. Perlengkapan ini baru diperlukan saat pengujian rekonfigurasi formasi dijalankan penuh, sementara Tahap 1 dan Tahap 2 masih berlangsung di ruang terbuka tanpa rintangan. Rincian anggarannya diberikan pada Tabel~\ref{tab:rab_tahap3}.
-
-\begin{table}[htbp]
-    \centering
-    \caption{Rencana anggaran Tahap 3: arena dan keselamatan}
-    \label{tab:rab_tahap3}
-    \begingroup
-    \small
-    \setlength{\tabcolsep}{3pt}
-    \renewcommand{\arraystretch}{1.3}
-    \begin{tabularx}{\textwidth}{|c|X|>{\centering\arraybackslash}p{1.8cm}|>{\raggedleft\arraybackslash}p{2.3cm}|>{\raggedleft\arraybackslash}p{2.3cm}|}
-        \hline
-        \rowcolor{gray!20}
-        \thead{No} & \thead{Komponen} & \thead{Kuantitas} & \thead{Harga Satuan\\(Rp)} & \thead{Harga Total\\(Rp)} \\ \hline
-        1 & Dus kardus sebagai rintangan celah & 10 unit & 30.000 & 300.000 \\ \hline
-        2 & Perlengkapan keselamatan (jaring pelindung \& kacamata) & 1 set & 500.000 & 500.000 \\ \hline
-        3 & Penanda posisi lantai dan perlengkapan penataan arena & 1 set & 50.000 & 50.000 \\ \hline
-        \multicolumn{4}{|r|}{\textbf{SUBTOTAL TAHAP 3}} & \textbf{850.000} \\ \hline
-    \end{tabularx}
-    \endgroup
-\end{table}
-
-\noindent\textbf{Gerbang kelayakan Tahap 3:} arena terpasang, geometri celah terverifikasi sesuai rancangan pada Subbab~\ref{sec:arena}, dan pengujian rekonfigurasi formasi secara penuh dapat dijalankan.
-
-\subsubsection{Rekapitulasi}
-
-Total estimasi biaya yang direncanakan pada penelitian ini berjumlah Rp6.090.000, yang terbagi ke dalam Rp3.060.000 pada Tahap 1, Rp2.180.000 pada Tahap 2, dan Rp850.000 pada Tahap 3. Pendekatan anggaran bertahap ini membatasi risiko finansial dan memastikan alokasi dana dikeluarkan secara proporsional sesuai dengan keberhasilan verifikasi teknis di lapangan.
 
 \subsection{Jadwal Pelaksanaan}
-Penelitian ini direncanakan berlangsung selama sembilan bulan, dimulai pada bulan Agustus 2026 hingga April 2027. Rangkaian kegiatan ini mencakup seluruh tahap metodologi, mulai dari studi literatur dan perancangan awal, dilanjutkan dengan tahap perakitan dan konfigurasi sistem (Agustus--November 2026). Setelah perangkat keras dan lunak terintegrasi, fokus penelitian akan beralih pada pengujian \textit{Hardware-In-The-Loop} (HITL) dan uji terbang secara berkala dari akhir tahun hingga kuartal pertama tahun berikutnya. Alokasi waktu satu bulan penuh di akhir periode dikhususkan untuk ekstraksi data penerbangan, analisis metrik kinerja sistem, dan penyusunan dokumen laporan.
 
-Rincian estimasi jadwal pelaksanaan kegiatan secara spesifik dijabarkan dalam bentuk \textit{Gantt chart} pada Tabel~\ref{tab:jadwal_pelaksanaan}.
+Penelitian direncanakan selama sembilan bulan, dari September 2026 sampai Mei 2027, dengan rincian pada Tabel~\ref{tab:jadwal_pelaksanaan}. Bulan terakhir dikhususkan untuk ekstraksi data, analisis, dan penulisan.
 
 \begin{table}[htbp]
     \centering
-    \caption{Jadwal Pelaksanaan Penelitian Agustus 2026--April 2027}
+    \caption{Jadwal pelaksanaan penelitian September 2026--Mei 2027}
     \label{tab:jadwal_pelaksanaan}
     \renewcommand{\arraystretch}{1.3}
     \resizebox{\textwidth}{!}{%
     \begin{tabular}{|c|p{11.5cm}|c|c|c|c|c|c|c|c|c|}
         \hline
         \rowcolor{gray!20}
-        & & \multicolumn{5}{c|}{\textbf{2026}} & \multicolumn{4}{c|}{\textbf{2027}} \\ \cline{3-11}
+        & & \multicolumn{4}{c|}{\textbf{2026}} & \multicolumn{5}{c|}{\textbf{2027}} \\ \cline{3-11}
         \rowcolor{gray!20}
-        & & \multicolumn{9}{c|}{\textbf{Bulan}} \\ \cline{3-11}
-        \rowcolor{gray!20}
-        \multirow{-3}{*}{\textbf{No}} & \multirow{-3}{=}{\centering\textbf{Detail Kegiatan}} & \textbf{8} & \textbf{9} & \textbf{10} & \textbf{11} & \textbf{12} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} \\ \hline
-        1 & Studi Literatur: Formasi Multi-Agen, Dinamika Wahana, dan Simulasi ERC & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} \\ \hline
-        2 & Desain Arsitektur: 5 Quadcopter (Flight Controller dan Companion Computer) & \cellcolor{gray!70} & & & & & & & & \\ \hline
-        3 & Setup Komunikasi Internal: Antarmuka Serial \& Protokol MAVLink\label{abbr:mavlink} & & \cellcolor{gray!70} & \cellcolor{gray!70} & & & & & & \\ \hline
-        4 & Setup Komunikasi Eksternal: Jaringan Desentralisasi UDP Multicast & & \cellcolor{gray!70} & \cellcolor{gray!70} & & & & & & \\ \hline
-        5 & Setup Lokalisasi: Integrasi Kamera Atas 60 FPS \& Fusi EKF & & \cellcolor{gray!70} & \cellcolor{gray!70} & & & & & & \\ \hline
-        6 & Penanaman Logika: Algoritma IAPF dan Event-Based Reconfiguration Control & & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & & & & & \\ \hline
-        7 & Pengujian Hardware-In-The-Loop: Algoritma Fisik pada Companion Computer & & & & \cellcolor{gray!70} & \cellcolor{gray!70} & & & & \\ \hline
-        8 & Uji Terbang Agen Tunggal: Validasi EKF, CC-FC Link, dan Tuning PID\label{abbr:pid} & & & & \cellcolor{gray!70} & \cellcolor{gray!70} & & & & \\ \hline
-        9 & Uji Terbang Formasi Acuan Kawanan: Validasi Terbang Formasi Statis V di Ruang Terbuka & & & & & \cellcolor{gray!70} & \cellcolor{gray!70} & & & \\ \hline
-        10 & Uji Terbang Formasi Adaptif ERC: Navigasi Melintasi Celah Sempit 90 cm & & & & & & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \\ \hline
-        11 & Uji Karakterisasi: Analisis Efisiensi Trafik Data UDP dan Uji Ketahanan Latensi/Derau & & & & & & & \cellcolor{gray!70} & \cellcolor{gray!70} & \\ \hline
-        12 & Ekstraksi Data: Log Posisi EKF, Riwayat Trigger ERC, dan Trafik Jaringan UDP & & & & & & & & & \cellcolor{gray!70} \\ \hline
-        13 & Analisis Metrik: Efisiensi Bandwidth, Galat Posisi (RMSE\label{abbr:rmse}), dan Waktu Konvergensi & & & & & & & & & \cellcolor{gray!70} \\ \hline
-        14 & Penyusunan Dokumen Tesis Akhir dan Naskah Publikasi Ilmiah & & & & & & & & & \cellcolor{gray!70} \\ \hline
+        \multirow{-2}{*}{\textbf{No}} & \multirow{-2}{=}{\centering\textbf{Kegiatan}} & \textbf{9} & \textbf{10} & \textbf{11} & \textbf{12} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} \\ \hline
+        \multicolumn{11}{|l|}{\cellcolor{gray!10}\textbf{Fase 1: Studi dan Desain Arsitektur}} \\ \hline
+        1 & Studi literatur: formasi multi-agen, dinamika wahana, dan simulasi ERC & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} \\ \hline
+        2 & Desain arsitektur: lima quadcopter (\textit{flight controller} dan \textit{companion computer}) & \cellcolor{gray!70} &  &  &  &  &  &  &  &  \\ \hline
+        \multicolumn{11}{|l|}{\cellcolor{gray!10}\textbf{Fase 2: Implementasi Teknologi}} \\ \hline
+        3 & Komunikasi internal: \textit{firmware} racikan, antarmuka serial, dan \mbox{MAVLink}\label{abbr:mavlink} &  & \cellcolor{gray!70} & \cellcolor{gray!70} &  &  &  &  &  &  \\ \hline
+        4 & Komunikasi eksternal: jaringan terdesentralisasi UDP\label{abbr:udp} &  & \cellcolor{gray!70} & \cellcolor{gray!70} &  &  &  &  &  &  \\ \hline
+        5 & Lokalisasi kamera atas dan fusi EKF; uji banding sensor jarak &  & \cellcolor{gray!70} & \cellcolor{gray!70} &  &  &  &  &  &  \\ \hline
+        6 & Penanaman logika: IAPF\label{abbr:iapf} dan ERC &  & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} &  &  &  &  &  \\ \hline
+        \multicolumn{11}{|l|}{\cellcolor{gray!10}\textbf{Fase 3: Pengujian \textit{Hardware-in-the-Loop}}} \\ \hline
+        7 & Uji HITL\label{abbr:hitl}: beban CPU dan latensi pada \textit{companion computer} &  &  &  & \cellcolor{gray!70} & \cellcolor{gray!70} &  &  &  &  \\ \hline
+        \multicolumn{11}{|l|}{\cellcolor{gray!10}\textbf{Fase 4: Uji Terbang Eksperimen}} \\ \hline
+        8 & Uji terbang tunggal: validasi EKF, tautan \textit{companion computer}--\textit{flight controller}, dan penalaan PID\label{abbr:pid} &  &  &  & \cellcolor{gray!70} & \cellcolor{gray!70} &  &  &  &  \\ \hline
+        9 & Uji terbang kawanan: formasi V acuan di ruang terbuka &  &  &  &  & \cellcolor{gray!70} & \cellcolor{gray!70} &  &  &  \\ \hline
+        10 & Uji terbang kawanan: formasi adaptif ERC melintasi celah $90$ cm &  &  &  &  &  & \cellcolor{gray!70} & \cellcolor{gray!70} & \cellcolor{gray!70} &  \\ \hline
+        11 & Karakterisasi komunikasi: trafik UDP dan latensi &  &  &  &  &  &  & \cellcolor{gray!70} & \cellcolor{gray!70} &  \\ \hline
+        \multicolumn{11}{|l|}{\cellcolor{gray!10}\textbf{Fase 5: Analisis Data dan Pelaporan}} \\ \hline
+        12 & Ekstraksi data: log pose EKF, riwayat pemicu ERC, dan trafik UDP &  &  &  &  &  &  &  &  & \cellcolor{gray!70} \\ \hline
+        13 & Analisis metrik: galat formasi (RMSE\label{abbr:rmse}), keberhasilan melintasi celah, dan beban komunikasi &  &  &  &  &  &  &  &  & \cellcolor{gray!70} \\ \hline
+        14 & Penyusunan tesis dan naskah publikasi &  &  &  &  &  &  &  &  & \cellcolor{gray!70} \\ \hline
     \end{tabular}%
     }
 \end{table}
