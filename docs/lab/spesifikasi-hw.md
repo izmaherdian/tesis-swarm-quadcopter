@@ -1,38 +1,59 @@
 # Inventaris Perangkat Keras
 
-> Diperbarui 2026-09-17. Sumber: 17 foto di `foto/` (dibaca langsung) dan
-> konfirmasi lisan dari peneliti. Kolom bertanda **?** belum terdata.
+> Diperbarui 2026-09-17 (inventaris lengkap dari penulis). Sumber: 18 foto di `foto/`
+> dan daftar inventaris yang dicatat penulis di lab. Kolom bertanda **?** belum pasti.
 
 ## 1. Wahana dan komponen terbang
 
-| Komponen | Spesifikasi | Jumlah | Sumber |
-|---|---|---|---|
-| Rangka *cinewhoop* SpeedyBee Bee35 | Propeler bersaluran, $25 \times 21 \times 8$ cm | **6** — 2 siap terbang, 2 terpasang sebagian, 2 rangka kosong | foto 07, 08 |
-| Motor BLDC | **2006 – 1950 KV** | 4 per wahana terpasang | foto 15 |
-| ESC | SpeedyBee **BLS 35A Mini** 4-in-1, BLHeli\_S | **3** (asumsi penulis 2026-09-17) | konfirmasi peneliti |
-| *Flight controller* | SpeedyBee **F405 Mini** — STM32F405 (flash 1 MB), IMU ICM-42688P, barometer DSP-310 | **3** (asumsi penulis 2026-09-17) | foto 14 + dok. ArduPilot |
-| Penerima kendali radio | **ExpressLRS EP2 TCXO** 2,4 GHz | **3** | foto 13 + konfirmasi peneliti |
-| *Companion computer* | Seeed Studio **XIAO ESP32-S3** — Wi-Fi 2,4 GHz + BLE, USB-C | **3** (asumsi penulis 2026-09-17) | foto 16 |
-| Modul navigasi | **RUSHFPV GNSS 25+** — mesin u-Blox M10 (GPS/GLONASS/BDS/Galileo), kompas **HMC5883**, 115200 baud, masukan 5 V, antena tipe T | **?** | foto 12 |
-| Dudukan modul navigasi | Cetakan 3D, terpasang di tengah-depan bodi | terpasang | foto 17 |
-| Baterai LiPo | $4 \times 1200$ mAh · $2 \times 1500$ mAh · $1 \times 2200$ mAh · $2 \times 5000$ mAh | **9** | foto 07, 08 |
-| Propeler cadangan | Tiga bilah | beberapa | foto 07, 08 |
-| Saluran (*duct*) cadangan | Cincin kuning | beberapa | foto 07, 08 |
-| Kartu program ESC | Turnigy AeroStar | 1 | foto 07, 08 |
+### 1a. Per rangka (SpeedyBee Bee35)
 
-### Foto 13 — teridentifikasi
+| Rangka | Isi | Belum ada |
+|---|---|---|
+| 1 | FC + ESC, XIAO ESP32-S3, EP2 TCXO, 4 motor, GPS (GOKU GM10?), antena, kabel baterai | propeler |
+| 2 | Seperti rangka 1, bentuk rangka sedikit berbeda, **+ sensor MTF-01** | propeler |
+| 3 | Seperti rangka 2 | propeler |
+| 4 | Seperti rangka 1, **tanpa antena** | propeler, antena |
+| 5–6 | Rangka kosong | semua komponen |
 
-Papan berbungkus *heatshrink* dengan empat kabel pada foto 13 adalah **penerima
-ExpressLRS EP2 TCXO** (konfirmasi peneliti, 2026-09-16). Tersedia **3 unit**;
-**pemancarnya belum ada**.
+### 1b. Rekap jumlah
+
+| Komponen | Spesifikasi | Terpasang | Lepas | Total | Catatan |
+|---|---|---:|---:|---:|---|
+| Rangka *cinewhoop* SpeedyBee Bee35 | propeler bersaluran, 25 × 21 × 8 cm | 4 | 2 kosong | **6** | |
+| *Flight controller* SpeedyBee F405 Mini ("F4 Mini") | STM32F405 (flash 1 MB), ICM-42688P, DSP-310 | 4 | 2 | **6** | satu lepas masih terhubung ESC yang diduga rusak; satu lepas sudah berkabel baterai dan kapasitor |
+| ESC SpeedyBee BLS 35A Mini 4-in-1 | BLHeli\_S | 4 | 1 (+?) | **5 (+?)** | yang lepas = **V2, diduga rusak**; apakah FC lepas kedua juga membawa ESC **?** |
+| Motor SpeedyBee 2006-1950KV | | 16 | 4 | **20** | cukup untuk 5 wahana |
+| Propeler | ukuran **?** (Bee35: 90 mm) | 0 | 14 | **14** | 5 wahana butuh 20 |
+| Seeed XIAO ESP32-S3 | Wi-Fi 2,4 GHz + BLE | 4 | 1 | **5** | cukup untuk 5 wahana |
+| Penerima ExpressLRS EP2 TCXO | 2,4 GHz | 4 | — | **4** | + 1 "ELRS" lepas, jenis **?** |
+| Sensor MicoAir MTF-01 v1.1 | aliran optik + pengukur jarak laser 8 m | 2 | 1 | **3** | tidak dipakai (keputusan penulis) |
+| Modul GNSS | GPS pada rangka 1–4; RUSHFPV M10 + HMC5883 | 4 | 2 | **6** | tidak dipakai (dalam ruangan) |
+| Antena | dipol tipe-T 2,4 GHz/915 MHz; dipol mini 2,4/5,8 GHz IPEX | — | 1 + 3 | **4** | dipol mini dapat untuk rangka 4 |
+| Pelindung dan *holder* kuning | cadangan saluran dan penyangga | — | 2 paket | **2 paket** | |
+| Kartu program Turnigy AeroStar | untuk ESC Turnigy AeroStar | — | 2 | **2** | **tidak untuk BLS 35A** (BLHeli\_S dikonfigurasi lewat PC/FC) |
+
+### 1c. Baterai LiPo
+
+Analisis kecocokan: [`analisis-baterai.md`](analisis-baterai.md).
+
+| Baterai | Sel | Kapasitas | C | Jumlah | Cocok untuk Bee35 1950KV |
+|---|---|---:|---|---:|---|
+| CNHL Pizza Series | **6S** 22,2 V | 1200 mAh | 100C | 2 | ✅ |
+| CNHL Speedy Pizza | 4S 14,8 V | 1200 mAh | 100C | 2 | ❌ terbang (hanya uji meja) |
+| Gens Ace | 5S 18,5 V | 5000 mAh | 40C | 2 | ❌ |
+| Onbo lithium polymer | 4S 14,8 V | 2200 mAh | 50C | 1 | ❌ |
+| Onbo Nano Power | 3S 11,1 V | 1500 mAh | 25C | 2 | ❌ |
+| LPB Power | 2S/3S | 1500 mAh | 20–25C | 1 | ❌ |
 
 ## 2. Perangkat darat
 
 | Komponen | Status | Keterangan |
 |---|---|---|
-| Pengisi daya baterai LiPo | ✅ tersedia | model **?** |
+| Pengisi daya baterai LiPo | ✅ tersedia | model **?** (penulis mencatat papan pengisian paralel, belum pengisi dayanya) |
+| Papan pengisian paralel Power Genius 2-in-1 | ✅ 1 | 2–6S, untuk mengisi beberapa baterai bersel sama sekaligus |
+| SkyRC multi balance board | ✅ 1 | adaptor *balance* 2–6S |
 | Kontainer penyimpanan baterai LiPo | ✅ tersedia | konfirmasi penulis 2026-09-17 |
-| Komputer stasiun darat | ✅ tersedia | CPU, RAM, jumlah port USB3 **?** — menentukan apakah deteksi penanda dua kamera 4K dapat berjalan seketika |
+| Komputer stasiun darat | ✅ tersedia | CPU, RAM, jumlah port USB3 **?** — menentukan apakah deteksi penanda dua kamera 5 MP dapat berjalan seketika |
 | Router Wi-Fi khusus | ✅ tersedia | model dan pita frekuensi **?** |
 | Pencetak tiga dimensi + filamen | ✅ tersedia | untuk dudukan penanda dan sensor |
 
