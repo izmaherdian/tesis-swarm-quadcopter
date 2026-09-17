@@ -85,8 +85,7 @@ Rincian di [`../pustaka/kuartil-jurnal.md`](../pustaka/kuartil-jurnal.md).
   Intelligent Service Robotics = **Q1** (sesuai penulis).
 - [x] Dua rujukan Q3 (Abro 2025, Kurochkin 2021) tetap dipakai.
 - [x] Argiliana 2025 = tesis S2, entri bib diubah jadi `@mastersthesis`.
-- [ ] **Perhatian:** J. King Saud Univ. – Engineering Sciences (paper penulis)
+- [x] **Perhatian:** J. King Saud Univ. – Engineering Sciences (paper penulis)
   berkuartil terbaik **Q2** pada SJR 2025, bukan Q1.
-- [ ] Putuskan lima rujukan 2018–2020 yang bukan metode fundamental (Liu 2018,
-  de Alcântara Andrade 2019, Chen 2020, Sánchez-Cuevas 2020, Borkar 2020):
-  dipertahankan atau diganti rujukan ≥ 2021 Q1/Q2.
+- [x] Lima rujukan 2018–2020 yang bukan metode fundamental diganti rujukan
+  2023–2026 berkuartil Q1 (rincian di kuartil-jurnal.md).
