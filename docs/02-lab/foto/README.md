@@ -25,7 +25,7 @@
 | 11 | [`11-quadrotor-middle-view.png`](11-quadrotor-middle-view.png) | wahana tampak samping di antara pelat rangka, *stack* FC–ESC bertiang kuning dan tali baterai | inventaris |
 | 12 | [`12-rushfpv-gnss-dan-antena.png`](12-rushfpv-gnss-dan-antena.png) | modul RUSHFPV GNSS dan antena | inventaris |
 | 13 | [`13-penerima-elrs-ep2-tcxo.png`](13-penerima-elrs-ep2-tcxo.png) | penerima ExpressLRS EP2 TCXO terpasang di rangka (dulu bernama `13-imu.png`, keliru) | inventaris |
-| 14 | [`14-fc.png`](14-fc.png) | *stack* SpeedyBee F405 Mini + ESC BLS 35A, sisi atas (tanda versi ESC tidak terlihat) | inventaris, [KP02](../../02-keputusan/KP02-firmware-fc.md) |
+| 14 | [`14-fc.png`](14-fc.png) | *stack* SpeedyBee F405 Mini + ESC BLS 35A, sisi atas (tanda versi ESC tidak terlihat) | inventaris, [KP02](../../04-keputusan/KP02-firmware-fc.md) |
 | 15 | [`15-bldc-speedybee.png`](15-bldc-speedybee.png) | motor SpeedyBee 2006-1950KV | [baterai dan bobot](../3-baterai-dan-bobot.md) |
 | 16 | [`16-esp32s3.png`](16-esp32s3.png) | Seeed XIAO ESP32-S3 | inventaris |
 | 17 | [`17-modul-gps-tidak-dipakai.png`](17-modul-gps-tidak-dipakai.png) | modul GPS pada rangka, tidak dipakai di dalam ruangan (dulu `17-gps-harusnya-ga-dipake.png`) | inventaris |
@@ -34,7 +34,7 @@
 
 | # | Berkas | Isi | Dipakai di |
 |---|---|---|---|
-| 18 | [`18-datasheet-kamera-elp-og05b10.png`](18-datasheet-kamera-elp-og05b10.png) | lembar spesifikasi kamera ELP-U3GS05B10C (dari penjual Fast Importir) | [KP03](../../02-keputusan/KP03-kamera-elp-lensa-2mm.md), `parameter.py` |
+| 18 | [`18-datasheet-kamera-elp-og05b10.png`](18-datasheet-kamera-elp-og05b10.png) | lembar spesifikasi kamera ELP-U3GS05B10C (dari penjual Fast Importir) | [KP03](../../04-keputusan/KP03-kamera-elp-lensa-2mm.md), `parameter.py` |
 | 19 | [`19-pengisi-daya-skyrc.png`](19-pengisi-daya-skyrc.png) | pengisi daya SkyRC T6X80 AC/DC *balance charger/discharger* | baterai dan bobot |
 
 ## Yang masih perlu difoto

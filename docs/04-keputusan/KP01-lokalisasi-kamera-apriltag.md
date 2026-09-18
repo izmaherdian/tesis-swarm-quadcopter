@@ -10,6 +10,20 @@ kritis menuju uji terbang tunggal. Pada jadwal yang berlaku (Bab IV, September 2
 Mei 2027), lokalisasi dikerjakan di Fase 2 (Oktober–November 2026) dan uji terbang
 tunggal di Fase 4 mulai Desember 2026.
 
+## Dasar keputusan
+
+| Dasar | Sumber | Isi yang dipakai |
+|---|---|---|
+| Data lab | [ruang uji](../02-lab/1-ruang-uji-dan-arena.md) | plafon 300 cm, segmen uji 7,20 × 2,70 m |
+| Pustaka | `bultmannExternalCameraBased2023` | galat pose kamera eksternal < 3 cm dan < 1° tanpa *drift* |
+| Pustaka | `olsonAprilTagRobustFlexible2011`, `wangAprilTag2Efficient2016`, `krogiusFlexibleLayoutsFiducial2019` | pustaka AprilTag matang, kalibrasi intrinsik cukup sekali |
+| Pustaka | `hoDesignIndoorPositioning2023` | UWB sebagai jalur alternatif yang tidak dipilih |
+| Dokumentasi | `ardupilotFeaturesSpeedyBeeF405Mini` | `AP_BEACON_ENABLED` dan `EK3_FEATURE_EXTERNAL_NAV` dimatikan pada build stabil |
+| Keputusan penulis | 2026-09-16 | kamera jadi jalur utama, UWB opsional dan bersyarat |
+| **Tanpa sumber** | — | galat UWB 10–30 cm hanya perkiraan, **tidak dipakai** sebagai pembenaran |
+
+Indeks sumber per topik ada di [`03-pustaka/README.md`](../03-pustaka/README.md).
+
 ## Keputusan
 
 **Kamera atas + AprilTag sebagai jalur utama. UWB opsional dan bersyarat.**
@@ -24,7 +38,7 @@ tunggal di Fase 4 mulai Desember 2026.
    laju penuh; TWR menjadwalkan tiap tag bergantian sehingga laju per tag turun.
 3. **Akurasi.** Sistem lokalisasi kamera eksternal terlapor mencapai galat pose < 3 cm
    dan < 1° tanpa *drift* (Bultmann dkk., ICRA 2023), lihat
-   [`04-pustaka/landasan-lokalisasi.md`](../04-pustaka/landasan-lokalisasi.md).
+   [`03-pustaka/landasan-lokalisasi.md`](../03-pustaka/landasan-lokalisasi.md).
 
 ⚠️ **Angka UWB belum bersumber.** Perbandingan awal sempat memakai galat UWB 10–30 cm.
 Angka itu perkiraan dan tidak dipakai sebagai pembenaran di naskah.
@@ -42,7 +56,7 @@ tinggi, kamera ketiga) tidak memadai.
 ## Fakta susulan yang tidak membatalkan keputusan
 
 - **Plafon hanya 300 cm.** Jarak kamera–penanda 1,72 m, satu kamera tidak cukup untuk
-  segmen 7,20 m sehingga dibutuhkan **dua kamera** ([ruang uji](../03-lab/1-ruang-uji-dan-arena.md)).
+  segmen 7,20 m sehingga dibutuhkan **dua kamera** ([ruang uji](../02-lab/1-ruang-uji-dan-arena.md)).
   Jalur kamera jadi lebih mahal dari perkiraan awal, tetapi kelebihannya tetap ada.
   Catatan 2026-09-16 menyebut "2 kamera 4K"; kamera yang berlaku adalah ELP 5 MP
   *global shutter* ([KP03](KP03-kamera-elp-lensa-2mm.md)).

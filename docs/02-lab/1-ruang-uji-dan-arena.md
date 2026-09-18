@@ -70,7 +70,7 @@ dipaksa meniru simulasi.
 
 ## 3. Kamera di plafon
 
-Kamera dan alasannya: [KP03](../02-keputusan/KP03-kamera-elp-lensa-2mm.md).
+Kamera dan alasannya: [KP03](../04-keputusan/KP03-kamera-elp-lensa-2mm.md).
 
 | Besaran | Nilai |
 |---|---|

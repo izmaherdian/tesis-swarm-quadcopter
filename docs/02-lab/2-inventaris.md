@@ -64,7 +64,7 @@ Perkiraan ≈ 520 g (batas bawah, belum ditimbang). Rincian per komponen di
 
 ## 3. Belum tersedia — masuk rencana pengadaan
 
-Fase mengikuti BAB IV proposal. Harga dan sumbernya: [`4-survei-harga.md`](4-survei-harga.md). Aturan pengadaan: [KP05](../02-keputusan/KP05-baterai-dan-pengadaan.md).
+Fase mengikuti BAB IV proposal. Harga dan sumbernya: [`4-survei-harga.md`](4-survei-harga.md). Aturan pengadaan: [KP05](../04-keputusan/KP05-baterai-dan-pengadaan.md).
 
 | Komponen | Kebutuhan | Fase |
 |---|---|---|

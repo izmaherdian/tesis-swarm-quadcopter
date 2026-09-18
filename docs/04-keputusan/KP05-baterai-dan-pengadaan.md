@@ -1,8 +1,8 @@
 # KP05 — Baterai 6S 1200 mAh dan aturan pengadaan
 
 **Tanggal:** 2026-09-17 · **Status:** diputuskan
-**Terkait:** [baterai dan bobot](../03-lab/3-baterai-dan-bobot.md) · [inventaris](../03-lab/2-inventaris.md) ·
-[survei harga](../03-lab/4-survei-harga.md) · proposal Tabel Anggaran Fase 2, Fase 4, Rekapitulasi
+**Terkait:** [baterai dan bobot](../02-lab/3-baterai-dan-bobot.md) · [inventaris](../02-lab/2-inventaris.md) ·
+[survei harga](../02-lab/4-survei-harga.md) · proposal Tabel Anggaran Fase 2, Fase 4, Rekapitulasi
 
 ## Bagian A — Baterai
 
@@ -20,6 +20,18 @@ berat, 2S/3S di bawah rancangan.
 | minimum, satu per wahana | 5 | 3 |
 | **satu per wahana + satu cadangan** | **6** | **4** |
 | ideal, dua per wahana | 10 | 8 |
+
+### Dasar keputusan
+
+| Dasar | Sumber | Isi yang dipakai |
+|---|---|---|
+| Data lab | [inventaris 1c](../02-lab/2-inventaris.md) | 10 baterai di lab, hanya 2 yang 6S 1200 mAh |
+| Data lab | [inventaris 2](../02-lab/2-inventaris.md) | pengisi daya SkyRC T6X80 80 W, papan pengisian paralel |
+| Halaman resmi | `speedybeeBee35`, `SpeedyBeeBee3535a` | motor 2006-1950KV untuk 6S, baterai 1050–1300 mAh |
+| Hitungan | [baterai dan bobot](../02-lab/3-baterai-dan-bobot.md) | 1C ≈ 30 W per baterai sehingga 80 W cukup untuk dua baterai paralel |
+| Listing | [survei harga](../02-lab/4-survei-harga.md) | Rp637.000 sebagai batas atas |
+| Keputusan penulis | 2026-09-17 | total enam baterai, bukan lima atau sepuluh |
+| **Belum ada data** | uji terbang tunggal | waktu terbang sebenarnya per baterai |
 
 ### Keputusan
 

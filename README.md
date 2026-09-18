@@ -17,8 +17,9 @@ berisi urutan baca seluruh dokumentasi dan status proyek terkini.
 |---|---|
 | Tahu urutan baca dan status proyek | [`docs/00-mulai-di-sini.md`](docs/00-mulai-di-sini.md) |
 | Tahu fase penelitian dan alur kerja | [`docs/01-alur-kerja.md`](docs/01-alur-kerja.md) |
-| Tahu kenapa sesuatu dirancang begitu | [`docs/02-keputusan/`](docs/02-keputusan/) |
-| Data ruang uji, inventaris, harga | [`docs/03-lab/`](docs/03-lab/README.md) |
+| Data ruang uji, inventaris, harga | [`docs/02-lab/`](docs/02-lab/README.md) |
+| Sumber dan rujukan tiap pilihan | [`docs/03-pustaka/`](docs/03-pustaka/README.md) |
+| Tahu kenapa sesuatu dirancang begitu | [`docs/04-keputusan/`](docs/04-keputusan/README.md) |
 | Menulis proposal | [`tulisan/proposal/main.tex`](tulisan/proposal/main.tex) |
 | Merancang eksperimen baru | [`docs/05-eksperimen/TEMPLATE-desain-eksperimen.md`](docs/05-eksperimen/TEMPLATE-desain-eksperimen.md) |
 | Tahu konteks & aturan repo | [`CLAUDE.md`](CLAUDE.md) |
@@ -48,10 +49,10 @@ tulisan/
 └── diagrams/          sumber diagram *.drawio (metodologi)
 docs/
 ├── 00-mulai-di-sini.md    urutan baca + status proyek
-├── 01-alur-kerja.md       lima fase, alur eksperimen, siklus sesi
-├── 02-keputusan/          KP01–KP05
-├── 03-lab/                ruang uji, inventaris, baterai, harga, tugas penulis, foto, video
-├── 04-pustaka/            kuartil jurnal, landasan lokalisasi
+├── 01-alur-kerja.md       rantai bukti, lima fase, alur eksperimen, siklus sesi
+├── 02-lab/                ruang uji, inventaris, baterai, harga, tugas penulis, foto, video
+├── 03-pustaka/            indeks sumber per topik, kuartil jurnal, landasan lokalisasi
+├── 04-keputusan/          KP01–KP05, tiap KP bertabel dasar keputusan
 ├── 05-eksperimen/         templat + dokumen desain per eksperimen
 └── arsip/                 dokumen lama, bukan acuan
 experiments/           konfigurasi tiap eksperimen

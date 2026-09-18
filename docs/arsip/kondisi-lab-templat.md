@@ -1,6 +1,6 @@
 > ⚠️ **ARSIP — templat kosong yang tidak pernah diisi.** Dipindah dari `docs/lab/kondisi-lab.md`
 > pada 2026-09-17. Data ruangan diperoleh dari foto, denah, dan video, lalu dicatat di
-> [`03-lab/1-ruang-uji-dan-arena.md`](../03-lab/1-ruang-uji-dan-arena.md).
+> [`02-lab/1-ruang-uji-dan-arena.md`](../02-lab/1-ruang-uji-dan-arena.md).
 
 # Kondisi Ruangan Lab
 

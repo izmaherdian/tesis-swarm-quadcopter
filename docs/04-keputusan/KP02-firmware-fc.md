@@ -7,7 +7,7 @@
 
 Kamera atas hanya berguna bila *flight controller* mau menerima posisi dari luar.
 Papan yang tersedia adalah **SpeedyBee F405 Mini** (STM32F405, flash 1 MB), 6 unit di
-inventaris ([inventaris](../03-lab/2-inventaris.md)).
+inventaris ([inventaris](../02-lab/2-inventaris.md)).
 
 Daftar fitur resmi build stabil ArduPilot untuk papan ini
 (`firmware.ardupilot.org/Copter/stable/SpeedyBeeF405Mini/features.txt`):
@@ -34,6 +34,17 @@ beacon. Ini keterbatasan flash papan, bukan soal pilihan sensor.
 | **A. ArduPilot racikan** | Rp0 | belum pasti muat 1 MB |
 | B. Ganti FC ke kelas H7 (≥2 MB) | 5 papan baru, tidak ada di RAB; 6 F405 Mini yang ada jadi tidak terpakai | rendah |
 | C. Kalang posisi dipindah ke ESP32-S3 | Rp0 | EKF & kontrol posisi ditulis sendiri; beban XIAO ESP32-S3 berat |
+
+## Dasar keputusan
+
+| Dasar | Sumber | Isi yang dipakai |
+|---|---|---|
+| Data lab | [inventaris](../02-lab/2-inventaris.md) | 6 papan SpeedyBee F405 Mini (STM32F405, flash 1 MB) |
+| Dokumentasi | `ardupilotFeaturesSpeedyBeeF405Mini` | daftar fitur yang dimatikan pada build stabil |
+| Dokumentasi | `ardupilotNonGPSPositionEstimation` | navigasi non-GPS butuh flash > 1 MB dan hanya didukung EKF3 |
+| Dokumentasi | `ardupilotCustomFirmwareBuilder` | layanan build dengan fitur terpilih, tanpa *toolchain* lokal |
+| Keputusan penulis | 2026-09-16 | jalan A dipilih, cadangan jalan C |
+| **Belum ada data** | — | harga papan kelas H7 belum disurvei |
 
 ## Keputusan
 
@@ -80,4 +91,4 @@ Harga papan H7 belum disurvei.
 ## Terkait
 
 [KP01](KP01-lokalisasi-kamera-apriltag.md) · [analisis kelayakan (arsip)](../arsip/analisis-kelayakan-2026-09-16.md) bagian 6
-· [tugas penulis C3](../03-lab/5-tugas-penulis.md) (cek firmware yang sekarang terpasang)
+· [tugas penulis C3](../02-lab/5-tugas-penulis.md) (cek firmware yang sekarang terpasang)

@@ -1,11 +1,11 @@
 """Sumber angka tunggal untuk gambar dan tabel perancangan.
 
-Setiap nilai di sini punya sumber: pengukuran lapangan (docs/03-lab/), keputusan
-perancangan (docs/02-keputusan/), atau MultiAgentConfig.py simulator.
+Setiap nilai di sini punya sumber: pengukuran lapangan (docs/02-lab/), keputusan
+perancangan (docs/04-keputusan/), atau MultiAgentConfig.py simulator.
 """
 import math
 
-# ── Ruang (docs/03-lab/1-ruang-uji-dan-arena.md; ukur lapangan, ±5 cm) ─
+# ── Ruang (docs/02-lab/1-ruang-uji-dan-arena.md; ukur lapangan, ±5 cm) ─
 H_PLAFON   = 3.00      # m
 W_KORIDOR  = 2.70      # m, lebar bersih lengan koridor
 L_SEGMEN   = 7.20      # m, panjang segmen uji
@@ -16,7 +16,7 @@ D_SALURAN  = 0.105     # m, diameter luar saluran propeler
 R_WAHANA   = W_WAHANA / 2
 TIANG      = 0.07      # m, tinggi tiang penyangga penanda
 
-# ── Kamera: ELP-U3GS05B10C-IB21 (docs/03-lab/foto/18, KP03) ─────────
+# ── Kamera: ELP-U3GS05B10C-IB21 (docs/02-lab/foto/18, KP03) ─────────
 NPX_PANJANG, NPX_PENDEK = 2592, 1944
 PIKSEL      = 2.2e-6   # m, ukuran piksel
 SENSOR_W, SENSOR_H = 5.737e-3, 4.312e-3   # m, larik aktif OG05B10
@@ -27,7 +27,7 @@ H_TERBANG   = 1.20     # m
 PENANDA     = 0.12     # m, sisi penanda AprilTag
 PX_MINIMUM, PX_NYAMAN = 48, 80
 
-# ── Arena (docs/03-lab/1-ruang-uji-dan-arena.md bagian 2) ──────────────
+# ── Arena (docs/02-lab/1-ruang-uji-dan-arena.md bagian 2) ──────────────
 K_SKALA    = 0.90
 CELAH      = 0.90      # m
 KANAL      = 1.80      # m

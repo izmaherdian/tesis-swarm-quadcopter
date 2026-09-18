@@ -35,7 +35,7 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
   ditetapkan**: HC-SR04 vs VL53L1X vs MicoAir MTF-01 (3 unit tersedia) diuji banding pada Fase 2.
 - **Lokalisasi:** 2 kamera atas **ELP-U3GS05B10C-IB21**: OG05B10 *global shutter*
   2592×1944, piksel 2,2 µm, larik 5,737 × 4,312 mm, **lensa CS 2,1 mm**, 60 fps MJPEG
-  USB 3.0 (lembar data: `docs/03-lab/foto/18-…`; keputusan: KP03). Penanda **AprilTag 12 cm** bertiang 7 cm,
+  USB 3.0 (lembar data: `docs/02-lab/foto/18-…`; keputusan: KP03). Penanda **AprilTag 12 cm** bertiang 7 cm,
   terbang 1,2 m, pose lewat PnP di stasiun darat. Model lubang jarum: liputan
   4,70 × 3,53 m, 1,80 mm/px, 12 cm = 66 px, tumpang tindih 2,20 m (`parameter.py`).
   ⚠️ ELP menyebut HFOV 150° (lubang jarum 107,6°) → distorsi kuat; batas pesimistis
@@ -52,8 +52,8 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
   2006-1950KV (poros 1,5 mm), 5 XIAO ESP32-S3, 5 penerima ExpressLRS (**pemancar belum
   ada**), 14 propeler Gemfan D90S (T-mount 1,5 mm), 3 MTF-01, pengisi daya SkyRC T6X80 (80 W). Bobot terbang perkiraan ≈ 520 g (batas bawah dari lembar data, belum ditimbang). Baterai yang sesuai hanya **6S 1200 mAh
   CNHL** (2 unit, beli 4 di Fase 4 → total 6; SpeedyBee menyarankan 6S 1050–1300 mAh untuk 1950KV). Stasiun darat = laptop
-  penulis (Ryzen 5 4500U, Ubuntu 26.04). Semua lalu lintas MAVLink/UDP lewat satu router Wi-Fi. Rincian: `docs/03-lab/2-inventaris.md`,
-  `docs/03-lab/3-baterai-dan-bobot.md`; harga: `docs/03-lab/4-survei-harga.md`; aturan pengadaan: KP05.
+  penulis (Ryzen 5 4500U, Ubuntu 26.04). Semua lalu lintas MAVLink/UDP lewat satu router Wi-Fi. Rincian: `docs/02-lab/2-inventaris.md`,
+  `docs/02-lab/3-baterai-dan-bobot.md`; harga: `docs/02-lab/4-survei-harga.md`; aturan pengadaan: KP05.
 - **Arena:** koridor 2,70 m, celah 0,90 m (kolom bangunan + dus), formasi V
   diskalakan 0,9; untuk wahana $R=0{,}125$ m ambang $\alpha R=1{,}0$ m.
 - **Metodologi:** 5 fase mengikuti `figures/metodologi_tesis.pdf` (diagram draw.io
@@ -75,10 +75,10 @@ tulisan/common/          itb-tesis.sty + references.bib + logo (dipakai bersama)
 tulisan/gambar/          skrip gambar (gaya.py, parameter.py, gbr_*.py) → `make gambar`
 tulisan/diagrams/        sumber *.drawio; halaman Metodologi → figures/metodologi_tesis.pdf
 docs/00-mulai-di-sini.md urutan baca dokumentasi + status proyek — mulai dari sini
-docs/01-alur-kerja.md    5 fase (= Bab IV), alur satu eksperimen, siklus sesi, daftar periksa
-docs/02-keputusan/       KP01 lokalisasi · KP02 firmware · KP03 kamera · KP04 sensor · KP05 baterai & pengadaan
-docs/03-lab/             1 ruang uji & arena · 2 inventaris · 3 baterai & bobot · 4 survei harga · 5 tugas penulis · foto/ · video/
-docs/04-pustaka/         kuartil jurnal (SCImago), landasan lokalisasi
+docs/01-alur-kerja.md    rantai bukti (lab→pustaka→keputusan), 5 fase (= Bab IV), alur eksperimen
+docs/02-lab/             1 ruang uji & arena · 2 inventaris · 3 baterai & bobot · 4 survei harga · 5 tugas penulis · foto/ · video/
+docs/03-pustaka/         indeks sumber per topik, kuartil jurnal (SCImago), landasan lokalisasi
+docs/04-keputusan/       KP01 lokalisasi · KP02 firmware · KP03 kamera · KP04 sensor · KP05 baterai & pengadaan
 docs/05-eksperimen/      templat + satu dokumen desain per eksperimen (dibuat SEBELUM ngoding/terbang)
 docs/arsip/              dokumen lama yang sudah digantikan — bukan acuan
 experiments/             konfigurasi tiap eksperimen (config.yaml + skrip jalan)
@@ -107,7 +107,7 @@ src/MultiAgentSim/       clone simulator (gitignored); versi dikunci di src/Mult
 - Setiap angka di naskah harus bisa ditelusuri ke `results/<id>/` atau ke tabel
   di naskah itu sendiri. Jangan pernah menulis angka yang tidak punya sumber.
 - Harga di RAB hanya dari RAB awal penulis atau listing yang dicatat di
-  `docs/03-lab/4-survei-harga.md`. Tanpa sumber → tulis *survei*, jangan diperkirakan.
+  `docs/02-lab/4-survei-harga.md`. Tanpa sumber → tulis *survei*, jangan diperkirakan.
 - Setiap rumus perencana (ERC/IAPF) harus cocok dengan kode simulator versi terkunci.
 - Kalau angka di narasi dan di tabel berbeda, **tabel yang benar** — perbaiki narasinya.
 - Gaya kalimat: mengalir, tanpa titik dua di tengah kalimat atau sebelum persamaan
@@ -123,9 +123,13 @@ src/MultiAgentSim/       clone simulator (gitignored); versi dikunci di src/Mult
 - Tutup setiap tugas dengan ringkasan: apa yang berubah, kenapa, bagaimana
   memverifikasinya. Sebutkan juga apa yang **tidak** dikerjakan.
 - Sebelum menghapus berkas apa pun: pastikan sudah ter-*commit* lebih dulu.
-- Keputusan baru dicatat sebagai `docs/02-keputusan/KP<NN>-<topik>.md`; data lab baru
-  masuk berkas bernomor di `docs/03-lab/` beserta tanggal dan sumbernya. Bila struktur
-  `docs/` berubah, perbarui `docs/00-mulai-di-sini.md` dan peta repo di atas.
+- **Urutannya lab → pustaka → keputusan.** Data lab baru masuk berkas bernomor di
+  `docs/02-lab/` beserta tanggal dan sumbernya; sumber ilmiah/lembar data dicatat di
+  `docs/03-pustaka/README.md` dan `references.bib`; keputusan baru ditulis sebagai
+  `docs/04-keputusan/KP<NN>-<topik>.md` dan **wajib punya tabel dasar keputusan** (data
+  lab / pustaka / lembar data / hasil uji / keputusan penulis). Pilihan tanpa dasar
+  ditulis jujur sebagai asumsi. Bila struktur `docs/` berubah, perbarui
+  `docs/00-mulai-di-sini.md` dan peta repo di atas.
 
 **Git**
 - Pesan commit bahasa Indonesia, awalan: `proposal:`, `laporan:`, `sim:`,

@@ -61,7 +61,7 @@ Isi kolom "Hasil" langsung di sini atau kirim fotonya. Urutan = prioritas.
 
 | Data yang dicatat | Hasil |
 |---|---|
-| Tiap baterai (sel, kapasitas, C) | ✅ tercatat; hanya 2 × CNHL 6S 1200 mAh yang cocok ([KP05](../02-keputusan/KP05-baterai-dan-pengadaan.md)) |
+| Tiap baterai (sel, kapasitas, C) | ✅ tercatat; hanya 2 × CNHL 6S 1200 mAh yang cocok ([KP05](../04-keputusan/KP05-baterai-dan-pengadaan.md)) |
 | Pengisi daya | ✅ SkyRC T6X80, 80 W ([foto 19](foto/19-pengisi-daya-skyrc.png)) |
 
 ### C3. Wahana
@@ -91,7 +91,7 @@ Isi kolom "Hasil" langsung di sini atau kirim fotonya. Urutan = prioritas.
 
 ## E. Pustaka
 
-Rincian di [`../04-pustaka/kuartil-jurnal.md`](../04-pustaka/kuartil-jurnal.md).
+Rincian di [`../03-pustaka/kuartil-jurnal.md`](../03-pustaka/kuartil-jurnal.md).
 
 - [x] Kuartil dibaca langsung dari widget resmi SCImago (SJR 2025).
   Intelligent Service Robotics = **Q1** (sesuai penulis).

@@ -1,8 +1,8 @@
 # KP03 — Kamera ELP-U3GS05B10C-IB21 lensa 2,1 mm, dua unit, penanda 12 cm
 
 **Tanggal:** 2026-09-17 · **Status:** diputuskan, pemesanan mengikuti jadwal pengadaan
-**Terkait:** [KP01](KP01-lokalisasi-kamera-apriltag.md) · [ruang uji](../03-lab/1-ruang-uji-dan-arena.md) ·
-[survei harga](../03-lab/4-survei-harga.md) · proposal Subbab "Penentuan Jumlah Kamera dan Ukuran Penanda"
+**Terkait:** [KP01](KP01-lokalisasi-kamera-apriltag.md) · [ruang uji](../02-lab/1-ruang-uji-dan-arena.md) ·
+[survei harga](../02-lab/4-survei-harga.md) · proposal Subbab "Penentuan Jumlah Kamera dan Ukuran Penanda"
 
 ## Konteks
 
@@ -20,11 +20,11 @@ yang dipakai:
 |---|---|---|
 | 2026-09-16 | Kamera USB 4K (IMX415), HFOV ±109°, penanda 10 cm | ditolak, rana bergulir |
 | 2026-09-16 | ELP 5 MP *global shutter* "lensa 120°", penanda 12 cm | digantikan; arti "120°" (horizontal atau diagonal) tidak jelas sebelum lembar data ada |
-| 2026-09-17 | **ELP-U3GS05B10C-IB21, lensa CS 2,1 mm** | **dipilih** setelah lembar data diterima ([foto 18](../03-lab/foto/18-datasheet-kamera-elp-og05b10.png)) dan penjual mengonfirmasi lensa 2,1 mm |
+| 2026-09-17 | **ELP-U3GS05B10C-IB21, lensa CS 2,1 mm** | **dipilih** setelah lembar data diterima ([foto 18](../02-lab/foto/18-datasheet-kamera-elp-og05b10.png)) dan penjual mengonfirmasi lensa 2,1 mm |
 
 Dari tujuh listing kamera yang dikirim penulis, hanya ELP OG05B10 (Fast Importir) yang
 berana global dan 5 MP; sisanya rana bergulir atau resolusi ≤ 1 MP
-([survei kamera k1–k7](../03-lab/4-survei-harga.md)).
+([survei kamera k1–k7](../02-lab/4-survei-harga.md)).
 
 ## Pilihan lensa untuk OG05B10
 
@@ -40,6 +40,18 @@ lubang jarum, jarak 1,72 m, larik 5,737 × 4,312 mm, piksel 2,2 µm).
 Lensa 2,1 mm memberi tumpang tindih terlebar untuk menyatukan dua kamera ke satu kerangka
 acuan, dengan penanda 12 cm masih di atas 48 px di sumbu optik.
 
+## Dasar keputusan
+
+| Dasar | Sumber | Isi yang dipakai |
+|---|---|---|
+| Data lab | [ruang uji](../02-lab/1-ruang-uji-dan-arena.md) | plafon 300 cm, segmen 7,20 × 2,70 m, terbang 1,2 m, tinggi wahana 0,08 m |
+| Lembar data | `elpGlobalShutterOG05B10`, [foto 18](../02-lab/foto/18-datasheet-kamera-elp-og05b10.png) | OG05B10 *global shutter*, larik 5,737 × 4,312 mm, piksel 2,2 µm, 60 fps USB 3.0, pilihan lensa CS dan HFOV |
+| Hitungan | `liputan()` di [`parameter.py`](../../tulisan/gambar/parameter.py) | liputan 4,70 × 3,53 m, 1,80 mm/piksel, penanda 12 cm = 66 px, tumpang tindih 2,20 m |
+| Pustaka | `zhangIntegratedFrameworkEnhancing2026`, tiga makalah AprilTag | ketelitian pose penanda kecil dan syarat deteksi |
+| Listing | [survei harga](../02-lab/4-survei-harga.md) k1–k7 | Rp6.600.000, satu-satunya kandidat *global shutter* 5 MP |
+| Keputusan penulis | 2026-09-17 | dua unit, lensa 2,1 mm, pra-pesan 3 minggu |
+| **Asumsi perancangan** | — | ambang deteksi **48 piksel** (dan 80 piksel "nyaman") belum punya rujukan; dikonfirmasi lewat kalibrasi Fase 2 |
+
 ## Keputusan
 
 - **Kamera:** ELP-U3GS05B10C-IB21, sensor OmniVision OG05B10 *global shutter* 2592 × 1944,
@@ -50,7 +62,7 @@ acuan, dengan penanda 12 cm masih di atas 48 px di sumbu optik.
   pada Fase 1 karena pra-pesan; unit kedua dipesan setelah uji terbang tunggal lolos (Fase 4).
 - **Pemasangan:** posisi 2,35 m dan 4,85 m dari awal segmen, *super clamp* pada rel rangka-T,
   kabel USB 3.0 aktif 10 m ke laptop stasiun darat; kedua kamera sebaiknya di pengendali
-  USB 3.1 yang berbeda (pemetaan port belum dicek, [tugas penulis C4](../03-lab/5-tugas-penulis.md)).
+  USB 3.1 yang berbeda (pemetaan port belum dicek, [tugas penulis C4](../02-lab/5-tugas-penulis.md)).
 - **Penanda:** AprilTag 12 cm pada pelat akrilik yang dinaikkan tiang cetak 3D setinggi
   7 cm, karena jalur datar di bodi hanya 4 cm dan saluran propeler tidak boleh tertutup.
 - **Pose:** PnP di laptop stasiun darat, dikirim lewat MAVLink ke EKF3 (ExtNav, [KP02](KP02-firmware-fc.md)).
@@ -68,7 +80,7 @@ acuan, dengan penanda 12 cm masih di atas 48 px di sumbu optik.
 
 Saat kamera pertama tiba (Fase 2), kalibrasi intrinsik + distorsi, lalu ukur piksel sisi
 penanda di tengah, di tepi koridor, dan di ujung liputan
-([tugas penulis A](../03-lab/5-tugas-penulis.md)). Bila penanda di tepi liputan tidak
+([tugas penulis A](../02-lab/5-tugas-penulis.md)). Bila penanda di tepi liputan tidak
 terdeteksi andal, pilihan yang tercantum di proposal adalah:
 
 1. memperbesar penanda,

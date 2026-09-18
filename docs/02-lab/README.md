@@ -1,6 +1,10 @@
-# 03-lab — Ruang Uji, Perangkat Keras, dan Pengadaan
+# 02-lab — Ruang Uji, Perangkat Keras, dan Pengadaan
 
-> Diperbarui 2026-09-17. Data fisik lab PTIO ITB. Baca berurutan sesuai nomor.
+> Diperbarui 2026-09-18. Data fisik lab PTIO ITB. Baca berurutan sesuai nomor.
+>
+> Folder ini adalah **langkah pertama** rantai kerja, yaitu apa yang benar-benar ada dan
+> berapa ukurannya. Sumber yang menerangkannya ada di [`03-pustaka/`](../03-pustaka/README.md),
+> dan keputusan yang lahir darinya ada di [`04-keputusan/`](../04-keputusan/README.md).
 
 | # | Berkas | Isinya | Dipakai naskah di |
 |---|---|---|---|
@@ -20,8 +24,9 @@
 - Setiap angka menyebut sumbernya (foto, lembar data, listing, pengukuran, atau
   konfirmasi penulis beserta tanggal).
 - Harga hanya dari listing yang dicatat di berkas 4, dengan aturan **batas atas**
-  ([KP05](../02-keputusan/KP05-baterai-dan-pengadaan.md)).
-- Setelah data berubah, periksa apakah tabel di naskah dan `CLAUDE.md` ikut berubah.
+  ([KP05](../04-keputusan/KP05-baterai-dan-pengadaan.md)).
+- Setelah data berubah, periksa apakah **KP yang bersandar pada data itu** masih berlaku,
+  lalu apakah tabel di naskah dan `CLAUDE.md` ikut berubah.
 
 Templat kondisi lab dan analisis kelayakan lama ada di [`../arsip/`](../arsip/); isinya
 yang masih berlaku sudah dipindah ke berkas 1–3.

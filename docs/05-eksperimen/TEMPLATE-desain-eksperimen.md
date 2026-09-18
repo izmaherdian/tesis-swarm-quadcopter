@@ -69,11 +69,11 @@ Minimal satu. Tanpa pembanding, hasilmu tidak punya makna.
 | Butir | Nilai |
 |---|---|
 | Wahana yang dipakai | <nomor rangka> |
-| *Firmware* FC | <berkas .apj + daftar fitur, [KP02](../02-keputusan/KP02-firmware-fc.md)> |
+| *Firmware* FC | <berkas .apj + daftar fitur, [KP02](../04-keputusan/KP02-firmware-fc.md)> |
 | Kamera dan kalibrasi | <jumlah kamera, berkas kalibrasi, tanggal> |
 | Sensor jarak | <jenis, sudut β> |
 | Baterai | <nomor baterai, tegangan awal> |
-| Arena | <susunan dus, [ruang uji](../03-lab/1-ruang-uji-dan-arena.md)> |
+| Arena | <susunan dus, [ruang uji](../02-lab/1-ruang-uji-dan-arena.md)> |
 | Keselamatan | <pemancar terikat, uji pengambilalihan manual, kacamata, area dikosongkan> |
 
 ## 8. Kriteria keberhasilan — **ditetapkan sekarang, bukan setelah melihat hasil**

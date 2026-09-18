@@ -1,8 +1,8 @@
 # KP04 — Sensor jarak dipilih lewat uji banding HC-SR04, VL53L1X, MTF-01
 
 **Tanggal:** 2026-09-17 · **Status:** diputuskan (metode pemilihan); sensor belum terpilih
-**Terkait:** proposal Subbab "Pemilihan Sensor Jarak" · [inventaris](../03-lab/2-inventaris.md) ·
-[survei harga](../03-lab/4-survei-harga.md)
+**Terkait:** proposal Subbab "Pemilihan Sensor Jarak" · [inventaris](../02-lab/2-inventaris.md) ·
+[survei harga](../02-lab/4-survei-harga.md)
 
 ## Konteks
 
@@ -23,6 +23,19 @@ Jenis sensor karenanya **tidak ditetapkan di atas kertas**.
 
 MTF-01 ditambahkan sebagai kandidat ketiga atas keputusan penulis (2026-09-17) karena
 sudah tersedia di lab.
+
+## Dasar keputusan
+
+| Dasar | Sumber | Isi yang dipakai |
+|---|---|---|
+| Data lab | [ruang uji](../02-lab/1-ruang-uji-dan-arena.md) | sisi celah berupa kolom beton, dinding berplester, dan dus kardus |
+| Data lab | [inventaris](../02-lab/2-inventaris.md) | 3 unit MTF-01 sudah tersedia |
+| Pustaka | `borensteinObstacleAvoidanceUltrasonic1988`, `siegwartIntroductionAutonomousMobile2004` | pantulan spekular ultrasonik pada permukaan halus bersudut datang miring |
+| Pustaka | `pedroSenseAvoidSystem2025` | rancangan sistem *sense and avoid* pada UAV kecil |
+| Lembar data | `micoairMTF01`, deskripsi listing VL53L1X | jangkauan, sudut pancar, antarmuka, laju |
+| Listing | [survei harga](../02-lab/4-survei-harga.md) | Rp26.600, Rp98.500, Rp1.565.000 |
+| Keputusan penulis | 2026-09-17 | MTF-01 masuk sebagai kandidat ketiga karena sudah ada |
+| **Belum ada data** | uji banding Fase 2 | keberhasilan baca pada 45°, sebaran galat, laju dua sensor |
 
 ## Keputusan
 

@@ -1,7 +1,7 @@
 # Baterai dan Bobot Wahana Bee35
 
 > Dibuat 2026-09-17 dari inventaris yang dicatat penulis. Keputusan yang diambil dari
-> analisis ini: [KP05](../02-keputusan/KP05-baterai-dan-pengadaan.md).
+> analisis ini: [KP05](../04-keputusan/KP05-baterai-dan-pengadaan.md).
 
 ## Acuan pabrikan
 

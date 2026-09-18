@@ -4,7 +4,7 @@
 > Fase 2, Tabel 4.2 Fase 4, Tabel 4.3 Rekapitulasi). Total RAB **Rp22.639.974**.
 > Jumlah yang dibeli mengikuti [inventaris](2-inventaris.md) 2026-09-17 (asumsi lama "3 unit
 > FC/ESC/ESP32-S3" sudah tidak berlaku). Aturan pengadaan diringkas di
-> [KP05](../02-keputusan/KP05-baterai-dan-pengadaan.md).
+> [KP05](../04-keputusan/KP05-baterai-dan-pengadaan.md).
 
 ## Aturan
 
