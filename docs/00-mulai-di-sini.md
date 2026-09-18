@@ -28,7 +28,7 @@
 |---|---|
 | [KP01](04-keputusan/KP01-lokalisasi-kamera-apriltag.md) | Lokalisasi dengan kamera atas + AprilTag, bukan UWB |
 | [KP02](04-keputusan/KP02-firmware-fc.md) | *Firmware* ArduPilot racikan untuk SpeedyBee F405 Mini |
-| [KP03](04-keputusan/KP03-kamera-elp-lensa-2mm.md) | Kamera ELP-U3GS05B10C-IB21 lensa 2,1 mm, dua unit, penanda 12 cm |
+| [KP03](04-keputusan/KP03-kamera-elp-lensa-2-1mm.md) | Kamera ELP-U3GS05B10C-IB21 lensa 2,1 mm, dua unit, penanda 12 cm |
 | [KP04](04-keputusan/KP04-sensor-jarak-uji-banding.md) | Sensor jarak dipilih lewat uji banding HC-SR04, VL53L1X, MTF-01 |
 | [KP05](04-keputusan/KP05-baterai-dan-pengadaan.md) | Baterai 6S 1200 mAh dan aturan pengadaan (batas atas, bertahap per gerbang) |
 
@@ -49,7 +49,7 @@
 |---|---|
 | Proposal | Bab I–V lengkap, 58 halaman, `make check` lolos; siap ditinjau pembimbing |
 | Anggaran | Rp23.403.374 (Fase 2 Rp10.046.227, Fase 4 Rp13.357.147); setiap pos bertautan listing Tokopedia ([survei harga](02-lab/4-survei-harga.md)) |
-| Kamera | ELP-U3GS05B10C-IB21 lensa 2,1 mm, Rp6.600.000 per unit, pra-pesan 3 minggu ([KP03](04-keputusan/KP03-kamera-elp-lensa-2mm.md)) |
+| Kamera | ELP-U3GS05B10C-IB21 lensa 2,1 mm, Rp6.600.000 per unit, pra-pesan 3 minggu ([KP03](04-keputusan/KP03-kamera-elp-lensa-2-1mm.md)) |
 | Inventaris lab | tercatat per rangka ([inventaris](02-lab/2-inventaris.md)) |
 | Masih dicek penulis | merek router, *firmware* FC terpasang, pemetaan port USB laptop, bobot terbang ditimbang, versi ESC ([tugas penulis](02-lab/5-tugas-penulis.md)) |
 | Simulator | versi terkunci `0d7ed5a`; faktor skala κ belum diterapkan (dijadwalkan Fase 1) |

@@ -84,7 +84,7 @@ Kalau sebuah pilihan tidak punya satu pun dari empat dasar itu, tulis jelas seba
 
 | Pertanyaan | Data lab | Sumber | Keputusan | Akibat di naskah |
 |---|---|---|---|---|
-| Berapa kamera dan ukuran penanda? | plafon 300 cm, segmen 7,20 × 2,70 m | lembar data ELP (foto 18), DeGol dkk. 2017 (acuan > 70 piksel), tiga makalah AprilTag | [KP03](04-keputusan/KP03-kamera-elp-lensa-2mm.md) | subbab liputan kamera, RAB Fase 2 dan Fase 4 |
+| Berapa kamera dan ukuran penanda? | plafon 300 cm, segmen 7,20 × 2,70 m | lembar data ELP (foto 18), DeGol dkk. 2017 (acuan > 70 piksel), tiga makalah AprilTag | [KP03](04-keputusan/KP03-kamera-elp-lensa-2-1mm.md) | subbab liputan kamera, RAB Fase 2 dan Fase 4 |
 | Sensor jarak apa? | kolom beton dan dinding plester di arena, 3 MTF-01 tersedia | Borenstein 1988 dan Siegwart 2004 (pantulan spekular), lembar data MicoAir | [KP04](04-keputusan/KP04-sensor-jarak-uji-banding.md) | uji banding Fase 2, pos sensor di RAB |
 | Baterai berapa dan berapa banyak? | 10 baterai di lab, hanya 2 yang 6S 1200 mAh | halaman resmi SpeedyBee (6S 1050–1300 mAh untuk 1950KV) | [KP05](04-keputusan/KP05-baterai-dan-pengadaan.md) | pos baterai Fase 4, jadwal pengisian |
 | FC bisa terima pose kamera? | 6 papan F405 Mini flash 1 MB | `features.txt` dan dokumentasi ArduPilot | [KP02](04-keputusan/KP02-firmware-fc.md) | subbab firmware, lampiran daftar fitur |

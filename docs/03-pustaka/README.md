@@ -42,8 +42,8 @@ Kolom "Menopang" menunjuk keputusan (KP) dan subbab proposal yang bersandar pada
 | `bultmannExternalCameraBased2023` | galat pose sistem kamera eksternal < 3 cm dan < 1° tanpa *drift* | [KP01](../04-keputusan/KP01-lokalisasi-kamera-apriltag.md), subbab lokalisasi |
 | `olsonAprilTagRobustFlexible2011`, `wangAprilTag2Efficient2016`, `krogiusFlexibleLayoutsFiducial2019` | keluarga penanda AprilTag dan pendeteksinya | KP01, KP03, subbab lokalisasi |
 | `garridojuradoAutomaticGenerationDetection2014` | ArUco sebagai pembanding penanda fidusial | subbab lokalisasi |
-| `zhangIntegratedFrameworkEnhancing2026` | ketelitian pose AprilTag kecil pada jarak jauh | subbab lokalisasi, risiko distorsi [KP03](../04-keputusan/KP03-kamera-elp-lensa-2mm.md) |
-| `degolChromaTagColoredMarker2017` | *recall* deteksi menurun saat penanda mengecil; di atas ±70 piksel AprilTag dan pembandingnya sama-sama tinggi (Gambar 9a) — dipakai sebagai acuan konservatif | **acuan ukuran penanda** di [KP03](../04-keputusan/KP03-kamera-elp-lensa-2mm.md) dan subbab liputan kamera |
+| `zhangIntegratedFrameworkEnhancing2026` | ketelitian pose AprilTag kecil pada jarak jauh | subbab lokalisasi, risiko distorsi [KP03](../04-keputusan/KP03-kamera-elp-lensa-2-1mm.md) |
+| `degolChromaTagColoredMarker2017` | *recall* deteksi menurun saat penanda mengecil; di atas ±70 piksel AprilTag dan pembandingnya sama-sama tinggi (Gambar 9a) — dipakai sebagai acuan konservatif | **acuan ukuran penanda** di [KP03](../04-keputusan/KP03-kamera-elp-lensa-2-1mm.md) dan subbab liputan kamera |
 | `shalabyMILUVMultiUAV2026` | EKF UWB + inersia pada kawanan UAV dalam ruangan hanya 10–20 cm terhadap acuan Vicon, dinyatakan belum memadai untuk kendali dan perencanaan lintasan | **pembenaran kamera dipilih, bukan UWB** di [KP01](../04-keputusan/KP01-lokalisasi-kamera-apriltag.md) dan subbab lokalisasi |
 | `hoDesignIndoorPositioning2023` | lokalisasi dalam ruangan berbasis UWB (jalur yang tidak dipilih) | KP01 |
 | `georgiadisReviewLocalizationSensing2025` | tinjauan metode lokalisasi dan penginderaan | Bab I latar belakang |
@@ -70,7 +70,7 @@ Kolom "Menopang" menunjuk keputusan (KP) dan subbab proposal yang bersandar pada
 
 | Sumber | Isi yang dipinjam | Menopang |
 |---|---|---|
-| `elpGlobalShutterOG05B10` (lembar data) | OG05B10 *global shutter*, 2592×1944 60 fps USB 3.0, pilihan lensa CS dan HFOV | [KP03](../04-keputusan/KP03-kamera-elp-lensa-2mm.md), subbab liputan kamera |
+| `elpGlobalShutterOG05B10` (lembar data) | OG05B10 *global shutter*, 2592×1944 60 fps USB 3.0, pilihan lensa CS dan HFOV | [KP03](../04-keputusan/KP03-kamera-elp-lensa-2-1mm.md), subbab liputan kamera |
 | `speedybeeBee35`, `SpeedyBeeBee3535a` (halaman resmi) | motor 2006-1950KV untuk 6S, baterai 1050–1300 mAh, bobot rangka | [KP05](../04-keputusan/KP05-baterai-dan-pengadaan.md), inventaris, perkiraan bobot |
 | `argilianaPengembanganSistemKontrol2025` (tesis S2 ITB) | wahana dan perangkat penelitian sebelumnya di lab yang sama | subbab kondisi awal dan komponen yang tersedia |
 | Listing Tokopedia | harga tiap pos RAB | [`02-lab/4-survei-harga.md`](../02-lab/4-survei-harga.md), Tabel anggaran |

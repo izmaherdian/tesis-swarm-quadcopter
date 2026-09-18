@@ -65,7 +65,8 @@ Hanya lensa 2,1 mm yang menutup segmen 7,20 m dengan dua kamera pada ketinggian 
 - **Harga:** Rp6.600.000 per unit (Fast Importir, Jakarta Selatan); lensa 2,1 mm harga sama,
   **pra-pesan 3 minggu** (konfirmasi penjual lewat penulis, 2026-09-17).
 - **Jumlah:** **dua unit** (keputusan penulis). Unit pertama masuk anggaran Fase 2 tetapi dipesan
-  pada Fase 1 karena pra-pesan; unit kedua dipesan setelah uji terbang tunggal lolos (Fase 4).
+  menjelang akhir Fase 1 karena pra-pesan tiga minggu, supaya tiba saat kalibrasi Fase 2
+  dimulai; unit kedua dipesan setelah uji terbang tunggal lolos (Fase 4).
 - **Pemasangan:** posisi 2,12 m dan 5,08 m dari awal segmen, *super clamp* pada rel rangka-T,
   kabel USB 3.0 aktif 10 m ke laptop stasiun darat; kedua kamera sebaiknya di pengendali
   USB 3.1 yang berbeda (pemetaan port belum dicek, [tugas penulis C4](../02-lab/5-tugas-penulis.md)).

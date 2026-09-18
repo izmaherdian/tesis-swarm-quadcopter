@@ -9,7 +9,7 @@
 |---|---|---|---|
 | [KP01](KP01-lokalisasi-kamera-apriltag.md) | Lokalisasi kamera atas + AprilTag, UWB opsional | berlaku | plafon 300 cm, Bultmann dkk. 2023, fitur firmware |
 | [KP02](KP02-firmware-fc.md) | *Firmware* ArduPilot racikan untuk F405 Mini | berlaku, dieksekusi Fase 2 | 6 papan flash 1 MB, dokumentasi ArduPilot |
-| [KP03](KP03-kamera-elp-lensa-2mm.md) | Kamera ELP-U3GS05B10C-IB21 lensa 2,1 mm, dua unit, penanda 12 cm | berlaku, diuji saat kalibrasi | ukuran ruang, lembar data ELP, hitungan `parameter.py` |
+| [KP03](KP03-kamera-elp-lensa-2-1mm.md) | Kamera ELP-U3GS05B10C-IB21 lensa 2,1 mm, dua unit, penanda 12 cm | berlaku, diuji saat kalibrasi | ukuran ruang, lembar data ELP, hitungan `parameter.py` |
 | [KP04](KP04-sensor-jarak-uji-banding.md) | Sensor jarak dipilih lewat uji banding tiga kandidat | metode diputuskan, sensor belum terpilih | permukaan arena, Borenstein 1988, lembar data MTF-01 |
 | [KP05](KP05-baterai-dan-pengadaan.md) | Baterai 6S 1200 mAh (total 6) dan aturan pengadaan | berlaku | inventaris baterai, halaman resmi SpeedyBee, survei harga |
 

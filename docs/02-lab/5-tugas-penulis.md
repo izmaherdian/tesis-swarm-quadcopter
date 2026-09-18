@@ -12,8 +12,10 @@
     ukur piksel sisi penanda 12 cm di tengah, di tepi koridor, dan di ujung liputan.
     Menentukan apakah dua kamera cukup (lihat risiko distorsi di BAB III).
 - [x] **VL53L1X** — Rp98.500 (CNC Store Bandung).
-- [x] **Lakban lantai 3M 764** — Rp55.000 (Dewielectrical). Pilih warna **putih atau
-  kuning** karena lantai gelap.
+- [x] **Lakban lantai 3M 764** — Rp55.000 (Dewielectrical). Warna **putih** (keputusan
+  penulis 2026-09-18) karena lantai gelap.
+  - [ ] Harga Rp55.000 terbaca pada varian hitam di listing yang sama; cek harga varian
+    putih saat memesan dan kabari bila berbeda.
 - [x] Kabel USB 3.0 aktif 10 m, dudukan *super clamp*, HC-SR04, akrilik A4, kertas
   stiker vinil, kardus — listing Tokopedia (batas atas) sudah di RAB.
 - [x] **Perlengkapan keselamatan:** 1 kacamata pengaman (Rp113.220). Tas baterai tidak perlu

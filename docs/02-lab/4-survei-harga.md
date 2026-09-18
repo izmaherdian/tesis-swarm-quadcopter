@@ -275,7 +275,7 @@ berdistorsi tong kuat. Hitungan di `tulisan/gambar/parameter.py`.
 |---|---|---:|---:|
 | Kamera ELP-U3GS05B10C-**IB21** (OG05B10, lensa CS 2,1 mm), USB 3.0 | [Fast Importir, Jakarta Selatan](https://www.tokopedia.com/inithriftshop/elp-5mp-global-shutter-color-usb3-0-camera-og05b10-60fps-2592x1944-high-speed-camera-with-3-6-10mm-manual-vafifocus-cs-lens-1736975155939870122) | 6.600.000 | **6.600.000** — penjual mengonfirmasi lensa 2,1 mm **harga sama**, sistem **pra-pesan 3 minggu** |
 | Sensor laser VL53L1X (modul TOF400C), varian VL53L1X | [CNC Store Bandung](https://www.tokopedia.com/cncstorebandung/modul-sensor-jarak-tof200c-vl53l0x-tof400c-vl53l1x-tof050c-vl6180x-modules-distance-sersor-vl53l1x-92c0f) | 98.500 | **98.500** |
-| Lakban lantai vinil 3M 764, 2" × 33 m | [Dewielectrical, Kota Tangerang](https://www.tokopedia.com/dewielectrical/3m-lakban-lantai-3m-764-vinyl-floor-marking-tape-2-x33-m-hitam) | 55.000 | **55.000** ⚠️ harga terbaca untuk varian hitam |
+| Lakban lantai vinil 3M 764 **warna putih**, 2" × 33 m | [Dewielectrical, Kota Tangerang](https://www.tokopedia.com/dewielectrical/3m-lakban-lantai-3m-764-vinyl-floor-marking-tape-2-x33-m-hitam) | 55.000 | **55.000** ⚠️ harga terbaca untuk varian hitam |
 
 Deskripsi listing VL53L1X menyebut jangkauan 4 cm–4 m, resolusi 1 mm, sudut
 pandang 27°, antarmuka I²C, tegangan 2,6–3,5 V. Lantai ruang uji berwarna gelap,

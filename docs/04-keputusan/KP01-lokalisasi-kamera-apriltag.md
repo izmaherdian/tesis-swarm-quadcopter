@@ -1,7 +1,7 @@
 # KP01 — Lokalisasi memakai kamera atas + AprilTag, UWB opsional
 
 **Tanggal:** 2026-09-16 · **Diperbarui:** 2026-09-18 · **Status:** diputuskan, berlaku
-**Terkait:** [KP02](KP02-firmware-fc.md) (firmware ExtNav) · [KP03](KP03-kamera-elp-lensa-2mm.md) (model kamera)
+**Terkait:** [KP02](KP02-firmware-fc.md) (firmware ExtNav) · [KP03](KP03-kamera-elp-lensa-2-1mm.md) (model kamera)
 
 ## Konteks
 
@@ -52,7 +52,7 @@ Indeks sumber per topik ada di [`03-pustaka/README.md`](../03-pustaka/README.md)
 
 UWB dipertimbangkan lagi hanya bila kalibrasi Fase 2 atau uji terbang tunggal
 menunjukkan penanda **tidak terdeteksi andal** di sebagian segmen uji dan ketiga jalan
-keluar di [KP03](KP03-kamera-elp-lensa-2mm.md) (penanda lebih besar, terbang lebih
+keluar di [KP03](KP03-kamera-elp-lensa-2-1mm.md) (penanda lebih besar, terbang lebih
 tinggi, kamera ketiga) tidak memadai.
 
 > Syarat lama (2026-09-16) merujuk sapuan sensitivitas "E01" (σ ≥ 20 cm, laju ≤ 15 Hz).
@@ -64,7 +64,7 @@ tinggi, kamera ketiga) tidak memadai.
   segmen 7,20 m sehingga dibutuhkan **dua kamera** ([ruang uji](../02-lab/1-ruang-uji-dan-arena.md)).
   Jalur kamera jadi lebih mahal dari perkiraan awal, tetapi kelebihannya tetap ada.
   Catatan 2026-09-16 menyebut "2 kamera 4K"; kamera yang berlaku adalah ELP 5 MP
-  *global shutter* ([KP03](KP03-kamera-elp-lensa-2mm.md)).
+  *global shutter* ([KP03](KP03-kamera-elp-lensa-2-1mm.md)).
 - **FC tidak menerima masukan eksternal pada firmware bawaan.** Build ArduPilot untuk
   `SpeedyBeeF405Mini` mematikan `AP_BEACON_ENABLED` **dan** `EK3_FEATURE_EXTERNAL_NAV`.
   Jalur UWB pun tertutup tanpa firmware racikan, lihat [KP02](KP02-firmware-fc.md).

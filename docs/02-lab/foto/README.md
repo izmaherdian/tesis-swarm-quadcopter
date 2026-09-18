@@ -34,7 +34,7 @@
 
 | # | Berkas | Isi | Dipakai di |
 |---|---|---|---|
-| 18 | [`18-datasheet-kamera-elp-og05b10.png`](18-datasheet-kamera-elp-og05b10.png) | lembar spesifikasi kamera ELP-U3GS05B10C (dari penjual Fast Importir) | [KP03](../../04-keputusan/KP03-kamera-elp-lensa-2mm.md), `parameter.py` |
+| 18 | [`18-datasheet-kamera-elp-og05b10.png`](18-datasheet-kamera-elp-og05b10.png) | lembar spesifikasi kamera ELP-U3GS05B10C (dari penjual Fast Importir) | [KP03](../../04-keputusan/KP03-kamera-elp-lensa-2-1mm.md), `parameter.py` |
 | 19 | [`19-pengisi-daya-skyrc.png`](19-pengisi-daya-skyrc.png) | pengisi daya SkyRC T6X80 AC/DC *balance charger/discharger* | baterai dan bobot |
 
 ## Yang masih perlu difoto
