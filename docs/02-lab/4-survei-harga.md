@@ -1,7 +1,8 @@
 # Survei Harga Pengadaan
 
-> Diperbarui 2026-09-17. Dipakai oleh tabel anggaran BAB IV proposal (Tabel 4.1
-> Fase 2, Tabel 4.2 Fase 4, Tabel 4.3 Rekapitulasi). Total RAB **Rp22.639.974**.
+> Diperbarui 2026-09-18. Dipakai oleh tabel anggaran BAB IV proposal (Tabel 4.1
+> Fase 2, Tabel 4.2 Fase 4, Tabel 4.3 Rekapitulasi). Total RAB **Rp23.403.374**
+> (Fase 2 Rp10.046.227, Fase 4 Rp13.357.147).
 > Jumlah yang dibeli mengikuti [inventaris](2-inventaris.md) 2026-09-17 (asumsi lama "3 unit
 > FC/ESC/ESP32-S3" sudah tidak berlaku). Aturan pengadaan diringkas di
 > [KP05](../04-keputusan/KP05-baterai-dan-pengadaan.md).
@@ -225,7 +226,12 @@ gelap/cermin dikecualikan.
 | 25.000 | [Juragan Wearfacts](https://www.tokopedia.com/juragan-wearpack/kacamata-safety-merk-juragan-wearfacts-warna-bening-frame-bening) |
 | 16.800 | [Allefix APD](https://www.tokopedia.com/allefixshop/allefix-kacamata-safety-apd-dengan-lensa-bening-tahan-benturan-dan-pelindung-samping-untuk-keselamatan-kerja-k3-6917-1735327984383263970-1735328220062975202) |
 
-### Kardus polos 60 × 40 × 40 cm — dipakai **Rp34.700**
+### Kardus polos 60 × 40 × 40 cm — dipakai **Rp34.700** × **32 unit** = Rp1.110.400
+
+> Jumlah dihitung 2026-09-18 dari geometri arena, yaitu dinding sepanjang kanal 1,80 m,
+> dua baris dalam (0,60 + 0,40 = 1,00 m) dan empat lapis tinggi (1,60 m), sehingga 8 dus per
+> lapis. Tinggi dinding melebihi ketinggian terbang 1,3 m agar berkas sensor mengenai dinding.
+> Angka lama 10 unit tidak pernah diturunkan dari geometri.
 
 | Harga (Rp) | Listing |
 |---:|---|

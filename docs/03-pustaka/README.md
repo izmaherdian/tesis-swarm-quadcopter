@@ -1,6 +1,6 @@
 # 03-pustaka — Sumber yang Menopang Keputusan dan Naskah
 
-> Diperbarui 2026-09-18. Folder ini adalah **rak sumber**. Data lapangan ada di
+> Diperbarui 2026-09-18 (+ MILUV dan ChromaTag). Folder ini adalah **rak sumber**. Data lapangan ada di
 > [`02-lab/`](../02-lab/README.md), keputusannya di [`04-keputusan/`](../04-keputusan/).
 > Rantai lengkapnya di [`01-alur-kerja.md`](../01-alur-kerja.md) bagian 2.
 
@@ -43,6 +43,8 @@ Kolom "Menopang" menunjuk keputusan (KP) dan subbab proposal yang bersandar pada
 | `olsonAprilTagRobustFlexible2011`, `wangAprilTag2Efficient2016`, `krogiusFlexibleLayoutsFiducial2019` | keluarga penanda AprilTag dan pendeteksinya | KP01, KP03, subbab lokalisasi |
 | `garridojuradoAutomaticGenerationDetection2014` | ArUco sebagai pembanding penanda fidusial | subbab lokalisasi |
 | `zhangIntegratedFrameworkEnhancing2026` | ketelitian pose AprilTag kecil pada jarak jauh | subbab lokalisasi, risiko distorsi [KP03](../04-keputusan/KP03-kamera-elp-lensa-2mm.md) |
+| `degolChromaTagColoredMarker2017` | *recall* deteksi menurun saat penanda mengecil; di atas ±70 piksel AprilTag dan pembandingnya sama-sama tinggi (Gambar 9a) — dipakai sebagai acuan konservatif | **acuan ukuran penanda** di [KP03](../04-keputusan/KP03-kamera-elp-lensa-2mm.md) dan subbab liputan kamera |
+| `shalabyMILUVMultiUAV2026` | EKF UWB + inersia pada kawanan UAV dalam ruangan hanya 10–20 cm terhadap acuan Vicon, dinyatakan belum memadai untuk kendali dan perencanaan lintasan | **pembenaran kamera dipilih, bukan UWB** di [KP01](../04-keputusan/KP01-lokalisasi-kamera-apriltag.md) dan subbab lokalisasi |
 | `hoDesignIndoorPositioning2023` | lokalisasi dalam ruangan berbasis UWB (jalur yang tidak dipilih) | KP01 |
 | `georgiadisReviewLocalizationSensing2025` | tinjauan metode lokalisasi dan penginderaan | Bab I latar belakang |
 

@@ -572,7 +572,7 @@ Karena kedua jalur melewati \textit{router} yang sama, kegagalan \textit{router}
 \section{Perancangan Sistem Lokalisasi Dalam Ruangan}
 \label{sec:lokalisasi_rancangan}
 
-GPS tidak tersedia di dalam ruangan, sehingga posisi absolut diperoleh dari kamera atas yang mengamati penanda visual pada wahana. Lokalisasi kamera eksternal tidak mengakumulasi \textit{drift}, dan galat pose di bawah $3$~cm dan $1^\circ$ telah dilaporkan untuk area dalam ruangan seluas sekitar $240$~m$^2$ \cite{bultmannExternalCameraBased2023}. Presisinya bergantung pada resolusi kamera, ukuran penanda, dan jarak kamera ke penanda; akurasi pose AprilTag menurun seiring bertambahnya jarak dan mengecilnya penanda \cite{zhangIntegratedFrameworkEnhancing2026}. Ketiga besaran tersebut karenanya dihitung dari dimensi ruang uji (Subbab~\ref{subsec:liputan_kamera}). Alternatif berbasis radio, misalnya sistem \textit{Ultra-Wide Band} dengan modul ESP32 \cite{hoDesignIndoorPositioning2023}, tidak dijadikan lokalisasi utama karena presisinya dibatasi kondisi tanpa garis pandang yang mengganggu perambatan sinyal di dalam ruangan.
+GPS tidak tersedia di dalam ruangan, sehingga posisi absolut diperoleh dari kamera atas yang mengamati penanda visual pada wahana. Lokalisasi kamera eksternal tidak mengakumulasi \textit{drift}, dan galat pose di bawah $3$~cm dan $1^\circ$ telah dilaporkan untuk area dalam ruangan seluas sekitar $240$~m$^2$ \cite{bultmannExternalCameraBased2023}. Presisinya bergantung pada resolusi kamera, ukuran penanda, dan jarak kamera ke penanda; akurasi pose AprilTag menurun seiring bertambahnya jarak dan mengecilnya penanda \cite{zhangIntegratedFrameworkEnhancing2026}. Ketiga besaran tersebut karenanya dihitung dari dimensi ruang uji (Subbab~\ref{subsec:liputan_kamera}). Alternatif berbasis radio, misalnya sistem \textit{Ultra-Wide Band} dengan modul ESP32 \cite{hoDesignIndoorPositioning2023}, tidak dijadikan lokalisasi utama karena presisinya dibatasi kondisi tanpa garis pandang yang mengganggu perambatan sinyal di dalam ruangan. Pada kawanan wahana dalam ruangan dengan acuan sistem tangkap gerak, penapis Kalman yang memadukan UWB dan inersia terlapor hanya mencapai ketelitian posisi $10$--$20$ cm, dan penulisnya menyatakan ketelitian tersebut belum memadai untuk pengendali maupun perencana lintasan pada aplikasi kritis keselamatan \cite{shalabyMILUVMultiUAV2026}.
 
 Sistem lokalisasi terdiri atas tiga komponen berikut.
 \begin{enumerate}
@@ -612,9 +612,9 @@ Pose tersebut dikemas sebagai pesan MAVLink dan disiarkan melalui UDP ke \textit
 \subsection{Penentuan Jumlah Kamera dan Ukuran Penanda}
 \label{subsec:liputan_kamera}
 
-Kamera yang dipilih adalah ELP-U3GS05B10C-IB21 dengan sensor OmniVision OG05B10 \textit{global shutter} beresolusi $2592 \times 1944$ piksel, ukuran piksel $2{,}2$~\textmu m, larik aktif $5{,}737 \times 4{,}312$~mm, dan lensa CS $2{,}1$~mm. Melalui USB~3.0, kamera ini mengirim citra resolusi penuh hingga $60$ bingkai per detik dalam format MJPEG \cite{elpGlobalShutterOG05B10}. Rana global dipilih karena rana bergulir memelintir citra penanda saat wahana bergerak. Liputan dan ukuran penanda diturunkan dari dimensi ruang pada Tabel~\ref{tab:kondisi_ruang}. Dengan langit-langit setinggi $h_p = 3{,}00$~m, tinggi wahana $0{,}08$~m, dan ketinggian terbang $h_t = 1{,}2$~m, jarak kamera ke penanda adalah
+Kamera yang dipilih adalah ELP-U3GS05B10C-IB21 dengan sensor OmniVision OG05B10 \textit{global shutter} beresolusi $2592 \times 1944$ piksel, ukuran piksel $2{,}2$~\textmu m, larik aktif $5{,}737 \times 4{,}312$~mm, dan lensa CS $2{,}1$~mm. Melalui USB~3.0, kamera ini mengirim citra resolusi penuh hingga $60$ bingkai per detik dalam format MJPEG \cite{elpGlobalShutterOG05B10}. Rana global dipilih karena rana bergulir memelintir citra penanda saat wahana bergerak. Liputan dan ukuran penanda diturunkan dari dimensi ruang pada Tabel~\ref{tab:kondisi_ruang}. Dengan langit-langit setinggi $h_p = 3{,}00$~m, tinggi wahana $0{,}08$~m, tiang penyangga penanda $0{,}07$~m, dan ketinggian terbang $h_t = 1{,}3$~m, jarak kamera ke bidang penanda adalah
 \begin{equation}
-    d = h_p - (h_t + 0{,}08) = 1{,}72\ \text{m}
+    d = h_p - (h_t + 0{,}08 + 0{,}07) = 1{,}55\ \text{m}
 \end{equation}
 Menurut model kamera lubang jarum, liputan satu kamera pada bidang terbang dan resolusinya adalah
 \begin{equation}
@@ -624,7 +624,7 @@ dengan $b_h$ dan $b_v$ lebar dan tinggi larik sensor, $p$ ukuran piksel, $f$ pan
 
 \begin{table}[htbp]
     \centering
-    \caption{Liputan satu kamera dan ukuran penanda pada ketinggian terbang $1{,}2$~m menurut model lubang jarum}
+    \caption{Liputan satu kamera dan ukuran penanda pada ketinggian terbang $1{,}3$~m menurut model lubang jarum}
     \label{tab:liputan_kamera}
     \begingroup
     \small
@@ -633,20 +633,20 @@ dengan $b_h$ dan $b_v$ lebar dan tinggi larik sensor, $p$ ukuran piksel, $f$ pan
         \hline
         \rowcolor{gray!20}
         \thead{Besaran} & \thead{Nilai} \\ \hline
-        Liputan $w_\parallel \times w_\perp$ & $4{,}70 \times 3{,}53$ m \\ \hline
-        Resolusi $\rho$ pada bidang terbang & $1{,}80$ mm/piksel \\ \hline
-        Sisi penanda $10$ cm & $55$ piksel \\ \hline
-        Sisi penanda $12$ cm & $66$ piksel \\ \hline
-        Tumpang tindih dua kamera pada segmen $7{,}20$ m & $2{,}20$ m \\ \hline
+        Liputan $w_\parallel \times w_\perp$ & $4{,}23 \times 3{,}18$ m \\ \hline
+        Resolusi $\rho$ pada bidang penanda & $1{,}62$ mm/piksel \\ \hline
+        Sisi penanda $10$ cm & $61$ piksel \\ \hline
+        Sisi penanda $12$ cm & $73$ piksel \\ \hline
+        Tumpang tindih dua kamera pada segmen $7{,}20$ m & $1{,}27$ m \\ \hline
     \end{tabularx}
     \endgroup
 \end{table}
 
-Liputan melintang $3{,}53$~m melebihi lebar koridor $2{,}70$~m, sedangkan satu kamera tidak mencukupi segmen uji sepanjang $7{,}20$~m. Dua kamera karenanya menutup segmen tersebut dengan tumpang tindih $2{,}20$~m, yang dipakai untuk menyatukan keduanya ke satu kerangka acuan global.
+Liputan melintang $3{,}18$~m melebihi lebar koridor $2{,}70$~m, sedangkan satu kamera tidak mencukupi segmen uji sepanjang $7{,}20$~m. Dua kamera karenanya menutup segmen tersebut dengan tumpang tindih $1{,}27$~m, yang dipakai untuk menyatukan keduanya ke satu kerangka acuan global.
 
-Model lubang jarum hanya berlaku untuk lensa tanpa distorsi, sedangkan ELP mencantumkan sudut pandang horizontal $150^\circ$ untuk lensa ini \cite{elpGlobalShutterOG05B10}, jauh di atas $107{,}6^\circ$ menurut model tersebut. Lensa ini dengan demikian berdistorsi tong. Distorsi memperluas liputan tetapi menurunkan kepadatan piksel ke arah tepi citra, sehingga nilai pada Tabel~\ref{tab:liputan_kamera} hanya berlaku di sekitar sumbu optik. Bila lensa diasumsikan berproyeksi ekuidistan sebagai batas pesimistis, sisi penanda $12$~cm pada arah radial tinggal sekitar $41$ piksel di tepi koridor yang sejajar dengan kamera dan sekitar $23$ piksel di ujung segmen. Kepadatan piksel sebenarnya diukur melalui kalibrasi intrinsik pada Fase~2. Bila penanda di tepi liputan tidak terdeteksi andal, pilihan yang tersedia adalah memperbesar penanda, menaikkan ketinggian terbang agar jarak kamera ke penanda berkurang, atau menambah kamera ketiga.
+Model lubang jarum hanya berlaku untuk lensa tanpa distorsi, sedangkan ELP mencantumkan sudut pandang horizontal $150^\circ$ untuk lensa ini \cite{elpGlobalShutterOG05B10}, jauh di atas $107{,}6^\circ$ menurut model tersebut. Lensa ini dengan demikian berdistorsi tong. Distorsi memperluas liputan tetapi menurunkan kepadatan piksel ke arah tepi citra, sehingga nilai pada Tabel~\ref{tab:liputan_kamera} hanya berlaku di sekitar sumbu optik. Bila lensa diasumsikan berproyeksi ekuidistan sebagai batas pesimistis, sisi penanda $12$~cm pada arah radial tinggal sekitar $42$ piksel di tepi koridor yang sejajar dengan kamera dan sekitar $26$ piksel di ujung segmen. Kepadatan piksel sebenarnya diukur melalui kalibrasi intrinsik pada Fase~2. Bila penanda di tepi liputan tidak terdeteksi andal, pilihan yang tersedia adalah memperbesar penanda, menaikkan ketinggian terbang agar jarak kamera ke penanda berkurang, atau menambah kamera ketiga.
 
-Ukuran penanda ditetapkan dari syarat deteksi. Penanda dianggap terdeteksi andal bila sisinya mencakup sekurang-kurangnya $48$ piksel. Di sekitar sumbu optik, penanda $10$~cm ($55$ piksel) dan $12$~cm ($66$ piksel) sama-sama memenuhi syarat, tetapi ukuran $12$~cm dipilih untuk menyisakan margin terhadap penurunan kepadatan piksel di tepi citra dan mendekati $80$ piksel yang nyaman untuk wahana bergerak. Keandalan deteksi saat terbang dipastikan pada uji terbang tunggal sebelum komponen kawanan dibeli (Bab~IV).
+Ukuran penanda ditetapkan dari syarat deteksi. Pada pengukuran perbandingan sistem penanda fidusial, \textit{recall} deteksi menurun seiring mengecilnya penanda di citra, dan di atas sisi penanda sekitar $70$ piksel \textit{recall} AprilTag maupun pembandingnya sama-sama tinggi \cite{degolChromaTagColoredMarker2017}. Nilai $70$ piksel dipakai sebagai acuan perancangan yang konservatif, karena AprilTag justru bertahan lebih baik daripada pembandingnya pada ukuran yang lebih kecil. Di sekitar sumbu optik, penanda $10$~cm hanya mencapai $61$ piksel sehingga tidak dipakai, sedangkan penanda $12$~cm mencapai $73$ piksel. Ketinggian terbang ditetapkan $1{,}3$~m, bukan lebih rendah, karena menaikkan wahana memperpendek jarak ke kamera sehingga kepadatan piksel bertambah, dan dengan liputan $4{,}23$~m per kamera segmen uji tetap tertutup. Margin terhadap acuan tersebut tipis pada tepi liputan, sehingga keandalan deteksi saat terbang dipastikan pada uji terbang tunggal sebelum komponen kawanan dibeli (Bab~IV).
 
 Penanda $12$~cm tidak muat pada jalur datar selebar $4$~cm di sumbu tengah bodi (Gambar~\ref{fig:sketsa_wahana}), dan menempelkannya langsung di atas saluran propeler akan menutup aliran udara masuk dan menggerus daya angkat. Penanda karenanya dipasang pada pelat yang dinaikkan tiang penyangga setinggi $7$~cm di atas bodi, dengan dudukan dicetak menggunakan pencetak tiga dimensi yang tersedia.
 
@@ -907,7 +907,7 @@ Dengan lebar bersih koridor $270$ cm dan syarat ruang bebas sekurang-kurangnya $
 
 Dua perbedaan pada Tabel~\ref{tab:penskalaan_arena} memengaruhi penafsiran hasil. Pertama, rasio celah terhadap diameter agen di arena lebih besar karena wahana nyata relatif lebih ramping, sehingga keberhasilan di arena tidak serta-merta membuktikan keberhasilan pada rasio simulasi yang lebih ketat. Kedua, bagian sempit arena hanya $1{,}80$ m sehingga fase mengekor lebih singkat. Untuk perbedaan kedua, simulator diberi skema baru yang meniru geometri arena, bukan arena yang dipaksa meniru simulasi.
 
-Tata letak arena selengkapnya diperlihatkan pada Gambar~\ref{fig:sketsa_arena}. Salah satu kolom bangunan yang menjorok ke koridor menjadi satu sisi penyempitan karena posisinya permanen, sehingga geometri rintangan dapat direproduksi antarsesi tanpa pengukuran ulang. Sisi seberangnya dilengkapi susunan dus kardus yang menjorok sedalam $1{,}01$ m sehingga menyisakan celah $90$ cm.
+Tata letak arena selengkapnya diperlihatkan pada Gambar~\ref{fig:sketsa_arena}. Salah satu kolom bangunan yang menjorok ke koridor menjadi satu sisi penyempitan karena posisinya permanen, sehingga geometri rintangan dapat direproduksi antarsesi tanpa pengukuran ulang. Sisi seberangnya dilengkapi susunan dus kardus yang menjorok sedalam $1{,}01$ m sehingga menyisakan celah $90$ cm. Dus berukuran $60 \times 40 \times 40$ cm disusun dua baris sehingga kedalamannya $1{,}00$ m, dan ditumpuk empat lapis sehingga tingginya $1{,}60$ m, yaitu di atas ketinggian terbang agar berkas sensor jarak mengenai dinding rintangan dan tidak ada rongga di belakangnya pada ketinggian tersebut. Susunan itu menuntut $32$ dus, yang menjadi dasar jumlah pada Tabel~\ref{tab:rab_fase4}.
 
 \begin{figure}[htbp]
     \centering
@@ -1035,9 +1035,9 @@ Fase~3 dinyatakan lolos bila beban CPU dan latensi berada dalam batas aman. Bila
         8 & \textit{Companion computer} Seeed XIAO ESP32-S3\newline{\footnotesize\href{https://www.tokopedia.com/cncstorebandung/xiao-esp32s3-original-board-iot-development-kit-dual-core-wifi-bluetooth-5-0-ble-microcontroller-1732253317634623038}{tokopedia.com/cncstorebandung}} & 1 unit & 282.500 & 282.500 \\ \hline
         9 & Propeler Gemfan D90S tiga bilah, \textit{T-mount} $1{,}5$ mm, isi 4 per paket\newline{\footnotesize\href{https://www.tokopedia.com/zerius/gemfan-d90s-ducted-d90-s-3-blade-3-5inch-shaft-1-5mm-propeller-clear-gray}{tokopedia.com/zerius}} & 2 paket & 40.000 & 80.000 \\ \hline
         10 & Baterai LiPo CNHL Pizza Series 6S 1200 mAh 100C\newline{\footnotesize\href{https://www.tokopedia.com/shoppublic/cnhl-pizza-series-1200mah-22-2v-6s-100c-lipo-battery-1730977420446827894}{tokopedia.com/shoppublic}} & 4 unit & 637.000 & 2.548.000 \\ \hline
-        11 & Kardus polos 60 $\times$ 40 $\times$ 40 cm sebagai rintangan\newline{\footnotesize\href{https://www.tokopedia.com/berlian90/dus-packing-polos-jumbo-60x40x40-cm-kardus-besar-kardus-packing-polos-box-jumbo-kondisi-baru-1730914591889655635}{tokopedia.com/berlian90}} & 10 unit & 34.700 & 347.000 \\ \hline
+        11 & Kardus polos 60 $\times$ 40 $\times$ 40 cm sebagai rintangan\newline{\footnotesize\href{https://www.tokopedia.com/berlian90/dus-packing-polos-jumbo-60x40x40-cm-kardus-besar-kardus-packing-polos-box-jumbo-kondisi-baru-1730914591889655635}{tokopedia.com/berlian90}} & 32 unit & 34.700 & 1.110.400 \\ \hline
         12 & Lakban lantai vinil 3M 764, 2 inci $\times$ 33 m\newline{\footnotesize\href{https://www.tokopedia.com/dewielectrical/3m-lakban-lantai-3m-764-vinyl-floor-marking-tape-2-x33-m-hitam}{tokopedia.com/dewielectrical}} & 1 rol & 55.000 & 55.000 \\ \hline
-        \multicolumn{4}{|r|}{\textbf{Subtotal}} & \textbf{12.593.747} \\ \hline
+        \multicolumn{4}{|r|}{\textbf{Subtotal}} & \textbf{13.357.147} \\ \hline
     \end{tabularx}
     \endgroup
 \end{table}
@@ -1072,9 +1072,9 @@ Rencana Anggaran Biaya (RAB\label{abbr:rab}) dirangkum pada Tabel~\ref{tab:rekap
         Fase 1: Studi dan Desain Arsitektur & -- \\ \hline
         Fase 2: Implementasi Teknologi & 10.046.227 \\ \hline
         Fase 3: Pengujian HITL & -- \\ \hline
-        Fase 4: Uji Terbang Eksperimen & 12.593.747 \\ \hline
+        Fase 4: Uji Terbang Eksperimen & 13.357.147 \\ \hline
         Fase 5: Analisis Data dan Pelaporan & -- \\ \hline
-        \textbf{Total} & \textbf{22.639.974} \\ \hline
+        \textbf{Total} & \textbf{23.403.374} \\ \hline
     \end{tabularx}
     \endgroup
 \end{table}

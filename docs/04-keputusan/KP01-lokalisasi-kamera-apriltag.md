@@ -1,6 +1,6 @@
 # KP01 — Lokalisasi memakai kamera atas + AprilTag, UWB opsional
 
-**Tanggal:** 2026-09-16 · **Diperbarui:** 2026-09-17 · **Status:** diputuskan, berlaku
+**Tanggal:** 2026-09-16 · **Diperbarui:** 2026-09-18 · **Status:** diputuskan, berlaku
 **Terkait:** [KP02](KP02-firmware-fc.md) (firmware ExtNav) · [KP03](KP03-kamera-elp-lensa-2mm.md) (model kamera)
 
 ## Konteks
@@ -18,9 +18,10 @@ tunggal di Fase 4 mulai Desember 2026.
 | Pustaka | `bultmannExternalCameraBased2023` | galat pose kamera eksternal < 3 cm dan < 1° tanpa *drift* |
 | Pustaka | `olsonAprilTagRobustFlexible2011`, `wangAprilTag2Efficient2016`, `krogiusFlexibleLayoutsFiducial2019` | pustaka AprilTag matang, kalibrasi intrinsik cukup sekali |
 | Pustaka | `hoDesignIndoorPositioning2023` | UWB sebagai jalur alternatif yang tidak dipilih |
+| Pustaka | `shalabyMILUVMultiUAV2026` | EKF UWB + inersia pada kawanan UAV dalam ruangan hanya mencapai 10–20 cm terhadap acuan tangkap gerak |
 | Dokumentasi | `ardupilotFeaturesSpeedyBeeF405Mini` | `AP_BEACON_ENABLED` dan `EK3_FEATURE_EXTERNAL_NAV` dimatikan pada build stabil |
 | Keputusan penulis | 2026-09-16 | kamera jadi jalur utama, UWB opsional dan bersyarat |
-| **Tanpa sumber** | — | galat UWB 10–30 cm hanya perkiraan, **tidak dipakai** sebagai pembenaran |
+| ~~Tanpa sumber~~ | — | perkiraan lama "galat UWB 10–30 cm" sudah **diganti** angka terverifikasi di baris atas |
 
 Indeks sumber per topik ada di [`03-pustaka/README.md`](../03-pustaka/README.md).
 
@@ -36,12 +37,16 @@ Indeks sumber per topik ada di [`03-pustaka/README.md`](../03-pustaka/README.md)
    dengan varians tinggi, tepat di jalur kritis.
 2. **Semua agen sekaligus.** Satu bingkai kamera membaca kelima wahana bersamaan pada
    laju penuh; TWR menjadwalkan tiap tag bergantian sehingga laju per tag turun.
-3. **Akurasi.** Sistem lokalisasi kamera eksternal terlapor mencapai galat pose < 3 cm
-   dan < 1° tanpa *drift* (Bultmann dkk., ICRA 2023), lihat
-   [`03-pustaka/landasan-lokalisasi.md`](../03-pustaka/landasan-lokalisasi.md).
+3. **Akurasi, dengan angka dari dua sisi.** Sistem lokalisasi kamera eksternal terlapor
+   mencapai galat pose < 3 cm dan < 1° tanpa *drift* (Bultmann dkk., ICRA 2023). Pada sisi
+   UWB, kumpulan data MILUV mengukur kawanan UAV dalam ruangan dengan acuan sistem tangkap
+   gerak Vicon dan mendapati penapis Kalman UWB + inersia hanya mencapai **10–20 cm**;
+   penulisnya menyatakan ketelitian itu *"not sufficiently accurate for controllers and path
+   planning algorithms in safety-critical applications"* (Shalaby dkk., IJRR 45(11), 2026).
+   Selisih satu orde ini yang menjadi pembenaran tertulis bahwa kamera dipilih, bukan UWB.
 
-⚠️ **Angka UWB belum bersumber.** Perbandingan awal sempat memakai galat UWB 10–30 cm.
-Angka itu perkiraan dan tidak dipakai sebagai pembenaran di naskah.
+> Perkiraan lama "galat UWB 10–30 cm" yang belum bersumber sudah digantikan angka di atas
+> pada 2026-09-18.
 
 ## Syarat peninjauan ulang
 
@@ -55,7 +60,7 @@ tinggi, kamera ketiga) tidak memadai.
 
 ## Fakta susulan yang tidak membatalkan keputusan
 
-- **Plafon hanya 300 cm.** Jarak kamera–penanda 1,72 m, satu kamera tidak cukup untuk
+- **Plafon hanya 300 cm.** Jarak kamera–penanda 1,55 m, satu kamera tidak cukup untuk
   segmen 7,20 m sehingga dibutuhkan **dua kamera** ([ruang uji](../02-lab/1-ruang-uji-dan-arena.md)).
   Jalur kamera jadi lebih mahal dari perkiraan awal, tetapi kelebihannya tetap ada.
   Catatan 2026-09-16 menyebut "2 kamera 4K"; kamera yang berlaku adalah ELP 5 MP

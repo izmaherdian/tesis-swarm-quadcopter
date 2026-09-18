@@ -4,6 +4,11 @@
 > 2026-09-16. Rujukan yang akhirnya dipakai naskah (mis. Bultmann dkk. 2023, tiga makalah
 > AprilTag) sudah ada di `tulisan/common/references.bib`, dan kuartil yang berlaku ada di
 > [`kuartil-jurnal.md`](kuartil-jurnal.md).
+>
+> **Pembaruan 2026-09-18:** entri MILUV (Shalaby dkk.) yang di bawah masih bertanda ⚠️ kini
+> **terverifikasi lewat CrossRef** (IJRR 45(11):1627–1647, 2026, DOI 10.1177/02783649251405898,
+> SJR 2025 Q1) dan sudah masuk `references.bib`. Angka yang dipinjam adalah ketelitian EKF
+> UWB + inersia 10–20 cm terhadap acuan Vicon.
 
 # Landasan Pustaka — Lokalisasi Indoor & Sensitivitas Formasi
 

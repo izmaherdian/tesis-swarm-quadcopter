@@ -1,6 +1,6 @@
 # Kuartil Jurnal Rujukan Proposal
 
-> Diperbarui 2026-09-17. Mencakup seluruh **51 entri** yang tercetak di Daftar Pustaka
+> Diperbarui 2026-09-18. Mencakup seluruh **53 entri** yang tercetak di Daftar Pustaka
 > proposal (`tulisan/proposal/main.bbl`), termasuk tiga lembar data produk yang
 > ditambahkan setelah penggantian lima rujukan.
 
@@ -23,6 +23,7 @@ berbeda; untuk melihatnya, buka tautan SCImago secara manual.
 | herdianDecentralizedFormationControl2026 | 2026 | [J. King Saud Univ. – Engineering Sciences](https://www.scimagojr.com/journalsearch.php?q=30286&tip=sid) | **Q2** | Civil and Structural Engineering | 0,60 |
 | buiEventbasedReconfigurationControl2025 | 2025 | [Intelligent Service Robotics](https://www.scimagojr.com/journalsearch.php?q=9500154152&tip=sid) | Q1 | Artificial Intelligence | 0,98 |
 | wangUAVFormationObstacle2021 | 2021 | [Int. J. Aeronautical and Space Sciences](https://www.scimagojr.com/journalsearch.php?q=20500195078&tip=sid) | Q2 | Aerospace Engineering | 0,43 |
+| shalabyMILUVMultiUAV2026 | 2026 | [The International Journal of Robotics Research](https://www.scimagojr.com/journalsearch.php?q=18050&tip=sid) | **Q1** | Applied Mathematics | 2,02 |
 | kabiriGraphBasedErrorState2024, moreiraControllingVirtualStructure2024 | 2024 | [J. Intelligent & Robotic Systems](https://www.scimagojr.com/journalsearch.php?q=24360&tip=sid) | Q1 | Industrial and Manufacturing Engineering | 0,72 |
 | garridojuradoAutomaticGenerationDetection2014, zhangIntegratedFrameworkEnhancing2026 | 2014, 2026 | [Pattern Recognition](https://www.scimagojr.com/journalsearch.php?q=24823&tip=sid) | Q1 | Artificial Intelligence | 2,15 |
 | lyuUnmannedAerialVehicles2023 | 2023 | [Remote Sensing](https://www.scimagojr.com/journalsearch.php?q=86430&tip=sid) | Q1 | Earth and Planetary Sciences (miscellaneous) | 1,01 |
@@ -52,6 +53,7 @@ cuplikan pencarian (kemungkinan data SJR 2024). Widget SCImago terbaru menunjukk
 | Jenis | Rujukan | Kuartil |
 |---|---|---|
 | Prosiding ICRA/IROS | olsonAprilTag…2011, wangAprilTag2…2016, krogiusFlexibleLayouts…2019, bultmannExternalCamera…2023 | Prosiding ICRA di SCImago: *not yet assigned quartile* ([25456](https://www.scimagojr.com/journalsearch.php?q=25456&tip=sid)) |
+| Prosiding ICCV | degolChromaTag…2017 | prosiding visi komputer papan atas; dipakai untuk acuan 70 piksel |
 | Prosiding lain | hoDesignIndoorPositioning2023 | — |
 | Buku / bab buku | siegwart…2004, gelb…1974, KalmanFilterGeneralizations2006, kane…1985, quanDynamicModeling…2020, gettinger…2024 | — |
 | Laporan teknis / arXiv | welch…2006, brescianini…2013, quanDistributedSwarm…2022 | — |

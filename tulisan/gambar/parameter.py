@@ -23,9 +23,9 @@ SENSOR_W, SENSOR_H = 5.737e-3, 4.312e-3   # m, larik aktif OG05B10
 F_LENSA     = 2.1e-3   # m, lensa CS 2,1 mm
 HFOV_ELP    = 150.0    # derajat, dicantumkan ELP untuk lensa IB21
 FPS         = 60       # MJPEG 2592x1944 pada USB 3.0
-H_TERBANG   = 1.20     # m
+H_TERBANG   = 1.30     # m, dinaikkan agar penanda >70 px (KP03)
 PENANDA     = 0.12     # m, sisi penanda AprilTag
-PX_MINIMUM, PX_NYAMAN = 48, 80
+PX_ACUAN    = 70       # px, recall deteksi tinggi di atas nilai ini (DeGol dkk. 2017)
 
 # ── Arena (docs/02-lab/1-ruang-uji-dan-arena.md bagian 2) ──────────────
 K_SKALA    = 0.90
@@ -39,8 +39,11 @@ ALPHA, R_SIM = 8, 0.2
 
 
 def liputan(h_terbang=H_TERBANG):
-    """Liputan dan resolusi satu kamera pada bidang puncak wahana, model lubang jarum."""
-    d = H_PLAFON - (h_terbang + H_WAHANA)
+    """Liputan dan resolusi satu kamera pada bidang penanda, model lubang jarum.
+
+    Bidang penanda = ketinggian terbang + tinggi bodi + tiang penyangga penanda.
+    """
+    d = H_PLAFON - (h_terbang + H_WAHANA + TIANG)
     panjang, lebar = d * SENSOR_W / F_LENSA, d * SENSOR_H / F_LENSA
     mm_px = d * PIKSEL / F_LENSA * 1000
     return dict(d=d, panjang=panjang, lebar=lebar, mm_px=mm_px,
@@ -55,7 +58,7 @@ def px_ekuidistan(x, y, sisi=PENANDA, h_terbang=H_TERBANG):
     Batas pesimistis untuk lensa sudut lebar terdistorsi: arah radial menyusut cos^2(theta),
     arah tangensial theta/tan(theta).
     """
-    d = H_PLAFON - (h_terbang + H_WAHANA)
+    d = H_PLAFON - (h_terbang + H_WAHANA + TIANG)
     th = math.atan(math.hypot(x, y) / d)
     pusat = sisi / (d * PIKSEL / F_LENSA)
     if th == 0:

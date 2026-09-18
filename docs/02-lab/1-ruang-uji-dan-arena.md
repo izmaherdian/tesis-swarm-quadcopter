@@ -1,6 +1,6 @@
 # Ruang Uji dan Arena
 
-> Diperbarui 2026-09-17. Ringkasan yang **berlaku** dari analisis kelayakan
+> Diperbarui 2026-09-18. Ringkasan yang **berlaku** dari analisis kelayakan
 > 2026-09-16 ([arsip](../arsip/analisis-kelayakan-2026-09-16.md)), setelah koreksi
 > bentuk koridor dan pergantian kamera. Angka geometri yang dipakai gambar dan tabel
 > naskah ada di [`tulisan/gambar/parameter.py`](../../tulisan/gambar/parameter.py);
@@ -49,7 +49,7 @@ dibuat oleh `tulisan/gambar/gbr_arena.py` (`make gambar`).
 | Celah | **0,90 m** | ruang bebas 32,5 cm tiap sisi saat mengekor |
 | Sisi celah | kolom bangunan 0,60 × 0,79 m di satu sisi, dus kardus sedalam 1,01 m di sisi seberang | kolom permanen, jadi geometri dapat diulang tanpa ukur ulang |
 | Panjang kanal | 1,80 m | kolom 60 cm + perpanjangan dus 60 cm tiap sisi |
-| Dus | 10 × kardus polos 60 × 40 × 40 cm | [survei harga](4-survei-harga.md) |
+| Dus | **32** × kardus polos 60 × 40 × 40 cm, dua baris (kedalaman 0,60 + 0,40 = 1,00 m) × empat lapis (tinggi 1,60 m) | 8 dus per lapis; kedalaman 1,00 m memberi celah 0,91 m, masih dalam galat ukur ±5 cm terhadap rancangan 0,90 m ([survei harga](4-survei-harga.md)) |
 | Ambang mengekor | αR = 8 × 0,125 m = **1,0 m** | celah 0,90 m memicu mengekor, koridor 2,70 m mempertahankan formasi |
 
 ### Perbandingan dengan simulasi
@@ -74,13 +74,13 @@ Kamera dan alasannya: [KP03](../04-keputusan/KP03-kamera-elp-lensa-2mm.md).
 
 | Besaran | Nilai |
 |---|---|
-| Ketinggian terbang | 1,2 m; tinggi wahana 0,08 m |
-| Jarak kamera ke penanda | 1,72 m |
-| Posisi kamera | K1 di 2,35 m dan K2 di 4,85 m dari awal segmen, di tengah lebar koridor |
-| Liputan satu kamera (lubang jarum) | 4,70 × 3,53 m, 1,80 mm/piksel |
-| Tumpang tindih dua kamera | 2,20 m |
-| Penanda AprilTag 12 cm | 66 piksel di sumbu optik |
-| Batas pesimistis (proyeksi ekuidistan) | ±41 piksel radial di tepi koridor sejajar kamera, ±23 piksel di ujung segmen |
+| Ketinggian terbang | **1,3 m**; tinggi wahana 0,08 m; tiang penanda 0,07 m |
+| Jarak kamera ke bidang penanda | 1,55 m |
+| Posisi kamera | K1 di 2,12 m dan K2 di 5,08 m dari awal segmen, di tengah lebar koridor |
+| Liputan satu kamera (lubang jarum) | 4,23 × 3,18 m, 1,62 mm/piksel |
+| Tumpang tindih dua kamera | 1,27 m |
+| Penanda AprilTag 12 cm | 73 piksel di sumbu optik (acuan > 70 piksel, DeGol dkk. 2017) |
+| Batas pesimistis (proyeksi ekuidistan) | ±42 piksel radial di tepi koridor sejajar kamera, ±26 piksel di ujung segmen |
 
 Nilai lubang jarum hanya berlaku dekat sumbu optik karena lensa berdistorsi tong (ELP
 menyebut HFOV 150°, lubang jarum 107,6°). Kepadatan piksel sebenarnya **diukur saat
@@ -88,9 +88,9 @@ kalibrasi Fase 2** ([tugas penulis A](5-tugas-penulis.md)).
 
 ## 4. Yang masih terbuka
 
-- [ ] Titik cantol kamera pada rel plafon di sekitar 2,35 m dan 4,85 m yang bebas dari
+- [ ] Titik cantol kamera pada rel plafon di sekitar 2,12 m dan 5,08 m yang bebas dari
   AC kaset, lampu, dan *sprinkler*. Diperiksa saat pemasangan kamera pertama.
-- [ ] Susunan 10 dus cukup untuk dinding setinggi ketinggian terbang (±1,2 m) sepanjang
-  kanal 1,80 m dan sedalam 1,01 m? Dus 60 × 40 × 40 cm bertumpuk tiga baru mencapai
-  1,20 m, sehingga jumlahnya dihitung ulang saat menyusun arena (Fase 4).
+- [x] Jumlah dus dihitung ulang 2026-09-18 menjadi **32** (8 per lapis × 4 lapis). Yang perlu
+  dipastikan saat menyusun arena adalah kestabilan tumpukan terhadap hembusan propeler;
+  bila goyah, dus diberi pemberat atau direkatkan.
 - [ ] Konfirmasi ke pengelola bahwa sofa dan banner boleh dipindah tiap sesi.

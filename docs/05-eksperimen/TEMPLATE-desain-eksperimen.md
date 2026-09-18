@@ -36,7 +36,7 @@ menyangkalnya, itu bukan hipotesis.
 |---|---|---|
 | Bebas (diubah) | <mis. lebar celah, sudut sensor β> | <...> |
 | Terikat (diukur) | <mis. RMSE galat formasi> | — |
-| Kontrol (ditahan tetap) | <jumlah agen, parameter ERC, ketinggian terbang, jenis baterai> | <5 agen, 1,2 m, 6S 1200 mAh> |
+| Kontrol (ditahan tetap) | <jumlah agen, parameter ERC, ketinggian terbang, jenis baterai> | <5 agen, 1,3 m, 6S 1200 mAh> |
 
 ## 4. Kondisi pembanding
 
@@ -85,7 +85,7 @@ Minimal satu. Tanpa pembanding, hasilmu tidak punya makna.
 
 Tulis jujur sebelum jalan — memaksa kamu memikirkan pembatalnya.
 
-- <mis. penanda di ujung liputan kamera < 48 px karena distorsi lensa, pose hilang>
+- <mis. penanda di ujung liputan kamera jatuh jauh di bawah acuan 70 px karena distorsi lensa, pose hilang>
 - <mis. sensor jarak kehilangan pantulan pada kolom beton di sudut 45°>
 - <mis. Wi-Fi padat sehingga latensi MAVLink/UDP melonjak>
 

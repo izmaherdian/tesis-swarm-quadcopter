@@ -36,10 +36,12 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
 - **Lokalisasi:** 2 kamera atas **ELP-U3GS05B10C-IB21**: OG05B10 *global shutter*
   2592×1944, piksel 2,2 µm, larik 5,737 × 4,312 mm, **lensa CS 2,1 mm**, 60 fps MJPEG
   USB 3.0 (lembar data: `docs/02-lab/foto/18-…`; keputusan: KP03). Penanda **AprilTag 12 cm** bertiang 7 cm,
-  terbang 1,2 m, pose lewat PnP di stasiun darat. Model lubang jarum: liputan
-  4,70 × 3,53 m, 1,80 mm/px, 12 cm = 66 px, tumpang tindih 2,20 m (`parameter.py`).
+  **terbang 1,3 m**, pose lewat PnP di stasiun darat. Bidang penanda 1,55 m dari kamera; model lubang
+  jarum: liputan 4,23 × 3,18 m, 1,62 mm/px, 12 cm = 73 px, tumpang tindih 1,27 m, kamera di x = 2,12
+  dan 5,08 m (`parameter.py`). **Acuan konservatif deteksi > 70 px** (DeGol dkk. ICCV 2017, Gambar 9a); penanda 10 cm (61 px)
+  ditolak karena itu. UWB tidak dipakai karena EKF UWB+inersia hanya 10–20 cm (MILUV, IJRR 2026).
   ⚠️ ELP menyebut HFOV 150° (lubang jarum 107,6°) → distorsi kuat; batas pesimistis
-  ekuidistan: 12 cm hanya ±23 px radial di ujung segmen. Diukur saat kalibrasi Fase 2.
+  ekuidistan: 12 cm hanya ±26 px radial di ujung segmen. Diukur saat kalibrasi Fase 2.
   Pra-pesan 3 minggu. **Bukan UWB, bukan 4K, bukan "120°"** (keputusan lama).
 - **Estimasi state:** EKF3 bawaan ArduPilot, fusi IMU + pose kamera (ExtNav).
 - **Firmware FC:** SpeedyBee F405 Mini (flash 1 MB) — build stabil ArduPilot
@@ -54,7 +56,7 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
   CNHL** (2 unit, beli 4 di Fase 4 → total 6; SpeedyBee menyarankan 6S 1050–1300 mAh untuk 1950KV). Stasiun darat = laptop
   penulis (Ryzen 5 4500U, Ubuntu 26.04). Semua lalu lintas MAVLink/UDP lewat satu router Wi-Fi. Rincian: `docs/02-lab/2-inventaris.md`,
   `docs/02-lab/3-baterai-dan-bobot.md`; harga: `docs/02-lab/4-survei-harga.md`; aturan pengadaan: KP05.
-- **Arena:** koridor 2,70 m, celah 0,90 m (kolom bangunan + dus), formasi V
+- **Arena:** koridor 2,70 m, celah 0,90 m (kolom bangunan + dinding 32 dus 60×40×40 cm, dua baris × empat lapis, tinggi 1,60 m), formasi V
   diskalakan 0,9; untuk wahana $R=0{,}125$ m ambang $\alpha R=1{,}0$ m.
 - **Metodologi:** 5 fase mengikuti `figures/metodologi_tesis.pdf` (diagram draw.io
   penulis, isinya sudah diselaraskan; ekspor ulang lewat penampil draw.io di Chrome

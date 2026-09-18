@@ -73,13 +73,13 @@ tanpa propeler.
 7. **Kontinjensi** yang bergantung hasil uji (MTF-01) ditulis sebagai harga satuan saja dan
    tidak masuk subtotal.
 
-### Hasil (proposal 2026-09-17)
+### Hasil (proposal 2026-09-18)
 
 | Fase | Subtotal |
 |---|---:|
 | Fase 2 | Rp10.046.227 |
-| Fase 4 | Rp12.593.747 |
-| **Total** | **Rp22.639.974** |
+| Fase 4 | Rp13.357.147 |
+| **Total** | **Rp23.403.374** |
 
 ## Syarat peninjauan ulang
 
