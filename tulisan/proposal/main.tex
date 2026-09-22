@@ -307,7 +307,7 @@ Proposal tesis ini terdiri atas lima bab. Bab~I Pendahuluan memuat latar belakan
 
 Bab~II Tinjauan Pustaka memuat studi terkait tentang kontrol formasi kawanan, penghindaran rintangan, dan implementasi fisiknya, serta landasan teori quadcopter yang meliputi konfigurasi motor, kerangka acuan, dan model dinamika.
 
-Bab~III Perancangan Sistem memuat kondisi awal perangkat, arsitektur wahana, rancangan sistem lokalisasi dan persepsi rintangan, rancangan estimator dan pengendali, rancangan arena uji, serta arsitektur sistem menyeluruh.
+Bab~III Perancangan Sistem memuat kondisi awal perangkat, arsitektur wahana, rancangan sistem lokalisasi dan persepsi rintangan, rancangan estimator dan pengontrol, rancangan arena uji, serta arsitektur sistem menyeluruh.
 
 Bab~IV Metodologi dan Rencana Pelaksanaan memuat lima fase penelitian beserta anggaran pada fase yang memerlukan pengadaan, rekapitulasi anggaran, dan jadwal pelaksanaan.
 
@@ -341,7 +341,7 @@ Terkait penghindaran rintangan, metode \textit{Artificial Potential Field} (APF)
 
 Pada penelitian pendahuluan terdahulu, penulis memadukan konsep ERC bersama IAPF untuk dinamika kawanan lima \textit{quadcopter} dalam simulasi komputasional 3D \cite{herdianDecentralizedFormationControl2026}. Hasil simulasi membuktikan keberhasilan rekonfigurasi adaptif terdesentralisasi saat melintasi celah sempit dengan efisiensi komunikasi tinggi. Kendati demikian, studi tersebut masih berbasis komputasi numerik murni sehingga belum memperhitungkan batasan platform fisik, seperti latensi jaringan Wi-Fi lokal, derau sensor lokalisasi kamera dan jarak, serta keterbatasan komputasi \textit{onboard}.
 
-Implementasi fisik kontrol formasi terdesentralisasi telah didemonstrasikan oleh Quan \textit{et al.} \cite{quanDistributedSwarmTrajectory2022b, quanRobustEfficientTrajectory2023} melalui optimisasi lintasan terdistribusi untuk terbang formasi di lingkungan padat rintangan, yang menunjukkan bahwa sistem terdesentralisasi dapat bekerja andal di dunia nyata bila kendala perangkat keras ditangani sejak perancangan. Posisi penelitian tesis ini melangkah lebih jauh menjembatani celah realitas tersebut dengan merealisasikan algoritma ERC dan IAPF secara langsung pada platform perangkat keras fisik lima wahana di ruang sempit nyata. Perbandingan komparatif penelitian ini terhadap literatur kendali formasi berbasis kejadian dan ERC dirangkum pada Tabel~\ref{tab:studi-terkait-rujukan}.
+Implementasi fisik kontrol formasi terdesentralisasi telah didemonstrasikan oleh Quan \textit{et al.} \cite{quanDistributedSwarmTrajectory2022b, quanRobustEfficientTrajectory2023} melalui optimisasi lintasan terdistribusi untuk terbang formasi di lingkungan padat rintangan, yang menunjukkan bahwa sistem terdesentralisasi dapat bekerja andal di dunia nyata bila kendala perangkat keras ditangani sejak perancangan. Posisi penelitian tesis ini melangkah lebih jauh menjembatani celah realitas tersebut dengan merealisasikan algoritma ERC dan IAPF secara langsung pada platform perangkat keras fisik lima wahana di ruang sempit nyata. Perbandingan komparatif penelitian ini terhadap literatur kontrol formasi berbasis kejadian dan ERC dirangkum pada Tabel~\ref{tab:studi-terkait-rujukan}.
 
 \begin{table}[htbp]
     \centering
@@ -368,7 +368,7 @@ Quadcopter, dengan empat motornya, merupakan sistem mekatronika dari konsep robo
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.5\textwidth]{figures/quadcopter_speedybee35.png}
-    \caption{Quadcopter dengan kerangka SpeedyBee35 \cite{SpeedyBeeBee3535a}}
+    \caption[Quadcopter dengan kerangka SpeedyBee35.]{Quadcopter dengan kerangka SpeedyBee35 \cite{SpeedyBeeBee3535a}}
     \label{fig:quadcopter-speedybee35}
 \end{figure}
 
@@ -439,7 +439,7 @@ Gaya dorong dan torsi reaktif masing-masing motor dimodelkan sebagai fungsi kuad
 \end{equation}
 dengan $k_T$ sebagai koefisien gaya dorong dan $k_Q$ sebagai koefisien torsi. 
 
-Respons aktuator motor pada wahana fisik dikendalikan secara langsung oleh unit ESC 4-in-1 melalui sinyal komando digital berfrekuensi tinggi, sehingga dinamika putaran motor memiliki konstanta waktu yang jauh lebih cepat dibandingkan dinamika translasi bodi quadcopter. 
+Respons aktuator motor pada wahana fisik dikontrol secara langsung oleh unit ESC 4-in-1 melalui sinyal komando digital berfrekuensi tinggi, sehingga dinamika putaran motor memiliki konstanta waktu yang jauh lebih cepat dibandingkan dinamika translasi bodi quadcopter. 
 
 Untuk keperluan simulasi numerik komputasional dan pengujian \textit{Hardware-In-The-Loop} (HITL) pada tahap awal penelitian, dinamika bodi 13-\textit{state} (Persamaan~\ref{eq:state-plant-quadcopter}) digabungkan dengan pemodelan transien aktuator motor orde kedua membentuk model non-linear 21-\textit{state} \cite{johnBobzwikQuadcopter_SimCon2025, kaneDynamicsTheoryApplications1985}. Sementara itu, pada implementasi fisik di lingkungan dalam ruangan, tugas stabilisasi sikap dan regulasi gaya dorong motor didelegasikan sepenuhnya kepada kalang kontrol PID kaskade pada \textit{Flight Controller} (FC), sebagaimana dirinci pada Bab~\ref{sec:arsitektur_sistem}. Dengan demikian, model translasi bodi kaku pada Persamaan~\ref{eq:translational-dynamics} dan model orientasi pada Persamaan~\ref{eq:quaternion-kinematics} menjadi acuan utama bagi perencana tingkat tinggi di \textit{companion computer} dalam menghasilkan referensi trajektori formasi kawanan.
 
@@ -477,7 +477,7 @@ Wahana yang digunakan adalah \textit{quadcopter} tipe \textit{cinewhoop} dengan 
         3 & \textit{Flight controller} SpeedyBee F405 Mini & Mikrokontroler STM32F405 (\textit{flash} 1 MB), IMU ICM-42688P, barometer DSP-310; 4 terpasang, 2 lepas & 6 unit \\ \hline
         4 & ESC SpeedyBee BLS 35A Mini & 4-in-1, firmware BLHeli\_S; 4 terpasang, 1 unit V2 lepas diduga rusak & 5 unit \\ \hline
         5 & \textit{Companion computer} Seeed XIAO ESP32-S3 & Wi-Fi 2,4 GHz dan BLE terintegrasi, antarmuka USB-C; 4 terpasang, 1 lepas & 5 unit \\ \hline
-        6 & Penerima kendali radio ExpressLRS & 2,4 GHz (EP2 TCXO dan modul berbasis ESP8285); 4 terpasang, 1 lepas; pemancar belum tersedia & 5 unit \\ \hline
+        6 & Penerima kontrol radio ExpressLRS & 2,4 GHz (EP2 TCXO dan modul berbasis ESP8285); 4 terpasang, 1 lepas; pemancar belum tersedia & 5 unit \\ \hline
         7 & Baterai LiPo 6S 1200 mAh CNHL Pizza Series & $22{,}2$ V, 100C, konektor XT60; satu-satunya baterai yang sesuai motor $1950$ KV & 2 unit \\ \hline
         8 & Baterai LiPo lain & 5S 5000 mAh ($\times 2$), 4S 1200 mAh ($\times 2$), 4S 2200 mAh, 3S 1500 mAh ($\times 2$), 2S/3S 1500 mAh; tidak dipakai terbang & 8 unit \\ \hline
         9 & Propeler Gemfan D90S dan cadangan saluran & Tiga bilah, 90 mm, \textit{T-mount} $1{,}5$ mm; dua paket pelindung dan penyangga saluran & 14 unit \\ \hline
@@ -485,7 +485,7 @@ Wahana yang digunakan adalah \textit{quadcopter} tipe \textit{cinewhoop} dengan 
         11 & Modul GNSS & RUSHFPV M10 dengan kompas HMC5883 dan modul GPS pada rangka terakit; tidak dipakai di dalam ruangan & 6 unit \\ \hline
         12 & Pencetak tiga dimensi beserta filamen & Untuk mencetak dudukan penanda visual dan sensor & 1 unit \\ \hline
         13 & Perlengkapan pengisian baterai & Pengisi daya SkyRC T6X80 (1--6S, 80 W), papan pengisian paralel Power Genius 2--6S, SkyRC \textit{multi balance board}, kontainer penyimpanan baterai & tersedia \\ \hline
-        14 & Komputer stasiun darat dan penghala Wi-Fi khusus & Laptop Lenovo AMD Ryzen 5 4500U (6 inti), memori 14 GiB, Ubuntu 26.04, dua pengendali USB 3.1; model penghala belum dicatat & tersedia \\ \hline
+        14 & Komputer stasiun darat dan penghala Wi-Fi khusus & Laptop Lenovo AMD Ryzen 5 4500U (6 inti), memori 14 GiB, Ubuntu 26.04, dua pengontrol USB 3.1; penghala TP-Link Archer C54 dwipita & tersedia \\ \hline
     \end{tabularx}
     \endgroup
 \end{table}
@@ -533,13 +533,13 @@ Wahana eksperimental adalah quadcopter konfigurasi X berbasis rangka SpeedyBee B
     \subcaptionbox{Tampak atas\label{fig:struktur_atas}}[0.48\textwidth]{\includegraphics[width=\linewidth]{figures/struktur_fisik-atas.png}}
     \hfill
     \subcaptionbox{Tampak bawah\label{fig:struktur_bawah}}[0.48\textwidth]{\includegraphics[width=\linewidth]{figures/struktur_fisik-bawah.png}}
-    \caption{Struktur fisik dan tata letak komponen, (a) tampak atas dan (b) tampak bawah \cite{argilianaPengembanganSistemKontrol2025}}
+    \caption[Struktur fisik dan tata letak komponen.]{Struktur fisik dan tata letak komponen, (a) tampak atas dan (b) tampak bawah \cite{argilianaPengembanganSistemKontrol2025}}
     \label{fig:struktur_fisik}
 \end{figure}
 
 FC dan ESC 4-in-1 tersusun sebagai satu tumpukan vertikal. FC memuat IMU dan mengirim komando motor ke ESC, yang menggerakkan keempat motor BLDC. Tumpukan dipasang di atas peredam getaran silikon untuk mengurangi derau getaran motor pada IMU (Gambar~\ref{fig:esc_fc}).
 
-Baterai LiPo mencatu ESC, yang menyalurkan daya teregulasi ke FC melalui BEC (\textit{Battery Eliminator Circuit}). XIAO ESP32-S3 terhubung ke FC melalui UART dengan TX dan RX disilangkan untuk pertukaran MAVLink, dan penerima ExpressLRS EP2 TCXO terhubung ke FC untuk kendali manual (Gambar~\ref{fig:wiring_diagram}). Modul GNSS pada gambar tersebut dilepas pada penelitian ini (Subbab~\ref{sec:kondisi_awal}).
+Baterai LiPo mencatu ESC, yang menyalurkan daya teregulasi ke FC melalui BEC (\textit{Battery Eliminator Circuit}). XIAO ESP32-S3 terhubung ke FC melalui UART dengan TX dan RX disilangkan untuk pertukaran MAVLink, dan penerima ExpressLRS EP2 TCXO terhubung ke FC untuk kontrol manual (Gambar~\ref{fig:wiring_diagram}). Modul GNSS pada gambar tersebut dilepas pada penelitian ini (Subbab~\ref{sec:kondisi_awal}).
 
 \begin{figure}[htbp]
     \centering
@@ -574,7 +574,7 @@ Karena kedua jalur melewati \textit{router} yang sama, kegagalan \textit{router}
 \section{Perancangan Sistem Lokalisasi Dalam Ruangan}
 \label{sec:lokalisasi_rancangan}
 
-GPS tidak tersedia di dalam ruangan, sehingga posisi absolut diperoleh dari kamera atas yang mengamati penanda visual pada wahana. Lokalisasi kamera eksternal tidak mengakumulasi \textit{drift}, dan galat pose di bawah $3$~cm dan $1^\circ$ telah dilaporkan untuk area dalam ruangan seluas sekitar $240$~m$^2$ \cite{bultmannExternalCameraBased2023}. Presisinya bergantung pada resolusi kamera, ukuran penanda, dan jarak kamera ke penanda; akurasi pose AprilTag menurun seiring bertambahnya jarak dan mengecilnya penanda \cite{zhangIntegratedFrameworkEnhancing2026}. Ketiga besaran tersebut karenanya dihitung dari dimensi ruang uji (Subbab~\ref{subsec:liputan_kamera}). Alternatif berbasis radio, misalnya sistem \textit{Ultra-Wide Band} dengan modul ESP32 \cite{hoDesignIndoorPositioning2023}, tidak dijadikan lokalisasi utama karena presisinya dibatasi kondisi tanpa garis pandang yang mengganggu perambatan sinyal di dalam ruangan. Pada kawanan wahana dalam ruangan dengan acuan sistem tangkap gerak, penapis Kalman yang memadukan UWB dan inersia terlapor hanya mencapai ketelitian posisi $10$--$20$ cm, dan penulisnya menyatakan ketelitian tersebut belum memadai untuk pengendali maupun perencana lintasan pada aplikasi kritis keselamatan \cite{shalabyMILUVMultiUAV2026}.
+GPS tidak tersedia di dalam ruangan, sehingga posisi absolut diperoleh dari kamera atas yang mengamati penanda visual pada wahana. Lokalisasi kamera eksternal tidak mengakumulasi \textit{drift}, dan galat pose di bawah $3$~cm dan $1^\circ$ telah dilaporkan untuk area dalam ruangan seluas sekitar $240$~m$^2$ \cite{bultmannExternalCameraBased2023}. Presisinya bergantung pada resolusi kamera, ukuran penanda, dan jarak kamera ke penanda; akurasi pose AprilTag menurun seiring bertambahnya jarak dan mengecilnya penanda \cite{zhangIntegratedFrameworkEnhancing2026}. Ketiga besaran tersebut karenanya dihitung dari dimensi ruang uji (Subbab~\ref{subsec:liputan_kamera}). Alternatif berbasis radio, misalnya sistem \textit{Ultra-Wide Band} dengan modul ESP32 \cite{hoDesignIndoorPositioning2023}, tidak dijadikan lokalisasi utama karena presisinya dibatasi kondisi tanpa garis pandang yang mengganggu perambatan sinyal di dalam ruangan. Pada kawanan wahana dalam ruangan dengan acuan sistem tangkap gerak, penapis Kalman yang memadukan UWB dan inersia terlapor hanya mencapai ketelitian posisi $10$--$20$ cm, dan Shalaby dkk. menyatakan ketelitian tersebut belum memadai untuk pengontrol maupun perencana lintasan pada aplikasi kritis keselamatan \cite{shalabyMILUVMultiUAV2026}.
 
 Sistem lokalisasi terdiri atas tiga komponen berikut.
 \begin{enumerate}
@@ -609,7 +609,7 @@ dengan $s$ faktor skala, $\mathbf{R} \in \mathbb{R}^{3 \times 3}$ matriks rotasi
 \end{equation}
 dengan $(f_x, f_y)$ panjang fokus dalam piksel dan $(c_x, c_y)$ titik pusat optik. Dari ukuran penanda yang diketahui ($12 \times 12$~cm) dan empat titik sudutnya pada citra, Persamaan~\ref{eq:pinhole_pnp} diselesaikan secara numerik dengan optimasi Levenberg\allowbreak--Marquardt, menghasilkan posisi $(x, y, z)$ dan sudut \textit{yaw} $\psi$ tiap wahana.
 
-Pose tersebut dikemas sebagai pesan MAVLink dan disiarkan melalui UDP ke \textit{companion computer} tiap wahana. Laju pembaruannya dibatasi laju bingkai kamera ($60$ bingkai per detik) dan tertunda oleh pemrosesan citra, sehingga pose kamera tidak diumpankan langsung ke kalang kendali, melainkan difusikan dengan IMU melalui \textit{Extended Kalman Filter} (EKF\label{abbr:ekf}).
+Pose tersebut dikemas sebagai pesan MAVLink dan disiarkan melalui UDP ke \textit{companion computer} tiap wahana. Laju pembaruannya dibatasi laju bingkai kamera ($60$ bingkai per detik) dan tertunda oleh pemrosesan citra, sehingga pose kamera tidak diumpankan langsung ke kalang kontrol, melainkan difusikan dengan IMU melalui \textit{Extended Kalman Filter} (EKF\label{abbr:ekf}).
 
 \subsection{Penentuan Jumlah Kamera dan Ukuran Penanda}
 \label{subsec:liputan_kamera}
@@ -689,7 +689,7 @@ Kriteria pemilihan ditetapkan sebelum pengujian dijalankan, yaitu tingkat keberh
 
 \section{Estimator dan Pengontrol}
 
-Bagian ini menguraikan rancangan kalang estimasi dan kendali yang dijalankan di atas wahana, mulai dari fusi sensor hingga alokasi perintah motor.
+Bagian ini menguraikan rancangan kalang estimasi dan kontrol yang dijalankan di atas wahana, mulai dari fusi sensor hingga alokasi perintah motor.
 
 \subsection{Firmware \textit{Flight Controller}}
 \label{subsec:firmware_fc}
@@ -751,23 +751,23 @@ Setiap kali pose absolut dari kamera atas tiba (hingga $60$ kali per detik), kor
 \end{align}
 dengan $\tilde{\mathbf{y}}_k$ inovasi dan $\mathbf{K}_k$ penguatan Kalman yang membobot prediksi IMU terhadap pose kamera.
 
-Estimasi $\hat{\mathbf{x}}_{k|k}$ menutup kalang pengendali tingkat rendah dan diteruskan ke \textit{companion computer} untuk perencana tingkat tinggi (Gambar~\ref{fig:ekf_diagram}).
+Estimasi $\hat{\mathbf{x}}_{k|k}$ menutup kalang pengontrol tingkat rendah dan diteruskan ke \textit{companion computer} untuk perencana tingkat tinggi (Gambar~\ref{fig:ekf_diagram}).
 
 \begin{figure}[htbp]
     \centering
     \includegraphics{figures/ekf.pdf}
-    \caption{Fusi sensor dengan EKF. Prediksi dijalankan setiap cuplikan IMU; pembaruan dijalankan setiap pose kamera tiba. Estimasi $\hat{\mathbf{x}}_{k|k}$ diumpankan ke pengendali tingkat rendah dan perencana tingkat tinggi.}
+    \caption{Fusi sensor dengan EKF. Prediksi dijalankan setiap cuplikan IMU; pembaruan dijalankan setiap pose kamera tiba. Estimasi $\hat{\mathbf{x}}_{k|k}$ diumpankan ke pengontrol tingkat rendah dan perencana tingkat tinggi.}
     \label{fig:ekf_diagram}
 \end{figure}
 
-\subsection{Pengendali Tingkat Rendah}
+\subsection{Pengontrol Tingkat Rendah}
 
-Pengendali tingkat rendah berjalan pada \textit{flight controller} SpeedyBee F405 Mini (STM32F405) dengan \textit{firmware} ArduPilot Copter. Strukturnya kaskade, dengan kalang translasi (posisi, kecepatan) di luar dan kalang rotasi (sikap, laju sudut) di dalam, seluruhnya ditutup oleh estimasi EKF3 (Gambar~\ref{fig:low_level_controller}). Tahapannya sebagai berikut.
+Pengontrol tingkat rendah berjalan pada \textit{flight controller} SpeedyBee F405 Mini (STM32F405) dengan \textit{firmware} ArduPilot Copter. Strukturnya kaskade, dengan kalang translasi (posisi, kecepatan) di luar dan kalang rotasi (sikap, laju sudut) di dalam, seluruhnya ditutup oleh estimasi EKF3 (Gambar~\ref{fig:low_level_controller}). Tahapannya sebagai berikut.
 \begin{enumerate}
     \item \textbf{Referensi gerak.} \textit{Companion computer} XIAO ESP32-S3 mengirim pesan MAVLink \texttt{SET\_}\allowbreak\texttt{POSITION\_}\allowbreak\texttt{TARGET\_}\allowbreak\texttt{LOCAL\_}\allowbreak\texttt{NED} melalui UART. Pesan memuat posisi acuan $\mathbf{p}_{\mathrm{ref}}$, kecepatan umpan-maju $\mathbf{v}_{\mathrm{ref}}$, dan sudut \textit{yaw} acuan $\psi_{\mathrm{ref}}$.
-    \item \textbf{Kalang translasi.} Galat posisi $\mathbf{e}_p = \mathbf{p}_{\mathrm{ref}} - \hat{\mathbf{p}}$ diolah pengendali P posisi menjadi kecepatan komando $\mathbf{v}_{\mathrm{cmd}} = K_p^{\mathrm{pos}}\mathbf{e}_p$. Setelah ditambah $\mathbf{v}_{\mathrm{ref}}$ dan dibandingkan dengan $\hat{\mathbf{v}}$, pengendali PID kecepatan menghasilkan percepatan komando $\mathbf{a}_{\mathrm{cmd}}$.
+    \item \textbf{Kalang translasi.} Galat posisi $\mathbf{e}_p = \mathbf{p}_{\mathrm{ref}} - \hat{\mathbf{p}}$ diolah pengontrol P posisi menjadi kecepatan komando $\mathbf{v}_{\mathrm{cmd}} = K_p^{\mathrm{pos}}\mathbf{e}_p$. Setelah ditambah $\mathbf{v}_{\mathrm{ref}}$ dan dibandingkan dengan $\hat{\mathbf{v}}$, pengontrol PID kecepatan menghasilkan percepatan komando $\mathbf{a}_{\mathrm{cmd}}$.
     \item \textbf{Konversi akselerasi.} Dalam kerangka NED, besar gaya dorong adalah $T = m\,\lVert g\mathbf{e}_3 - \mathbf{a}_{\mathrm{cmd}} \rVert$ dengan $\mathbf{e}_3 = [0, 0, 1]^T$, dan arah vektor $g\mathbf{e}_3 - \mathbf{a}_{\mathrm{cmd}}$ bersama $\psi_{\mathrm{ref}}$ menentukan sikap target $\mathbf{q}_{\mathrm{des}}$ (\textit{quaternion}).
-    \item \textbf{Kalang rotasi.} Galat antara $\mathbf{q}_{\mathrm{des}}$ dan $\hat{\mathbf{q}}$ diolah pengendali P sikap menjadi laju sudut target $\boldsymbol{\omega}_{\mathrm{des}}$; pengendali PID laju sudut membandingkannya dengan $\hat{\boldsymbol{\omega}}$ dan menghasilkan torsi komando $\boldsymbol{\tau} = [\tau_\phi, \tau_\theta, \tau_\psi]^T$.
+    \item \textbf{Kalang rotasi.} Galat antara $\mathbf{q}_{\mathrm{des}}$ dan $\hat{\mathbf{q}}$ diolah pengontrol P sikap menjadi laju sudut target $\boldsymbol{\omega}_{\mathrm{des}}$; pengontrol PID laju sudut membandingkannya dengan $\hat{\boldsymbol{\omega}}$ dan menghasilkan torsi komando $\boldsymbol{\tau} = [\tau_\phi, \tau_\theta, \tau_\psi]^T$.
     \item \textbf{Alokasi motor.} \textit{Mixer} memetakan $T$ dan $\boldsymbol{\tau}$ ke komando empat motor sesuai konfigurasi X, dikirim dengan protokol digital DShot ke ESC 4-in-1 SpeedyBee BLS 35A.
     \item \textbf{Estimasi.} EKF3 memadukan IMU ICM-42688P dengan pose kamera yang diterima sebagai \textit{external navigation} melalui MAVLink, menghasilkan $\hat{\mathbf{p}}$, $\hat{\mathbf{v}}$, $\hat{\mathbf{q}}$, dan $\hat{\boldsymbol{\omega}}$ untuk kedua kalang.
 \end{enumerate}
@@ -775,19 +775,19 @@ Pengendali tingkat rendah berjalan pada \textit{flight controller} SpeedyBee F40
 \begin{figure}[htbp]
     \centering
     \includegraphics{figures/pengendali.pdf}
-    \caption[Pengendali tingkat rendah kaskade pada \textit{flight controller}.]{Pengendali tingkat rendah kaskade pada \textit{flight controller}. Garis putus membatasi komputasi di dalam \textit{flight controller}; pose kamera datang dari \textit{companion computer}.}
+    \caption[Pengontrol tingkat rendah kaskade pada \textit{flight controller}.]{Pengontrol tingkat rendah kaskade pada \textit{flight controller}. Garis putus membatasi komputasi di dalam \textit{flight controller}; pose kamera datang dari \textit{companion computer}.}
     \label{fig:low_level_controller}
 \end{figure}
 
 \subsection{Perencana Tingkat Tinggi dan Formulasi ERC}
 \label{subsec:erc}
 
-Perencana tingkat tinggi dijalankan terpisah pada \textit{companion computer} tiap agen. Keluarannya berupa kecepatan acuan yang diintegrasikan menjadi \textit{setpoint} posisi bagi pengendali tingkat rendah (Gambar~\ref{fig:high_level_planner}). Formulasi berikut mengikuti rancangan penelitian sebelumnya \cite{herdianDecentralizedFormationControl2026}, yang mengembangkan ERC dari Bui \textit{et al.} \cite{buiEventbasedReconfigurationControl2025}, dan sesuai dengan implementasi simulator yang digunakan.
+Perencana tingkat tinggi dijalankan terpisah pada \textit{companion computer} tiap agen. Keluarannya berupa kecepatan acuan yang diintegrasikan menjadi \textit{setpoint} posisi bagi pengontrol tingkat rendah (Gambar~\ref{fig:high_level_planner}). Formulasi berikut mengikuti rancangan penelitian sebelumnya \cite{herdianDecentralizedFormationControl2026}, yang mengembangkan ERC dari Bui \textit{et al.} \cite{buiEventbasedReconfigurationControl2025}, dan sesuai dengan implementasi simulator yang digunakan.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics{figures/perencana.pdf}
-    \caption[Perencana tingkat tinggi pada tiap agen.]{Perencana tingkat tinggi pada tiap agen, diadaptasi dari \cite{herdianDecentralizedFormationControl2026}. Lebar ruang $w_e$ menentukan faktor skala $\kappa$ dan mode $\sigma_i$ (Persamaan~\ref{eq:erc_pemicu}); kecepatan $\mathbf{v}_i$ diintegrasikan menjadi $\mathbf{p}_{\mathrm{ref}}$ bagi pengendali tingkat rendah.}
+    \caption[Perencana tingkat tinggi pada tiap agen.]{Perencana tingkat tinggi pada tiap agen, diadaptasi dari \cite{herdianDecentralizedFormationControl2026}. Lebar ruang $w_e$ menentukan faktor skala $\kappa$ dan mode $\sigma_i$ (Persamaan~\ref{eq:erc_pemicu}); kecepatan $\mathbf{v}_i$ diintegrasikan menjadi $\mathbf{p}_{\mathrm{ref}}$ bagi pengontrol tingkat rendah.}
     \label{fig:high_level_planner}
 \end{figure}
 
@@ -847,7 +847,7 @@ Saat beralih ke mode mengekor, setiap agen memilih pemimpinnya secara terdesentr
 \end{equation}
 Agen tanpa agen lain di depannya menjadi pemimpin barisan.
 
-Pada versi simulator yang digunakan (\texttt{0d7ed5a}), nilai $\kappa$ pada Persamaan~\ref{eq:erc_pemicu} telah dihitung dan dicatat, tetapi belum diterapkan pada perilaku formasi Persamaan~\ref{eq:erc_formasi}. Penerapannya beserta pengulangan skenario lorong sempit dijadwalkan pada Fase~1.
+Pada versi simulator yang dipakai pada penelitian pendahuluan, nilai $\kappa$ pada Persamaan~\ref{eq:erc_pemicu} telah dihitung dan dicatat, tetapi belum diterapkan pada perilaku formasi Persamaan~\ref{eq:erc_formasi}. Penerapannya beserta pengulangan skenario lorong sempit dijadwalkan pada Fase~1.
 
 \subsubsection{Parameter}
 
@@ -918,12 +918,12 @@ Tata letak arena selengkapnya diperlihatkan pada Gambar~\ref{fig:sketsa_arena}. 
     \label{fig:sketsa_arena}
 \end{figure}
 
-Pada konfigurasi ini, wahana menyisakan ruang bebas $32{,}5$ cm pada tiap sisi baik saat mempertahankan formasi V di koridor terbuka maupun saat mengekor melewati celah. Margin yang seragam tersebut dipilih agar tuntutan ketelitian kendali pada kedua fase manuver setara, sehingga kegagalan pada salah satu fase dapat ditafsirkan sebagai persoalan algoritma dan bukan sekadar akibat arena yang terlalu sempit pada fase tersebut.
+Pada konfigurasi ini, wahana menyisakan ruang bebas $32{,}5$ cm pada tiap sisi baik saat mempertahankan formasi V di koridor terbuka maupun saat mengekor melewati celah. Margin yang seragam tersebut dipilih agar tuntutan ketelitian kontrol pada kedua fase manuver setara, sehingga kegagalan pada salah satu fase dapat ditafsirkan sebagai persoalan algoritma dan bukan sekadar akibat arena yang terlalu sempit pada fase tersebut.
 
 \section{Arsitektur Sistem Menyeluruh}
 \label{sec:arsitektur_sistem}
 
-Keseluruhan subsistem yang telah diuraikan disatukan ke dalam arsitektur pada Gambar~\ref{fig:arsitektur_sistem}. Aliran data bermula dari dua kamera atas yang mengamati penanda visual pada tiap wahana. Stasiun pemroses citra di darat menjalankan deteksi penanda dan penyelesaian \textit{Perspective-n-Point} untuk menghasilkan pose tiga dimensi kelima agen, lalu menyiarkannya melalui jaringan Wi-Fi lokal berbasis soket UDP. Pada tiap wahana, \textit{companion computer} menerima pose tersebut, memadukannya dengan pembacaan sensor jarak, menjalankan algoritma IAPF dan ERC, lalu meneruskan \textit{setpoint} posisi ke \textit{flight controller} melalui antarmuka serial berformat MAVLink. \textit{Flight controller} menutup kalang kendali hingga alokasi perintah motor.
+Keseluruhan subsistem yang telah diuraikan disatukan ke dalam arsitektur pada Gambar~\ref{fig:arsitektur_sistem}. Aliran data bermula dari dua kamera atas yang mengamati penanda visual pada tiap wahana. Stasiun pemroses citra di darat menjalankan deteksi penanda dan penyelesaian \textit{Perspective-n-Point} untuk menghasilkan pose tiga dimensi kelima agen, lalu menyiarkannya melalui jaringan Wi-Fi lokal berbasis soket UDP. Pada tiap wahana, \textit{companion computer} menerima pose tersebut, memadukannya dengan pembacaan sensor jarak, menjalankan algoritma IAPF dan ERC, lalu meneruskan \textit{setpoint} posisi ke \textit{flight controller} melalui antarmuka serial berformat MAVLink. \textit{Flight controller} menutup kalang kontrol hingga alokasi perintah motor.
 
 \begin{figure}[htbp]
     \centering
@@ -1023,7 +1023,7 @@ Ambang kelayakan tiap gerbang dirangkum pada Tabel~\ref{tab:gerbang}. Nilai pada
 
 \begin{enumerate}
     \item \textbf{Studi literatur} dinamika quadcopter dan evaluasi simulasi ERC, berlangsung sepanjang penelitian. Termasuk di dalamnya penerapan faktor skala $\kappa$ pada simulator (Subbab~\ref{subsec:erc}) dan simulasi arena berskala dengan geometri Tabel~\ref{tab:penskalaan_arena}, yang hasilnya menjadi pembanding pada Fase~5.
-    \item \textbf{Desain arsitektur} lima quadcopter dengan pembagian kerja antara \textit{flight controller} sebagai pengendali tingkat rendah dan \textit{companion computer} sebagai perencana tingkat tinggi (Bab~III).
+    \item \textbf{Desain arsitektur} lima quadcopter dengan pembagian kerja antara \textit{flight controller} sebagai pengontrol tingkat rendah dan \textit{companion computer} sebagai perencana tingkat tinggi (Bab~III).
 \end{enumerate}
 Fase ini tidak memerlukan pengadaan.
 
@@ -1034,7 +1034,7 @@ Fase ini tidak memerlukan pengadaan.
     \item \textbf{Komunikasi eksternal.} Jaringan terdesentralisasi antaragen dibangun dengan UDP melalui Wi-Fi.
     \item \textbf{Lokalisasi.} Kamera pertama dikalibrasi, termasuk model distorsi lensanya; deteksi penanda AprilTag, penyelesaian pose, pengiriman MAVLink, dan fusi EKF dijalankan menerus. Pada tahap ini pula HC-SR04, VL53L1X, dan MTF-01 diuji banding dengan kriteria pada Subbab~\ref{subsec:pemilihan_sensor}.
     \item \textbf{Penanaman logika} algoritma ERC dan IAPF pada \textit{companion computer}.
-    \item \textbf{Tautan kendali manual.} Pemancar ExpressLRS diikat ke penerima EP2 TCXO yang telah tersedia. Pemancar diadakan sebelum uji terbang karena merupakan satu-satunya jalur penghentian darurat yang tidak bergantung pada Wi-Fi.
+    \item \textbf{Tautan kontrol manual.} Pemancar ExpressLRS diikat ke penerima EP2 TCXO yang telah tersedia. Pemancar diadakan sebelum uji terbang karena merupakan satu-satunya jalur penghentian darurat yang tidak bergantung pada Wi-Fi.
 \end{enumerate}
 
 \begin{table}[htbp]
