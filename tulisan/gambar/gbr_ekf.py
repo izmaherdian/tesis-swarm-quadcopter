@@ -23,7 +23,7 @@ panah(ax, (tunda["cx"], upd["cy"]), (tunda["cx"], tunda["y"]))
 garis(ax, [tunda["cx"], tunda["cx"]], [tunda["y"] + tunda["h"], pre["cy"]])
 panah(ax, (tunda["cx"], pre["cy"]), (pre["x"] + pre["w"], pre["cy"]))
 
-llc = kotak(ax, 10.9, 3.775, 2.9, 1.1, "pengendali\ntingkat rendah", **B)
+llc = kotak(ax, 10.9, 3.775, 2.9, 1.1, "pengontrol\ntingkat rendah", **B)
 hlp = kotak(ax, 10.9, 0.975, 2.9, 1.1, "perencana\ntingkat tinggi", **B)
 garis(ax, [9.03, 10.2], [2.1, 2.1])
 garis(ax, [10.2, 10.2], [hlp["cy"], llc["cy"]])

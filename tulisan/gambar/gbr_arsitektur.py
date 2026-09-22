@@ -11,7 +11,7 @@ ax.add_patch(Rectangle((0.1, 5.6), 13.8, 4.4, fc="none", ec=ABU, lw=TIPIS, ls=PU
 ax.text(0.25, 9.88, "stasiun darat", fontsize=FS_KECIL, style="italic", va="top", color="0.35")
 k1  = kotak(ax, 0.5, 8.55, 2.7, 0.85, "kamera K1", **B)
 k2  = kotak(ax, 3.6, 8.55, 2.7, 0.85, "kamera K2", **B)
-gcs = kotak(ax, 7.0, 8.55, 3.0, 0.85, "stasiun\nkendali darat", **B)
+gcs = kotak(ax, 7.0, 8.55, 3.0, 0.85, "stasiun\nkontrol darat", **B)
 tx  = kotak(ax, 10.6, 8.55, 3.0, 0.85, "pemancar ELRS", **B)
 viz = kotak(ax, 1.05, 7.05, 4.7, 0.95, "pemroses citra\ndeteksi AprilTag, PnP", **B)
 net = kotak(ax, 3.7, 5.9, 4.6, 0.7, "jaringan Wi-Fi lokal (UDP)", **B)

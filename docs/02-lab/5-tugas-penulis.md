@@ -72,7 +72,7 @@ Isi kolom "Hasil" langsung di sini atau kirim fotonya. Urutan = prioritas.
 | Data yang dicatat | Cara cek | Kenapa perlu | Hasil |
 |---|---|---|---|
 | ~~Komputer stasiun darat~~ | ✅ laptop penulis (Ryzen 5 4500U, 14 GiB, Ubuntu 26.04) | dicatat 2026-09-17 | ✅ |
-| Port USB fisik laptop: mana yang terhubung ke pengendali USB 3.1 pertama dan kedua | Colok flashdisk USB 3 bergantian di tiap port, jalankan `lsusb -t` (lihat Bus 002 vs Bus 004) | Dua kamera sebaiknya di pengendali berbeda | |
+| Port USB fisik laptop: mana yang terhubung ke pengontrol USB 3.1 pertama dan kedua | Colok flashdisk USB 3 bergantian di tiap port, jalankan `lsusb -t` (lihat Bus 002 vs Bus 004) | Dua kamera sebaiknya di pengontrol berbeda | |
 | Router Wi-Fi: merek/model, **pita 2,4 GHz** tersedia | — | ESP32-S3 hanya bekerja di 2,4 GHz; seluruh komunikasi MAVLink/UDP lewat router ini | ✅ **TP-Link Archer C54**, AC1200 dwipita, 2,4 GHz tersedia (2026-09-22) |
 
 ## D. Ruang uji

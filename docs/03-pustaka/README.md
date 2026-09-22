@@ -44,7 +44,7 @@ Kolom "Menopang" menunjuk keputusan (KP) dan subbab proposal yang bersandar pada
 | `garridojuradoAutomaticGenerationDetection2014` | ArUco sebagai pembanding penanda fidusial | subbab lokalisasi |
 | `zhangIntegratedFrameworkEnhancing2026` | ketelitian pose AprilTag kecil pada jarak jauh | subbab lokalisasi, risiko distorsi [KP03](../04-keputusan/KP03-kamera-elp-lensa-2-1mm.md) |
 | `degolChromaTagColoredMarker2017` | *recall* deteksi menurun saat penanda mengecil; di atas ±70 piksel AprilTag dan pembandingnya sama-sama tinggi (Gambar 9a) — dipakai sebagai acuan konservatif | **acuan ukuran penanda** di [KP03](../04-keputusan/KP03-kamera-elp-lensa-2-1mm.md) dan subbab liputan kamera |
-| `shalabyMILUVMultiUAV2026` | EKF UWB + inersia pada kawanan UAV dalam ruangan hanya 10–20 cm terhadap acuan Vicon, dinyatakan belum memadai untuk kendali dan perencanaan lintasan | **pembenaran kamera dipilih, bukan UWB** di [KP01](../04-keputusan/KP01-lokalisasi-kamera-apriltag.md) dan subbab lokalisasi |
+| `shalabyMILUVMultiUAV2026` | EKF UWB + inersia pada kawanan UAV dalam ruangan hanya 10–20 cm terhadap acuan Vicon, dinyatakan belum memadai untuk kontrol dan perencanaan lintasan | **pembenaran kamera dipilih, bukan UWB** di [KP01](../04-keputusan/KP01-lokalisasi-kamera-apriltag.md) dan subbab lokalisasi |
 | `hoDesignIndoorPositioning2023` | lokalisasi dalam ruangan berbasis UWB (jalur yang tidak dipilih) | KP01 |
 | `georgiadisReviewLocalizationSensing2025` | tinjauan metode lokalisasi dan penginderaan | Bab I latar belakang |
 

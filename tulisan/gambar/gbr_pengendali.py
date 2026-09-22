@@ -1,4 +1,4 @@
-"""Pengendali tingkat rendah kaskade pada flight controller (ArduPilot).
+"""Pengontrol tingkat rendah kaskade pada flight controller (ArduPilot).
 
 Koordinat sumbu dalam sentimeter cetak (lebar 14 cm).
 """

@@ -78,7 +78,7 @@ dipakai sampai sekarang.
 | siegwartIntroductionAutonomousMobile2004 | Sensor jarak robot bergerak | Buku ajar standar robotika bergerak |
 | welchIntroductionKalmanFilter2006, KalmanFilterGeneralizations2006 | Formulasi penapis Kalman | Pengantar dan buku acuan penapis Kalman yang masih baku |
 | olsonAprilTagRobustFlexible2011, wangAprilTag2Efficient2016, krogiusFlexibleLayoutsFiducial2019 | Penanda AprilTag | Keluarga AprilTag 1/2/3, pustaka yang dipakai langsung |
-| brescianiniNonlinearQuadrocopterAttitude2013a | Model/kendali sikap quadcopter | Kendali sikap berbasis *quaternion* yang banyak diacu pengendali terbang |
+| brescianiniNonlinearQuadrocopterAttitude2013a | Model/kontrol sikap quadcopter | Kontrol sikap berbasis *quaternion* yang banyak diacu pengontrol terbang |
 | garridojuradoAutomaticGenerationDetection2014 | Penanda ArUco | Makalah asal ArUco, masih dipakai luas (OpenCV) |
 | ohSurveyMultiagentFormation2015 | Klasifikasi representasi formasi (Gambar 2.1b) | Survei rujukan utama taksonomi *position/displacement/distance-based* |
 | quanDynamicModelingExperiment2020 | Konfigurasi motor dan kerangka acuan (Gambar 2.3) | Buku ajar pemodelan multikopter |
