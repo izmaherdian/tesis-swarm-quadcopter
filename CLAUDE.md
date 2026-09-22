@@ -127,7 +127,9 @@ src/MultiAgentSim/       clone simulator (gitignored); versi dikunci di src/Mult
 - Gaya kalimat: mengalir, tanpa titik dua di tengah kalimat atau sebelum persamaan
   (pakai yaitu/karena/sehingga/melalui). Titik dua hanya di judul dan label tabel.
 - Istilah **kontrol**, bukan *kendali*, termasuk turunannya (pengontrol, dikontrol).
-  Nama berkas lama seperti `figures/pengendali.pdf` dibiarkan.
+  Kecualinya istilah perangkat keras **pengendali USB** (*USB host controller*), yang tidak
+  ada kaitannya dengan teori kontrol. Nama berkas lama seperti `figures/pengendali.pdf`
+  dibiarkan.
 - Jangan menulis kode commit, nomor versi kode, atau istilah repositori di dalam naskah.
 - Jangan menghaluskan hasil yang jelek. Hasil negatif ditulis apa adanya di
   bagian Keterbatasan Penelitian.

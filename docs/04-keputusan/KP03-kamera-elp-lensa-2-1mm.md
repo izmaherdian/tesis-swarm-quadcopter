@@ -68,7 +68,7 @@ Hanya lensa 2,1 mm yang menutup segmen 7,20 m dengan dua kamera pada ketinggian 
   menjelang akhir Fase 1 karena pra-pesan tiga minggu, supaya tiba saat kalibrasi Fase 2
   dimulai; unit kedua dipesan setelah uji terbang tunggal lolos (Fase 4).
 - **Pemasangan:** posisi 2,12 m dan 5,08 m dari awal segmen, *super clamp* pada rel rangka-T,
-  kabel USB 3.0 aktif 10 m ke laptop stasiun darat; kedua kamera sebaiknya di pengontrol
+  kabel USB 3.0 aktif 10 m ke laptop stasiun darat; kedua kamera sebaiknya di pengendali
   USB 3.1 yang berbeda (pemetaan port belum dicek, [tugas penulis C4](../02-lab/5-tugas-penulis.md)).
 - **Penanda:** AprilTag **12 cm** (bukan 10 cm) pada pelat akrilik yang dinaikkan tiang cetak
   3D setinggi 7 cm, karena jalur datar di bodi hanya 4 cm dan saluran propeler tidak boleh

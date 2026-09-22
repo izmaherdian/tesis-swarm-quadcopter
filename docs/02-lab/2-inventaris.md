@@ -58,7 +58,7 @@ Perkiraan ≈ 520 g (batas bawah, belum ditimbang). Rincian per komponen di
 | Papan pengisian paralel Power Genius 2-in-1 | ✅ 1 | 2–6S, untuk mengisi beberapa baterai bersel sama sekaligus |
 | SkyRC multi balance board | ✅ 1 | adaptor *balance* 2–6S |
 | Kontainer penyimpanan baterai LiPo | ✅ tersedia | konfirmasi penulis 2026-09-17 |
-| Komputer stasiun darat | ✅ laptop penulis | **Lenovo 82FN, AMD Ryzen 5 4500U** (6 inti/6 utas), memori 14 GiB terbaca, **Ubuntu 26.04**, Wi-Fi 6 Intel AX200; **dua pengontrol USB 3.1** terpisah (tiap kamera dapat di pengontrol sendiri; jumlah port fisik per pengontrol **?**). Kemampuan deteksi AprilTag dua kamera 5 MP 60 fps diukur di Fase 2 |
+| Komputer stasiun darat | ✅ laptop penulis | **Lenovo 82FN, AMD Ryzen 5 4500U** (6 inti/6 utas), memori 14 GiB terbaca, **Ubuntu 26.04**, Wi-Fi 6 Intel AX200; **dua pengendali USB 3.1** terpisah (tiap kamera dapat di pengendali sendiri; jumlah port fisik per pengendali **?**). Kemampuan deteksi AprilTag dua kamera 5 MP 60 fps diukur di Fase 2 |
 | Router Wi-Fi khusus | ✅ 1 | **TP-Link Archer C54** (AC1200 dwipita, 2,4 GHz IEEE 802.11n sampai 300 Mbps dan 5 GHz 802.11ac 867 Mbps, empat antena, konfirmasi penulis 2026-09-22). ESP32-S3 memakai pita 2,4 GHz |
 | Pencetak tiga dimensi + filamen | ✅ tersedia | untuk dudukan penanda dan sensor |
 
@@ -99,7 +99,7 @@ diuji sebelum terbang pertama.
 Daftar periksa lengkap ada di [`5-tugas-penulis.md`](5-tugas-penulis.md) bagian C. Ringkasnya:
 
 2. *Firmware* yang sekarang terpasang di FC.
-3. Pemetaan port USB fisik laptop ke dua pengontrol USB 3.1.
+3. Pemetaan port USB fisik laptop ke dua pengendali USB 3.1.
 4. Bobot terbang hasil timbang (pengganti perkiraan ≈ 520 g).
 
 Sudah terjawab: versi ESC (semua V2, FC lepas kedua tanpa ESC, 2026-09-22),
