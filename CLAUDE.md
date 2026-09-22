@@ -83,7 +83,7 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
 ## Peta repo
 
 ```
-tulisan/proposal/        proposal tesis (main.tex), 5 bab, 61 halaman
+tulisan/proposal/        proposal tesis (main.tex), 5 bab, 60 halaman
 tulisan/laporan-akhir/   kerangka laporan akhir — masih placeholder
 tulisan/common/          itb-tesis.sty + references.bib + logo (dipakai bersama)
 tulisan/gambar/          skrip gambar (gaya.py, parameter.py, gbr_*.py) → `make gambar`

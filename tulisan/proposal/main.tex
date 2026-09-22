@@ -129,7 +129,7 @@ The experimental evaluation focuses on formation transition success, trajectory 
     Tim Pembimbing
 
     \vspace{0.8cm}
-    Tanggal 17 Agustus 2026
+    Tanggal 25 September 2026
 \end{center}
 
 \vspace{1.2cm}
@@ -161,24 +161,24 @@ The experimental evaluation focuses on formation transition success, trajectory 
 \chapter*{KATA PENGANTAR}
 \addcontentsline{toc}{chapter}{KATA PENGANTAR}
 
-Segala puji dan syukur penulis panjatkan ke hadirat Allah Swt. atas rahmat dan hidayah-Nya, sehingga penulis dapat menyelesaikan proposal tesis yang berjudul ``Implementasi Fisik dan Evaluasi \textit{Event-Based Reconfiguration Control} pada Sistem Formasi Adaptif Terdesentralisasi Kawanan \textit{Quadcopter} di Ruang Sempit''. Proposal tesis ini disusun sebagai bagian dari pemenuhan syarat akademik untuk memperoleh gelar Magister di Program Studi Instrumentasi dan Kontrol, Fakultas Teknologi Industri, Institut Teknologi Bandung. Penulis berharap bahwa proposal ini dapat menjadi landasan dalam perancangan sistem kontrol desentralisasi formasi adaptif untuk navigasi kawanan quadcopter serta memberikan referensi bagi pengembangan lebih lanjut di bidang terkait.
+Segala puji dan syukur penulis panjatkan ke hadirat Allah Swt. atas rahmat dan hidayah-Nya, sehingga penulis dapat menyelesaikan proposal tesis yang berjudul ``Implementasi Fisik dan Evaluasi \textit{Event-Based Reconfiguration Control} pada Sistem Formasi Adaptif Terdesentralisasi Kawanan \textit{Quadcopter} di Ruang Sempit''. Proposal ini disusun sebagai bagian dari pemenuhan syarat akademik untuk memperoleh gelar Magister di Program Studi Instrumentasi dan Kontrol, Fakultas Teknologi Industri, Institut Teknologi Bandung.
 
-Penulis menyadari sepenuhnya bahwa penyusunan proposal tesis ini tidak mungkin terwujud tanpa bimbingan, dukungan, dan bantuan dari berbagai pihak. Oleh karena itu, penghargaan dan rasa terima kasih yang sebesar-besarnya disampaikan kepada:
+Penyusunan proposal ini tidak mungkin terwujud tanpa bimbingan dan dukungan banyak pihak, sehingga penulis menyampaikan penghargaan dan terima kasih yang sebesar-besarnya kepada pihak berikut.
 
 \begin{enumerate}
-    \item Ir. Estiyanti Ekawati, M.T., Ph.D., selaku dosen pembimbing pertama yang telah memberikan bimbingan, arahan, masukan teknis, serta metodologi penelitian yang sangat berharga selama proses pengerjaan tesis ini.
-    \item Faqihza Mukhlish, S.T., M.T., Ph.D., selaku dosen pembimbing kedua yang telah memberikan bimbingan, arahan, masukan, serta bantuan dalam memecahkan permasalahan teknis yang dihadapi selama penelitian.
-    \item Seluruh dosen dan tenaga kependidikan di Program Studi Instrumentasi dan Kontrol, atas dukungan dalam berbagai aspek akademik serta bantuan dalam hal administratif.
-    \item Rekan-rekan di Pusat Teknologi, Instrumentasi, dan Otomasi, atas dukungan, diskusi, dan pertukaran gagasan selama proses penelitian.
-    \item Kedua orang tua penulis yang senantiasa memberikan doa, semangat, serta dukungan moral, materiil, dan motivasi yang tiada henti.
-    \item Seluruh pihak yang telah membantu dalam berbagai bentuk, baik secara langsung maupun tidak langsung, yang tidak dapat disebutkan satu per satu.
+    \item Ir. Estiyanti Ekawati, M.T., Ph.D., selaku dosen pembimbing pertama, atas bimbingan, arahan, serta masukan teknis dan metodologi penelitian.
+    \item Faqihza Mukhlish, S.T., M.T., Ph.D., selaku dosen pembimbing kedua, atas bimbingan, arahan, serta bantuan dalam memecahkan persoalan teknis.
+    \item Para dosen dan tenaga kependidikan di Program Studi Instrumentasi dan Kontrol, atas dukungan akademik serta administratif.
+    \item Rekan-rekan di Pusat Teknologi, Instrumentasi, dan Otomasi, atas diskusi dan pertukaran gagasan selama penelitian.
+    \item Kedua orang tua penulis, atas doa, semangat, serta dukungan moral dan materiil yang tiada henti.
+    \item Seluruh pihak yang telah membantu, baik langsung maupun tidak langsung, yang tidak dapat disebutkan satu per satu.
 \end{enumerate}
 
-Penulisan proposal ini masih jauh dari kesempurnaan dan memiliki berbagai keterbatasan, baik dalam hal substansi maupun penyajiannya. Oleh karena itu, penulis sangat mengharapkan kritik dan saran yang membangun agar proposal ini dapat disempurnakan serta menjadi lebih baik di masa mendatang.
+Penulisan proposal ini masih jauh dari sempurna, sehingga kritik dan saran yang membangun sangat penulis harapkan agar penelitian ini menjadi lebih baik.
 
-\vspace{1cm}
+\vspace{0.6cm}
 \begin{flushright}
-    Bandung, 17 Agustus 2026\\[1.8cm]
+    Bandung, 25 September 2026\\[1.4cm]
     Penulis
 \end{flushright}
 
@@ -530,7 +530,9 @@ Wahana eksperimental adalah quadcopter konfigurasi X berbasis rangka SpeedyBee B
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.55\textwidth]{figures/struktur_fisik.png}
+    \subcaptionbox{Tampak atas\label{fig:struktur_atas}}[0.48\textwidth]{\includegraphics[width=\linewidth]{figures/struktur_fisik-atas.png}}
+    \hfill
+    \subcaptionbox{Tampak bawah\label{fig:struktur_bawah}}[0.48\textwidth]{\includegraphics[width=\linewidth]{figures/struktur_fisik-bawah.png}}
     \caption{Struktur fisik dan tata letak komponen, (a) tampak atas dan (b) tampak bawah \cite{argilianaPengembanganSistemKontrol2025}}
     \label{fig:struktur_fisik}
 \end{figure}

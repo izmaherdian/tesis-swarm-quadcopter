@@ -48,7 +48,7 @@
 
 | Bagian | Keadaan |
 |---|---|
-| Proposal | Bab I–V lengkap, 61 halaman, `make check` lolos; hipotesa dan metrik sudah bersumber ([KP06](04-keputusan/KP06-bentuk-evaluasi-dan-hipotesa.md)) |
+| Proposal | Bab I–V lengkap, 60 halaman, `make check` lolos; hipotesa dan metrik sudah bersumber ([KP06](04-keputusan/KP06-bentuk-evaluasi-dan-hipotesa.md)) |
 | Anggaran | Rp23.403.374 (Fase 2 Rp10.046.227, Fase 4 Rp13.357.147); setiap pos bertautan listing Tokopedia ([survei harga](02-lab/4-survei-harga.md)) |
 | Kamera | ELP-U3GS05B10C-IB21 lensa 2,1 mm, Rp6.600.000 per unit, pra-pesan 3 minggu ([KP03](04-keputusan/KP03-kamera-elp-lensa-2-1mm.md)) |
 | Inventaris lab | tercatat per rangka ([inventaris](02-lab/2-inventaris.md)) |
