@@ -153,4 +153,8 @@ src/MultiAgentSim/       clone simulator (gitignored); versi dikunci di src/Mult
 **Git**
 - Pesan commit bahasa Indonesia, awalan: `proposal:`, `laporan:`, `sim:`,
   `eksperimen:`, `docs:`, `chore:`.
-- Tandai milestone dengan tag: `v0.1-proposal`, `v0.2-sim-iapf`, `v0.3-erc`, dst.
+- Tandai milestone dengan tag `v<besar>.<kecil>-<tahap>`, dan **nama tahap seragam dalam
+  satu tahap penelitian**. Tahap proposal memakai akhiran `-proposal` (`v0.1-proposal`
+  sampai `v0.6-proposal`). Tahap berikutnya memakai akhiran sendiri, misalnya `-sim`,
+  `-hitl`, `-terbang`, `-laporan`. Isi milestone dijelaskan di pesan anotasi tag, bukan
+  di namanya.
