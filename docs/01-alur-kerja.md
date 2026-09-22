@@ -89,6 +89,7 @@ Kalau sebuah pilihan tidak punya satu pun dari empat dasar itu, tulis jelas seba
 | Baterai berapa dan berapa banyak? | 10 baterai di lab, hanya 2 yang 6S 1200 mAh | halaman resmi SpeedyBee (6S 1050–1300 mAh untuk 1950KV) | [KP05](04-keputusan/KP05-baterai-dan-pengadaan.md) | pos baterai Fase 4, jadwal pengisian |
 | FC bisa terima pose kamera? | 6 papan F405 Mini flash 1 MB | `features.txt` dan dokumentasi ArduPilot | [KP02](04-keputusan/KP02-firmware-fc.md) | subbab firmware, lampiran daftar fitur |
 | Kamera atau UWB? | plafon 300 cm, tidak ada *anchor* UWB di lab | Bultmann dkk. 2023 (kamera < 3 cm) vs MILUV 2026 (UWB+inersia 10–20 cm) | [KP01](04-keputusan/KP01-lokalisasi-kamera-apriltag.md) | subbab lokalisasi |
+| Apa yang diklaim dan dibandingkan? | bentang formasi 2,05 m vs celah 0,90 m | kode simulator terkunci (tanpa model komunikasi) dan makalah penulis | [KP06](04-keputusan/KP06-bentuk-evaluasi-dan-hipotesa.md) | hipotesa, metrik, Fase 4 dan Fase 5 |
 
 ---
 
@@ -103,8 +104,8 @@ kapan dikerjakan dan kapan boleh lanjut.
 |---|---|---|---|---|
 | **1** Studi dan Desain Arsitektur | Sep (studi literatur sampai Mei) | studi literatur; terapkan faktor skala κ di simulator; skema simulator yang meniru arena berskala; desain arsitektur FC + *companion computer* | hasil simulasi arena berskala di `results/` sebagai pembanding Fase 5; versi simulator baru di `src/MultiAgentSim.version` | kamera pertama dipesan (pra-pesan 3 minggu) |
 | **2** Implementasi Teknologi | Okt–Des | *firmware* racikan ([KP02](04-keputusan/KP02-firmware-fc.md)); UART MAVLink; UDP lewat Wi-Fi; kalibrasi kamera 1 + AprilTag → PnP → MAVLink → EKF3; uji banding sensor jarak ([KP04](04-keputusan/KP04-sensor-jarak-uji-banding.md)); penanaman ERC + IAPF; pemancar ELRS diikat | rantai lokalisasi berjalan menerus; sensor terpilih | Tabel 4.1 (Rp10.046.227) |
-| **3** Pengujian HITL | Des–Jan | algoritma di *companion computer* dengan umpan balik simulasi gerak | **gerbang 1** beban CPU dan latensi dalam batas aman; gagal → kembali ke penanaman logika | — |
-| **4** Uji Terbang Eksperimen | Des–Apr | (a) uji terbang tunggal, yaitu EKF, tautan, PID, ERC agen tunggal, deteksi penanda saat bergerak; (b) kamera kedua dan kalibrasi gabungan, formasi V ruang terbuka, lintasan arena celah 90 cm, trafik UDP | **gerbang 2** wahana tunggal stabil dan aman; **gerbang 3** manuver kawanan berhasil dan stabil | Tabel 4.2 (Rp13.357.147), bagian kawanan setelah gerbang 2 |
+| **3** Pengujian HITL | Des–Jan | algoritma di *companion computer* dengan umpan balik simulasi gerak | **gerbang 1** CPU ≤ 70%, latensi pose → *setpoint* ≤ 50 ms (Tabel 4.2 naskah); gagal → kembali ke penanaman logika | — |
+| **4** Uji Terbang Eksperimen | Des–Apr | (a) uji terbang tunggal, yaitu EKF, tautan, PID, ERC agen tunggal, deteksi penanda saat bergerak; (b) kamera kedua dan kalibrasi gabungan; kondisi kontrol formasi V di koridor terbuka dan kondisi uji ERC melintasi celah, 10 lintasan tiap kondisi ([KP06](04-keputusan/KP06-bentuk-evaluasi-dan-hipotesa.md)) | **gerbang 2** hover 60 s simpangan RMS ≤ 0,10 m dan penanda terdeteksi ≥ 95% bingkai; **gerbang 3** ≥ 8 dari 10 lintasan berhasil, jarak antaragen ≥ 0,30 m | Tabel 4.2 naskah (Rp13.357.147), bagian kawanan setelah gerbang 2 |
 | **5** Analisis Data dan Pelaporan | Mei | ekstraksi log pose EKF, pemicu ERC, trafik UDP; metrik; banding dengan simulasi arena | naskah tesis dan publikasi | — |
 
 Metrik yang dihitung pada Fase 5 adalah RMSE galat formasi, waktu konvergensi, tingkat

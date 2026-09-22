@@ -67,10 +67,10 @@
 \vspace{0.8cm}
 
 \noindent
-Navigasi kawanan \textit{quadcopter} di ruang sempit membutuhkan sistem kontrol formasi yang adaptif sekaligus efisien dalam pertukaran data komunikasi. Penelitian ini mengimplementasikan dan mengevaluasi sistem kontrol desentralisasi formasi adaptif menggunakan \textit{Event-Based Reconfiguration Control} (ERC) yang dipadukan dengan \textit{Improved Artificial Potential Field} (IAPF) pada platform perangkat keras fisik lima unit \textit{quadcopter cinewhoop}. Setiap agen mengestimasi ketersediaan ruang secara mandiri menggunakan sensor jarak lateral dan melakukan rekonfigurasi otonom saat menghadapi penyempitan celah di koridor uji. Melalui mekanisme berbasis kejadian, paket komunikasi antar-agen hanya ditransmisikan saat parameter persepsi lingkungan melewati ambang batas tertentu, sehingga konsumsi \textit{bandwidth} jaringan dapat direduksi secara signifikan dibandingkan skema komunikasi periodik konvensional.
+Navigasi kawanan \textit{quadcopter} di ruang sempit menuntut formasi yang dapat mengubah bentuknya sendiri ketika ruang menyempit, tanpa mengorbankan keselamatan antaragen. Penelitian ini mengimplementasikan dan mengevaluasi sistem kontrol desentralisasi formasi adaptif menggunakan \textit{Event-Based Reconfiguration Control} (ERC) yang dipadukan dengan \textit{Improved Artificial Potential Field} (IAPF) pada platform perangkat keras fisik lima unit \textit{quadcopter cinewhoop}. Setiap agen mengestimasi ketersediaan ruang secara mandiri menggunakan sensor jarak lateral dan melakukan rekonfigurasi otonom saat menghadapi penyempitan celah di koridor uji. Melalui mekanisme berbasis kejadian, rekonfigurasi formasi hanya terpicu ketika lebar ruang terestimasi melewati ambang batas, sehingga kawanan mempertahankan formasi V selama ruang memadai dan beralih mengekor hanya ketika celah menuntutnya. Beban komputasi dan trafik komunikasi ikut diukur untuk mencirikan kebutuhan sumber daya implementasi fisiknya.
 
 \noindent
-Evaluasi eksperimental difokuskan pada keberhasilan transisi formasi, akurasi pelacakan lintasan, efisiensi lalu lintas data nirkabel, dan ketahanan sistem terhadap kendala fisik dunia nyata, khususnya latensi komunikasi UDP lokal dan derau sensor lokalisasi kamera atas berbasis \textit{AprilTag}. Hasil penelitian ini diharapkan dapat memberikan validasi empiris atas kinerja algoritma ERC pada perangkat keras tertanam, menghasilkan rancangan sistem kontrol multi-agen yang terukur, tangguh, dan aplikatif untuk navigasi ruang terbatas di dunia nyata.
+Evaluasi eksperimental difokuskan pada keberhasilan transisi formasi, akurasi pelacakan lintasan, beban lalu lintas data nirkabel, dan ketahanan sistem terhadap kendala fisik dunia nyata, khususnya latensi komunikasi UDP lokal dan derau sensor lokalisasi kamera atas berbasis \textit{AprilTag}. Hasil penelitian ini diharapkan dapat memberikan validasi empiris atas kinerja algoritma ERC pada perangkat keras tertanam, menghasilkan rancangan sistem kontrol multi-agen yang terukur, tangguh, dan aplikatif untuk navigasi ruang terbatas di dunia nyata.
 
 \vspace{1cm}
 \noindent \textbf{Kata kunci:} quadcopter, kontrol desentralisasi, formasi adaptif, \textit{event-based reconfiguration control}, navigasi kawanan, ruang sempit.
@@ -96,7 +96,7 @@ Evaluasi eksperimental difokuskan pada keberhasilan transisi formasi, akurasi pe
 \vspace{0.8cm}
 
 \noindent
-Autonomous quadcopter swarm navigation in confined environments requires an adaptive formation control system that is computationally and communicationally efficient. This research implements and evaluates a decentralized adaptive formation control system using \textit{Event-Based Reconfiguration Control} (ERC) coupled with \textit{Improved Artificial Potential Field} (IAPF) on physical hardware comprising five cinewhoop quadcopters. Each agent independently perceives spatial constraints using onboard lateral distance sensors and executes autonomous reconfiguration when traversing narrow bottlenecks in an indoor testing corridor. Through the event-triggered mechanism, inter-agent communication packets are broadcast only when environmental perception parameters cross predefined thresholds, significantly reducing network bandwidth consumption compared to conventional time-triggered periodic transmission schemes.
+Autonomous quadcopter swarm navigation in confined environments requires a formation that reshapes itself as the free space narrows, without compromising inter-agent safety. This research implements and evaluates a decentralized adaptive formation control system using \textit{Event-Based Reconfiguration Control} (ERC) coupled with \textit{Improved Artificial Potential Field} (IAPF) on physical hardware comprising five cinewhoop quadcopters. Each agent independently perceives spatial constraints using onboard lateral distance sensors and executes autonomous reconfiguration when traversing narrow bottlenecks in an indoor testing corridor. Through the event-triggered mechanism, formation reconfiguration is invoked only when the estimated free width crosses a predefined threshold, so the swarm holds its V formation while space permits and switches to tailgating only when the gap demands it. Computational load and communication traffic are measured to characterise the resource footprint of the physical implementation.
 
 \noindent
 The experimental evaluation focuses on formation transition success, trajectory tracking accuracy, wireless communication efficiency, and system robustness against real-world physical constraints, specifically local UDP wireless communication latency and AprilTag-based overhead camera localization noise. This study aims to provide empirical validation of the ERC algorithm on embedded hardware, establishing a scalable, robust, and deployable multi-agent control architecture for confined-space navigation.
@@ -275,7 +275,7 @@ Berdasarkan latar belakang yang telah diuraikan, rumusan masalah dalam penelitia
 \begin{enumerate}
     \item Bagaimana merancang arsitektur perangkat keras dan perangkat lunak tertanam untuk merealisasikan algoritma \textit{Event-Based Reconfiguration Control} (ERC) secara terdesentralisasi pada \textit{companion computer}\label{abbr:cc} di masing-masing \textit{quadcopter}?
     \item Bagaimana pengaruh batasan fisik dunia nyata, khususnya latensi komunikasi nirkabel dan derau sensor lokalisasi dalam ruangan, terhadap keandalan mekanisme pemicu adaptasi formasi pada algoritma ERC?
-    \item Sejauh mana efisiensi pemanfaatan \textit{bandwidth} komunikasi (melalui reduksi frekuensi transmisi paket berbasis kejadian dibandingkan skema transmisi periodik) dan akurasi pelacakan lintasan yang dihasilkan oleh implementasi fisik algoritma ERC saat bermanuver melintasi celah sempit?
+    \item Sejauh mana implementasi fisik ERC mampu membawa kawanan melintasi celah yang lebih sempit daripada bentang formasinya, dan seberapa dekat kinerjanya terhadap hasil simulasi pada geometri arena yang sama, ditinjau dari galat formasi, keteraturan arah gerak, waktu tempuh, serta beban komputasi dan komunikasi?
 \end{enumerate}
 
 \section{Ruang Lingkup}
@@ -296,11 +296,11 @@ Untuk mencapai tujuan utama tersebut, ditetapkan beberapa sasaran dan tujuan ant
     \item Merancang dan mengintegrasikan arsitektur perangkat keras serta perangkat lunak tertanam berbasis \textit{companion computer} pada 5 unit \textit{quadcopter} untuk memfasilitasi komputasi kontrol terdesentralisasi.
     \item Mengimplementasikan logika algoritma ERC dan IAPF pada unit komputasi wahana agar mampu mengeksekusi rekonfigurasi formasi horizontal secara mandiri dan \textit{real-time}.
     \item Menguji dan mengevaluasi ketahanan mekanisme pemicu ERC saat dihadapkan pada kendala fisik dunia nyata, khususnya pengaruh latensi komunikasi nirkabel lokal dan derau sensor lokalisasi kamera atas.
-    \item Menganalisis metrik kinerja sistem, meliputi efisiensi penghematan \textit{bandwidth} komunikasi dibandingkan skema transmisi periodik, akurasi pelacakan posisi (RMSE), serta keberhasilan manuver melewati celah sempit.
+    \item Menganalisis metrik kinerja sistem, meliputi galat formasi (RMSE), parameter keteraturan arah gerak, waktu tempuh, jarak minimum antaragen, serta beban komputasi dan trafik komunikasi, lalu membandingkannya dengan hasil simulasi pada geometri arena yang sama.
 \end{enumerate}
 
 \section{Hipotesa}
-Implementasi algoritma ERC pada perangkat keras kawanan \textit{quadcopter} mampu mereduksi pertukaran data komunikasi antar-agen secara signifikan dibandingkan skema kontrol formasi berbasis komunikasi periodik, dengan tetap mempertahankan integritas formasi dan keberhasilan manuver penghindaran rintangan di lingkungan celah sempit, selama tingkat latensi komunikasi nirkabel dan derau sensor berada dalam batas toleransi desain sistem.
+Implementasi algoritma ERC pada perangkat keras kawanan \textit{quadcopter} memungkinkan kelima wahana melintasi celah selebar $0{,}90$~m yang lebih sempit daripada bentang formasi V sebesar $2{,}05$~m, dengan formasi pulih kembali ke mutu ruang terbuka setelah celah terlewati dan tanpa pelanggaran jarak aman antaragen, selama latensi komunikasi nirkabel dan derau sensor lokalisasi berada dalam batas toleransi rancangan. Nilai ambang tiap metrik pada hipotesa ini ditetapkan dari simulasi arena berskala pada Fase~1 dan diuji pada Fase~4 (Subbab~\ref{sec:metrik}). Beban komputasi dan trafik komunikasi diukur sebagai karakterisasi kebutuhan sumber daya, bukan sebagai klaim penghematan, karena skema komunikasi periodik pembanding tidak ikut diterbangkan.
 
 \section{Sistematika Penulisan}
 Proposal tesis ini terdiri atas lima bab. Bab~I Pendahuluan memuat latar belakang, rumusan masalah, ruang lingkup, tujuan dan sasaran, hipotesa, serta sistematika penulisan.
@@ -562,7 +562,7 @@ Tata letak dan dimensi luar wahana diperlihatkan pada Gambar~\ref{fig:sketsa_wah
 \end{figure}
 
 \subsection{Protokol Komunikasi}
-Seluruh komunikasi data memakai pesan MAVLink di atas soket UDP pada jaringan Wi-Fi lokal \cite{caoComputationalIntelligenceAlgorithms2024, linLeaderFollowerUAV2026}. Jaringan dibentuk oleh satu \textit{router} khusus di area uji dan memuat dua jalur berikut.
+Seluruh komunikasi data memakai pesan MAVLink di atas soket UDP pada jaringan Wi-Fi lokal \cite{caoComputationalIntelligenceAlgorithms2024, linLeaderFollowerUAV2026}. Jaringan dibentuk oleh satu \textit{router} khusus di area uji, yaitu TP-Link Archer C54 dwipita yang menyediakan pita $2{,}4$~GHz pada standar IEEE 802.11n, satu-satunya pita yang didukung ESP32-S3. Jaringan tersebut memuat dua jalur berikut.
 \begin{enumerate}
     \item Pada jalur antarwahana, tiap ESP32-S3 menyiarkan \textit{state} kinematikanya (posisi dan kecepatan) melalui UDP \textit{broadcast}. \textit{Router} hanya meneruskan paket; keputusan rekonfigurasi tetap diambil oleh tiap agen.
     \item Pada jalur stasiun darat, komputer darat menyiarkan pose hasil kamera atas dan menerima telemetri (\textit{heartbeat}, sikap, dan tegangan baterai), serta mengirim perintah \textit{arm/disarm}, pergantian mode, dan pendaratan darurat.
@@ -950,6 +950,73 @@ Pengadaan mengikuti gerbang tersebut. Komponen untuk lima wahana baru dibeli set
     \label{fig:diagram_metodologi}
 \end{figure}
 
+\section{Metrik Evaluasi dan Kriteria Kelayakan}
+\label{sec:metrik}
+
+Metrik dihitung memakai definisi yang sama persis dengan simulator versi terkunci \cite{herdianDecentralizedFormationControl2026}, sehingga hasil fisik dan hasil simulasi pada geometri arena yang sama dapat diperbandingkan langsung tanpa penyesuaian definisi.
+
+Galat formasi diukur dari selisih jarak antarpasangan agen terhadap jarak idealnya pada topologi, yaitu
+\begin{equation}
+    e_{\mathrm{form}}(t) = \sqrt{\frac{2}{N(N-1)} \sum_{i<j} \left( \lVert \mathbf{p}_i(t) - \mathbf{p}_j(t) \rVert - \lVert \boldsymbol{\delta}_i - \boldsymbol{\delta}_j \rVert \right)^2}
+    \label{eq:rmse_formasi}
+\end{equation}
+dengan $N$ jumlah agen, $\mathbf{p}_i$ posisi terukur agen ke-$i$, dan $\boldsymbol{\delta}_i$ posisi agen ke-$i$ pada topologi acuan. Ukuran ini tidak bergantung pada orientasi maupun posisi mutlak kawanan, sehingga rotasi topologi mengikuti arah gerak tidak menimbulkan galat semu.
+
+Saat kawanan mengekor, acuannya berubah menjadi jarak ikut $d_{\mathrm{ref}}$ terhadap pemimpin terdekat di depan sepanjang arah gerak kawanan, yaitu
+\begin{equation}
+    e_{\mathrm{tail}}(t) = \sqrt{\frac{1}{|\mathcal{F}|} \sum_{i \in \mathcal{F}} \left( \lVert \mathbf{p}_i(t) - \mathbf{p}_{L(i)}(t) \rVert - d_{\mathrm{ref}} \right)^2}
+    \label{eq:rmse_mengekor}
+\end{equation}
+dengan $L(i)$ agen terdekat di depan agen ke-$i$ menurut proyeksi pada arah gerak kawanan dan $\mathcal{F}$ himpunan agen yang memiliki pemimpin. RMSE operasional yang dilaporkan mengambil Persamaan~\ref{eq:rmse_formasi} selama mode formasi dan Persamaan~\ref{eq:rmse_mengekor} selama mode mengekor, lalu dirata-ratakan sepanjang misi menjadi satu nilai skalar.
+
+Keteraturan arah gerak kawanan diukur dengan parameter
+\begin{equation}
+    \Phi(t) = \frac{1}{N} \left\lVert \sum_{i=1}^{N} \frac{\mathbf{v}_i(t)}{\lVert \mathbf{v}_i(t) \rVert} \right\rVert
+    \label{eq:phi}
+\end{equation}
+yang bernilai satu ketika seluruh agen bergerak searah dan mendekati nol ketika arah geraknya saling berlawanan. Metrik selebihnya didefinisikan pada Tabel~\ref{tab:definisi_metrik}.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Definisi operasional metrik evaluasi}
+    \label{tab:definisi_metrik}
+    \begingroup
+    \small
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{4.0cm}|X|}
+        \hline
+        \rowcolor{gray!20}
+        \thead{Metrik} & \thead{Definisi operasional} \\ \hline
+        Waktu tempuh & Selang waktu sejak wahana pertama memasuki segmen uji sampai wahana terakhir keluar dari kanal \\ \hline
+        Waktu pemulihan formasi & Selang waktu sejak wahana terakhir keluar dari kanal sampai $e_{\mathrm{form}}$ kembali berada di bawah nilai acuan ruang terbuka ditambah toleransi, dan bertahan selama $3$ detik \\ \hline
+        Keberhasilan melintasi celah & Satu lintasan dinyatakan berhasil bila kelima wahana melewati kanal tanpa menyentuh rintangan, tanpa pelanggaran jarak aman antaragen, dan tanpa pengambilalihan manual \\ \hline
+        Jarak minimum antaragen & Nilai terkecil $\lVert \mathbf{p}_i - \mathbf{p}_j \rVert$ untuk seluruh pasangan sepanjang satu lintasan \\ \hline
+        Beban komputasi & Persentase pemakaian CPU \textit{companion computer} dan selang waktu dari pose diterima sampai \textit{setpoint} dikirim ke \textit{flight controller} \\ \hline
+        Trafik komunikasi & Laju byte UDP per agen yang tercatat pada antarmuka jaringan selama misi \\ \hline
+    \end{tabularx}
+    \endgroup
+\end{table}
+
+Ambang kelayakan tiap gerbang dirangkum pada Tabel~\ref{tab:gerbang}. Nilai pada tabel tersebut merupakan asumsi rancangan yang ditetapkan sebelum pengujian dijalankan agar kriteria tidak digeser setelah hasil terlihat, dan ditinjau ulang setelah simulasi arena berskala pada Fase~1 memberikan nilai acuannya.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Kriteria kelayakan tiap gerbang}
+    \label{tab:gerbang}
+    \begingroup
+    \small
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.1cm}|X|}
+        \hline
+        \rowcolor{gray!20}
+        \thead{Gerbang} & \thead{Kriteria lolos} \\ \hline
+        Gerbang 1, akhir Fase 3 (HITL) & Pemakaian CPU \textit{companion computer} rata-rata tidak melebihi $70\%$ pada laju perencana $20$~Hz, selang dari pose diterima sampai \textit{setpoint} dikirim tidak melebihi $50$~ms, dan periode perencana yang terlewat tidak melebihi $1\%$ dari total periode \\ \hline
+        Gerbang 2, uji terbang tunggal & Wahana melayang $60$ detik dengan simpangan posisi RMS tidak melebihi $0{,}10$~m, penanda terdeteksi pada sekurang-kurangnya $95\%$ bingkai selama wahana bergerak menyusuri segmen uji, dan pengambilalihan manual melalui tautan ExpressLRS berhasil pada setiap percobaan \\ \hline
+        Gerbang 3, uji terbang kawanan & Sekurang-kurangnya $8$ dari $10$ lintasan berhasil menurut Tabel~\ref{tab:definisi_metrik}, jarak minimum antaragen tidak pernah kurang dari $0{,}30$~m terhadap jarak rancangan $0{,}36$~m saat mengekor, dan formasi pulih dalam waktu tidak lebih dari $10$ detik setelah kanal terlewati \\ \hline
+    \end{tabularx}
+    \endgroup
+\end{table}
+
 \section{Fase 1: Studi dan Desain Arsitektur}
 
 \begin{enumerate}
@@ -997,18 +1064,22 @@ Fase ini tidak memerlukan pengadaan.
 
 Algoritma pada \textit{companion computer} dijalankan dengan umpan balik simulasi gerak untuk mengukur beban CPU dan latensi komputasi sebelum wahana diterbangkan. Fase ini tidak memerlukan pengadaan.
 
-Fase~3 dinyatakan lolos bila beban CPU dan latensi berada dalam batas aman. Bila terjadi tunda atau galat program, pekerjaan kembali ke penanaman logika.
+Fase~3 dinyatakan lolos bila kriteria Gerbang~1 pada Tabel~\ref{tab:gerbang} terpenuhi. Bila terjadi tunda atau galat program, pekerjaan kembali ke penanaman logika.
 
 \section{Fase 4: Uji Terbang Eksperimen}
 
 \begin{enumerate}
     \item \textbf{Uji terbang tunggal.} Satu quadcopter memvalidasi EKF, tautan \textit{companion computer} ke \textit{flight controller}, penalaan PID, dan logika ERC agen tunggal. Deteksi penanda saat wahana bergerak dan jenis sensor jarak terpilih ikut dipastikan pada tahap ini.
 
-    Tahap ini dinyatakan lolos bila wahana tunggal stabil dan aman.
+    Tahap ini dinyatakan lolos bila kriteria Gerbang~2 pada Tabel~\ref{tab:gerbang} terpenuhi.
 
-    \item \textbf{Uji terbang kawanan.} Kamera kedua dipasang dan kedua kamera dikalibrasi ke satu kerangka acuan global. Berdasarkan inventaris (Tabel~\ref{tab:komponen_tersedia}), wahana kelima dirakit dari rangka kosong dan komponen lepas, sehingga pada tahap ini diadakan satu ESC, satu \textit{companion computer} cadangan, propeler, dan empat baterai 6S agar tersedia enam baterai untuk lima wahana. Kelima wahana lebih dahulu terbang dalam formasi V di ruang terbuka sebagai acuan, kemudian melintasi arena (Subbab~\ref{sec:arena}). Lebar ruang $w_e$ yang turun melewati ambang memicu ERC sehingga formasi menyusut, beralih mengekor melalui celah $90$~cm, lalu mengembang kembali.
+    \item \textbf{Uji terbang kawanan.} Kamera kedua dipasang dan kedua kamera dikalibrasi ke satu kerangka acuan global. Berdasarkan inventaris (Tabel~\ref{tab:komponen_tersedia}), wahana kelima dirakit dari rangka kosong dan komponen lepas, sehingga pada tahap ini diadakan satu ESC, satu \textit{companion computer} cadangan, propeler, dan empat baterai 6S agar tersedia enam baterai untuk lima wahana. Pengujian kawanan dijalankan dalam dua kondisi. Kondisi kontrol menerbangkan kelima wahana dalam formasi V tanpa rekonfigurasi di koridor terbuka tanpa rintangan, yang memberi nilai acuan $e_{\mathrm{form}}$ dan $\Phi$ pada perangkat keras yang sama. Kondisi uji menerbangkan kawanan dengan ERC aktif melintasi arena (Subbab~\ref{sec:arena}), sehingga lebar ruang $w_e$ yang turun melewati ambang memicu rekonfigurasi, formasi menyusut, beralih mengekor melalui celah $90$~cm, lalu mengembang kembali.
 
-    Tahap ini dinyatakan lolos bila manuver kawanan berhasil dan stabil.
+    Formasi kaku tidak ikut diterbangkan menembus celah karena bentangnya $2{,}05$~m sedangkan celah hanya $0{,}90$~m, sehingga tabrakan merupakan kepastian geometris dan bukan hasil pengukuran. Kasus kegagalan tersebut telah tercakup pada simulasi, dan pembanding kuantitatif untuk kondisi uji diambil dari simulasi arena berskala Fase~1.
+
+    Tiap kondisi diulang sepuluh lintasan. Pada laju acuan $0{,}5$~m/s, satu lintasan sepanjang $7{,}20$~m menempuh sekitar $15$ detik, dan dengan penyiapan ulang antarlintasan satu baterai per wahana diperkirakan cukup untuk lima sampai delapan lintasan. Perkiraan tersebut diturunkan dari waktu terbang maksimum $13$ menit yang dinyatakan pabrikan untuk wahana sekelas dengan baterai 6S $1300$~mAh \cite{speedybeeBee35}, setelah disesuaikan terhadap bobot terbang yang lebih besar dan kapasitas baterai $1200$~mAh, sehingga sepuluh lintasan per kondisi menuntut dua putaran pengisian baterai.
+
+    Tahap ini dinyatakan lolos bila kriteria Gerbang~3 pada Tabel~\ref{tab:gerbang} terpenuhi.
 \end{enumerate}
 
 \begin{table}[htbp]
@@ -1046,7 +1117,7 @@ Pos sensor jarak terpilih memakai harga VL53L1X. Bila HC-SR04 yang terpilih, pos
 
 \section{Fase 5: Analisis Data dan Pelaporan}
 
-Data diekstraksi dari \textit{log} pose EKF, riwayat pemicu ERC, dan trafik UDP. Metrik yang dihitung adalah RMSE galat formasi, waktu konvergensi, tingkat keberhasilan melintasi celah, jarak minimum antaragen, serta beban komputasi dan \textit{bandwidth}. Hasil fisik dibandingkan dengan simulasi arena berskala dari Fase~1, lalu disusun menjadi tesis dan naskah publikasi. Fase ini tidak memerlukan pengadaan.
+Data diekstraksi dari \textit{log} pose EKF, riwayat pemicu ERC, dan trafik UDP, lalu metrik pada Subbab~\ref{sec:metrik} dihitung untuk kondisi kontrol maupun kondisi uji. Hasil fisik dibandingkan dengan simulasi arena berskala dari Fase~1 pada geometri yang sama, dan selisih keduanya dilaporkan sebagai kesenjangan simulasi terhadap kenyataan. Beban komputasi dan trafik komunikasi dilaporkan sebagai karakterisasi kebutuhan sumber daya, tanpa membandingkannya dengan skema komunikasi periodik karena skema tersebut tidak ikut diterbangkan. Hasilnya kemudian disusun menjadi tesis dan naskah publikasi. Fase ini tidak memerlukan pengadaan.
 
 \section{Rencana Pelaksanaan}
 
@@ -1124,7 +1195,7 @@ Penelitian direncanakan selama sembilan bulan, dari September 2026 sampai Mei 20
 \chapter{PENUTUP}
 Dokumen proposal tesis ini telah memaparkan landasan teoretis, pertimbangan teknis, serta rencana implementasi fisik dan evaluasi sistem kontrol formasi terdesentralisasi berbasis \textit{Event-Based Reconfiguration Control} (ERC) pada kawanan lima unit \textit{quadcopter} di ruang sempit. Melalui pendekatan bertahap yang diawali dengan pembuktian jalur kerja pada satu wahana hingga uji skala penuh kawanan, penelitian ini dirancang untuk menjawab kesenjangan antara simulasi numerik dan keterbatasan fisik dunia nyata. 
 
-Luaran utama yang ditargetkan dari penelitian ini meliputi (1) arsitektur sistem perangkat keras dan perangkat lunak terdesentralisasi yang siap direplikasi, (2) pustaka program algoritma ERC dan IAPF yang teruji pada sistem tertanam, (3) dataset penerbangan eksperimental yang memvalidasi efisiensi \textit{bandwidth} dan akurasi pelacakan posisi secara empiris, serta (4) naskah tesis magister dan publikasi ilmiah pada jurnal atau konferensi terindeks bereputasi. Dengan mitigasi risiko teknis melalui mekanisme pengambilalihan manual radio independen dan gerbang kelayakan bertahap, diharapkan penelitian ini dapat terlaksana sesuai dengan jadwal dan memberikan kontribusi nyata bagi pengembangan sistem robotika kawanan otonom.
+Luaran utama yang ditargetkan dari penelitian ini meliputi (1) arsitektur sistem perangkat keras dan perangkat lunak terdesentralisasi yang siap direplikasi, (2) pustaka program algoritma ERC dan IAPF yang teruji pada sistem tertanam, (3) dataset penerbangan eksperimental yang mencirikan akurasi pelacakan posisi, integritas formasi, serta beban komputasi dan komunikasi secara empiris, serta (4) naskah tesis magister dan publikasi ilmiah pada jurnal atau konferensi terindeks bereputasi. Dengan mitigasi risiko teknis melalui mekanisme pengambilalihan manual radio independen dan gerbang kelayakan bertahap, diharapkan penelitian ini dapat terlaksana sesuai dengan jadwal dan memberikan kontribusi nyata bagi pengembangan sistem robotika kawanan otonom.
 
 % ==========================================
 % DAFTAR PUSTAKA (MENGGUNAKAN BERKAS EKSTERNAL)

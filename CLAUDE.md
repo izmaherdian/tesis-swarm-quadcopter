@@ -54,7 +54,7 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
   2006-1950KV (poros 1,5 mm), 5 XIAO ESP32-S3, 5 penerima ExpressLRS (**pemancar belum
   ada**), 14 propeler Gemfan D90S (T-mount 1,5 mm), 3 MTF-01, pengisi daya SkyRC T6X80 (80 W). Bobot terbang perkiraan ≈ 520 g (batas bawah dari lembar data, belum ditimbang). Baterai yang sesuai hanya **6S 1200 mAh
   CNHL** (2 unit, beli 4 di Fase 4 → total 6; SpeedyBee menyarankan 6S 1050–1300 mAh untuk 1950KV). Stasiun darat = laptop
-  penulis (Ryzen 5 4500U, Ubuntu 26.04). Semua lalu lintas MAVLink/UDP lewat satu router Wi-Fi. Rincian: `docs/02-lab/2-inventaris.md`,
+  penulis (Ryzen 5 4500U, Ubuntu 26.04). Semua lalu lintas MAVLink/UDP lewat satu router **TP-Link Archer C54** (2,4 GHz 802.11n untuk ESP32-S3). Rincian: `docs/02-lab/2-inventaris.md`,
   `docs/02-lab/3-baterai-dan-bobot.md`; harga: `docs/02-lab/4-survei-harga.md`; aturan pengadaan: KP05.
 - **Arena:** koridor 2,70 m, celah 0,90 m (kolom bangunan + dinding 32 dus 60×40×40 cm, dua baris × empat lapis, tinggi 1,60 m), formasi V
   diskalakan 0,9; untuk wahana $R=0{,}125$ m ambang $\alpha R=1{,}0$ m.
@@ -65,13 +65,25 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
   dan Fase 4; pembelian untuk lima wahana menunggu uji terbang tunggal lolos.
 - **Simulasi:** Python (NumPy/SciPy/SymPy/Matplotlib), dinamika diturunkan dengan
   **metode Kane**. Repo terpisah: <https://github.com/izmaherdian/MultiAgentSim>.
-- **Metrik evaluasi:** RMSE galat formasi, waktu konvergensi, tingkat keberhasilan
-  melewati lorong, jarak minimum antaragen, beban komputasi & *bandwidth*.
+- **Hipotesa & evaluasi (KP06, 2026-09-22):** klaim lama "hemat *bandwidth* vs komunikasi
+  periodik" **dibuang** — simulator terkunci **tidak punya model komunikasi sama sekali** dan
+  makalah penulis tidak mengklaimnya. Klaim baru: ERC membawa 5 wahana melintasi celah 0,90 m
+  yang lebih sempit dari bentang formasi 2,05 m, formasi pulih setelahnya, tanpa pelanggaran
+  jarak aman. Formasi kaku **tidak** diterbangkan menembus celah (tabrakan pasti secara
+  geometris); pembanding = simulasi arena berskala Fase 1 + kondisi kontrol formasi V di
+  koridor terbuka. 10 lintasan tiap kondisi.
+- **Metrik evaluasi (definisi = kode simulator, Subbab "Metrik Evaluasi dan Kriteria
+  Kelayakan"):** RMSE formasi antarpasangan, RMSE mengekor terhadap $d_{ref}$, RMSE operasional
+  (berpindah mengikuti mode), $\Phi$ = norma rata-rata vektor satuan kecepatan, waktu tempuh,
+  waktu pemulihan formasi, keberhasilan melintas, jarak minimum antaragen, beban CPU, trafik UDP.
+  ⚠️ Angka ambang gerbang (CPU ≤ 70%, latensi ≤ 50 ms, hover RMS ≤ 0,10 m, deteksi ≥ 95% bingkai,
+  ≥ 8/10 lintasan, jarak ≥ 0,30 m, pulih ≤ 10 s) adalah **asumsi rancangan**, ditinjau setelah
+  simulasi arena Fase 1.
 
 ## Peta repo
 
 ```
-tulisan/proposal/        proposal tesis (main.tex), 5 bab, 58 halaman
+tulisan/proposal/        proposal tesis (main.tex), 5 bab, 61 halaman
 tulisan/laporan-akhir/   kerangka laporan akhir — masih placeholder
 tulisan/common/          itb-tesis.sty + references.bib + logo (dipakai bersama)
 tulisan/gambar/          skrip gambar (gaya.py, parameter.py, gbr_*.py) → `make gambar`
@@ -80,7 +92,7 @@ docs/00-mulai-di-sini.md urutan baca dokumentasi + status proyek — mulai dari 
 docs/01-alur-kerja.md    rantai bukti (lab→pustaka→keputusan), 5 fase (= Bab IV), alur eksperimen
 docs/02-lab/             1 ruang uji & arena · 2 inventaris · 3 baterai & bobot · 4 survei harga · 5 tugas penulis · foto/ · video/
 docs/03-pustaka/         indeks sumber per topik, kuartil jurnal (SCImago), landasan lokalisasi
-docs/04-keputusan/       KP01 lokalisasi · KP02 firmware · KP03 kamera · KP04 sensor · KP05 baterai & pengadaan
+docs/04-keputusan/       KP01 lokalisasi · KP02 firmware · KP03 kamera · KP04 sensor · KP05 baterai & pengadaan · KP06 hipotesa & evaluasi
 docs/05-eksperimen/      templat + satu dokumen desain per eksperimen (dibuat SEBELUM ngoding/terbang)
 docs/arsip/              dokumen lama yang sudah digantikan — bukan acuan
 experiments/             konfigurasi tiap eksperimen (config.yaml + skrip jalan)

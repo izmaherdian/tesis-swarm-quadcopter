@@ -31,8 +31,8 @@ dengan galat sekitar ±5 cm ([denah, foto 06](foto/06-sketsa-denah-ruangan.png))
 dinding, *roll-up banner*, bangku kerja, kipas industri beroda, kipas berdiri, pintu kayu
 yang membuka ke dalam area, dan orang yang lalu lalang. Dengan sofa di tempatnya lebar
 bersih tinggal sekitar 180 cm, sehingga formasi V terskala tidak muat dan pemicu ERC
-tidak sah. **Sofa dan banner wajib disingkirkan** saat sesi uji; pintu dan lalu lintas
-orang diatur lewat penjadwalan.
+tidak sah. **Sofa dan banner wajib disingkirkan** saat sesi uji, dan pengelola mengizinkannya
+(konfirmasi penulis 2026-09-22); pintu dan lalu lintas orang diatur lewat penjadwalan.
 
 **Angin:** kipas tidak dipakai. Uji gangguan angin dibatasi pada simulasi.
 
@@ -93,4 +93,4 @@ kalibrasi Fase 2** ([tugas penulis A](5-tugas-penulis.md)).
 - [x] Jumlah dus dihitung ulang 2026-09-18 menjadi **32** (8 per lapis × 4 lapis). Yang perlu
   dipastikan saat menyusun arena adalah kestabilan tumpukan terhadap hembusan propeler;
   bila goyah, dus diberi pemberat atau direkatkan.
-- [ ] Konfirmasi ke pengelola bahwa sofa dan banner boleh dipindah tiap sesi.
+- [x] Sofa dan banner boleh dipindah tiap sesi (konfirmasi penulis 2026-09-22).

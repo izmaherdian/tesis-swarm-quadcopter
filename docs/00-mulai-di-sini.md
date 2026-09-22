@@ -1,6 +1,6 @@
 # Mulai di Sini
 
-> Diperbarui 2026-09-18. Peta seluruh dokumentasi repo. **Angka di depan nama berkas dan
+> Diperbarui 2026-09-22. Peta seluruh dokumentasi repo. **Angka di depan nama berkas dan
 > folder mengikuti urutan kerja**, yaitu data lab dulu, lalu sumber, baru keputusan.
 > Folder `arsip/` tidak bernomor karena bukan acuan.
 
@@ -31,6 +31,7 @@
 | [KP03](04-keputusan/KP03-kamera-elp-lensa-2-1mm.md) | Kamera ELP-U3GS05B10C-IB21 lensa 2,1 mm, dua unit, penanda 12 cm |
 | [KP04](04-keputusan/KP04-sensor-jarak-uji-banding.md) | Sensor jarak dipilih lewat uji banding HC-SR04, VL53L1X, MTF-01 |
 | [KP05](04-keputusan/KP05-baterai-dan-pengadaan.md) | Baterai 6S 1200 mAh dan aturan pengadaan (batas atas, bertahap per gerbang) |
+| [KP06](04-keputusan/KP06-bentuk-evaluasi-dan-hipotesa.md) | Hipotesa, bentuk evaluasi fisik, dan definisi metrik yang mengikuti kode simulator |
 
 ### Di luar `docs/`
 
@@ -43,15 +44,15 @@
 | [`../experiments/`](../experiments/README.md), [`../results/`](../results/README.md) | konfigurasi dan keluaran eksperimen (belum ada isinya) |
 | [`../src/README.md`](../src/README.md) | cara menyiapkan simulator MultiAgentSim versi terkunci |
 
-## Status proyek (2026-09-18)
+## Status proyek (2026-09-22)
 
 | Bagian | Keadaan |
 |---|---|
-| Proposal | Bab I–V lengkap, 58 halaman, `make check` lolos; siap ditinjau pembimbing |
+| Proposal | Bab I–V lengkap, 61 halaman, `make check` lolos; hipotesa dan metrik sudah bersumber ([KP06](04-keputusan/KP06-bentuk-evaluasi-dan-hipotesa.md)) |
 | Anggaran | Rp23.403.374 (Fase 2 Rp10.046.227, Fase 4 Rp13.357.147); setiap pos bertautan listing Tokopedia ([survei harga](02-lab/4-survei-harga.md)) |
 | Kamera | ELP-U3GS05B10C-IB21 lensa 2,1 mm, Rp6.600.000 per unit, pra-pesan 3 minggu ([KP03](04-keputusan/KP03-kamera-elp-lensa-2-1mm.md)) |
 | Inventaris lab | tercatat per rangka ([inventaris](02-lab/2-inventaris.md)) |
-| Masih dicek penulis | merek router, *firmware* FC terpasang, pemetaan port USB laptop, bobot terbang ditimbang, versi ESC ([tugas penulis](02-lab/5-tugas-penulis.md)) |
+| Masih dicek penulis | *firmware* FC terpasang dan pemetaan port USB laptop ([tugas penulis](02-lab/5-tugas-penulis.md)); bobot dan arus memakai perkiraan lembar data (keputusan penulis) |
 | Simulator | versi terkunci `0d7ed5a`; faktor skala κ belum diterapkan (dijadwalkan Fase 1) |
 | Eksperimen dan laporan akhir | belum dimulai; Fase 1 berjalan September 2026 |
 
