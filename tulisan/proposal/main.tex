@@ -99,7 +99,7 @@ Evaluasi eksperimental difokuskan pada keberhasilan transisi formasi, akurasi pe
 Autonomous quadcopter swarm navigation in confined environments requires a formation that reshapes itself as the free space narrows, without compromising inter-agent safety. This research implements and evaluates a decentralized adaptive formation control system using \textit{Event-Based Reconfiguration Control} (ERC) coupled with \textit{Improved Artificial Potential Field} (IAPF) on physical hardware comprising five cinewhoop quadcopters. Each agent independently perceives spatial constraints using onboard lateral distance sensors and executes autonomous reconfiguration when traversing narrow bottlenecks in an indoor testing corridor. Through the event-triggered mechanism, formation reconfiguration is invoked only when the estimated free width crosses a predefined threshold, so the swarm holds its V formation while space permits and switches to tailgating only when the gap demands it. Computational load and communication traffic are measured to characterise the resource footprint of the physical implementation.
 
 \noindent
-The experimental evaluation focuses on formation transition success, trajectory tracking accuracy, wireless communication efficiency, and system robustness against real-world physical constraints, specifically local UDP wireless communication latency and AprilTag-based overhead camera localization noise. This study aims to provide empirical validation of the ERC algorithm on embedded hardware, establishing a scalable, robust, and deployable multi-agent control architecture for confined-space navigation.
+The experimental evaluation focuses on formation transition success, trajectory tracking accuracy, wireless communication load, and system robustness against real-world physical constraints, specifically local UDP wireless communication latency and AprilTag-based overhead camera localization noise. This study aims to provide empirical validation of the ERC algorithm on embedded hardware, establishing a scalable, robust, and deployable multi-agent control architecture for confined-space navigation.
 
 \vspace{1cm}
 \noindent \textbf{Keywords:} quadcopter, decentralized control, adaptive formation, \textit{event-based reconfiguration control}, swarm navigation, confined spaces.
@@ -842,7 +842,7 @@ Nilai $w_e$ menentukan mode dan faktor skala formasi menurut
     \end{cases}
     \label{eq:erc_pemicu}
 \end{equation}
-dengan $R$ jari-jari agen, $\alpha$ faktor ambang, dan $w_f$ bentang lateral nominal formasi. Bila tidak ada rintangan di kedua sisi, $\sigma_i = 1$ dan $\kappa = 1$. Dengan demikian formasi menyusut proporsional saat lorong menyempit dan baru beralih mengekor ketika $w_e$ melewati ambang $\alpha R$. Tidak ada pita histeresis pada perpindahan mode.
+dengan $R$ jari-jari agen, $\alpha$ faktor ambang, dan $w_f$ bentang lateral nominal formasi. Nilai $w_f$ mengikuti topologi yang sedang dipakai, sehingga berubah bila jumlah agen berubah, sedangkan ambang $\alpha R$ tidak. Bila tidak ada rintangan di kedua sisi, $\sigma_i = 1$ dan $\kappa = 1$. Dengan demikian formasi menyusut proporsional saat lorong menyempit dan baru beralih mengekor ketika $w_e$ melewati ambang $\alpha R$. Tidak ada pita histeresis pada perpindahan mode.
 
 Saat beralih ke mode mengekor, setiap agen memilih pemimpinnya secara terdesentralisasi, yaitu agen terdekat yang berada di depannya sepanjang arah menuju tujuan $\hat{\mathbf{g}}$ sehingga
 \begin{equation}
@@ -870,7 +870,7 @@ Nilai parameter pada Tabel~\ref{tab:parameter_erc} merupakan nilai simulasi dan 
         Jari-jari agen & $R$ & $0{,}2$ m \\ \hline
         Faktor ambang mengekor & $\alpha$ & $8$ \\ \hline
         Radius waspada & $R_a = 3R$ & $0{,}6$ m \\ \hline
-        Bentang lateral nominal formasi & $w_f$ & $2{,}0$ m \\ \hline
+        Bentang lateral nominal formasi (lima agen) & $w_f$ & $2{,}0$ m \\ \hline
         Laju acuan migrasi & $V_{\mathrm{ref}}$ & $0{,}5$ m/s \\ \hline
         Jarak acuan mengekor & $d_{\mathrm{ref}}$ & $1{,}0$ m \\ \hline
         Bobot formasi & $W_{\mathrm{form}}$ & $1{,}0$ \\ \hline
@@ -1104,7 +1104,7 @@ Satu quadcopter memvalidasi EKF, tautan \textit{companion computer} ke \textit{f
 \subsection{Uji Terbang Tiga Wahana}
 Kamera kedua dipasang dan kedua kamera dikalibrasi ke satu kerangka acuan global, karena liputan dua kamera sudah dibutuhkan sejak lintasan arena pertama. Ketiga wahana diambil dari rangka yang telah terakit (Tabel~\ref{tab:komponen_tersedia}), sehingga pengadaan pada tahap ini terbatas pada kamera kedua beserta kelengkapannya, empat sensor jarak terpilih, satu lembar akrilik penanda, dua baterai 6S, serta bahan arena.
 
-Topologi V untuk tiga agen berbentang lateral $1{,}15$~m, masih lebih lebar daripada celah $0{,}90$~m, sedangkan ambang pemicu $\alpha R = 1{,}0$~m tidak bergantung pada jumlah agen. Rekonfigurasi karenanya tetap terjadi pada tahap ini, sehingga tiga wahana sudah benar-benar menguji ERC dan bukan sekadar terbang serentak. Bedanya dengan lima wahana terletak pada ruang bebas di koridor terbuka, yaitu $77{,}5$~cm per sisi dibanding $32{,}5$~cm, sehingga kesalahan penalaan lebih mudah dipulihkan tanpa menyentuh dinding.
+Topologi V untuk tiga agen berbentang lateral $1{,}15$~m, masih lebih lebar daripada celah $0{,}90$~m, sedangkan ambang pemicu $\alpha R = 1{,}0$~m tidak bergantung pada jumlah agen. Bentang nominal $w_f$ pada Tabel~\ref{tab:parameter_erc} ikut menyesuaikan topologi tiga agen, sehingga faktor skala $\kappa$ dihitung terhadap bentang yang berlaku pada tahap ini. Rekonfigurasi karenanya tetap terjadi pada tahap ini, sehingga tiga wahana sudah benar-benar menguji ERC dan bukan sekadar terbang serentak. Bedanya dengan lima wahana terletak pada ruang bebas di koridor terbuka, yaitu $77{,}5$~cm per sisi dibanding $32{,}5$~cm, sehingga kesalahan penalaan lebih mudah dipulihkan tanpa menyentuh dinding.
 
 Tahap ini dinyatakan lolos bila kriteria Gerbang~3 pada Tabel~\ref{tab:gerbang} terpenuhi.
 

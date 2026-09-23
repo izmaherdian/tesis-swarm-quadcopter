@@ -31,8 +31,10 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
   ($\sigma_i=0$); selain itu formasi ($\sigma_i=1$) dengan faktor skala
   $\kappa=\min\{1,(w_e-2R)/w_f\}$. **Tanpa histeresis.** ⚠️ $\kappa$ dihitung tetapi
   **belum diterapkan** di `behavior_formation()` — penerapannya dijadwalkan Fase 1.
-  Parameter sim: $R=0{,}2$, $\alpha=8$, $R_a=3R$, $w_f=2{,}0$, $V_{ref}=0{,}5$,
+  Parameter sim: $R=0{,}2$, $\alpha=8$, $R_a=3R$, $V_{ref}=0{,}5$,
   $d_{ref}=1{,}0$, $W_{form}=1{,}0$, $W_{tail}=1{,}2$, $W_{obs}=W_{col}=8{,}0$.
+  ⚠️ $w_f$ **bukan konstanta** — di kode ia bentang lateral topologi (`estimate_formation_width()`),
+  jadi 2,0 m untuk lima agen dan 1,0 m untuk tiga agen. Ambang $\alpha R$ tidak bergantung jumlah agen.
 - **Persepsi rintangan:** 2 sensor jarak per agen, dipasang diagonal bersudut
   $\beta$ terhadap arah maju ($\theta$ dipakai untuk *pitch*). Jenisnya **belum
   ditetapkan**: HC-SR04 vs VL53L1X vs MicoAir MTF-01 (3 unit tersedia) diuji banding pada Fase 2.
