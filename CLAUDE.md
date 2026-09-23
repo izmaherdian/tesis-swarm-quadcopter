@@ -58,10 +58,12 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
   `docs/02-lab/3-baterai-dan-bobot.md`; harga: `docs/02-lab/4-survei-harga.md`; aturan pengadaan: KP05.
 - **Arena:** koridor 2,70 m, celah 0,90 m (kolom bangunan + dinding 32 dus 60×40×40 cm, dua baris × empat lapis, tinggi 1,60 m), formasi V
   diskalakan 0,9; untuk wahana $R=0{,}125$ m ambang $\alpha R=1{,}0$ m.
-- **Metodologi:** 5 fase mengikuti `figures/metodologi_tesis.pdf`, dihasilkan dari
-  `tulisan/diagrams/proposal-tesis.drawio` halaman Metodologi. Ekspor ulang dengan
+- **Metodologi:** 5 fase mengikuti `figures/metodologi_tesis.pdf`. Halaman Metodologi di
+  `proposal-tesis.drawio` **dihasilkan skrip** `tulisan/diagrams/buat-metodologi.py` (tata
+  letak, ukuran huruf, dan rute garis dihitung di sana), lalu diekspor dengan
   `tulisan/diagrams/ekspor-drawio.sh Metodologi tulisan/proposal/figures/metodologi_tesis.pdf`
-  (penampil draw.io di Chrome *headless* → cetak PDF → `pdfcrop`). Fasenya: 1 Studi & Desain, 2 Implementasi,
+  (penampil draw.io di Chrome *headless* → cetak PDF → `pdfcrop`). Ubah isi diagram lewat
+  skrip itu, jangan menyunting XML-nya langsung. Fasenya: 1 Studi & Desain, 2 Implementasi,
   3 HITL, 4 Uji Terbang (**tunggal → tiga wahana → lima wahana**, masing-masing bergerbang),
   5 Analisis. Anggaran ada di Fase 2 (satu tabel) dan Fase 4 (**tiga tabel**, yaitu sebelum uji
   terbang tunggal Rp113.220, setelah Gerbang 2 Rp10.242.427 untuk tiga wahana dan arena,
