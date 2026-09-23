@@ -55,10 +55,15 @@ tanpa propeler.
 2. **Batas atas.** Bila ada beberapa listing untuk produk yang sama persis, dipakai harga
    tertinggi. Listing yang dikecualikan (paket berisi barang lain, versi berbeda, produk lain
    berjudul mirip, salah input) dicatat alasannya.
-3. **Bertahap mengikuti gerbang.** Anggaran hanya ada di Fase 2 dan Fase 4. Komponen untuk
-   lima wahana dibeli **setelah uji terbang tunggal lolos**, karena tiga ketidakpastian
-   (firmware muat 1 MB, deteksi penanda saat bergerak, sensor jarak andal) hanya terjawab
-   lewat percobaan.
+3. **Bertahap mengikuti gerbang.** Anggaran hanya ada di Fase 2 dan Fase 4, dan Fase 4 dipecah
+   dua (diperbarui 2026-09-23). Setelah **Gerbang 2** (uji terbang tunggal lolos) dibeli
+   kelengkapan **tiga wahana dan arena**, yaitu kamera kedua beserta kabel dan dudukan, empat
+   sensor, satu lembar akrilik, dua baterai 6S, kardus, dan lakban. Setelah **Gerbang 3**
+   (tiga wahana lolos) dibeli sisanya untuk melengkapi **lima wahana**, yaitu satu ESC, satu
+   ESP32-S3, empat sensor, satu lembar akrilik, propeler, dan dua baterai 6S. Alasannya tiga
+   ketidakpastian (firmware muat 1 MB, deteksi penanda saat bergerak, sensor jarak andal)
+   hanya terjawab lewat percobaan, dan kawanan penuh hanya dibeli setelah kawanan kecil
+   terbukti terbang.
 4. **Mengikuti inventaris.** Yang sudah ada tidak dibeli lagi: *flight controller* (6),
    motor (20), penerima ExpressLRS (5). Yang dibeli hanya kekurangan nyata:
    - 1 ESC BLS 35A Mini V2 (ESC lepas diduga rusak),
@@ -78,7 +83,7 @@ tanpa propeler.
 | Fase | Subtotal |
 |---|---:|
 | Fase 2 | Rp10.046.227 |
-| Fase 4 | Rp13.357.147 |
+| Fase 4 | Rp13.357.147 (Rp113.220 sebelum uji tunggal, Rp10.242.427 setelah Gerbang 2, Rp3.001.500 setelah Gerbang 3) |
 | **Total** | **Rp23.403.374** |
 
 ## Syarat peninjauan ulang

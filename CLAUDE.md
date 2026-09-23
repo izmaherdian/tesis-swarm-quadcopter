@@ -61,8 +61,9 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
 - **Metodologi:** 5 fase mengikuti `figures/metodologi_tesis.pdf` (diagram draw.io
   penulis, isinya sudah diselaraskan; ekspor ulang lewat penampil draw.io di Chrome
   *headless* → cetak PDF → `pdfcrop`): 1 Studi & Desain, 2 Implementasi,
-  3 HITL, 4 Uji Terbang (tunggal → kawanan), 5 Analisis. Anggaran ada di Fase 2
-  dan Fase 4; pembelian untuk lima wahana menunggu uji terbang tunggal lolos.
+  3 HITL, 4 Uji Terbang (**tunggal → tiga wahana → lima wahana**, masing-masing bergerbang),
+  5 Analisis. Anggaran ada di Fase 2 dan Fase 4; Fase 4 dipecah dua, yaitu kelengkapan tiga
+  wahana dan arena setelah Gerbang 2, sisanya untuk lima wahana setelah Gerbang 3.
 - **Simulasi:** Python (NumPy/SciPy/SymPy/Matplotlib), dinamika diturunkan dengan
   **metode Kane**. Repo terpisah: <https://github.com/izmaherdian/MultiAgentSim>.
 - **Hipotesa & evaluasi (KP06, 2026-09-22):** klaim lama "hemat *bandwidth* vs komunikasi
@@ -71,14 +72,15 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
   yang lebih sempit dari bentang formasi 2,05 m, formasi pulih setelahnya, tanpa pelanggaran
   jarak aman. Formasi kaku **tidak** diterbangkan menembus celah (tabrakan pasti secara
   geometris); pembanding = simulasi arena berskala Fase 1 + kondisi kontrol formasi V di
-  koridor terbuka. 10 lintasan tiap kondisi.
+  koridor terbuka. 10 lintasan tiap kondisi, dijalankan pada tiga wahana lalu lima wahana.
+  Bentang formasi tiga agen 1,15 m (masih > celah 0,90 m), lima agen 2,05 m.
 - **Metrik evaluasi (definisi = kode simulator, Subbab "Metrik Evaluasi dan Kriteria
   Kelayakan"):** RMSE formasi antarpasangan, RMSE mengekor terhadap $d_{ref}$, RMSE operasional
   (berpindah mengikuti mode), $\Phi$ = norma rata-rata vektor satuan kecepatan, waktu tempuh,
   waktu pemulihan formasi, keberhasilan melintas, jarak minimum antaragen, beban CPU, trafik UDP.
-  ⚠️ Angka ambang gerbang (CPU ≤ 70%, latensi ≤ 50 ms, hover RMS ≤ 0,10 m, deteksi ≥ 95% bingkai,
-  ≥ 8/10 lintasan, jarak ≥ 0,30 m, pulih ≤ 10 s) adalah **asumsi rancangan**, ditinjau setelah
-  simulasi arena Fase 1.
+  ⚠️ Angka ambang **empat gerbang** (1 HITL: CPU ≤ 70%, latensi ≤ 50 ms · 2 tunggal: hover RMS
+  ≤ 0,10 m, deteksi ≥ 95% bingkai · 3 tiga wahana dan 4 lima wahana: ≥ 8/10 lintasan, jarak
+  ≥ 0,30 m, pulih ≤ 10 s) adalah **asumsi rancangan**, ditinjau setelah simulasi arena Fase 1.
 
 ## Peta repo
 
