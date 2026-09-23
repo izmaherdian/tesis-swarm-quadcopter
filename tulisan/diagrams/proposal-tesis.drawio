@@ -1,80 +1,80 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36" pages="3">
-            <diagram name="Metodologi" id="oeeEZdFLL3CIaSeiuWsl">
+                  <diagram name="Metodologi" id="oeeEZdFLL3CIaSeiuWsl">
       <mxGraphModel dx="1178" dy="613" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
         <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="f1" value="Fase 1&lt;div&gt;Studi dan Desain&lt;/div&gt;" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=60;dashed=1;fillColor=none;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="40" y="60" width="524" height="82" as="geometry" />
+          <mxGeometry x="40" y="60" width="524" height="79" as="geometry" />
         </mxCell>
         <mxCell id="f2" value="Fase 2&lt;div&gt;Implementasi Teknologi&lt;/div&gt;" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=60;dashed=1;fillColor=none;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="40" y="154" width="524" height="156" as="geometry" />
+          <mxGeometry x="40" y="151" width="524" height="150" as="geometry" />
         </mxCell>
         <mxCell id="f3" value="Fase 3&lt;div&gt;Pengujian HITL&lt;/div&gt;" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=60;dashed=1;fillColor=none;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="40" y="322" width="524" height="102" as="geometry" />
+          <mxGeometry x="40" y="313" width="524" height="122" as="geometry" />
         </mxCell>
         <mxCell id="f4" value="Fase 4&lt;div&gt;Uji Terbang Eksperimen&lt;/div&gt;" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=60;dashed=1;fillColor=none;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="40" y="436" width="524" height="290" as="geometry" />
+          <mxGeometry x="40" y="447" width="524" height="302" as="geometry" />
         </mxCell>
         <mxCell id="f5" value="Fase 5&lt;div&gt;Analisis dan Pelaporan&lt;/div&gt;" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=60;dashed=1;fillColor=none;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="40" y="738" width="524" height="156" as="geometry" />
+          <mxGeometry x="40" y="761" width="524" height="150" as="geometry" />
         </mxCell>
         <mxCell id="mulai" value="Mulai" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="247" y="4" width="110" height="44" as="geometry" />
         </mxCell>
         <mxCell id="b1k" value="Studi Literatur dan Simulasi Arena Berskala" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="118" y="72" width="202" height="58" as="geometry" />
+          <mxGeometry x="118" y="72" width="202" height="55" as="geometry" />
         </mxCell>
         <mxCell id="b1n" value="Desain Arsitektur Lima Quadcopter" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="358" y="72" width="202" height="58" as="geometry" />
+          <mxGeometry x="358" y="72" width="202" height="55" as="geometry" />
         </mxCell>
         <mxCell id="b2k" value="Komunikasi Eksternal (UDP Wi-Fi Lokal)" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="118" y="166" width="202" height="58" as="geometry" />
+          <mxGeometry x="118" y="163" width="202" height="55" as="geometry" />
         </mxCell>
         <mxCell id="b2n" value="Komunikasi Internal (&lt;i&gt;Firmware&lt;/i&gt; Racikan, MAVLink)" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="358" y="166" width="202" height="58" as="geometry" />
+          <mxGeometry x="358" y="163" width="202" height="55" as="geometry" />
         </mxCell>
         <mxCell id="b3k" value="Lokalisasi Kamera Atas dan Uji Banding Sensor" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="118" y="240" width="202" height="58" as="geometry" />
+          <mxGeometry x="118" y="234" width="202" height="55" as="geometry" />
         </mxCell>
         <mxCell id="b3n" value="Penanaman Logika ERC dan IAPF" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="358" y="240" width="202" height="58" as="geometry" />
+          <mxGeometry x="358" y="234" width="202" height="55" as="geometry" />
         </mxCell>
         <mxCell id="b4k" value="Uji HITL pada &lt;i&gt;Companion Computer&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="118" y="344" width="202" height="58" as="geometry" />
+          <mxGeometry x="118" y="334" width="202" height="55" as="geometry" />
         </mxCell>
         <mxCell id="b4n" value="CPU dan Latensi Aman?" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="358" y="334" width="202" height="78" as="geometry" />
+          <mxGeometry x="358" y="325" width="202" height="74" as="geometry" />
         </mxCell>
         <mxCell id="b5k" value="Uji Terbang Tunggal (EKF, Tautan, PID)" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="118" y="458" width="202" height="58" as="geometry" />
+          <mxGeometry x="118" y="468" width="202" height="55" as="geometry" />
         </mxCell>
         <mxCell id="b5n" value="Wahana Tunggal Stabil?" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="358" y="448" width="202" height="78" as="geometry" />
+          <mxGeometry x="358" y="459" width="202" height="74" as="geometry" />
         </mxCell>
         <mxCell id="b6k" value="Uji Terbang Tiga Wahana, Mengekor Celah 90 cm" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="118" y="552" width="202" height="58" as="geometry" />
+          <mxGeometry x="118" y="558" width="202" height="55" as="geometry" />
         </mxCell>
         <mxCell id="b6n" value="Tiga Wahana Berhasil?" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="358" y="542" width="202" height="78" as="geometry" />
+          <mxGeometry x="358" y="549" width="202" height="74" as="geometry" />
         </mxCell>
         <mxCell id="b7k" value="Uji Terbang Lima Wahana, Prosedur Sama" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="118" y="646" width="202" height="58" as="geometry" />
+          <mxGeometry x="118" y="648" width="202" height="55" as="geometry" />
         </mxCell>
         <mxCell id="b7n" value="Lima Wahana Berhasil?" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="358" y="636" width="202" height="78" as="geometry" />
+          <mxGeometry x="358" y="639" width="202" height="74" as="geometry" />
         </mxCell>
         <mxCell id="b8k" value="Ekstraksi &lt;i&gt;Log&lt;/i&gt; Pose, Pemicu ERC, dan Trafik UDP" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="118" y="750" width="202" height="58" as="geometry" />
+          <mxGeometry x="118" y="773" width="202" height="55" as="geometry" />
         </mxCell>
         <mxCell id="b8n" value="Analisis RMSE, Φ, Keberhasilan Melintas, dan Beban Komunikasi" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="358" y="750" width="202" height="58" as="geometry" />
+          <mxGeometry x="358" y="773" width="202" height="55" as="geometry" />
         </mxCell>
         <mxCell id="b9k" value="Perbandingan dengan Simulasi dan Penyusunan Tesis" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="238" y="824" width="202" height="58" as="geometry" />
+          <mxGeometry x="238" y="844" width="202" height="55" as="geometry" />
         </mxCell>
         <mxCell id="selesai" value="Selesai" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="247" y="912" width="110" height="44" as="geometry" />
+          <mxGeometry x="247" y="929" width="110" height="44" as="geometry" />
         </mxCell>
         <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;fontSize=14;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="mulai" target="b1k">
           <mxGeometry relative="1" as="geometry">
@@ -102,8 +102,8 @@
         <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;fontSize=14;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="b3n" target="b4k">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="459" y="316" />
-              <mxPoint x="219" y="316" />
+              <mxPoint x="459" y="307" />
+              <mxPoint x="219" y="307" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -113,14 +113,14 @@
         <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;fontSize=14;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="b4n" target="b5k">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="459" y="430" />
-              <mxPoint x="219" y="430" />
+              <mxPoint x="459" y="441" />
+              <mxPoint x="219" y="441" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="e8-l" value="Ya" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Times New Roman;fontSize=14;" vertex="1" connectable="0" parent="e8">
-          <mxGeometry x="-0.55" y="0" relative="1" as="geometry">
-            <mxPoint y="-10" as="offset" />
+        <mxCell id="e8-l" value="Ya" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=#FFFFFF;spacing=2;fontFamily=Times New Roman;fontSize=14;" vertex="1" connectable="0" parent="e8">
+          <mxGeometry x="-1" y="0" relative="1" as="geometry">
+            <mxPoint x="22" y="18" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;fontSize=14;" edge="1" parent="1" source="b5k" target="b5n">
@@ -129,14 +129,14 @@
         <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;fontSize=14;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="b5n" target="b6k">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="459" y="534" />
-              <mxPoint x="219" y="534" />
+              <mxPoint x="459" y="541" />
+              <mxPoint x="219" y="541" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="e9-l" value="Ya" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Times New Roman;fontSize=14;" vertex="1" connectable="0" parent="e9">
-          <mxGeometry x="-0.55" y="0" relative="1" as="geometry">
-            <mxPoint y="-10" as="offset" />
+        <mxCell id="e9-l" value="Ya" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=#FFFFFF;spacing=2;fontFamily=Times New Roman;fontSize=14;" vertex="1" connectable="0" parent="e9">
+          <mxGeometry x="-1" y="0" relative="1" as="geometry">
+            <mxPoint x="22" y="11" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;fontSize=14;" edge="1" parent="1" source="b6k" target="b6n">
@@ -145,14 +145,14 @@
         <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;fontSize=14;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="b6n" target="b7k">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="459" y="628" />
-              <mxPoint x="219" y="628" />
+              <mxPoint x="459" y="631" />
+              <mxPoint x="219" y="631" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="e10-l" value="Ya" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Times New Roman;fontSize=14;" vertex="1" connectable="0" parent="e10">
-          <mxGeometry x="-0.55" y="0" relative="1" as="geometry">
-            <mxPoint y="-10" as="offset" />
+        <mxCell id="e10-l" value="Ya" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=#FFFFFF;spacing=2;fontFamily=Times New Roman;fontSize=14;" vertex="1" connectable="0" parent="e10">
+          <mxGeometry x="-1" y="0" relative="1" as="geometry">
+            <mxPoint x="22" y="11" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;fontSize=14;" edge="1" parent="1" source="b7k" target="b7n">
@@ -161,14 +161,14 @@
         <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;fontSize=14;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="b7n" target="b8k">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="459" y="732" />
-              <mxPoint x="219" y="732" />
+              <mxPoint x="459" y="755" />
+              <mxPoint x="219" y="755" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="e11-l" value="Ya" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Times New Roman;fontSize=14;" vertex="1" connectable="0" parent="e11">
-          <mxGeometry x="-0.55" y="0" relative="1" as="geometry">
-            <mxPoint y="-10" as="offset" />
+        <mxCell id="e11-l" value="Ya" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=#FFFFFF;spacing=2;fontFamily=Times New Roman;fontSize=14;" vertex="1" connectable="0" parent="e11">
+          <mxGeometry x="-1" y="0" relative="1" as="geometry">
+            <mxPoint x="22" y="18" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;fontSize=14;" edge="1" parent="1" source="b8k" target="b8n">
@@ -177,68 +177,68 @@
         <mxCell id="e17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;fontSize=14;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="b8n" target="b9k">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="552" y="853" />
+              <mxPoint x="552" y="871" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="e18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;fontSize=14;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="b9k" target="selesai">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="339" y="900" />
-              <mxPoint x="302" y="900" />
+              <mxPoint x="339" y="917" />
+              <mxPoint x="302" y="917" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="t1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;fontSize=14;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="b4n" target="b3n">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="596" y="373" />
-              <mxPoint x="596" y="269" />
+              <mxPoint x="596" y="362" />
+              <mxPoint x="596" y="261" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="t1-l" value="Tidak" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Times New Roman;fontSize=14;" vertex="1" connectable="0" parent="t1">
-          <mxGeometry x="-0.88" y="0" relative="1" as="geometry">
-            <mxPoint y="-10" as="offset" />
+        <mxCell id="t1-l" value="Tidak" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=#FFFFFF;spacing=2;fontFamily=Times New Roman;fontSize=14;" vertex="1" connectable="0" parent="t1">
+          <mxGeometry x="-1" y="0" relative="1" as="geometry">
+            <mxPoint x="68" y="0" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="t2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;fontSize=14;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="b5n" target="b3n">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="596" y="487" />
-              <mxPoint x="596" y="269" />
+              <mxPoint x="596" y="496" />
+              <mxPoint x="596" y="261" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="t2-l" value="Tidak" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Times New Roman;fontSize=14;" vertex="1" connectable="0" parent="t2">
-          <mxGeometry x="-0.88" y="0" relative="1" as="geometry">
-            <mxPoint y="-10" as="offset" />
+        <mxCell id="t2-l" value="Tidak" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=#FFFFFF;spacing=2;fontFamily=Times New Roman;fontSize=14;" vertex="1" connectable="0" parent="t2">
+          <mxGeometry x="-1" y="0" relative="1" as="geometry">
+            <mxPoint x="68" y="0" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="t3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;fontSize=14;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="b6n" target="b3n">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="596" y="581" />
-              <mxPoint x="596" y="269" />
+              <mxPoint x="596" y="586" />
+              <mxPoint x="596" y="261" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="t3-l" value="Tidak" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Times New Roman;fontSize=14;" vertex="1" connectable="0" parent="t3">
-          <mxGeometry x="-0.88" y="0" relative="1" as="geometry">
-            <mxPoint y="-10" as="offset" />
+        <mxCell id="t3-l" value="Tidak" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=#FFFFFF;spacing=2;fontFamily=Times New Roman;fontSize=14;" vertex="1" connectable="0" parent="t3">
+          <mxGeometry x="-1" y="0" relative="1" as="geometry">
+            <mxPoint x="68" y="0" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="t4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Times New Roman;fontSize=14;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="b7n" target="b3n">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="596" y="675" />
-              <mxPoint x="596" y="269" />
+              <mxPoint x="596" y="676" />
+              <mxPoint x="596" y="261" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="t4-l" value="Tidak" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Times New Roman;fontSize=14;" vertex="1" connectable="0" parent="t4">
-          <mxGeometry x="-0.88" y="0" relative="1" as="geometry">
-            <mxPoint y="-10" as="offset" />
+        <mxCell id="t4-l" value="Tidak" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=#FFFFFF;spacing=2;fontFamily=Times New Roman;fontSize=14;" vertex="1" connectable="0" parent="t4">
+          <mxGeometry x="-1" y="0" relative="1" as="geometry">
+            <mxPoint x="68" y="0" as="offset" />
           </mxGeometry>
         </mxCell>
         </root>

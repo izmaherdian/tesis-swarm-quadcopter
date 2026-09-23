@@ -11,11 +11,12 @@ GAYA_PUTUSAN = f"rhombus;whiteSpace=wrap;html=1;{FONT}"
 GAYA_ELIPS = f"ellipse;whiteSpace=wrap;html=1;{FONT}"
 GAYA_FASE = f"swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=60;dashed=1;fillColor=none;{FONT}"
 GAYA_TEPI = f"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;{FONT}"
-GAYA_LABEL = f"edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];{FONT}"
+GAYA_LABEL = (f"edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];"
+              f"labelBackgroundColor=#FFFFFF;spacing=2;{FONT}")
 
 KIRI, KANAN, LEBAR = 118, 358, 202      # dua kolom isi
 WADAH_X, WADAH_W = 40, 524              # bingkai fase
-H_KOTAK, H_PUTUSAN = 58, 78
+H_KOTAK, H_PUTUSAN = 55, 74
 JARAK_BARIS, PAD, JARAK_FASE = 16, 12, 12
 KORIDOR = 596                           # jalur "tidak" di kanan bingkai
 
@@ -23,7 +24,7 @@ sel, y_baris, wadah = [], {}, []
 y = 60                                   # setelah elips Mulai
 
 
-def susun(nama_fase, judul, baris):
+def susun(nama_fase, judul, baris, pad_bawah=PAD):
     """Tempatkan satu bingkai fase beserta barisnya, lalu kembalikan tinggi yang terpakai."""
     global y
     atas = y
@@ -31,16 +32,16 @@ def susun(nama_fase, judul, baris):
     for kunci, tinggi in baris:
         y_baris[kunci] = y
         y += tinggi + JARAK_BARIS
-    y = y - JARAK_BARIS + PAD
+    y = y - JARAK_BARIS + pad_bawah
     wadah.append((nama_fase, judul, atas, y - atas))
     y += JARAK_FASE
 
 
 susun("f1", "Fase 1&lt;div&gt;Studi dan Desain&lt;/div&gt;", [("b1", H_KOTAK)])
 susun("f2", "Fase 2&lt;div&gt;Implementasi Teknologi&lt;/div&gt;", [("b2", H_KOTAK), ("b3", H_KOTAK)])
-susun("f3", "Fase 3&lt;div&gt;Pengujian HITL&lt;/div&gt;", [("b4", H_PUTUSAN)])
+susun("f3", "Fase 3&lt;div&gt;Pengujian HITL&lt;/div&gt;", [("b4", H_PUTUSAN)], pad_bawah=36)
 susun("f4", "Fase 4&lt;div&gt;Uji Terbang Eksperimen&lt;/div&gt;",
-      [("b5", H_PUTUSAN), ("b6", H_PUTUSAN), ("b7", H_PUTUSAN)])
+      [("b5", H_PUTUSAN), ("b6", H_PUTUSAN), ("b7", H_PUTUSAN)], pad_bawah=36)
 susun("f5", "Fase 5&lt;div&gt;Analisis dan Pelaporan&lt;/div&gt;", [("b8", H_KOTAK), ("b9", H_KOTAK)])
 TINGGI_TOTAL = y + 52
 
@@ -51,7 +52,8 @@ def kotak(i, x, y_, teks, w=LEBAR, h=H_KOTAK, gaya=GAYA_KOTAK):
                f'        </mxCell>')
 
 
-def tepi(i, asal, tujuan, gaya_tambahan="", titik=(), label=None, label_x=-0.4, geser_y=-10):
+def tepi(i, asal, tujuan, gaya_tambahan="", titik=(), label=None, label_x=-0.4,
+         geser_x=0, geser_y=-10):
     arr = ""
     if titik:
         arr = ("\n            <Array as=\"points\">\n"
@@ -65,7 +67,7 @@ def tepi(i, asal, tujuan, gaya_tambahan="", titik=(), label=None, label_x=-0.4, 
         sel.append(f'        <mxCell id="{i}-l" value="{label}" style="{GAYA_LABEL}" vertex="1" '
                    f'connectable="0" parent="{i}">\n'
                    f'          <mxGeometry x="{label_x}" y="0" relative="1" as="geometry">\n'
-                   f'            <mxPoint y="{geser_y}" as="offset" />\n'
+                   f'            <mxPoint x="{geser_x}" y="{geser_y}" as="offset" />\n'
                    f'          </mxGeometry>\n        </mxCell>')
 
 
@@ -110,10 +112,10 @@ tepi("e5", "b2k", "b3k")
 tepi("e6", "b3k", "b3n")
 
 
-def antar(i, dari, ke, label=None):
+def antar(i, dari, ke, label=None, geser_y=11):
     """Sambungkan kotak atau putusan di kolom kanan ke kotak kiri baris berikutnya."""
     tepi(i, dari, ke, ATAS, titik=((TENGAH_KANAN, y_antara[i]), (TENGAH_KIRI, y_antara[i])),
-         label=label, label_x=-0.55)
+         label=label, label_x=-1, geser_x=22, geser_y=geser_y)
 
 
 y_antara = {
@@ -125,13 +127,13 @@ y_antara = {
 }
 antar("e7", "b3n", "b4k")
 tepi("e12", "b4k", "b4n")
-antar("e8", "b4n", "b5k", label="Ya")
+antar("e8", "b4n", "b5k", label="Ya", geser_y=18)
 tepi("e13", "b5k", "b5n")
 antar("e9", "b5n", "b6k", label="Ya")
 tepi("e14", "b6k", "b6n")
 antar("e10", "b6n", "b7k", label="Ya")
 tepi("e15", "b7k", "b7n")
-antar("e11", "b7n", "b8k", label="Ya")
+antar("e11", "b7n", "b8k", label="Ya", geser_y=18)
 tepi("e16", "b8k", "b8n")
 tepi("e17", "b8n", "b9k", "entryX=1;entryY=0.5;entryDx=0;entryDy=0;",
      titik=((552, y_baris["b9"] + H_KOTAK // 2),))
@@ -143,7 +145,7 @@ for n, kunci in enumerate(["b4", "b5", "b6", "b7"], 1):
          "exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;",
          titik=((KORIDOR, y_baris[kunci] + H_PUTUSAN // 2),
                 (KORIDOR, y_baris["b3"] + H_KOTAK // 2)),
-         label="Tidak", label_x=-0.88)
+         label="Tidak", label_x=-1, geser_x=68, geser_y=0)
 
 halaman = ('    <diagram name="Metodologi" id="oeeEZdFLL3CIaSeiuWsl">\n'
            '      <mxGraphModel dx="1178" dy="613" grid="1" gridSize="10" guides="1" tooltips="1" '
