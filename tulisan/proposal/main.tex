@@ -337,9 +337,9 @@ Berdasarkan representasi koordinatnya, kontrol formasi dapat dirumuskan secara \
     \label{fig:klasifikasi_formasi}
 \end{figure}
 
-Terkait penghindaran rintangan, metode \textit{Artificial Potential Field} (APF) banyak diterapkan karena beban komputasinya yang ringan \cite{wangUAVFormationObstacle2021}. Untuk mengatasi kelemahan klasik APF berupa jebakan minimum lokal pada ruang padat, metode \textit{Improved Artificial Potential Field} (IAPF) menambahkan gaya acak dan kontrol formasi \cite{wangUAVFormationObstacle2021}. Dalam skenario ruang sempit, Bui \textit{et al.} \cite{buiEventbasedReconfigurationControl2025} mengusulkan skema \textit{Event-Based Reconfiguration Control} (ERC) yang memungkinkan formasi multi-agen beralih secara otomatis antara formasi nominal dan formasi mengekor (\textit{tailgating}) hanya saat sensor persepsi mendeteksi penyempitan batas ruang.
+Terkait penghindaran rintangan, metode \textit{Artificial Potential Field} (APF) banyak diterapkan karena beban komputasinya yang ringan \cite{wangUAVFormationObstacle2021}. Untuk mengatasi kelemahan klasik APF berupa jebakan minimum lokal pada ruang padat, metode \textit{Improved Artificial Potential Field} (IAPF) menambahkan gaya acak dan kontrol formasi \cite{wangUAVFormationObstacle2021}. Pada penelitian ini, perbaikan yang dipakai adalah paduan perilakunya, yaitu migrasi menuju tujuan, formasi dengan topologi yang dirotasi mengikuti arah gerak dan diskalakan oleh faktor $\kappa$, penghindaran antaragen, serta mengekor saat ruang menyempit. Suku gaya acak tersedia pada simulator tetapi tidak diaktifkan, sehingga medan tolak yang dipakai tetap berbentuk klasik dan penghindaran minimum lokal bersandar pada paduan perilaku tersebut. Dalam skenario ruang sempit, Bui \textit{et al.} \cite{buiEventbasedReconfigurationControl2025} mengusulkan skema \textit{Event-Based Reconfiguration Control} (ERC) yang memungkinkan formasi multi-agen beralih secara otomatis antara formasi nominal dan formasi mengekor (\textit{tailgating}) hanya saat sensor persepsi mendeteksi penyempitan batas ruang.
 
-Pada penelitian pendahuluan terdahulu, penulis memadukan konsep ERC bersama IAPF untuk dinamika kawanan lima \textit{quadcopter} dalam simulasi komputasional 3D \cite{herdianDecentralizedFormationControl2026}. Hasil simulasi membuktikan keberhasilan rekonfigurasi adaptif terdesentralisasi saat melintasi celah sempit dengan efisiensi komunikasi tinggi. Kendati demikian, studi tersebut masih berbasis komputasi numerik murni sehingga belum memperhitungkan batasan platform fisik, seperti latensi jaringan Wi-Fi lokal, derau sensor lokalisasi kamera dan jarak, serta keterbatasan komputasi \textit{onboard}.
+Pada penelitian pendahuluan terdahulu, penulis memadukan konsep ERC bersama IAPF untuk dinamika kawanan lima \textit{quadcopter} dalam simulasi komputasional 3D \cite{herdianDecentralizedFormationControl2026}. Hasil simulasi membuktikan keberhasilan rekonfigurasi adaptif terdesentralisasi saat melintasi celah sempit, sedangkan beban komunikasi tidak ikut dimodelkan pada simulator tersebut. Kendati demikian, studi tersebut masih berbasis komputasi numerik murni sehingga belum memperhitungkan batasan platform fisik, seperti latensi jaringan Wi-Fi lokal, derau sensor lokalisasi kamera dan jarak, serta keterbatasan komputasi \textit{onboard}.
 
 Implementasi fisik kontrol formasi terdesentralisasi telah didemonstrasikan oleh Quan \textit{et al.} \cite{quanDistributedSwarmTrajectory2022b, quanRobustEfficientTrajectory2023} melalui optimisasi lintasan terdistribusi untuk terbang formasi di lingkungan padat rintangan, yang menunjukkan bahwa sistem terdesentralisasi dapat bekerja andal di dunia nyata bila kendala perangkat keras ditangani sejak perancangan. Posisi penelitian tesis ini melangkah lebih jauh menjembatani celah realitas tersebut dengan merealisasikan algoritma ERC dan IAPF secara langsung pada platform perangkat keras fisik lima wahana di ruang sempit nyata. Perbandingan komparatif penelitian ini terhadap literatur kontrol formasi berbasis kejadian dan ERC dirangkum pada Tabel~\ref{tab:studi-terkait-rujukan}.
 
@@ -813,16 +813,19 @@ Perilaku formasi menjaga posisi relatif terhadap topologi nominal $\boldsymbol{\
     \label{eq:erc_formasi}
 \end{equation}
 
-Penghindaran rintangan dan tabrakan antaragen berbentuk medan potensial tolak yang aktif di dalam radius waspada $R_a$, dengan $d$ jarak ke titik rintangan terdekat atau ke agen lain dan $\hat{\mathbf{n}}$ vektor satuan yang menjauhinya, sehingga
+Penghindaran rintangan dan tabrakan antaragen berbentuk medan potensial tolak klasik yang aktif di dalam radius waspada $R_a$, dengan $d$ jarak ke titik rintangan terdekat atau ke agen lain dan $\hat{\mathbf{n}}$ vektor satuan yang menjauhinya, sehingga
 \begin{align}
     \mathbf{v}_i^{\mathrm{obs}} &= W_{\mathrm{obs}} \sum_{d_{io} < R_a} 0{,}5 \left( \frac{1}{d_{io}} - \frac{1}{R_a} \right) \frac{\hat{\mathbf{n}}_{io}}{d_{io}^2} \\
     \mathbf{v}_i^{\mathrm{col}} &= W_{\mathrm{col}} \sum_{d_{ij} < R_a} 2 \left( \frac{1}{d_{ij}} - \frac{1}{R_a} \right) \frac{\hat{\mathbf{n}}_{ij}}{d_{ij}^2}
+    \label{eq:apf_tolak}
 \end{align}
 
 Pada mode mengekor, agen mengikuti pemimpin lokal $l$ pada jarak acuan $d_{\mathrm{ref}}$ searah kecepatan pemimpin $\hat{\mathbf{u}}_l$, yaitu
 \begin{equation}
     \mathbf{v}_i^{\mathrm{tail}} = W_{\mathrm{tail}} \left[ (\mathbf{p}_l - \mathbf{p}_i - d_{\mathrm{ref}}\,\hat{\mathbf{u}}_l) + \mathbf{v}_l \right]
 \end{equation}
+
+Sebutan IAPF pada penelitian ini merujuk pada paduan perilaku di atas, bukan pada perubahan bentuk medan tolaknya. Medan tolak Persamaan~\ref{eq:apf_tolak} sama dengan bentuk klasiknya, sedangkan perbaikan terhadap kelemahan APF klasik datang dari topologi formasi yang dirotasi dan diskalakan, perilaku mengekor yang menggantikan formasi saat ruang menyempit, serta migrasi yang menjaga arah gerak kawanan. Suku gaya acak yang lazim ditambahkan pada IAPF \cite{wangUAVFormationObstacle2021} tersedia di simulator tetapi tidak diaktifkan, sehingga tidak dituliskan pada formulasi ini.
 
 \subsubsection{Pemicu Berbasis Kejadian}
 

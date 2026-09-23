@@ -22,7 +22,10 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
 - **Metode yang dievaluasi:** **ERC** (*Event-Based Reconfiguration Control*) —
   rekonfigurasi formasi hanya terpicu saat parameter persepsi melewati ambang
   batas, dipadu **IAPF** (*Improved Artificial Potential Field*) untuk
-  penghindaran rintangan.
+  penghindaran rintangan. ⚠️ Medan tolaknya **bentuk klasik**; `behavior_random()`
+  ada di kode tetapi **tidak pernah dipanggil**. Yang "improved" adalah paduan
+  perilakunya (migrasi, formasi berotasi + skala κ, antitabrakan, mengekor).
+  Batas klaim ini ditulis di Bab II dan Bab III (KP07).
 - **Pemicu utama:** lebar ruang terestimasi $w_e$. Sesuai kode simulator
   (`MultiAgentERC.py`, versi `0d7ed5a`): $w_e \le \alpha R$ → mode mengekor
   ($\sigma_i=0$); selain itu formasi ($\sigma_i=1$) dengan faktor skala

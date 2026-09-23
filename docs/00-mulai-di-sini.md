@@ -1,6 +1,6 @@
 # Mulai di Sini
 
-> Diperbarui 2026-09-22. Peta seluruh dokumentasi repo. **Angka di depan nama berkas dan
+> Diperbarui 2026-09-23. Peta seluruh dokumentasi repo. **Angka di depan nama berkas dan
 > folder mengikuti urutan kerja**, yaitu data lab dulu, lalu sumber, baru keputusan.
 > Folder `arsip/` tidak bernomor karena bukan acuan.
 
@@ -32,6 +32,7 @@
 | [KP04](04-keputusan/KP04-sensor-jarak-uji-banding.md) | Sensor jarak dipilih lewat uji banding HC-SR04, VL53L1X, MTF-01 |
 | [KP05](04-keputusan/KP05-baterai-dan-pengadaan.md) | Baterai 6S 1200 mAh dan aturan pengadaan (batas atas, bertahap per gerbang) |
 | [KP06](04-keputusan/KP06-bentuk-evaluasi-dan-hipotesa.md) | Hipotesa, bentuk evaluasi fisik, dan definisi metrik yang mengikuti kode simulator |
+| [KP07](04-keputusan/KP07-sebutan-iapf.md) | Sebutan IAPF dipertahankan dengan batas klaim yang ditulis terang-terangan |
 
 ### Di luar `docs/`
 
@@ -44,7 +45,7 @@
 | [`../experiments/`](../experiments/README.md), [`../results/`](../results/README.md) | konfigurasi dan keluaran eksperimen (belum ada isinya) |
 | [`../src/README.md`](../src/README.md) | cara menyiapkan simulator MultiAgentSim versi terkunci |
 
-## Status proyek (2026-09-22)
+## Status proyek (2026-09-23)
 
 | Bagian | Keadaan |
 |---|---|
