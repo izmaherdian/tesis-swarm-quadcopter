@@ -1,8 +1,9 @@
 # Survei Harga Pengadaan
 
-> Diperbarui 2026-09-18. Dipakai oleh tabel anggaran BAB IV proposal (Tabel 4.1
-> Fase 2, Tabel 4.2 Fase 4, Tabel 4.3 Rekapitulasi). Total RAB **Rp23.403.374**
-> (Fase 2 Rp10.046.227, Fase 4 Rp13.357.147).
+> Diperbarui 2026-09-23. Dipakai oleh tabel anggaran Bab IV proposal, yaitu satu tabel
+> Fase 2 dan tiga tabel Fase 4 (sebelum uji terbang tunggal, setelah Gerbang 2, setelah
+> Gerbang 3) beserta rekapitulasinya. Total RAB **Rp23.403.374** (Fase 2 Rp10.046.227;
+> Fase 4 Rp113.220 + Rp10.242.427 + Rp3.001.500).
 > Jumlah yang dibeli mengikuti [inventaris](2-inventaris.md) 2026-09-17 (asumsi lama "3 unit
 > FC/ESC/ESP32-S3" sudah tidak berlaku). Aturan pengadaan diringkas di
 > [KP05](../04-keputusan/KP05-baterai-dan-pengadaan.md).

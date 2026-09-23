@@ -58,12 +58,14 @@ berubah — jangan biarkan usang, karena sesi berikutnya akan mempercayainya.
   `docs/02-lab/3-baterai-dan-bobot.md`; harga: `docs/02-lab/4-survei-harga.md`; aturan pengadaan: KP05.
 - **Arena:** koridor 2,70 m, celah 0,90 m (kolom bangunan + dinding 32 dus 60×40×40 cm, dua baris × empat lapis, tinggi 1,60 m), formasi V
   diskalakan 0,9; untuk wahana $R=0{,}125$ m ambang $\alpha R=1{,}0$ m.
-- **Metodologi:** 5 fase mengikuti `figures/metodologi_tesis.pdf` (diagram draw.io
-  penulis, isinya sudah diselaraskan; ekspor ulang lewat penampil draw.io di Chrome
-  *headless* → cetak PDF → `pdfcrop`): 1 Studi & Desain, 2 Implementasi,
+- **Metodologi:** 5 fase mengikuti `figures/metodologi_tesis.pdf`, dihasilkan dari
+  `tulisan/diagrams/proposal-tesis.drawio` halaman Metodologi. Ekspor ulang dengan
+  `tulisan/diagrams/ekspor-drawio.sh Metodologi tulisan/proposal/figures/metodologi_tesis.pdf`
+  (penampil draw.io di Chrome *headless* → cetak PDF → `pdfcrop`). Fasenya: 1 Studi & Desain, 2 Implementasi,
   3 HITL, 4 Uji Terbang (**tunggal → tiga wahana → lima wahana**, masing-masing bergerbang),
-  5 Analisis. Anggaran ada di Fase 2 dan Fase 4; Fase 4 dipecah dua, yaitu kelengkapan tiga
-  wahana dan arena setelah Gerbang 2, sisanya untuk lima wahana setelah Gerbang 3.
+  5 Analisis. Anggaran ada di Fase 2 (satu tabel) dan Fase 4 (**tiga tabel**, yaitu sebelum uji
+  terbang tunggal Rp113.220, setelah Gerbang 2 Rp10.242.427 untuk tiga wahana dan arena,
+  setelah Gerbang 3 Rp3.001.500 untuk melengkapi lima wahana). Total RAB Rp23.403.374.
 - **Simulasi:** Python (NumPy/SciPy/SymPy/Matplotlib), dinamika diturunkan dengan
   **metode Kane**. Repo terpisah: <https://github.com/izmaherdian/MultiAgentSim>.
 - **Hipotesa & evaluasi (KP06, 2026-09-22):** klaim lama "hemat *bandwidth* vs komunikasi

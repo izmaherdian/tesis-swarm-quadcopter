@@ -909,7 +909,7 @@ Dengan lebar bersih koridor $270$ cm dan syarat ruang bebas sekurang-kurangnya $
 
 Dua perbedaan pada Tabel~\ref{tab:penskalaan_arena} memengaruhi penafsiran hasil. Pertama, rasio celah terhadap diameter agen di arena lebih besar karena wahana nyata relatif lebih ramping, sehingga keberhasilan di arena tidak serta-merta membuktikan keberhasilan pada rasio simulasi yang lebih ketat. Kedua, bagian sempit arena hanya $1{,}80$ m sehingga fase mengekor lebih singkat. Untuk perbedaan kedua, simulator diberi skema baru yang meniru geometri arena, bukan arena yang dipaksa meniru simulasi.
 
-Tata letak arena selengkapnya diperlihatkan pada Gambar~\ref{fig:sketsa_arena}. Salah satu kolom bangunan yang menjorok ke koridor menjadi satu sisi penyempitan karena posisinya permanen, sehingga geometri rintangan dapat direproduksi antarsesi tanpa pengukuran ulang. Sisi seberangnya dilengkapi susunan dus kardus yang menjorok sedalam $1{,}01$ m sehingga menyisakan celah $90$ cm. Dus berukuran $60 \times 40 \times 40$ cm disusun dua baris sehingga kedalamannya $1{,}00$ m, dan ditumpuk empat lapis sehingga tingginya $1{,}60$ m, yaitu di atas ketinggian terbang agar berkas sensor jarak mengenai dinding rintangan dan tidak ada rongga di belakangnya pada ketinggian tersebut. Susunan itu menuntut $32$ dus, yang menjadi dasar jumlah pada Tabel~\ref{tab:rab_fase4}.
+Tata letak arena selengkapnya diperlihatkan pada Gambar~\ref{fig:sketsa_arena}. Salah satu kolom bangunan yang menjorok ke koridor menjadi satu sisi penyempitan karena posisinya permanen, sehingga geometri rintangan dapat direproduksi antarsesi tanpa pengukuran ulang. Sisi seberangnya dilengkapi susunan dus kardus yang menjorok sedalam $1{,}01$ m sehingga menyisakan celah $90$ cm. Dus berukuran $60 \times 40 \times 40$ cm disusun dua baris sehingga kedalamannya $1{,}00$ m, dan ditumpuk empat lapis sehingga tingginya $1{,}60$ m, yaitu di atas ketinggian terbang agar berkas sensor jarak mengenai dinding rintangan dan tidak ada rongga di belakangnya pada ketinggian tersebut. Susunan itu menuntut $32$ dus, yang menjadi dasar jumlah pada Tabel~\ref{tab:rab_fase4b}.
 
 \begin{figure}[htbp]
     \centering
@@ -1080,22 +1080,10 @@ Tiap kondisi diulang sepuluh lintasan. Pada laju acuan $0{,}5$~m/s, satu lintasa
 \subsection{Uji Terbang Tunggal}
 Satu quadcopter memvalidasi EKF, tautan \textit{companion computer} ke \textit{flight controller}, penalaan PID, dan logika ERC agen tunggal. Deteksi penanda saat wahana bergerak dan jenis sensor jarak terpilih ikut dipastikan pada tahap ini. Tahap ini dinyatakan lolos bila kriteria Gerbang~2 pada Tabel~\ref{tab:gerbang} terpenuhi.
 
-\subsection{Uji Terbang Tiga Wahana}
-Kamera kedua dipasang dan kedua kamera dikalibrasi ke satu kerangka acuan global, karena liputan dua kamera sudah dibutuhkan sejak lintasan arena pertama. Ketiga wahana diambil dari rangka yang telah terakit (Tabel~\ref{tab:komponen_tersedia}), sehingga pengadaan pada tahap ini terbatas pada kamera kedua beserta kelengkapannya, empat sensor jarak terpilih, satu lembar akrilik penanda, dua baterai 6S, serta bahan arena.
-
-Topologi V untuk tiga agen berbentang lateral $1{,}15$~m, masih lebih lebar daripada celah $0{,}90$~m, sedangkan ambang pemicu $\alpha R = 1{,}0$~m tidak bergantung pada jumlah agen. Rekonfigurasi karenanya tetap terjadi pada tahap ini, sehingga tiga wahana sudah benar-benar menguji ERC dan bukan sekadar terbang serentak. Bedanya dengan lima wahana terletak pada ruang bebas di koridor terbuka, yaitu $77{,}5$~cm per sisi dibanding $32{,}5$~cm, sehingga kesalahan penalaan lebih mudah dipulihkan tanpa menyentuh dinding.
-
-Tahap ini dinyatakan lolos bila kriteria Gerbang~3 pada Tabel~\ref{tab:gerbang} terpenuhi.
-
-\subsection{Uji Terbang Lima Wahana}
-Wahana keempat dan kelima dilengkapi dari rangka yang tersisa dan komponen lepas, sehingga pada tahap ini diadakan satu ESC, satu \textit{companion computer} cadangan, propeler, empat sensor jarak, satu lembar akrilik, dan dua baterai 6S sehingga tersedia enam baterai untuk lima wahana. Kedua kondisi diulang seperti pada tahap tiga wahana, kali ini dengan bentang formasi $2{,}05$~m yang hanya menyisakan ruang bebas $32{,}5$~cm pada tiap sisi.
-
-Tahap ini dinyatakan lolos bila kriteria Gerbang~4 pada Tabel~\ref{tab:gerbang} terpenuhi.
-
 \begin{table}[htbp]
     \centering
-    \caption{Anggaran Fase 4}
-    \label{tab:rab_fase4}
+    \caption{Anggaran Fase 4 sebelum uji terbang tunggal}
+    \label{tab:rab_fase4a}
     \begingroup
     \footnotesize
     \setlength{\tabcolsep}{3pt}
@@ -1104,30 +1092,74 @@ Tahap ini dinyatakan lolos bila kriteria Gerbang~4 pada Tabel~\ref{tab:gerbang} 
         \hline
         \rowcolor{gray!20}
         \thead{No} & \thead{Komponen} & \thead{Jumlah} & \thead{Harga\\Satuan (Rp)} & \thead{Harga\\Total (Rp)} \\ \hline
-        \multicolumn{5}{|l|}{\textit{Sebelum uji terbang tunggal}} \\ \hline
         1 & Kacamata pengaman berlensa bening\newline{\footnotesize\href{https://www.tokopedia.com/safetyjogger/safety-jogger-works-tsavo-kacamata-safety-dengan-lensa-bening-polikarbonat-anti-gores-anti-kabut-perlindungan-uv-lengkap-ringan-nyaman-1731302808503747796}{tokopedia.com/safetyjogger}} & 1 unit & 113.220 & 113.220 \\ \hline
-        \multicolumn{5}{|l|}{\textit{Setelah Gerbang~2 lolos, kelengkapan tiga wahana dan arena}} \\ \hline
-        2 & Kamera ELP-U3GS05B10C-IB21 kedua\newline{\footnotesize\href{https://www.tokopedia.com/inithriftshop/elp-5mp-global-shutter-color-usb3-0-camera-og05b10-60fps-2592x1944-high-speed-camera-with-3-6-10mm-manual-vafifocus-cs-lens-1736975155939870122}{tokopedia.com/inithriftshop}} & 1 unit & 6.600.000 & 6.600.000 \\ \hline
-        3 & Kabel ekstensi USB 3.0 aktif 10 m\newline{\footnotesize\href{https://www.tokopedia.com/pampamolshop/vention-cbmbl-kabel-active-extension-usb-a-3-0-male-to-usb-a-female-1gbps-10-meter-10m-with-type-c-power-supply-2a-tipe-c-cable-aktif-1732878617013290940}{tokopedia.com/pampamolshop}} & 1 unit & 674.000 & 674.000 \\ \hline
-        4 & Dudukan kamera \textit{super clamp} dengan \textit{ball head} 1/4 inci\newline{\footnotesize\href{https://www.tokopedia.com/asteranid/super-clamp-magic-arm-ball-head-mount-1-4-3-8-inch-camera-kamera-1732253921075430889}{tokopedia.com/asteranid}} & 1 unit & 105.027 & 105.027 \\ \hline
-        5 & Sensor jarak terpilih (harga VL53L1X)\newline{\footnotesize\href{https://www.tokopedia.com/cncstorebandung/modul-sensor-jarak-tof200c-vl53l0x-tof400c-vl53l1x-tof050c-vl6180x-modules-distance-sersor-vl53l1x-92c0f}{tokopedia.com/cncstorebandung}} & 4 unit & 98.500 & 394.000 \\ \hline
-        6 & Akrilik bening 2 mm ukuran A4 untuk dua pelat penanda\newline{\footnotesize\href{https://www.tokopedia.com/jualacrylic/acrylic-akrilik-lembaran-potongan-2mm-clear-bening-ukuran-a4-30-x-21cm}{tokopedia.com/jualacrylic}} & 1 lembar & 30.000 & 30.000 \\ \hline
-        7 & Baterai LiPo CNHL Pizza Series 6S 1200 mAh 100C\newline{\footnotesize\href{https://www.tokopedia.com/shoppublic/cnhl-pizza-series-1200mah-22-2v-6s-100c-lipo-battery-1730977420446827894}{tokopedia.com/shoppublic}} & 2 unit & 637.000 & 1.274.000 \\ \hline
-        8 & Kardus polos 60 $\times$ 40 $\times$ 40 cm sebagai rintangan\newline{\footnotesize\href{https://www.tokopedia.com/berlian90/dus-packing-polos-jumbo-60x40x40-cm-kardus-besar-kardus-packing-polos-box-jumbo-kondisi-baru-1730914591889655635}{tokopedia.com/berlian90}} & 32 unit & 34.700 & 1.110.400 \\ \hline
-        9 & Lakban lantai vinil 3M 764 warna putih, 2 inci $\times$ 33 m\newline{\footnotesize\href{https://www.tokopedia.com/dewielectrical/3m-lakban-lantai-3m-764-vinyl-floor-marking-tape-2-x33-m-hitam}{tokopedia.com/dewielectrical}} & 1 rol & 55.000 & 55.000 \\ \hline
-        \multicolumn{5}{|l|}{\textit{Setelah Gerbang~3 lolos, melengkapi menjadi lima wahana}} \\ \hline
-        10 & Sensor jarak terpilih (harga VL53L1X)\newline{\footnotesize\href{https://www.tokopedia.com/cncstorebandung/modul-sensor-jarak-tof200c-vl53l0x-tof400c-vl53l1x-tof050c-vl6180x-modules-distance-sersor-vl53l1x-92c0f}{tokopedia.com/cncstorebandung}} & 4 unit & 98.500 & 394.000 \\ \hline
-        11 & Akrilik bening 2 mm ukuran A4 untuk dua pelat penanda\newline{\footnotesize\href{https://www.tokopedia.com/jualacrylic/acrylic-akrilik-lembaran-potongan-2mm-clear-bening-ukuran-a4-30-x-21cm}{tokopedia.com/jualacrylic}} & 1 lembar & 30.000 & 30.000 \\ \hline
-        12 & ESC SpeedyBee BLS 35A Mini V2 4-in-1\newline{\footnotesize\href{https://www.tokopedia.com/fitrisemebew/speedybee-bls-35a-mini-v2-3-6s-20x20-4-in-1-esc-1730849361715365450}{tokopedia.com/fitrisemebew}} & 1 unit & 941.000 & 941.000 \\ \hline
-        13 & \textit{Companion computer} Seeed XIAO ESP32-S3\newline{\footnotesize\href{https://www.tokopedia.com/cncstorebandung/xiao-esp32s3-original-board-iot-development-kit-dual-core-wifi-bluetooth-5-0-ble-microcontroller-1732253317634623038}{tokopedia.com/cncstorebandung}} & 1 unit & 282.500 & 282.500 \\ \hline
-        14 & Propeler Gemfan D90S tiga bilah, \textit{T-mount} $1{,}5$ mm, isi 4 per paket\newline{\footnotesize\href{https://www.tokopedia.com/zerius/gemfan-d90s-ducted-d90-s-3-blade-3-5inch-shaft-1-5mm-propeller-clear-gray}{tokopedia.com/zerius}} & 2 paket & 40.000 & 80.000 \\ \hline
-        15 & Baterai LiPo CNHL Pizza Series 6S 1200 mAh 100C\newline{\footnotesize\href{https://www.tokopedia.com/shoppublic/cnhl-pizza-series-1200mah-22-2v-6s-100c-lipo-battery-1730977420446827894}{tokopedia.com/shoppublic}} & 2 unit & 637.000 & 1.274.000 \\ \hline
-        \multicolumn{4}{|r|}{\textbf{Subtotal}} & \textbf{13.357.147} \\ \hline
+        \multicolumn{4}{|r|}{\textbf{Subtotal}} & \textbf{113.220} \\ \hline
     \end{tabularx}
     \endgroup
 \end{table}
 
-Kedua pos sensor jarak terpilih memakai harga VL53L1X. Bila HC-SR04 yang terpilih, pos tersebut turun menjadi Rp212.800. Bila MTF-01 yang terpilih, tiga unit yang tersedia perlu dilengkapi tujuh unit dengan harga satuan tertinggi Rp1.565.000.
+\subsection{Uji Terbang Tiga Wahana}
+Kamera kedua dipasang dan kedua kamera dikalibrasi ke satu kerangka acuan global, karena liputan dua kamera sudah dibutuhkan sejak lintasan arena pertama. Ketiga wahana diambil dari rangka yang telah terakit (Tabel~\ref{tab:komponen_tersedia}), sehingga pengadaan pada tahap ini terbatas pada kamera kedua beserta kelengkapannya, empat sensor jarak terpilih, satu lembar akrilik penanda, dua baterai 6S, serta bahan arena.
+
+Topologi V untuk tiga agen berbentang lateral $1{,}15$~m, masih lebih lebar daripada celah $0{,}90$~m, sedangkan ambang pemicu $\alpha R = 1{,}0$~m tidak bergantung pada jumlah agen. Rekonfigurasi karenanya tetap terjadi pada tahap ini, sehingga tiga wahana sudah benar-benar menguji ERC dan bukan sekadar terbang serentak. Bedanya dengan lima wahana terletak pada ruang bebas di koridor terbuka, yaitu $77{,}5$~cm per sisi dibanding $32{,}5$~cm, sehingga kesalahan penalaan lebih mudah dipulihkan tanpa menyentuh dinding.
+
+Tahap ini dinyatakan lolos bila kriteria Gerbang~3 pada Tabel~\ref{tab:gerbang} terpenuhi.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Anggaran Fase 4 setelah Gerbang~2, kelengkapan tiga wahana dan arena}
+    \label{tab:rab_fase4b}
+    \begingroup
+    \footnotesize
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.05}
+    \begin{tabularx}{\textwidth}{|c|>{\raggedright\arraybackslash}X|>{\centering\arraybackslash}p{1.35cm}|>{\raggedleft\arraybackslash}p{2.1cm}|>{\raggedleft\arraybackslash}p{2.8cm}|}
+        \hline
+        \rowcolor{gray!20}
+        \thead{No} & \thead{Komponen} & \thead{Jumlah} & \thead{Harga\\Satuan (Rp)} & \thead{Harga\\Total (Rp)} \\ \hline
+        1 & Kamera ELP-U3GS05B10C-IB21 kedua\newline{\footnotesize\href{https://www.tokopedia.com/inithriftshop/elp-5mp-global-shutter-color-usb3-0-camera-og05b10-60fps-2592x1944-high-speed-camera-with-3-6-10mm-manual-vafifocus-cs-lens-1736975155939870122}{tokopedia.com/inithriftshop}} & 1 unit & 6.600.000 & 6.600.000 \\ \hline
+        2 & Kabel ekstensi USB 3.0 aktif 10 m\newline{\footnotesize\href{https://www.tokopedia.com/pampamolshop/vention-cbmbl-kabel-active-extension-usb-a-3-0-male-to-usb-a-female-1gbps-10-meter-10m-with-type-c-power-supply-2a-tipe-c-cable-aktif-1732878617013290940}{tokopedia.com/pampamolshop}} & 1 unit & 674.000 & 674.000 \\ \hline
+        3 & Dudukan kamera \textit{super clamp} dengan \textit{ball head} 1/4 inci\newline{\footnotesize\href{https://www.tokopedia.com/asteranid/super-clamp-magic-arm-ball-head-mount-1-4-3-8-inch-camera-kamera-1732253921075430889}{tokopedia.com/asteranid}} & 1 unit & 105.027 & 105.027 \\ \hline
+        4 & Sensor jarak terpilih (harga VL53L1X)\newline{\footnotesize\href{https://www.tokopedia.com/cncstorebandung/modul-sensor-jarak-tof200c-vl53l0x-tof400c-vl53l1x-tof050c-vl6180x-modules-distance-sersor-vl53l1x-92c0f}{tokopedia.com/cncstorebandung}} & 4 unit & 98.500 & 394.000 \\ \hline
+        5 & Akrilik bening 2 mm ukuran A4 untuk dua pelat penanda\newline{\footnotesize\href{https://www.tokopedia.com/jualacrylic/acrylic-akrilik-lembaran-potongan-2mm-clear-bening-ukuran-a4-30-x-21cm}{tokopedia.com/jualacrylic}} & 1 lembar & 30.000 & 30.000 \\ \hline
+        6 & Baterai LiPo CNHL Pizza Series 6S 1200 mAh 100C\newline{\footnotesize\href{https://www.tokopedia.com/shoppublic/cnhl-pizza-series-1200mah-22-2v-6s-100c-lipo-battery-1730977420446827894}{tokopedia.com/shoppublic}} & 2 unit & 637.000 & 1.274.000 \\ \hline
+        7 & Kardus polos 60 $\times$ 40 $\times$ 40 cm sebagai rintangan\newline{\footnotesize\href{https://www.tokopedia.com/berlian90/dus-packing-polos-jumbo-60x40x40-cm-kardus-besar-kardus-packing-polos-box-jumbo-kondisi-baru-1730914591889655635}{tokopedia.com/berlian90}} & 32 unit & 34.700 & 1.110.400 \\ \hline
+        8 & Lakban lantai vinil 3M 764 warna putih, 2 inci $\times$ 33 m\newline{\footnotesize\href{https://www.tokopedia.com/dewielectrical/3m-lakban-lantai-3m-764-vinyl-floor-marking-tape-2-x33-m-hitam}{tokopedia.com/dewielectrical}} & 1 rol & 55.000 & 55.000 \\ \hline
+        \multicolumn{4}{|r|}{\textbf{Subtotal}} & \textbf{10.242.427} \\ \hline
+    \end{tabularx}
+    \endgroup
+\end{table}
+
+\subsection{Uji Terbang Lima Wahana}
+Wahana keempat dan kelima dilengkapi dari rangka yang tersisa dan komponen lepas, sehingga pada tahap ini diadakan satu ESC, satu \textit{companion computer} cadangan, propeler, empat sensor jarak, satu lembar akrilik, dan dua baterai 6S sehingga tersedia enam baterai untuk lima wahana. Kedua kondisi diulang seperti pada tahap tiga wahana, kali ini dengan bentang formasi $2{,}05$~m yang hanya menyisakan ruang bebas $32{,}5$~cm pada tiap sisi.
+
+Tahap ini dinyatakan lolos bila kriteria Gerbang~4 pada Tabel~\ref{tab:gerbang} terpenuhi.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Anggaran Fase 4 setelah Gerbang~3, melengkapi menjadi lima wahana}
+    \label{tab:rab_fase4c}
+    \begingroup
+    \footnotesize
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.05}
+    \begin{tabularx}{\textwidth}{|c|>{\raggedright\arraybackslash}X|>{\centering\arraybackslash}p{1.35cm}|>{\raggedleft\arraybackslash}p{2.1cm}|>{\raggedleft\arraybackslash}p{2.8cm}|}
+        \hline
+        \rowcolor{gray!20}
+        \thead{No} & \thead{Komponen} & \thead{Jumlah} & \thead{Harga\\Satuan (Rp)} & \thead{Harga\\Total (Rp)} \\ \hline
+        1 & Sensor jarak terpilih (harga VL53L1X)\newline{\footnotesize\href{https://www.tokopedia.com/cncstorebandung/modul-sensor-jarak-tof200c-vl53l0x-tof400c-vl53l1x-tof050c-vl6180x-modules-distance-sersor-vl53l1x-92c0f}{tokopedia.com/cncstorebandung}} & 4 unit & 98.500 & 394.000 \\ \hline
+        2 & Akrilik bening 2 mm ukuran A4 untuk dua pelat penanda\newline{\footnotesize\href{https://www.tokopedia.com/jualacrylic/acrylic-akrilik-lembaran-potongan-2mm-clear-bening-ukuran-a4-30-x-21cm}{tokopedia.com/jualacrylic}} & 1 lembar & 30.000 & 30.000 \\ \hline
+        3 & ESC SpeedyBee BLS 35A Mini V2 4-in-1\newline{\footnotesize\href{https://www.tokopedia.com/fitrisemebew/speedybee-bls-35a-mini-v2-3-6s-20x20-4-in-1-esc-1730849361715365450}{tokopedia.com/fitrisemebew}} & 1 unit & 941.000 & 941.000 \\ \hline
+        4 & \textit{Companion computer} Seeed XIAO ESP32-S3\newline{\footnotesize\href{https://www.tokopedia.com/cncstorebandung/xiao-esp32s3-original-board-iot-development-kit-dual-core-wifi-bluetooth-5-0-ble-microcontroller-1732253317634623038}{tokopedia.com/cncstorebandung}} & 1 unit & 282.500 & 282.500 \\ \hline
+        5 & Propeler Gemfan D90S tiga bilah, \textit{T-mount} $1{,}5$ mm, isi 4 per paket\newline{\footnotesize\href{https://www.tokopedia.com/zerius/gemfan-d90s-ducted-d90-s-3-blade-3-5inch-shaft-1-5mm-propeller-clear-gray}{tokopedia.com/zerius}} & 2 paket & 40.000 & 80.000 \\ \hline
+        6 & Baterai LiPo CNHL Pizza Series 6S 1200 mAh 100C\newline{\footnotesize\href{https://www.tokopedia.com/shoppublic/cnhl-pizza-series-1200mah-22-2v-6s-100c-lipo-battery-1730977420446827894}{tokopedia.com/shoppublic}} & 2 unit & 637.000 & 1.274.000 \\ \hline
+        \multicolumn{4}{|r|}{\textbf{Subtotal}} & \textbf{3.001.500} \\ \hline
+    \end{tabularx}
+    \endgroup
+\end{table}
+
+Kedua pos sensor jarak terpilih memakai harga VL53L1X. Bila HC-SR04 yang terpilih, kedua pos tersebut turun menjadi Rp106.400 per pos. Bila MTF-01 yang terpilih, tiga unit yang tersedia perlu dilengkapi tujuh unit dengan harga satuan tertinggi Rp1.565.000.
+
 
 \section{Fase 5: Analisis Data dan Pelaporan}
 
@@ -1141,7 +1173,7 @@ Seluruh kegiatan berlangsung di Pusat Teknologi Instrumentasi dan Otomasi (PTIO\
 \subsection{Rekapitulasi Anggaran}
 \label{subsec:rab}
 
-Rencana Anggaran Biaya (RAB\label{abbr:rab}) dirangkum pada Tabel~\ref{tab:rekap_rab}. Seluruh pos pada Tabel~\ref{tab:rab_fase2} dan Tabel~\ref{tab:rab_fase4} mengacu pada listing Tokopedia yang tautannya tercantum di bawah nama komponen (diakses 17 September 2026). Tiang penyangga penanda dicetak dengan pencetak tiga dimensi yang tersedia, dan baterai disimpan dalam kontainer baterai milik laboratorium, sehingga keduanya tidak dianggarkan. Bila terdapat beberapa listing untuk produk yang sama, dipakai harga tertinggi. Penjual kamera mengonfirmasi bahwa lensa $2{,}1$~mm tersedia dengan harga yang sama melalui pra-pesan selama tiga minggu. Kedua kamera karenanya dipesan tiga minggu sebelum dibutuhkan, yaitu unit pertama menjelang akhir Fase~1 agar tiba saat kalibrasi Fase~2 dimulai, dan unit kedua segera setelah uji terbang tunggal lolos.
+Rencana Anggaran Biaya (RAB\label{abbr:rab}) dirangkum pada Tabel~\ref{tab:rekap_rab}. Seluruh pos pada Tabel~\ref{tab:rab_fase2}, Tabel~\ref{tab:rab_fase4a}, Tabel~\ref{tab:rab_fase4b}, dan Tabel~\ref{tab:rab_fase4c} mengacu pada listing Tokopedia yang tautannya tercantum di bawah nama komponen (diakses 17 September 2026). Tiang penyangga penanda dicetak dengan pencetak tiga dimensi yang tersedia, dan baterai disimpan dalam kontainer baterai milik laboratorium, sehingga keduanya tidak dianggarkan. Bila terdapat beberapa listing untuk produk yang sama, dipakai harga tertinggi. Penjual kamera mengonfirmasi bahwa lensa $2{,}1$~mm tersedia dengan harga yang sama melalui pra-pesan selama tiga minggu. Kedua kamera karenanya dipesan tiga minggu sebelum dibutuhkan, yaitu unit pertama menjelang akhir Fase~1 agar tiba saat kalibrasi Fase~2 dimulai, dan unit kedua segera setelah uji terbang tunggal lolos.
 
 \begin{table}[htbp]
     \centering
@@ -1157,7 +1189,9 @@ Rencana Anggaran Biaya (RAB\label{abbr:rab}) dirangkum pada Tabel~\ref{tab:rekap
         Fase 1: Studi dan Desain Arsitektur & -- \\ \hline
         Fase 2: Implementasi Teknologi & 10.046.227 \\ \hline
         Fase 3: Pengujian HITL & -- \\ \hline
-        Fase 4: Uji Terbang Eksperimen & 13.357.147 \\ \hline
+        Fase 4: Uji Terbang Eksperimen, sebelum uji terbang tunggal & 113.220 \\ \hline
+        Fase 4: Uji Terbang Eksperimen, setelah Gerbang~2 & 10.242.427 \\ \hline
+        Fase 4: Uji Terbang Eksperimen, setelah Gerbang~3 & 3.001.500 \\ \hline
         Fase 5: Analisis Data dan Pelaporan & -- \\ \hline
         \textbf{Total} & \textbf{23.403.374} \\ \hline
     \end{tabularx}

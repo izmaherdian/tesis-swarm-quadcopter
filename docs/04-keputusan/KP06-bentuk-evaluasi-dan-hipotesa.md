@@ -52,7 +52,8 @@ Tiga persoalan muncul bersamaan saat memeriksa apakah proposal sudah layak diuji
    terbuka, yaitu 77,5 cm per sisi dibanding 32,5 cm pada lima wahana.
 5. **Pengadaan ikut bertahap**, yaitu kelengkapan tiga wahana dan arena dibeli setelah
    Gerbang 2 lolos, dan sisanya untuk melengkapi lima wahana setelah Gerbang 3 lolos
-   ([KP05](KP05-baterai-dan-pengadaan.md)). Subtotal Fase 4 tidak berubah, hanya dipecah.
+   ([KP05](KP05-baterai-dan-pengadaan.md)). Naskah memakai **tiga tabel anggaran** untuk Fase 4
+   sehingga besaran tiap tahap terbaca sendiri-sendiri, dan jumlah keseluruhannya tidak berubah.
 6. **Metrik memakai definisi kode** sehingga hasil fisik dan simulasi sebanding tanpa
    penyesuaian, yaitu RMSE formasi, RMSE mengekor, Φ, waktu tempuh, waktu pemulihan formasi,
    keberhasilan melintas, jarak minimum antaragen, beban CPU, dan trafik UDP.

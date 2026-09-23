@@ -83,7 +83,9 @@ tanpa propeler.
 | Fase | Subtotal |
 |---|---:|
 | Fase 2 | Rp10.046.227 |
-| Fase 4 | Rp13.357.147 (Rp113.220 sebelum uji tunggal, Rp10.242.427 setelah Gerbang 2, Rp3.001.500 setelah Gerbang 3) |
+| Fase 4, sebelum uji terbang tunggal | Rp113.220 |
+| Fase 4, setelah Gerbang 2 (tiga wahana dan arena) | Rp10.242.427 |
+| Fase 4, setelah Gerbang 3 (lima wahana) | Rp3.001.500 |
 | **Total** | **Rp23.403.374** |
 
 ## Syarat peninjauan ulang
